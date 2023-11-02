@@ -11,7 +11,7 @@ const corsOptions = require('./config/corsOptions')
 const connectDB = require('./config/dbConn')
 const { logger, logEvents } = require('./middleware/logger')
 
-// socket
+// socket io
 const http = require('http');
 const server = http.createServer(app);
 const socketHandler = require('./sockets/mySocket')
