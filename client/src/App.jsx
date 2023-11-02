@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <main className='w-screen h-screen grid place-content-center bg-slate-800 font-extrabold'>
-        <h1 className='text-4xl text-lime-600'>Client App</h1>
+        <h1 className='text-4xl text-lime-600'>Client App v.1</h1>
       </main>
     </>
   )
