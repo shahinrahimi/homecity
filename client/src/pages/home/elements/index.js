@@ -1,0 +1,8 @@
+export {default as Background} from "./Background"
+export {default as Experiences} from "./Experiences"
+export {default as Hero} from "./Hero"
+export {default as Section} from "./Section"
+export {default as Services} from "./Services"
+export {default as Information} from "./Information"
+export {default as AboutUs} from "./AboutUs"
+export {default as ContactUs} from "./ContactUs"

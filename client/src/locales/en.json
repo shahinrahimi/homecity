@@ -1,0 +1,40 @@
+{
+  "title": "Multi-language app",
+  "label": "Select another language!",
+  "about": "About",
+  "home": "Home",
+  "info_1": {
+    "title": "Learn about our services for obtaining a passport with property purchase.",
+    "contents": [
+      "We will be with you in all stages of work, all property visits, until the finalization of the purchase and official administrative procedures, at no extra cost. Furthermore, if you buy a property from us, your stay during the visit will also be free.",
+      "The first step is to visit our office. Just stop by our office during one of your trips to Istanbul. The next step is to visit houses, apartments, or villas with a price of over $400,000. (Of course, there is no need to purchase just one property; you can buy several properties with a total value of $400,000.) If you choose a house, you must register with the tax office, obtain a tax number, and open a bank account. After purchasing the house, by registering the deed, you can obtain a short-term residence permit in Turkey and apply for Turkish citizenship or a Turkish passport. You can receive your passport within a maximum of 6 months. However, in most cases, this process takes much less than 6 months."
+    ],
+    "benefits": []
+  },
+  "info_2": {
+    "title": "The benefits of obtaining Turkish citizenship through property investment are as follows:",
+    "contents": [
+      "t's worth noting that if you start the process of obtaining a Turkish passport through property investment in Istanbul or other cities, you won't be able to sell the property for up to 3 years."
+    ],
+    "benefits": [
+      "Quick passport acquisition, typically within 3-4 months of processing.",
+      "Simultaneous passport issuance for all family members, including children under 18",
+      "Turkish citizenship can be obtained without the need for residence in Turkey.",
+      "Investment in Turkey's growing real estate market.",
+      "The opportunity for free trade and having a valid bank account in Turkey."
+    ]
+  },
+  "info_3": {
+    "title": "The advantages of applying for a Turkish passport include:",
+    "contents": [
+      "Besides the ability to travel to many countries without requiring a visa, having a Turkish passport provides significant advantages for obtaining visas to countries that typically require one, such as Australia, the United States, Canada, and Schengen countries.",
+      "By acquiring a Turkish passport through property investment in Istanbul, you no longer need to meet minimum residency requirements in Turkey. You are free to enter and leave the country at any time, similar to other Turkish citizens."
+    ],
+    "benefits": [
+      "You can access comprehensive healthcare services.",
+      "You can take advantage of retirement benefits.",
+      "Enjoy free education services and university scholarship programs.",
+      "Gain the right to vote."
+    ]
+  }
+}

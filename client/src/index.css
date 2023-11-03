@@ -1,3 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@font-face {
+  font-family: "Vazir";
+  src: url("./assets/fonts/Vazirmatn-Regular.ttf");
+}
+
+#root {
+  min-height: 100vh;
+}
+
+img {
+  display: block;
+}
+
+body {
+
+  background-color: #ccc;
+  min-height: 100vh;
+
+}

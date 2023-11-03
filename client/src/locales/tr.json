@@ -1,0 +1,40 @@
+{
+  "title": "Çokdilli Uygulama",
+  "label": "Başka bir dil seçin!",
+  "about": "Hakkında",
+  "home": "Ana Sayfa",
+  "info_1": {
+    "title": "Pasaport elde etmek için mülk satın alma hizmetlerimiz hakkında bilgi edinin.",
+    "contents": [
+      "Çalışmanın tüm aşamalarında yanınızda olacağız, tüm mülk ziyaretleri, satın alma işleminin sona ermesi ve resmi idari işlemler dahil, ekstra bir maliyet olmaksızın. Ayrıca, bizden mülk satın alırsanız, ziyaret sırasındaki konaklamanız da ücretsiz olacaktır.",
+      "İlk adım ofisimize uğramak. İstanbul gezilerinizden biri sırasında ofisimize uğrayın. Bir sonraki adım, 400,000 doların üzerinde fiyatı olan evleri, daireleri veya villaları ziyaret etmektir. (Tabii ki, sadece bir mülk satın almanız gerekmiyor; 400,000 dolarlık toplam değeri olan birden fazla mülk satın alabilirsiniz.) Eğer bir ev seçerseniz, vergi dairesine kaydolmalı, vergi numarası almalı ve bir banka hesabı açmalısınız. Ev satın aldıktan sonra, tapuyu kaydederek Türkiye'de kısa süreli ikamet izni alabilir ve Türk vatandaşlığı veya Türk pasaportu için başvurabilirsiniz. Pasaportunuzu en fazla 6 ay içinde alabilirsiniz. Ancak çoğu durumda bu süreç 6 aydan çok daha kısa sürer."
+    ],
+    "benefits": []
+  },
+  "info_2": {
+    "title": "Mülk yatırımı yoluyla Türk vatandaşlığı elde etmenin faydaları aşağıdaki gibidir:",
+    "contents": [
+      "İstanbul veya diğer şehirlerde mülk yatırımı yoluyla Türk pasaportu elde etme sürecini başlatırsanız, mülkü 3 yıla kadar satamayacağınızı belirtmek önemlidir."
+    ],
+    "benefits": [
+      "Hızlı pasaport edinme, genellikle işlemin işlenmesinden 3-4 ay içinde.",
+      "18 yaşın altındaki çocuklar dahil tüm aile üyeleri için aynı anda pasaport verme",
+      "Türkiye'de ikamet gereksinimi olmadan Türk vatandaşlığı elde edilebilir.",
+      "Türkiye'nin büyüyen emlak piyasasına yatırım yapma fırsatı.",
+      "Türkiye'de geçerli bir banka hesabı sahibi olma ve serbest ticaret fırsatı."
+    ]
+  },
+  "info_3": {
+    "title": "Türk pasaportu için başvurmanın avantajları şunlardır:",
+    "contents": [
+      "Vize gerektiren ülkeler dahil birçok ülkeye vize gerektirmeksizin seyahat etme yeteneğinin yanı sıra Türk pasaportuna sahip olmanın, genellikle vize gerektiren ülkeler, Avustralya, Amerika Birleşik Devletleri, Kanada ve Schengen ülkeleri gibi ülkelere vize almak için önemli avantajları bulunmaktadır.",
+      "İstanbul'da mülk yatırımı yoluyla Türk pasaportu elde ederek artık Türkiye'de minimum ikamet gereksinimlerini karşılama ihtiyacınız yok. Diğer Türk vatandaşları gibi istediğiniz zaman ülkeye giriş ve çıkış yapabilirsiniz."
+    ],
+    "benefits": [
+      "Kapsamlı sağlık hizmetlerine erişebilirsiniz.",
+      "Emeklilik avantajlarından yararlanabilirsiniz.",
+      "Ücretsiz eğitim hizmetlerine ve üniversite burs programlarına katılabilirsiniz.",
+      "Oy kullanma hakkını elde edersiniz."
+    ]
+  }
+}
