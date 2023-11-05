@@ -14,8 +14,8 @@ const Header = () => {
   const { isOpen: isSearchOpen, toggle: toggleSearch } = useContext(SearchContext)
 
   return (
-    <header className=" bg-slate-900 text-white z-20 h-18 shadow-2xl shadow-slate-900 fixed w-screen transition-transform animate-landing-slow">
-      <div className="container mx-auto py-4 px-4 flex flex-row justify-between items-center">
+    <header className="fixed flex p-2 w-screen z-20 h-20 bg-slate-900 text-white shadow-2xl shadow-slate-900">
+      <div className="flex flex-row container mx-auto px-8 justify-between items-center ">
         {/* brand  */}
         <Brand />
 

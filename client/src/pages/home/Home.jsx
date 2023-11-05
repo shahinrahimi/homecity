@@ -1,25 +1,42 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { background1, background2 } from "../../assets/img";
-import { Background, AboutUs, ContactUs, Hero, Section, Services, Experiences, Information } from "./elements";
+import {
+  Background, AboutUs, ContactUs, Hero, Section, Services, Experiences, Information,
+  CarouselHero
+} from "./elements";
+
 
 
 const Home = () => {
   const { t } = useTranslation()
 
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // return (
+  //   <CarouselHero />
+  // )
+
   return (
-    <main className="">
+    <main className="relative top-20">
 
       {/* background */}
-      <Background image={background1} filterStr={"4"} />
+      {/* <Background image={background1} filterStr={"4"} /> */}
+
+      <CarouselHero />
 
       {/* hero */}
-      <Section id={"hero"} h={'h-screen'}>
+      {/* <Section id={"home"} h={'h-screen'}>
         <Hero />
-      </Section>
+      </Section> */}
 
       {/* services */}
-      <Section id={"service"} darkTheme={true}>
+      <Section id={"#franchizes"} darkTheme={true}>
         <Services />
       </Section>
 
@@ -31,9 +48,9 @@ const Home = () => {
 
       {/* info with nice animation */}
       {/* cuz horizonal scrolling */}
-      <Section id={"info"} darkTheme={true}>
+      {/* <Section id={"info"} darkTheme={true}>
         <Information />
-      </Section>
+      </Section> */}
 
       {/* contact us messages*/}
       <Section id={"info"} >
@@ -44,6 +61,10 @@ const Home = () => {
       <Section id={"info"} darkTheme={true}>
         <AboutUs />
       </Section>
+
+      <button onClick={() => scrollToSection("home")}>
+        Click me
+      </button>
 
     </main>
   );

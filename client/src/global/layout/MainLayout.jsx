@@ -9,12 +9,12 @@ const MainLayout = () => {
 
 
   return (
-    <div className="scroll-smooth overflow-x-hidden">
+
+    <div className="">
       <Header />
       <MenuPanel />
       <Outlet />
       <Footer />
-      <BottomNotifier />
     </div>
   )
 }
