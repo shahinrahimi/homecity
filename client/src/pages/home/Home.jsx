@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { background1, background2 } from "../../assets/img";
 import {
   Background, AboutUs, ContactUs, Hero, Section, Services, Experiences, Information,
-  CarouselHero
+  HeroCarousel, ProjectsCarousel
 } from "./elements";
 
 
@@ -28,7 +28,7 @@ const Home = () => {
       {/* background */}
       {/* <Background image={background1} filterStr={"4"} /> */}
 
-      <CarouselHero />
+      <HeroCarousel />
 
       {/* hero */}
       {/* <Section id={"home"} h={'h-screen'}>
@@ -51,6 +51,8 @@ const Home = () => {
       {/* <Section id={"info"} darkTheme={true}>
         <Information />
       </Section> */}
+
+      <ProjectsCarousel />
 
       {/* contact us messages*/}
       <Section id={"info"} >

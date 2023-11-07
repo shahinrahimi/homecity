@@ -1,5 +1,6 @@
 export {default as Background} from "./Background"
-export {default as CarouselHero} from "./HeroCarousel"
+export {default as HeroCarousel} from "./HeroCarousel"
+export {default as ProjectsCarousel} from "./ProjectsCarousel"
 export {default as Experiences} from "./Experiences"
 export {default as Hero} from "./Hero"
 export {default as Section} from "./Section"
