@@ -4,13 +4,15 @@ import { MdHomeWork as ProjectsIcon } from "react-icons/md"
 import { SiHomeassistantcommunitystore as FranchisesIcon } from "react-icons/si"
 import { Counter } from "../../../components"
 import { background6, background4, background5 } from "../../../assets/img";
+import { Button } from "../../../components"
 
-const Slide1 = () => {
+
+const SlideContent1 = () => {
   return (
     <article
       className="flex flex-col justify-center items-center w-full h-full"
     >
-      <div>
+      <div className="drop-shadow-2xl">
         <h3 className="uppercase text-sm mb-2">welcome to</h3>
         <h1 className="capitalize text-6xl mb-3 font-semibold">Homecity</h1>
         <h2 className="capitalize text-2xl">homecitygroup offers a choice of several programs for investing in residency and citizenship in turkey</h2>
@@ -27,13 +29,46 @@ const Slide1 = () => {
   )
 }
 
-const Slide2 = () => {
+const SlideContent2 = () => {
+  return (
+    <article
+      className="flex flex-col justify-center items-center w-full h-ful"
+    >
+      <div className="">
+
+        <h1 className="capitalize text-5xl font-bold mb-2 self-start">discover</h1>
+        <h1 className="capitalize text-5xl mb-6">Your path to Turkish <span className="font-bold">Citizenship</span></h1>
+        <h2 className="capitalize text-2xl">unlock the benefits of Turkish citizenship adn explore prime reale estate opportunities in Turkey</h2>
+      </div>
+
+      <a
+        className="bg-transparent px-4 py-2 hover:bg-red-600/75 self-start lg:self-center mt-10 border-4 transition-colors duration-200 font-bold"
+        href="#projects"
+      >
+        explore opportunities
+      </a>
+
+    </article>
+  )
+  
+}
+
+
+
+const SlideContent22 = () => {
   return (
     <article className="flex flex-col justify-center items-center h-full w-full gap-20">
       <div className="flex flex-col justify-center items-center text-center pt-20">
-        <h1 className="capitalize text-4xl font-semibold mb-4">trust our experiences</h1>
-        <h2 className="capitalize text-xl">as one of the top tier companies in residency and citizenship through investment homecity offers value and choice</h2>
+        <h1 className="capitalize text-4xl font-semibold mb-4">Discover Your path to Turkish Citizenship</h1>
+        <h2 className="capitalize text-xl">unlock the benefits of Turkish citizenship adn explore prime reale estate opportunities in Turkey</h2>
       </div>
+
+      <a
+        className="bg-transparent px-4 py-2 hover:bg-red-600/75 self-start lg:self-center mt-10 border-4 transition-colors duration-200 font-bold"
+        href="#projects"
+      >
+        explore opportunities
+      </a>
 
       <div className="flex flex-row gap-1 sm:gap-2 md:gap-4 lg:gap-10 xl:gap-20 2xl:gap-40 mt-10 scale-75 md:scale-100 lg:scale-120">
         <div className="relative w-40 h-40 rounded-full bg-slate-50/50 text-slate-800 flex flex-col justify-center items-center  overflow-hidden shadow-sm shadow-slate-200 transition-all duration-1000">
@@ -101,12 +136,12 @@ const Slide2 = () => {
   )
 }
 
-const Slide3 = () => {
+const SlideContent3 = () => {
   return (
     <article className="flex flex-col justify-center items-center w-full h-full">
       <div>
         <h1 className="capitalize text-5xl font-bold mb-2">invest</h1>
-        <h1 className="capitalize text-5xl mb-3">in your <span className="font-bold">future</span></h1>
+        <h1 className="capitalize text-5xl mb-6">in your <span className="font-bold">future</span></h1>
         <h2 className="capitalize text-2xl">get started today. contact our advisers for free, confidential advice on your options.</h2>
       </div>
 
@@ -120,14 +155,6 @@ const Slide3 = () => {
     </article>
   )
 }
-
-
-const slides = [
-  { name: "slide1", image: background6, content: Slide1 },
-  { name: "slide2", image: background4, content: Slide2 },
-  { name: "slide3", image: background5, content: Slide3 }
-]
-
 
 const Slide = ({ children, image, index, activeSlide }) => {
   return (
@@ -157,15 +184,21 @@ const Slide = ({ children, image, index, activeSlide }) => {
 
 const HeroCarousel = () => {
 
-  React.useEffect(() => {
-    let counter = 0
-    const intervalId = setInterval(() => {
-      counter = counter + 1
-      setActiveSlide(counter % 3)
-    }, 10000)
+  const slides = [
+    { name: "slide1", image: background6, content: SlideContent1 },
+    { name: "slide2", image: background4, content: SlideContent2 },
+    { name: "slide3", image: background5, content: SlideContent3 }
+  ]
 
-    return () => clearInterval(intervalId)
-  }, [])
+  // React.useEffect(() => {
+  //   let counter = 0
+  //   const intervalId = setInterval(() => {
+  //     counter = counter + 1
+  //     setActiveSlide(counter % 3)
+  //   }, 10000)
+
+  //   return () => clearInterval(intervalId)
+  // }, [])
 
   let numSlides = slides.length
 
@@ -207,11 +240,11 @@ const HeroCarousel = () => {
 
 
   return (
-    <div className="relative h-[calc(100vh-80px)] w-screen bg-black overflow-hidden">
+    <div className="relative h-[calc(100vh)] -top-20 w-screen bg-black overflow-hidden">
       {/* slides */}
       {Slides}
 
-
+      {/* slide controls */}
       <button onClick={prevSlide} className="hidden lg:block absolute top-1/2 left-4 transform -translate-y-1/2 w-10 text-8xl text-slate-300 hover:text-slate-50 transition-colors opacity-50 hover:opacity-80">
         &#706;
       </button>

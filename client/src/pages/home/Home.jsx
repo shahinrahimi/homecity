@@ -1,9 +1,9 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { background1, background2 } from "../../assets/img";
+import { background1, background2, background6 } from "../../assets/img";
 import {
   Background, AboutUs, ContactUs, Hero, Section, Services, Experiences, Information,
-  HeroCarousel, ProjectsCarousel
+  HeroCarousel, ProjectsCarousel, Features, Features2, Features3, FAQs
 } from "./elements";
 
 
@@ -30,20 +30,32 @@ const Home = () => {
 
       <HeroCarousel />
 
+      <Section>
+        <Features />
+      </Section>
+
       {/* hero */}
       {/* <Section id={"home"} h={'h-screen'}>
         <Hero />
       </Section> */}
 
       {/* services */}
-      <Section id={"#franchizes"} darkTheme={true}>
+      <Section id={"#franchizes"} isDark={true}>
         <Services />
+      </Section>
+
+      <Section>
+        <Features2 />
       </Section>
 
 
       {/* experiences */}
-      <Section id={"exp"} >
+      <Section id={"exp"} background={background6} isDark={true} >
         <Experiences />
+      </Section>
+
+      <Section>
+        <Features3 />
       </Section>
 
       {/* info with nice animation */}
@@ -52,21 +64,14 @@ const Home = () => {
         <Information />
       </Section> */}
 
-      <ProjectsCarousel />
-
-      {/* contact us messages*/}
-      <Section id={"info"} >
-        <ContactUs />
+      <Section isDark={true}>
+        {/* <ProjectsCarousel /> */}
       </Section>
 
-      {/* about us */}
-      <Section id={"info"} darkTheme={true}>
-        <AboutUs />
+      <Section>
+        <FAQs />
       </Section>
 
-      <button onClick={() => scrollToSection("home")}>
-        Click me
-      </button>
 
     </main>
   );

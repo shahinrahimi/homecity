@@ -112,7 +112,7 @@ const ProjectsCarousel = () => {
   })
 
   return (
-    <div className="relative w-screen h-[calc(3*100vh/4)] text-slate-900 bg-rose-300">
+    <div className="relative w-screen h-[calc(3*100vh/4)] text-slate-900 ">
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(50%)] h-full">
         {Slides}
       </div>

@@ -18,6 +18,12 @@ export {default as service_realestate} from "./service_realestate.jpeg"
 export {default as service_translation} from "./service_translation.jpeg"
 export {default as address_image} from "./address.png"
 
+export {default as passportImage} from "./passport_flag.jpg"
+
+export {default as legalAssistant } from "./legal_assistant.jpg"
+export {default as applicationProcessing} from "./application_processing.jpg"
+export {default as propertyTours} from "./property_tours.jpg"
+
 // projects images.
 export {default as project_1_image_0} from "./projects/project_1_0.jpg"
 export {default as project_1_image_1} from "./projects/project_1_1.jpg"

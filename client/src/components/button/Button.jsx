@@ -1,30 +1,19 @@
-const Button = ({ text, icon, color, hoverColor, onClick }) => {
-  let defaultColor = "bg-slate-400"
-  let defaultHover = "hover:bg-slate-500"
-
-  if (color) {
-    defaultColor = color
-  }
-
-  if (hoverColor) {
-    defaultHover = hoverColor
-  }
+const Button = ({ text, action, disable=false, href, colorClassName, alighClassName }) => {
 
   return (
-    // <button
-    //   className={`flex flex-row items-center gap-1 capitalize px-3 py-2 font-bold text-gray-100 transition-colors duration-300 transform rounded cursor-pointer ${defaultColor} ${defaultHover} text-center align-middle`}
-    //   onClick={onClick}
-    // >
-    //   {text}
-    //   {/* {text ? <span className="grid place-content-center text">{text}</span> : ""} */}
-    //   {icon ? <span>{icon}</span> : ""}
-    // </button>
     <button
-      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      onClick={action}
+      disabled={disable}
+      className={`px-4 py-2 mt-8 border-c-black-500 border-4 transition-colors duration-200 font-bold hover:text-white ${colorClassName ? colorClassName : " hover:bg-c-red-500/80"} ${alighClassName ? alighClassName : "self-start"}`}
     >
-      {text}
-
+      {href 
+      ? (
+          <a href={href}>{text}</a>
+      ):(
+        <p>{text}</p>
+      )}
     </button>
+    
   )
 }
 export default Button

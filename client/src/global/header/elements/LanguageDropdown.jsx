@@ -1,11 +1,12 @@
 import { Menu, Transition } from "@headlessui/react"
-import { LANGUAGES } from "../../constants/languages"
 import { useContext, Fragment } from "react"
-import { LanguageContext } from "../../context/LanguageContext"
 import { BiChevronDown } from "react-icons/bi"
 import { IoLanguage } from "react-icons/io5"
 
-const LanguageDropDown = () => {
+import { LanguageContext } from "../../../context/LanguageContext"
+import { LANGUAGES } from "../../../constants/languages"
+
+const LanguageDropdown = () => {
 
   const { lang, setLang } = useContext(LanguageContext)
 
@@ -14,7 +15,7 @@ const LanguageDropDown = () => {
       <Menu.Item key={language.code}>
         {({ active }) => (
           <button
-            className={`${active ? 'bg-red-500 text-white' : 'text-gray-900'
+            className={`${active ? 'bg-c-red-500 text-white' : 'text-gray-900'
               } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
             onClick={() => setLang(language.code)}
           >
@@ -30,7 +31,7 @@ const LanguageDropDown = () => {
       <Menu as="div" className="relative inline-block text-left">
 
         <div>
-          <Menu.Button className="capitalize inline-flex w-full justify-center rounded-md bg-black bg-opacity-20 px-2 py-1 text-sm  font-extralight text-slate-400 hover:text-slate-50  hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 transition-colors">
+          <Menu.Button className="capitalize inline-flex w-full justify-center rounded-md bg-black bg-opacity-20 px-2 py-1 text-sm  font-bold text-slate-400 hover:text-slate-50  hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 transition-colors ">
             {/* <div>
               <IoLanguage
                 className="h-5 w-5 text-violet-200 hover:text-violet-100"
@@ -59,7 +60,7 @@ const LanguageDropDown = () => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 mt-2 w-40 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items className="absolute right-0 mt-2 w-40 origin-top-right divide-y divide-gray-100 rounded-md bg-c-white-500 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1 ">
               {Items}
             </div>
@@ -69,4 +70,4 @@ const LanguageDropDown = () => {
     </div>
   )
 }
-export default LanguageDropDown
+export default LanguageDropdown

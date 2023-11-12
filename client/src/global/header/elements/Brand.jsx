@@ -5,7 +5,7 @@ const Brand = () => {
       to="/"
       className="text-3xl uppercase mr-2 cursor-pointer font-brand"
     >
-      home<span className="uppercase text-red-600 ">city</span>
+      home<span className="uppercase text-c-red-500 ">city</span>
     </Link>
   )
 }

@@ -1,7 +1,4 @@
-:root {
-  --primary: rgb(15, 23, 42);
-  --secondary: rgba(220, 38, 38, 0.3);
-}
+:root {}
 
 * {
   scrollbar-width: thin;

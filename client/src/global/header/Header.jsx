@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { MenuContext } from "../../context/MenuContext"
 import { SearchContext } from "../../context/SearchContext"
-import { LanguageDropdown } from "../../components"
+import { LanguageDropdown } from "./elements"
 import { BiSearch } from "react-icons/bi"
 
 import { NAVLINKS } from "../../constants/navLinks"
@@ -14,7 +14,7 @@ const Header = () => {
   const { isOpen: isSearchOpen, toggle: toggleSearch } = useContext(SearchContext)
 
   return (
-    <header className="fixed flex p-2 w-screen z-20 h-20 bg-slate-900 text-white shadow-2xl shadow-slate-900">
+    <header className="fixed flex p-2 w-screen z-20 h-20 bg-c-black-700 text-c-white-500 shadow-lg shadow-c-black-600 animate-landing-slow">
       <div className="flex flex-row container mx-auto px-8 justify-between items-center ">
         {/* brand  */}
         <Brand />
@@ -24,7 +24,7 @@ const Header = () => {
 
         {/* controls */}
         <div className="flex flex-row justify-end items-center gap-2 m-1">
-          <button className="cursor-pointer text-slate-400 hover:text-slate-50 transition-colors p-2">
+          <button className="cursor-pointer text-c-white-700 hover:text-c-white-200 transition-colors p-2">
             <BiSearch className="" />
           </button>
 

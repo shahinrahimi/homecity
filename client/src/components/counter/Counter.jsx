@@ -1,9 +1,9 @@
 import CountUp from "react-countup"
 
-const Counter = ({ count, duration }) => {
+const Counter = ({ count, duration, className }) => {
   return (
     <>
-      <span>
+      <span className={`${className}`}>
         <CountUp duration={duration} end={count} enableScrollSpy="true" />
       </span>
     </>
