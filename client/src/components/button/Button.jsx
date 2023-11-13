@@ -4,7 +4,7 @@ const Button = ({ text, action, disable=false, href, colorClassName, alighClassN
     <button
       onClick={action}
       disabled={disable}
-      className={`px-4 py-2 mt-8 border-c-black-500 border-4 transition-colors duration-200 font-bold hover:text-white ${colorClassName ? colorClassName : " hover:bg-c-red-500/80"} ${alighClassName ? alighClassName : "self-start"}`}
+      className={`px-4 py-2  border-c-black-500 border-4 transition-colors duration-200 font-bold hover:text-white ${colorClassName ? colorClassName : " hover:bg-c-red-500/80"} ${alighClassName ? alighClassName : "self-start"}`}
     >
       {href 
       ? (

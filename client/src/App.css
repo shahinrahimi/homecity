@@ -1,4 +1,7 @@
-:root {}
+:root {
+  --primary: #333;
+  --secondary: #eee;
+}
 
 * {
   scrollbar-width: thin;

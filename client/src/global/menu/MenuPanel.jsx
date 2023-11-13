@@ -11,7 +11,7 @@ const MenuPanel = () => {
     return (
       <li
         key={item.name}
-        className={` text-c-white-700 text-2xl hover:text-c-red-400 uppercase hover:mb-3 hover:mt-2 transition-all duration-1000 font-bold opacity-0 ${isOpen ? 'animate-menu-item-showUp' : 'animate-menu-item-showOff'}`}
+        className={` text-c-white-700 text-3xl mb-4 md:text-4xl lg:text-6xl hover:text-c-red-400 uppercase hover:mb-8 hover:mt-2 transition-all duration-1000 font-bold opacity-0 ${isOpen ? 'animate-menu-item-showUp' : 'animate-menu-item-showOff'}`}
       >
 
         <Link
@@ -25,7 +25,7 @@ const MenuPanel = () => {
               {item.name}
               <span className="opacity-0">{'c'}</span>
             </div>
-            <div className="w-full h-full group-hover:after:w-full group-hover:before:w-full after:absolute before:absolute after:h-1/2 before:h-1/2 after:top-0 before:bottom-0 after:left-0 before:left-0 after:bg-c-red-500 before:bg-c-red-500 after:translate-x-[calc(100%-0.25rem)] before:translate-x-[calc(-100%+0.25rem)] group-hover:after:translate-x-[calc(-100%+0.25rem)] after:duration-500 before:duration-500 group-hover:before:translate-x-[calc(100%-0.25rem)] after:transition-transform group-hover:after:animate-menu-item-blink  before:transition-transform group-hover:before:animate-menu-item-blink  after:-z-10 before:-z-10"></div>
+            <div className="w-full h-full group-hover:after:w-full group-hover:before:w-full after:absolute before:absolute after:h-[calc(50%)] before:h-[calc(50%)] after:top-0 before:bottom-0 after:left-0 before:left-0 after:bg-c-red-500 before:bg-c-red-500 after:translate-x-[calc(100%-0.25rem)] before:translate-x-[calc(-100%+0.25rem)] group-hover:after:translate-x-[calc(-100%+0.25rem)] after:duration-500 before:duration-500 group-hover:before:translate-x-[calc(100%-0.25rem)] after:transition-transform group-hover:after:animate-menu-item-blink  before:transition-transform group-hover:before:animate-menu-item-blink  after:-z-10 before:-z-10"></div>
           </div>
         </Link>
       </li>

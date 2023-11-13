@@ -10,12 +10,12 @@ const slides = [
 
 import { IoBedOutline as BedroomIcon } from "react-icons/io5"
 import { LuBath as BathroomIcon } from "react-icons/lu"
-
+import { Button } from "../../../components"
 
 const Card = ({ image }) => {
   return (
-    <div className="bg-slate-50 w-96 flex flex-col justify-center items-center rounded-md shadow-2xl">
-      <div className="w-full overflow-hidden rounded-t-md min-h-[calc(45%)]">
+    <div className="w-[calc(300px)] h-[calc(500px)] bg-c-white-500 border-2 border-c-black-500/50 flex flex-col justify-between items-center rounded-md shadow-2xl">
+      <div className="w-full overflow-hidden min-h-[calc(45%)]">
         <img
           className="object-cover"
           src={image}
@@ -29,7 +29,7 @@ const Card = ({ image }) => {
       </div>
 
       {/* icons */}
-      <div className="flex gap-2 justify-between items-center border-b-[calc(2px)] border-t-[calc(2px)] border-slate-200 py-2 w-full px-4">
+      <div className="flex gap-2 justify-between items-center border-b-2 border-t-2 border-c-black-500/50 py-2 w-full px-4">
         <div className="flex">
           <BedroomIcon
             className="text-2xl"
@@ -46,13 +46,10 @@ const Card = ({ image }) => {
         </div>
       </div>
 
-      <div className="bg-slate-100 py-4 w-full flex justify-center items-center rounded-b-lg">
-        <a
-          className="border-2 border-slate-500 px-2 py-1 hover:bg-rose-600/75 hover:text-slate-50 transition-colors duration-200"
-          href="#contactus">
-          More Details
-        </a>
-
+      <div className="bg-c-white-100 py-4 w-full flex justify-center items-center">
+        <Button 
+          text={"More Details"}
+        />
       </div>
 
 
@@ -75,7 +72,7 @@ const Slide = ({ children, index, maxIndex, activeIndex }) => {
   }
 
   return (
-    <div className={`absolute top-1/2 -translate-y-1/2  w-full transition-all duration-1000 grid place-content-center ${index === activeIndex ? "translate-x-0 brightness-100 z-10" : index === prevIndex ? "-translate-x-3/4 scale-[calc(0.4)] brightness-75 z-0" : index === nextIndex ? "translate-x-3/4 scale-[calc(0.4)] brightness-75 z-0" : "translate-x-0 scale-[calc(0.2)] opacity-0 brightness-50 -z-10"}`}>
+    <div className={`absolute transition-all duration-1000 grid place-content-center ${index === activeIndex ? "translate-x-0 brightness-100 z-10" : index === prevIndex ? "-translate-x-3/4 scale-[calc(0.4)] brightness-75 z-0" : index === nextIndex ? "translate-x-3/4 scale-[calc(0.4)] brightness-75 z-0" : "translate-x-0 scale-[calc(0.2)] opacity-0 brightness-50 -z-10"}`}>
       {children}
     </div>
   )
@@ -112,14 +109,16 @@ const ProjectsCarousel = () => {
   })
 
   return (
-    <div className="relative w-screen h-[calc(3*100vh/4)] text-slate-900 ">
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(50%)] h-full">
+    <div className="relative scale-[calc(60%)] sm:scale-[calc(75%)] md:scale-[calc(85%)] lg:scale-100 text-slate-900 border-2 border-c-green-500 grid place-content-center">
+      {/* scence */}
+      <div className="w-[calc(300px)] h-[calc(500px)]">
         {Slides}
       </div>
-      <button onClick={prevSlide} className="hidden lg:block absolute top-1/2 left-4 transform -translate-y-1/2 w-10 text-8xl text-slate-800 hover:text-slate-50 transition-colors opacity-50 hover:opacity-80">
+      {/* controls */}
+      <button onClick={prevSlide} className="absolute hidden lg:block  top-1/2 left-4 transform -translate-y-1/2 w-10 text-8xl text-slate-800 hover:text-slate-50 transition-colors opacity-50 hover:opacity-80">
         &#706;
       </button>
-      <button onClick={nextSlide} className="hidden lg:block absolute top-1/2 right-4 transform -translate-y-1/2 w-10 text-8xl text-slate-800 hover:text-slate-50 transition-colors opacity-50 hover:opacity-80">
+      <button onClick={nextSlide} className="absolute hidden lg:block  top-1/2 right-4 transform -translate-y-1/2 w-10 text-8xl text-slate-800 hover:text-slate-50 transition-colors opacity-50 hover:opacity-80">
         &#707;
       </button>
     </div>

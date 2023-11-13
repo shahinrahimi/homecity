@@ -65,7 +65,7 @@ const Home = () => {
       </Section> */}
 
       <Section isDark={true}>
-        {/* <ProjectsCarousel /> */}
+        <ProjectsCarousel />
       </Section>
 
       <Section>

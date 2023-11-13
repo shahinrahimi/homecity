@@ -14,9 +14,10 @@ const experience_items = [
 const Experiences = () => {
   const experienceElements = experience_items.map(item => {
     return (
-      <li key={item.name} className="flex flex-col justify-between items-center">
-        <h3 className="text-xl font-semibold mb-4">{item.name}</h3>
+      <li key={item.name} className="flex flex-col justify-between items-center scale-75 lg:scale-100">
+        
         <item.icon className="text-8xl mb-4" />
+        <h3 className="text-xl font-semibold mb-4">{item.name}</h3>
         <Counter
           className="text-4xl font-bold"
           count={item.count} duration={3} 

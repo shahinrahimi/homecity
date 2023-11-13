@@ -32,7 +32,7 @@ const Features3 = () => {
 
             >
                 {/* image */}
-                <div className="w-full h-[calc(150px)] border-2 border-c-red-700 border-opacity-50 shadow-xl rounded-md overflow-hidden ">
+                <div className="w-full h-[calc(200px)] sm:h-[calc(250px)] md:h-[calc(300px)] border-2 border-c-red-700 border-opacity-50 shadow-xl rounded-md overflow-hidden mb-5">
                     <img 
                         src={item.image} alt=""
                         className='object-cover w-full h-full'
@@ -53,7 +53,7 @@ const Features3 = () => {
             <h1 className='text-4xl mb-4 font-bold'>Efficient Services for Citizenship and Real Estate</h1>
             <p>We offer a range of services to make your journey to Turkish citizenship and real estate ownership seamless. Our team provides expert legal assistance, personalized property tours, and efficient application processing.</p>
 
-            <ul className="flex flex-col lg:flex-row w-full justify-between gap-4 mt-8 self">
+            <ul className="flex flex-col lg:flex-row w-full justify-between gap-8 mt-8 self">
                 {items}
             </ul>
 

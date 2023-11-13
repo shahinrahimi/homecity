@@ -5,7 +5,7 @@ const Features2 = () => {
     return (
         <div className="flex flex-col-reverse md:flex-row justify-between gap-10 items-center">
             {/* image */}
-            <div className="w-[calc(100%)] md:w-[calc(%50)] rounded-xl overflow-hidden shadow-2xl shadow-c-red-400">
+            <div className="w-[calc(100%)] md:w-[calc(%50)] rounded-xl overflow-hidden shadow-2xl shadow-c-red-400 relative">
                 <ImageTheather />
             </div>
             {/* content */}

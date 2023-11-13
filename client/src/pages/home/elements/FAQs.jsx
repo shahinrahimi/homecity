@@ -27,7 +27,7 @@ const data = [
 const Faq = ({question, answer, isOpen, toggle}) => {
     return (
         <div 
-            className={`w-full flex flex-col group p-4 border-b-2 border-solid border-slate-600 border-opacity-30 cursor-pointer hover:bg-slate-50 ${isOpen ? "bg-slate-100" : "bg-slate-200 transition-all duration-300"}`}
+            className={`w-full flex flex-col group p-4 border-b-2 border-solid border-slate-600 border-opacity-30 cursor-pointer hover:bg-slate-50 ${isOpen ? "bg-c-white-100" : "bg-slate-200 transition-all duration-300"}`}
             onClick={toggle}
         >
             <div className="flex justify-between">

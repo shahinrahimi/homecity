@@ -34,7 +34,9 @@ const ImageTheather = () => {
     },[])
 
     return (
-        <img src={images[currentIndex]} />
+        <>
+            <img className='w-full animate-zoomOut' src={images[currentIndex]} />
+        </>
     )
 }
 
