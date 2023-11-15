@@ -2,7 +2,6 @@
 import { NAVLINKS } from "../../constants/navLinks"
 import { Brand } from "../header/elements"
 import { Input } from "../../components"
-import { Section } from "../../pages/home/elements"
 
 import { AiOutlineInstagram as InstagramIcon, 
         AiFillYoutube as YoutubeIcon, 
@@ -10,6 +9,7 @@ import { AiOutlineInstagram as InstagramIcon,
         AiFillFacebook as FacebookIcon,  
 } from "react-icons/ai"
 import { RiTwitterXFill as TwitterXIcon } from "react-icons/ri"
+
 
 const socials = [
   {

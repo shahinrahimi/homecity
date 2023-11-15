@@ -1,19 +1,19 @@
-import React, { useState, createContext, useLayoutEffect } from "react";
+import React from "react";
 
 
-export const MenuContext = createContext();
+export const MenuContext = React.createContext();
 
 export const MenuProvider = ({ children }) => {
 
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = React.useState(false)
 
   // hidden scrolling after menu open
-  useLayoutEffect(() => {
+  React.useLayoutEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = "hidden hidden";
     }
     if (!isOpen) {
-      document.body.style.overflow = "visible";
+      document.body.style.overflow = "hidden visible";
     }
   }, [isOpen])
 

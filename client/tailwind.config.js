@@ -209,7 +209,7 @@ export default {
       showUp: {
         '0%': {
           opacity: '0',
-          transform: 'translateX(-200px)'
+          transform: 'translateX(-1000px)'
         },
         '100%': {
           opacity: '1',
@@ -223,7 +223,7 @@ export default {
         },
         '100%':{
           opacity: '0',
-          transform: 'translateX(-200px)'
+          transform: 'translateX(-1000px)'
         }
       },
 
@@ -238,8 +238,17 @@ export default {
         '100%': {
           opacity: '0'
         }
-      }
+      },
+      moveForever: {
+        "0%" :{
+          transform: "translate(-90px, 0%)"
+        },
+        "100%" :{
+          transform: "translate(85px, 0%)"
+        }
+      },
     },
+    
     animation: {
       'landing-slow': 'landing 0.5s ease-in-out',
       'unfoldIn': 'unfoldIn 0.8s ease-in-out',
@@ -259,10 +268,14 @@ export default {
       'menu-slideOut': 'slideOut 0.7s ease forwards',
       // Menu Item animation
       'menu-item-blink': 'blink 1s ease infinite 1s',
-      'menu-item-showUp': 'showUp 0.5s ease forwards 0.25s',
-      'menu-item-showOff': 'showOff 0.5s ease forwards 0s',
-    }
-  },
+      'menu-item-showUp': 'showUp .7s ease forwards 0.25s',
+      'menu-item-showOff': 'showOff 1s ease forwards 0s',
+      // wave
+      'wave-1': 'moveForever 2s -2s linear infinite',
+      'wave-2': 'moveForever 4s -3s linear infinite',
+      'wave-3': 'moveForever 6s -4s linear infinite',
+    },
+
   plugins: [
     //  require("tailwindcss-animation-delay"),
     // animation delay utilities
@@ -281,5 +294,6 @@ export default {
     );
     }),
   ],
+  }
 }
 

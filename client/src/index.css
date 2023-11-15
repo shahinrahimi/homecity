@@ -3,25 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-
-  /* hide scrollbar for chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* hide scrollbar for IE, Edge and Firefox */
-  .no-scrollbar {
-    /* IE and Edge */
-    -ms-overflow-style: none;
-    /* Firefox */
-    scrollbar-width: none;
-  }
-}
-
-html {
-  overflow-x: hidden;
-}
 
 @font-face {
   font-family: "Vazir";

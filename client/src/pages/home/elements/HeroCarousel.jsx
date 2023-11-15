@@ -240,7 +240,7 @@ const HeroCarousel = () => {
 
 
   return (
-    <div className="relative h-[calc(100vh)] -top-20 w-screen bg-black overflow-hidden">
+    <div className="relative h-[calc(100vh)] w-screen bg-black overflow-hidden">
       {/* slides */}
       {Slides}
 
