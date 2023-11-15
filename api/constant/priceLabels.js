@@ -1,19 +1,35 @@
 const PRICELABELS = {
-  // for ir locale
-  USDIRR: "USDIRR",
-  EURIRR: "EURIRR",
-  GBPIRR: "GBPIRR",
-  TRYIRR: "TRYIRR",
-  BTCIRR: "BTCIRR",
-  ETHIRR: "ETHIRR",
-  BNBIRR: "BNBIRR",
-  TRXIRR: "TRXIRR",
+  IR: {
+    USD: "USD",
+    EUR: "EUR",
+    GBP: "GBP",
+    TRY: "TRY",
+    BTC: "BTC",
+    ETH: "ETH",
+    BNB: "BNB",
+    TRX: "TRX",
+  },
 
-  // for other locale
-  USDTRY: "USDRTY",
-  USDAUX: "USDAUX",
-  BTCUSD: "BTCUSD",
-  ETHUSD: "ETHUSD"
+  FOREX: {
+    EURUSD: "EURUSD",
+    USDJPY: "USDJPY",
+    GBPUSD: "GBPUSD",
+    AUDUSD: "AUDUSD",
+    USDCAD: "USDCAD",
+    USDCHF: "USDCHF",
+    NZDUSD: "NZDUSD",
+  },
+
+  CRYPTOS : {
+    BTC: "BTC",
+    ETH: "ETH",
+    BNB: "BNB",
+    SOL: "SOL",
+    TRX: "TRX",
+    ETC: "ETC",
+    ADA: "ADA",
+    DOT: "DOT",
+  }
 }
 
 module.exports = PRICELABELS

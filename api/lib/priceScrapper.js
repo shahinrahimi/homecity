@@ -1,5 +1,5 @@
 // Dependencies
-const { curly } = require('node-libcurl')
+const axios = require('axios')
 const HTMLParser = require('node-html-parser')
 const livePrices = require('./livePrices')
 const PRICELABELS = require('../constant/priceLabels')
@@ -14,14 +14,12 @@ const printValues = (items) => {
 }
 
 scrappingTools.scrapeIRR = async () => {
-  const {
-    statusCode,
-    data,
-    headers
-  } = await curly.get('https://www.tgju.org/')
+
+  const { data, status } = await axios.get('https://www.tgju.org/')
+
   // dollar tBody 14
   // bitcoin tBody 18
-  if (statusCode === 200){
+  if (status === 200){
     const root = HTMLParser.parse(data)
     const tBodies = root.querySelectorAll('tbody')
 
@@ -37,10 +35,8 @@ scrappingTools.scrapeIRR = async () => {
     let trs, ths, tds
     let tr, td, index
     const currencyTable = tBodies[14]
-    const cryptoBody = tBodies[18]
+    const cryptoTable = tBodies[18]
 
-
-    
     // ths = currencyTable.querySelectorAll('tr > th')
     // printValues(ths)
     // tds = currencyTable.querySelectorAll('tr > td')
@@ -49,23 +45,23 @@ scrappingTools.scrapeIRR = async () => {
     trs = currencyTable.querySelectorAll('tr')
     // usd = 0
     index = 0
-    tr = trs[index].querySelectorAll('td')[0].text.replace(",", ".")
-    livePrices[PRICELABELS.USDIRR] = parseFloat(tr ? tr : 0)
+    tr = trs[index].querySelectorAll('td')[0].text.replaceAll(",", "")
+    livePrices.IR.USD = parseFloat(tr ? tr : 0)
 
     // eur = 1
     index = 1
-    tr = trs[index].querySelectorAll('td')[0].text.replace(",", ".")
-    livePrices[PRICELABELS.EURIRR] = parseFloat(tr ? tr : 0)
+    tr = trs[index].querySelectorAll('td')[0].text.replaceAll(",", "")
+    livePrices.IR.EUR = parseFloat(tr ? tr : 0)
 
     // gbp = 3
     index = 3
-    tr = trs[index].querySelectorAll('td')[0].text.replace(",", ".")
-    livePrices[PRICELABELS.GBPIRR] = parseFloat(tr ? tr : 0)
+    tr = trs[index].querySelectorAll('td')[0].text.replaceAll(",", "")
+    livePrices.IR.GBP = parseFloat(tr ? tr : 0)
 
     // try = 4
     index = 4
-    tr = trs[index].querySelectorAll('td')[0].text.replace(",", ".")
-    livePrices[PRICELABELS.TRYIRR] = parseFloat(tr ? tr : 0) 
+    tr = trs[index].querySelectorAll('td')[0].text.replaceAll(",", "")
+    livePrices.IR.TRY = parseFloat(tr ? tr : 0) 
 
 
     
@@ -74,60 +70,107 @@ scrappingTools.scrapeIRR = async () => {
     // tds = cryptoBody.querySelectorAll('tr > td')
     // printValues(tds)
 
-    trs = currencyTable.querySelectorAll('tr')
+    trs = cryptoTable.querySelectorAll('tr')
     // BTC = 0
     index = 0
-    tr = trs[index].querySelectorAll('td')[0].text.replace(",", ".")
-    livePrices[PRICELABELS.BTCIRR] = parseFloat(tr ? tr : 0)
+    tr = trs[index].querySelectorAll('td')[0].text.replaceAll(",", "")
+    livePrices.IR.BTC = parseFloat(tr ? tr : 0)
 
     // ETH = 1
     index = 1
-    tr = trs[index].querySelectorAll('td')[0].text.replace(",", ".")
-    livePrices[PRICELABELS.ETHIRR] = parseFloat(tr ? tr : 0)
+    tr = trs[index].querySelectorAll('td')[0].text.replaceAll(",", "")
+    livePrices.IR.ETH = parseFloat(tr ? tr : 0)
 
     // TRX = 5
     index = 5
-    tr = trs[index].querySelectorAll('td')[0].text.replace(",", ".")
-    livePrices[PRICELABELS.TRXIRR] = parseFloat(tr ? tr : 0)
+    tr = trs[index].querySelectorAll('td')[0].text.replaceAll(",", "")
+    livePrices.IR.TRX = parseFloat(tr ? tr : 0)
 
+    // BNB = 6
     index = 6
-    tr = trs[index].querySelectorAll('td')[0].text.replace(",", ".")
-    livePrices[PRICELABELS.BNBIRR] = parseFloat(tr ? tr : 0)
+    tr = trs[index].querySelectorAll('td')[0].text.replaceAll(",", "")
+    livePrices.IR.BNB = parseFloat(tr ? tr : 0)
     
   } else {
     console.log(`has problem to get dollar price`, statusCode)
   }
 
-  console.log(livePrices)
+  // console.log(livePrices)
   return null
 }
 
 scrappingTools.scrapMinors = async () => {
-  const doubles = {}
-  const { statusCode, data, headers } = await curly.get('https://www.tradingview.com/markets/currencies/rates-minor/')
-  if (statusCode === 200){
+  const { status, data } = await axios.get('https://www.tradingview.com/markets/currencies/rates-minor/')
+  if (status === 200){
     const root = HTMLParser.parse(data)
     const elements = root.querySelectorAll('tbody > tr > td')
-      elements.forEach((element, index) => {
-        if (index % 9 === 0){
-          doubles[element.text.slice(0,6)] = elements[index+1].text
+    elements.forEach((element, index) => {
+      if (index % 9 === 0){
+        // adding just needed doubles defined 
+        const name = element.text.slice(0,6)
+        if (Object.keys(livePrices.FOREX).includes(name)){
+          livePrices.FOREX[name] = parseFloat(elements[index+1].text)
         }
+      }
+    })
+  } else {
+      console.error('scrapping minors doubles the status code', statusCode)
+  }
+  return null;
+}
+
+scrappingTools.scrapMajors = async () => {
+  const { status, data } = await axios.get('https://www.tradingview.com/markets/currencies/rates-major/')
+  if (status === 200){
+    const root = HTMLParser.parse(data)
+    const elements = root.querySelectorAll('tbody > tr > td')
+    elements.forEach((element, index) => {
+      if (index % 9 === 0){
+        // adding just needed doubles defined 
+        const name = element.text.slice(0,6)
+        if (Object.keys(livePrices.FOREX).includes(name)){
+          livePrices.FOREX[name] = parseFloat(elements[index+1].text)
+        }
+      }
+    })
+  } else {
+      console.error('scrapping minors doubles the status code', statusCode)
+  }
+  return null;
+}
+
+scrappingTools.scrapCryptos = async () => {
+  const { status, data } = await axios.get('https://www.tradingview.com/markets/cryptocurrencies/prices-all/')
+  if (status === 200){
+    const root = HTMLParser.parse(data)
+    const elements = root.querySelectorAll('tbody > tr')
+      elements.forEach((element, index) => {
+        const columns = element.querySelectorAll("td")
+        const name = columns[0].querySelector("a").text
+        const price = columns[2].text
+        if (Object.keys(livePrices.CRYPTOS).includes(name)){
+          livePrices.CRYPTOS[name] = parseFloat(price.replace(" USD", ""))
+        }
+        
       })
   } else {
       console.error('scrapping minors doubles the status code', statusCode)
   }
-  console.log(doubles)
-  return doubles;
+  return null;
 }
 
-scrappingTools.infiniteRun = (interval = 5) => {
-  setInterval(() => {
-    try {
-      scrappingTools.scrapeIRR()
-    } catch (e) {
-      console.log(e)
-    }
-  }, interval * 60 * 1000)
+scrappingTools.infiniteRun = async (intervalMin = 5) => {
+  try {
+    await scrappingTools.scrapeIRR()
+    await scrappingTools.scrapMajors()
+    await scrappingTools.scrapCryptos()
+    console.log(livePrices)
+  } catch (e) {
+    console.log(e)
+  }
+  return setTimeout(() => {
+    scrappingTools.infiniteRun(intervalMin)
+  }, intervalMin * 1000 * 60)
 }
 
 

@@ -1,7 +1,7 @@
 const socketIo = require('socket.io');
 const livePrices = require('../lib/livePrices')
 
-module.exports = (server, interval = 1) => {
+module.exports = (server, intervalMin = 1) => {
   const io = socketIo(server, {
     cors: {
       // origin: "http://localhost:82",
@@ -18,8 +18,8 @@ module.exports = (server, interval = 1) => {
 
     // You can emit data to the connected clients
     setInterval(() => {
-      socket.emit('data', JSON.stringify(livePrices));
-    }, interval * 1000 * 60);
+      socket.emit('live prices signal', JSON.stringify(livePrices));
+    }, intervalMin * 1000 * 60);
 
     // Handle disconnection
     socket.on('disconnect', () => {
