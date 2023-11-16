@@ -52,26 +52,29 @@ const service_items2 = [
     icon: GoLaw,
     image: service_law,
     content: "Our legal services provide expert advice and support, ensuring your rights and interests are protected throughout your stay in Turkey.",
-    color: "c-white-100",
+    color: "c-white-500",
   },
   {
     title: "translation service",
     icon: AiOutlineGlobal,
     image: service_translation,
     content: "Break down language barriers with our translation services, offering accurate document translations and interpretations for seamless communication in Turkey.",
-    color: "pink-500"
+    color: "fuchsia-500",
   },
 ]
 
 
 const serveces = service_items2.map((item, index) => {
+  const textClass = `text-${item.color}`
+  const bgClass = `bg-${item.color}`
+  const shadowClass = `shadow-${item.color}/50`
   return (
     <li className="" key={index}>
       {/* content-1 */}
       <div className="">
         <div className="w-full h-full grid place-content-center p-7">
           <h1 className="text-center grid place-content-center text-6xl mb-4">
-            <item.icon className={`text-${item.color}`}/>
+            <item.icon className={`${textClass}`}/>
           </h1>
           <h2 className="text-center text-2xl font-bold capitalize whitespace-nowrap">
             {item.title}
@@ -79,19 +82,24 @@ const serveces = service_items2.map((item, index) => {
         </div>
       </div>
 
+      
+
       {/* image */}
 
-      <div className={`relative group h-[calc(250px)] overflow-hidden rounded-lg shadow-2xl shadow-${item.color}`}>
+      <div className={`relative group h-[calc(250px)] overflow-hidden rounded-lg shadow-xl ${shadowClass}`}>
         {/* image and filter */}
-        <div className={`absolute top-0 left-0 w-full h-full after:absolute after:h-full after:w-full group-hover:after:bg-${item.color}/50`}>
+        <div className={`absolute top-0 left-0 w-full h-full after:absolute after:h-full after:w-full group-hover:after:${bgClass}`}>
+            
             <img src={item.image} alt={item.name}
               className="absolute top-0 left-0  object-cover bg-no-repeat bg-center h-full w-full  group-hover:scale-125 transition-all group-hover:blur-sm group-hover:grayscale"
             />
+            
         </div>
 
         {/* image content */}
         <div className="absolute h-full grid place-content-center translate-y-full transition-all duration-500 group-hover:translate-y-0 p-4">
-          <p className="text-center text-lg font-bold text-slate-50">{item.content}</p>
+          <div className={`absolute top-0 left-0 w-full h-full ${bgClass} opacity-25`}></div>
+          <p className="text-center text-2xl font-bold text-black">{item.content}</p>
         </div>
         
       </div>
@@ -110,6 +118,7 @@ const Services = () => {
       <ul className="grid grid-col-1 grid-row-6  md:grid-cols-2 md:grid-rows-2 lg:grid-cols-3 lg:grid-row-2 gap-10">
         {serveces}
       </ul>
+      <div className="shadow-pink-500/50 shadow-c-yellow-500/50 shadow-c-white-500/50"></div>
     </>
     
   )

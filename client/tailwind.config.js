@@ -5,6 +5,21 @@ export default {
     "./index.html",
     "./src/**/*.{js,jsx,ts,tsx}"
   ],
+  safelist :[
+    {
+      pattern : /shadow-c-/
+    },
+    {
+      pattern : /text-c-/,
+    },
+    {
+      pattern : /bg-c-/,
+    },
+    {
+      pattern : /fuchsia-500/
+    }
+    // 'text-c-green-500'
+  ],
   theme: {
     extend: {
       colors: {
