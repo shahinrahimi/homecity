@@ -1,30 +1,29 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { background1, background2, background6 } from "../../assets/img";
+import { Section } from "../../components";
+import { background1 } from "../../assets/img";
+import { SmoothScrollingContext } from "../../context/SmoothScrollingContext";
 import {
- AboutUs, ContactUs, Hero, Section, Services, Experiences, Information,
-  HeroCarousel, ProjectsCarousel, Features, Features2, Features3, FAQs
+  Services, 
+  Experiences, 
+  Information,
+  HeroCarousel, 
+  ProjectsCarousel, 
+  Features, 
+  Features2, 
+  Features3, 
+  FAQs
 } from "./elements";
 
-import { Banner } from "../../components";
 
 const Home = () => {
   const { t } = useTranslation()
 
-  const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  // return (
-  //   <CarouselHero />
-  // )
+  const { scrollToSection } = React.useContext(SmoothScrollingContext)
 
   return (
     <main className="overflow-hidden">
-      <HeroCarousel />
+      <HeroCarousel id={"home"} />
 
       <Section>
         <Features />
@@ -38,7 +37,7 @@ const Home = () => {
         <Features2 />
       </Section>
 
-      <Section id={"exp"} background={background6} isDark={true} >
+      <Section id={"exp"} background={background1} isDark={true} >
         <Experiences />
       </Section>
 
@@ -59,7 +58,6 @@ const Home = () => {
       <Section>
         <FAQs />
       </Section>
-
 
     </main>
   );

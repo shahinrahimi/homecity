@@ -6,6 +6,8 @@ import { Helmet, HelmetProvider } from 'react-helmet-async'
 import { LanguageProvider } from '../context/LanguageContext'
 import { MenuProvider } from '../context/MenuContext'
 import { SearchProvider } from '../context/SearchContext'
+import { SmoothScrollingProvider } from "../context/SmoothScrollingContext"
+import { LivePriceProvider } from "../context/LivePriceContext"
 
 const Providers = ({ children }) => {
   return (
@@ -19,7 +21,11 @@ const Providers = ({ children }) => {
         <LanguageProvider>
           <MenuProvider>
             <SearchProvider>
-              {children}
+              <SmoothScrollingProvider>
+                <LivePriceProvider>
+                  {children}
+                </LivePriceProvider>
+              </SmoothScrollingProvider>
             </SearchProvider>
           </MenuProvider>
         </LanguageProvider>

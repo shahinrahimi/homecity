@@ -10,13 +10,13 @@ const MainLayout = () => {
 
 
   return (
-    <>
+    <div className="scroll-smooth">
       <Header />
       <MenuPanel />
       <Outlet />
       <Banner />
       <Footer />
-    </>
+    </div>
 
   )
 }

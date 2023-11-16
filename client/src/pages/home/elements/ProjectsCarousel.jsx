@@ -8,13 +8,15 @@ const slides = [
 
 ]
 
+import { benefitSvg, investmentSvg } from '../../../assets/svg'
+
 import { IoBedOutline as BedroomIcon } from "react-icons/io5"
 import { LuBath as BathroomIcon } from "react-icons/lu"
-import { Button } from "../../../components"
+import { Button, Simplify } from "../../../components"
 
 const Card = ({ image }) => {
   return (
-    <div className="w-[calc(300px)] h-[calc(500px)] bg-c-white-500 border-2 border-c-black-500/50 flex flex-col justify-between items-center rounded-md shadow-2xl">
+    <div className="w-[calc(300px)] h-[calc(500px)] bg-c-white-500 border-2 border-c-black-500/50 flex flex-col justify-between items-center rounded-md shadow-2xl overflow-hidden">
       <div className="w-full overflow-hidden min-h-[calc(45%)]">
         <img
           className="object-cover"
@@ -72,7 +74,7 @@ const Slide = ({ children, index, maxIndex, activeIndex }) => {
   }
 
   return (
-    <div className={`absolute transition-all duration-1000 grid place-content-center ${index === activeIndex ? "translate-x-0 brightness-100 z-10" : index === prevIndex ? "-translate-x-3/4 scale-[calc(0.4)] brightness-75 z-0" : index === nextIndex ? "translate-x-3/4 scale-[calc(0.4)] brightness-75 z-0" : "translate-x-0 scale-[calc(0.2)] opacity-0 brightness-50 -z-10"}`}>
+    <div className={`absolute transition-all duration-1000 grid place-content-center ${index === activeIndex ? "translate-x-0 brightness-100 z-10" : index === prevIndex ? "-translate-x-1/2 scale-[calc(0.4)] brightness-75 z-0" : index === nextIndex ? "translate-x-1/2 scale-[calc(0.4)] brightness-75 z-0" : "translate-x-0 scale-[calc(0.2)] opacity-0 brightness-50 -z-10"}`}>
       {children}
     </div>
   )
@@ -107,6 +109,35 @@ const ProjectsCarousel = () => {
       </Slide>
     )
   })
+
+  return (
+    <div className="flex flex-col md:flex-row justify-between gap-10 items-center">
+        {/* content */}
+        <div className="flex flex-col w-[calc(100%)] md:w-[calc(%50)]">
+            <Simplify text={"Discover"}/>
+            <h1 className='text-4xl font-bold mb-2'>Find Your Home in Turkey</h1>
+            <p
+                className='mb-8'
+            >Discover your perfect abode with our real estate services, simplifying property searches and transactions for a true sense of home in Turkey.</p>
+
+
+        </div>
+        {/* sildes */}
+        <div className="relative  w-[calc(100%)] md:w-[calc(%100)] scale-[calc(100%)] sm:scale-[calc(75%)] md:scale-[calc(85%)] lg:scale-100 text-slate-900 grid place-content-center">
+          {/* scence */}
+          <div className="w-[calc(300px)] h-[calc(500px)]">
+            {Slides}
+          </div>
+          {/* controls */}
+          <button onClick={prevSlide} className="absolute -bottom-10 w-10 -left-0 text-8xl text-slate-200 hover:text-slate-50 transition-colors opacity-50 hover:opacity-80">
+            &#706;
+          </button>
+          <button onClick={nextSlide} className="absolute -bottom-10 w-10 -right-0 text-8xl text-slate-200 hover:text-slate-50 transition-colors opacity-50 hover:opacity-80">
+            &#707;
+          </button>
+        </div>
+    </div>
+  )
 
   return (
     <div className="relative scale-[calc(60%)] sm:scale-[calc(75%)] md:scale-[calc(85%)] lg:scale-100 text-slate-900 border-2 border-c-green-500 grid place-content-center">

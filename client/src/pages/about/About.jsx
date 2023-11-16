@@ -1,24 +1,14 @@
-import React, { useEffect } from "react";
-import io from 'socket.io-client'
+import React from "react";
+import { Section } from "../../components";
 
 const About = () => {
-  useEffect(() => {
-    const socket = io('http://localhost:5002')
-
-    socket.on('data', (data) => {
-      console.log('Received data:', data)
-    })
-
-    return () => {
-      socket.disconnect();
-    }
-
-  }, [])
-
+  
   return (
-    <main>
-      <h1>About</h1>
-    </main>
+    <Section>
+      <main className="h-[calc(80vh)] grid place-content-center">
+        <h2>{"About Us"}</h2>
+      </main>
+    </Section>
   );
 };
 

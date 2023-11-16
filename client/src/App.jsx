@@ -28,9 +28,10 @@ function App() {
             <Route path="franchises" element={<Franchises />} />
             <Route path="contacts" element={<ContactUs />} />
             <Route path="about" element={<About />} />
+            {/* not found handler */}
+            <Route path="*" element={<NotFound />} />
           </Route>
 
-          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </Providers>

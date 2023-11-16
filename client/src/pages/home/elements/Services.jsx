@@ -17,7 +17,7 @@ import {
   service_translation
 } from "../../../assets/img"
 
-const service_items2 = [
+const service_items = [
   {
     title: "education service",
     icon: IoIosSchool,
@@ -64,12 +64,19 @@ const service_items2 = [
 ]
 
 
-const serveces = service_items2.map((item, index) => {
+const serveces = service_items.map((item, index) => {
   const textClass = `text-${item.color}`
   const bgClass = `bg-${item.color}`
   const shadowClass = `shadow-${item.color}/50`
   return (
-    <li className="" key={index}>
+    <li 
+      className="" 
+      key={index}
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      data-aos-delay={`${index * 100}`}
+      data-aos-once="true"
+    >
       {/* content-1 */}
       <div className="">
         <div className="w-full h-full grid place-content-center p-7">
@@ -86,7 +93,7 @@ const serveces = service_items2.map((item, index) => {
 
       {/* image */}
 
-      <div className={`relative group h-[calc(250px)] overflow-hidden rounded-lg shadow-xl ${shadowClass}`}>
+      <div className={`relative group h-[calc(300px)] overflow-hidden rounded-lg shadow-xl ${shadowClass}`}>
         {/* image and filter */}
         <div className={`absolute top-0 left-0 w-full h-full after:absolute after:h-full after:w-full group-hover:after:${bgClass}`}>
             
@@ -115,10 +122,9 @@ const Services = () => {
     <>
       <h1 className="text-4xl font-bold mb-4 text-center">Turkish Support Hub</h1>
       <p className="text-xl text-center">Experience Turkey with Ease: Your one-stop solution for education, exchange, immigration, insurance, law, real estate, and translation services.</p>
-      <ul className="grid grid-col-1 grid-row-6  md:grid-cols-2 md:grid-rows-2 lg:grid-cols-3 lg:grid-row-2 gap-10">
+      <ul className="grid grid-col-1 grid-row-6  lg:grid-cols-2 lg:grid-rows-3 2xl:grid-cols-3 2xl:grid-rows-2 gap-10">
         {serveces}
       </ul>
-      <div className="shadow-pink-500/50 shadow-c-yellow-500/50 shadow-c-white-500/50"></div>
     </>
     
   )

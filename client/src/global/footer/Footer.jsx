@@ -1,4 +1,4 @@
-
+import React from "react"
 import { NAVLINKS } from "../../constants/navLinks"
 import { Brand } from "../header/elements"
 import { Input } from "../../components"
@@ -9,37 +9,15 @@ import { AiOutlineInstagram as InstagramIcon,
         AiFillFacebook as FacebookIcon,  
 } from "react-icons/ai"
 import { RiTwitterXFill as TwitterXIcon } from "react-icons/ri"
+import { Link } from "react-router-dom"
+import { SmoothScrollingContext } from "../../context/SmoothScrollingContext"
 
-
-const socials = [
-  {
-    name : "Instagran",
-    icon : InstagramIcon
-  },
-  {
-    name : "Youtube",
-    icon : YoutubeIcon
-  },
-
-  {
-    name : "Linkdin",
-    icon : LinkdinIcon
-  },
-
-  {
-    name : "facebook",
-    icon : FacebookIcon
-  },
-
-  {
-    name : "X",
-    icon : TwitterXIcon
-  }
-]
+import { Socials } from "../../components"
 
 const Footer = () => {
 
   const year = new Date().getFullYear()
+  const { scrollToSection } = React.useContext(SmoothScrollingContext)
 
 
   return (
@@ -48,12 +26,12 @@ const Footer = () => {
         {/* footer main */}
         <Brand />
 
-        <div className="flex flex-col items-start md:flex-row justify-between md:items-center border-slate-500 mb-4 gap-4">
+        <div className="flex flex-col items-start md:flex-row justify-between md:items-center border-slate-500 mb-4 gap-8">
 
         
 
           {/* Address and Contacts */}
-          <div className="flex flex-col h-full gap-3 justify-between ">
+          <div className="flex flex-col h-full gap-3 justify-between">
             {/* address */}
             <address className="flex flex-col">
               <h3>Address</h3>
@@ -67,17 +45,10 @@ const Footer = () => {
             </div>
 
             {/* socials */}
-            <ul className="flex gap-1">
-              {socials.map((item, index) => {
-                return (
-                  <li key={index}>
-                    {<item.icon 
-                      className="text-2xl"
-                    />}
-                  </li>
-                )
-              })}
-            </ul>
+            <Socials 
+              parentClassName={"flex gap-2"}
+              childClassName={"text-c-white-400 hover:text-c-white-100 text-2xl"}
+            />
 
           </div>
           
@@ -85,14 +56,17 @@ const Footer = () => {
           <div className="">
             <h1 className="font-bold mb-2">Links</h1>
             <ul
-              className="flex flex-col gap-2"
+              className="flex flex-row md:flex-col gap-2 "
             >
               {NAVLINKS.map(item => {
                 return (
                   <li
                     className="capitalize hover:text-c-red-500 transition-all duration-300"
                     key={item.name}
-                  ><a href="">{item.name}</a></li>
+                  ><Link 
+                    to={item.path}
+                    onClick={() => scrollToSection(item.name)}
+                  >{item.name}</Link></li>
                 )
               })}
             </ul>
@@ -111,17 +85,17 @@ const Footer = () => {
                 Subscribe
               </a>
             </div>
-            <p>by subscribing, you agree to our Privacy Policy</p>
+            <p className="text-sm">by subscribing, you agree to our Privacy Policy</p>
           </div>
 
         </div>
 
         {/* footer developer */}
         <div className="text-sm mx-auto flex justify-between items-center  border-t-2 border-opacity-30 pt-2 border-red-300">
-          <ul className="flex gap-2">
-            <li><a href="">Privacy Policy</a></li>
-            <li><a href="">Term of Service</a></li>
-            <li><a href="">Cookie Policy</a></li>
+          <ul className="hidden sm:flex gap-2">
+            <li className="whitespace-nowrap text-c-white-400 hover:text-c-white-100 transition-all"><a href="">Privacy Policy</a></li>
+            <li className="whitespace-nowrap text-c-white-400 hover:text-c-white-100 transition-all"><a href="">Term of Service</a></li>
+            <li className="whitespace-nowrap text-c-white-400 hover:text-c-white-100 transition-all"><a href="">Cookie Policy</a></li>
           </ul>
           <p>&copy; {year} <a href="">Homecity</a>. All rights reseved</p>
         </div>
