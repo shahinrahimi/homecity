@@ -3,7 +3,7 @@ import { io } from 'socket.io-client';
 
 export const LivePriceContext = React.createContext()
 
-export const LicePriceProvider = ({ children }) => {
+export const LivePriceProvider = ({ children }) => {
 
     React.useEffect(() => {
         const socket = io()
