@@ -1,25 +1,19 @@
 import React from "react"
-import { FaPeopleGroup as CustomersIcon } from "react-icons/fa6"
-import { MdHomeWork as ProjectsIcon } from "react-icons/md"
-import { SiHomeassistantcommunitystore as FranchisesIcon } from "react-icons/si"
-import { Counter } from "../../../components"
 import { background6, background4, background5 } from "../../../assets/img";
-import { Button } from "../../../components"
-
 
 const SlideContent1 = () => {
   return (
     <article
       className="flex flex-col justify-center items-center w-full h-full"
     >
-      <div className="drop-shadow-2xl">
-        <h3 className="uppercase text-sm mb-2">welcome to</h3>
-        <h1 className="capitalize text-6xl mb-3 font-semibold">Homecity</h1>
-        <h2 className="capitalize text-2xl">homecitygroup offers a choice of several programs for investing in residency and citizenship in turkey</h2>
+      <div className="drop-shadow-2xl mb-6">
+        <h3 className="uppercase text-sm lg:text-lg mb-2">welcome to</h3>
+        <h1 className="capitalize text-6xl lg:text-8xl mb-3 font-semibold">Homecity</h1>
+        <h2 className="capitalize text-2xl lg:text-5xl">homecitygroup offers a choice of several programs for investing in residency and citizenship in turkey</h2>
       </div>
 
       <a
-        className="bg-transparent px-4 py-2 hover:bg-blue-600/75 self-start lg:self-center mt-10 border-4 transition-colors duration-200 font-bold"
+        className="bg-transparent px-4 py-2 lg:px-8 lg:py-4 lg:text-lg hover:bg-blue-600/75 self-start lg:self-center mt-10 border-4 transition-colors duration-200 font-bold"
         href="#projects"
       >
         Check Our Programs
@@ -34,15 +28,15 @@ const SlideContent2 = () => {
     <article
       className="flex flex-col justify-center items-center w-full h-ful"
     >
-      <div className="">
+      <div className="drop-shadow-2xl mb-6">
 
-        <h1 className="capitalize text-5xl font-bold mb-2 self-start">discover</h1>
-        <h1 className="capitalize text-5xl mb-6">Your path to Turkish <span className="font-bold">Citizenship</span></h1>
-        <h2 className="capitalize text-2xl">unlock the benefits of Turkish citizenship adn explore prime reale estate opportunities in Turkey</h2>
+        <h1 className="capitalize text-5xl lg:text-8xl font-bold mb-2 self-start">discover</h1>
+        <h1 className="capitalize text-5xl lg:text-8xl mb-6">Your path to Turkish <span className="font-bold">Citizenship</span></h1>
+        <h2 className="capitalize text-2xl lg:text-5xl">unlock the benefits of Turkish citizenship adn explore prime reale estate opportunities in Turkey</h2>
       </div>
 
       <a
-        className="bg-transparent px-4 py-2 hover:bg-red-600/75 self-start lg:self-center mt-10 border-4 transition-colors duration-200 font-bold"
+        className="bg-transparent px-4 py-2 lg:px-8 lg:py-4 lg:text-lg hover:bg-red-600/75 self-start lg:self-center mt-10 border-4 transition-colors duration-200 font-bold"
         href="#projects"
       >
         explore opportunities
@@ -56,14 +50,14 @@ const SlideContent2 = () => {
 const SlideContent3 = () => {
   return (
     <article className="flex flex-col justify-center items-center w-full h-full">
-      <div>
-        <h1 className="capitalize text-5xl font-bold mb-2">invest</h1>
-        <h1 className="capitalize text-5xl mb-6">in your <span className="font-bold">future</span></h1>
-        <h2 className="capitalize text-2xl">get started today. contact our advisers for free, confidential advice on your options.</h2>
+      <div className="drop-shadow-2xl mb-6">
+        <h1 className="capitalize text-5xl lg:text-8xl font-bold mb-2">invest</h1>
+        <h1 className="capitalize text-5xl lg:text-8xl mb-6">in your <span className="font-bold">future</span></h1>
+        <h2 className="capitalize text-2xl lg:text-5xl">get started today. contact our advisers for free, confidential advice on your options.</h2>
       </div>
 
       <a
-        className="bg-transparent px-4 py-2 hover:bg-lime-700/75 self-start lg:self-center mt-10 border-4 transition-colors duration-200 font-bold"
+        className="bg-transparent px-4 py-2 lg:px-8 lg:py-4 lg:text-lg hover:bg-lime-700/75 self-start lg:self-center mt-10 border-4 transition-colors duration-200 font-bold"
         href="#contactus"
       >
         Get Free Advise
@@ -79,7 +73,7 @@ const Slide = ({ children, image, index, activeSlide}) => {
 
       {/* Content */}
       <div
-        className="bg-transparent container w-[calc(90%)] h-[calc(90%)] mx-auto flex flex-col justify-center items-center text-slate-50"
+        className="bg-transparent container w-[calc(100%)] h-[calc(100%)] mx-auto flex flex-col justify-center items-center text-slate-50"
       >
         {children}
       </div>
@@ -162,7 +156,7 @@ const HeroCarousel = ({ id }) => {
 
   return (
     <div 
-      className="relative h-[calc(100vh)] w-screen bg-black overflow-hidden"
+      className="relative w-screen h-[calc(100vh)] bg-black overflow-hidden border "
       id={id}
     >
       {/* slides */}
@@ -181,4 +175,5 @@ const HeroCarousel = ({ id }) => {
     </div>
   )
 }
+
 export default HeroCarousel

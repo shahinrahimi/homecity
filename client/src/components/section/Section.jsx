@@ -1,7 +1,7 @@
 const Section = ({ id, children, isDark=false, background=false }) => {
   
     return (
-      <section className={`relative p-10 lg:p-20 ${isDark ? "text-c-white-500" : "text-c-black-500"} ${background ? "bg-transparent" : isDark ? "bg-c-black-500" : "bg-c-white-500"}`} id={id} >
+      <section className={`relative px-8 py-12 lg:p-20 ${isDark ? "text-c-white-500" : "text-c-black-500"} ${background ? "bg-transparent" : isDark ? "bg-c-black-500" : "bg-c-white-500"}`} id={id} >
         {background && (
           <img 
             src={background} alt=""

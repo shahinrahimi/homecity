@@ -47,9 +47,9 @@ const Home = () => {
 
       {/* info with nice animation */}
       {/* cuz horizonal scrolling */}
-      <Section id={"info"} darkTheme={true}>
+      {/* <Section id={"info"} darkTheme={true}>
         <Information />
-      </Section>
+      </Section> */}
 
       <Section isDark={true}>
         <ProjectsCarousel />

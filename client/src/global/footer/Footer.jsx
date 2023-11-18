@@ -66,6 +66,7 @@ const Footer = () => {
                   ><Link 
                     to={item.path}
                     onClick={() => scrollToSection(item.name)}
+                    className="whitespace-nowrap"
                   >{item.name}</Link></li>
                 )
               })}

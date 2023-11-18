@@ -33,6 +33,7 @@ export default {
         "c-black-800": "#161616",
         "c-black-900": "#0c0c0c",
 
+        "c-white-000": "#FFFFFF",
         "c-white-100": "#f2f2f2",
         "c-white-200": "#ebebeb",
         "c-white-300": "#e0e0e0",
@@ -82,6 +83,10 @@ export default {
         "c-yellow-700": "#b7950b",
         "c-yellow-800": "#9a7d0a",
         "c-yellow-900": "#7d6608"
+      },
+      boxShadow: {
+        'sharp': 'rgba(0, 0, 0, 0.40) 0px 2px 8px',
+        'test' : 'rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;'
       }
     },
     fontFamily: {
@@ -262,6 +267,15 @@ export default {
           transform: "translate(85px, 0%)"
         }
       },
+
+      ticker: {
+        "0%" :{
+          transform: "translate(120%, 0%)"
+        },
+        "100%" :{
+          transform: "translate(-120%, 0%)"
+        }
+      }
     },
     
     animation: {
@@ -289,6 +303,8 @@ export default {
       'wave-1': 'moveForever 2s -2s linear infinite',
       'wave-2': 'moveForever 4s -3s linear infinite',
       'wave-3': 'moveForever 6s -4s linear infinite',
+      // ticker
+      'ticker-show': 'ticker 20s linear infinite'
     },
 
   plugins: [

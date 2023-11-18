@@ -12,7 +12,7 @@ const Features = () => {
             <p
                 className='mb-8'
             >Unlock the benefits of Turkish citizenship by investing in real estate. Enjoy visa-free travel, access to a thriving economy, and a high quality of life.</p>
-            <div className="flex justify-between">
+            <div className="flex justify-between mb-6">
                 <div className="flex flex-col gap-2">
                     <img src={benefitSvg} alt="" width="50px"/>
                     <h3 className='font-semibold'>Benefits</h3>
@@ -25,11 +25,14 @@ const Features = () => {
                     >Investment</h3>
                     <p>Invest in Turkish real estate and secure your path to Turkish citizenship.</p>
                 </div>
+
             </div>
 
             <Button 
                 text={"Learn More"}
-            />
+                />
+
+
 
         </div>
         {/* image */}

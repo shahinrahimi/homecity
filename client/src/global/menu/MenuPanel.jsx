@@ -38,7 +38,7 @@ const MenuPanel = () => {
 
   return (
     <div
-      className={`fixed w-screen h-screen ${isOpen ? 'translate-x-[calc(0)]' : 'translate-x-[calc(-100%)] delay-500'} transition-transform z-10`}
+      className={`fixed w-screen h-screen ${isOpen ? 'translate-x-[calc(0)]' : 'translate-x-[calc(-100%)] delay-500'} transition-transform z-40`}
     >
       <div
         className={`absolute left-0 top-0 w-full h-full after:w-full before:w-full after:absolute before:absolute after:h-[calc(51%)] before:h-[calc(50%)] after:top-0 before:bottom-0 after:left-0 before:left-0 after:bg-c-black-600 before:bg-c-black-600 ${isOpen ? 'after:translate-x-[calc(0)]' : 'after:translate-x-[calc(-100%)]'} ${isOpen ? 'before:translate-x-[calc(0)] before:delay-75' : 'before:translate-x-[calc(-100%)]'} after:transition-transform before:transition-transform after:duration-500 before:duration-500`}

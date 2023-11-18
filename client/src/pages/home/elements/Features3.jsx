@@ -48,9 +48,9 @@ const Features3 = () => {
         )
     })
     return (
-        <div className="flex flex-col justify-between items-center text-center">
+        <div className="flex flex-col justify-between items-center text-center gap-6">
             <h3 className='uppercase mb-2'>service</h3>
-            <h1 className='text-4xl mb-4 font-bold'>Efficient Services for Citizenship and Real Estate</h1>
+            <h1 className='text-4xl mb-2 font-bold'>Efficient Services for Citizenship and Real Estate</h1>
             <p>We offer a range of services to make your journey to Turkish citizenship and real estate ownership seamless. Our team provides expert legal assistance, personalized property tours, and efficient application processing.</p>
 
             <ul className="flex flex-col lg:flex-row w-full justify-between gap-8 mt-8 self">
