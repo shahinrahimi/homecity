@@ -59,8 +59,8 @@ const Projects = () => {
   })
   return (
     <Section>
-      <main className="h-[calc(80vh)] grid place-content-center">
-        <div className="grid grid-cols-2 grid-rows-2 gap-5">
+      <main className="grid place-content-center pt-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 gap-5">
           {cards}
         </div>
       </main>

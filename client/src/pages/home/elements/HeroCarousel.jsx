@@ -73,7 +73,7 @@ const Slide = ({ children, image, index, activeSlide}) => {
 
       {/* Content */}
       <div
-        className="bg-transparent container w-[calc(100%)] h-[calc(100%)] mx-auto flex flex-col justify-center items-center text-slate-50"
+        className="bg-transparent container w-[calc(100%)] h-[calc(100%)] mx-auto flex flex-col justify-center items-center text-slate-50 p-5"
       >
         {children}
       </div>

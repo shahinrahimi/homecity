@@ -113,10 +113,10 @@ const ProjectsCarousel = () => {
             {Slides}
           </div>
           {/* controls */}
-          <button onClick={prevSlide} className="absolute -bottom-10 w-10 -left-0 text-8xl text-slate-200 hover:text-slate-50 transition-colors opacity-50 hover:opacity-80">
+          <button onClick={prevSlide} className="absolute -bottom-10 w-10 -left-8 text-8xl text-slate-200 hover:text-slate-50 transition-colors opacity-50 hover:opacity-80">
             &#706;
           </button>
-          <button onClick={nextSlide} className="absolute -bottom-10 w-10 -right-0 text-8xl text-slate-200 hover:text-slate-50 transition-colors opacity-50 hover:opacity-80 grid place-content-center">
+          <button onClick={nextSlide} className="absolute -bottom-10 w-10 -right-7 text-8xl text-slate-200 hover:text-slate-50 transition-colors opacity-50 hover:opacity-80 grid place-content-center">
             &#707;
           </button>
         </div>
