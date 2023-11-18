@@ -12,25 +12,24 @@ const connectDB = require('./config/dbConn')
 const { logger, logEvents } = require('./middleware/logger')
 
 // socket io
-const { Server } = require('socket.io')
 const http = require('http');
 const server = http.createServer(app);
-const io = new Server(server)
+const io = require('socket.io')(server, {
+  cors: {
+    origin: "http://localhost:5173"
+  }
+})
 const livePrices = require("./lib/livePrices")
 
 io.on('connection', (socket) => {
-  // console.log(socket?.handshake)
   console.log('A user connected');
-
-  // You can emit data to the connected clients
-  setInterval(() => {
-    socket.emit('live prices signal', JSON.stringify(livePrices));
-  }, 1000);
-
-  // Handle disconnection
+  socket.emit('live prices signal', JSON.stringify(livePrices));
+  
   socket.on('disconnect', () => {
     console.log('User disconnected');
   });
+
+  socket.disconnect()
 });
 
 

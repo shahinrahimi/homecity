@@ -164,7 +164,7 @@ scrappingTools.infiniteRun = async (intervalMin = 5) => {
     await scrappingTools.scrapeIRR()
     await scrappingTools.scrapMajors()
     await scrappingTools.scrapCryptos()
-    console.log(livePrices)
+    // console.log(livePrices)
   } catch (e) {
     console.log(e)
   }
