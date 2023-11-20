@@ -18,7 +18,7 @@ tokenGenerator.createAccessToken = (user, expiresIn='15min') => {
 tokenGenerator.createRefreshToken = (user, expiresIn='1d') => {
   return jwt.sign(
     { "username": user.username },
-        process.env.REFRESH_TOKEN_SECRET,
+    process.env.REFRESH_TOKEN_SECRET,
     { expiresIn: expiresIn }
   )
 }

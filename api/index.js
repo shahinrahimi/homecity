@@ -73,11 +73,7 @@ if (NODE_ENV === "production"){
   app.use(express.static(path.join(__dirname,"..","client","dist")))
   app.use("/", express.static(path.join(__dirname,"..","client","dist")))
 
-  // admin
-  app.use(express.static(path.join(__dirname,"..","admin","dist")))
-  app.use("/admin", express.static(path.join(__dirname,"..","admin","dist")))
-
-  // handling to react router
+  // handling to react clinet router
   app.get("*", (req, res) => {
     res.sendFile(
       path.resolve(__dirname, "../", "client", "dist", "index.html")
