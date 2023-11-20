@@ -3,20 +3,18 @@ import { Outlet } from "react-router-dom";
 import Header from "../header/Header"
 import Menu from "../menu/Menu"
 import Footer from "../footer/Footer"
-import { Banner, LivePrice } from "../components";
 
-const MainLayout = () => {
-
+const AdminLayout = () => {
   return (
-    <div className="scroll-smooth">
+    <>
       <Header />
       <Menu />
-      <Outlet />
-      <Banner />
+      <div className="container mx-auto w-screen h-screen">
+        <Outlet />
+      </div>
       <Footer />
-      <LivePrice />
-    </div>
-
+    </>
   )
 }
-export default MainLayout
+
+export default AdminLayout

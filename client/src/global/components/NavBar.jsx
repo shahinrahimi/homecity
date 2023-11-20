@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import useRootPath from "../../../hooks/useRootPath"
+import useRootPath from "../../hooks/useRootPath"
 
 const NavBar = ({ navItems, isOpen }) => {
   const { rootPath } = useRootPath()

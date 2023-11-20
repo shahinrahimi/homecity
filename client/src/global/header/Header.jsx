@@ -1,12 +1,12 @@
 import React, { useContext } from "react"
 import { MenuContext } from "../../context/MenuContext"
 import { SearchContext } from "../../context/SearchContext"
-import { LanguageDropdown } from "./elements"
+import { LanguageDropdown } from "../components"
 import { BiSearch } from "react-icons/bi"
 
 import { NAVLINKS } from "../../constants/navLinks"
 
-import { Brand, NavBar, SearchBox, HamburgerMenu } from "./elements"
+import { Brand, NavBar, SearchBox, HamburgerMenu } from "../components"
 
 const Header = () => {
 

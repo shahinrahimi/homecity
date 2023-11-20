@@ -1,12 +1,12 @@
-import React, { useContext } from "react"
+import React from "react"
 import { MenuContext } from "../../context/MenuContext"
 import { NAVLINKS } from "../../constants/navLinks"
 import useRootPath from "../../hooks/useRootPath"
 import { Link } from "react-router-dom"
-import { Socials } from "../../components"
+import { Socials } from "../components"
 
-const MenuPanel = () => {
-  const { isOpen, toggle } = useContext(MenuContext)
+const Menu = () => {
+  const { isOpen, toggle } = React.useContext(MenuContext)
   const { rootPath } = useRootPath()
 
   const navItems = NAVLINKS.map(item => {
@@ -34,8 +34,6 @@ const MenuPanel = () => {
     )
   })
 
-
-
   return (
     <div
       className={`fixed w-screen h-screen ${isOpen ? 'translate-x-[calc(0)]' : 'translate-x-[calc(-100%)] delay-500'} transition-transform z-40`}
@@ -60,4 +58,4 @@ const MenuPanel = () => {
   )
 }
 
-export default MenuPanel
+export default Menu

@@ -9,10 +9,17 @@ import {
   About 
 } from "./pages"
 
+import {
+  Home as AdminHome,
+  Franchise,
+  Realestate,
+  Blog
+} from "./pages/admin"
+
 // Providers and Helmet CEO
 import Providers from './provider/Providers'
 // layout
-import { MainLayout } from './global'
+import { MainLayout, AdminLayout } from './global'
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -27,7 +34,7 @@ function App() {
     <Providers>
       <Router>
         <Routes>
-
+          {/* public */}
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Home />} />
             <Route path="projects" element={<Projects />} />
@@ -36,6 +43,14 @@ function App() {
             <Route path="about" element={<About />} />
             {/* not found handler */}
             <Route path="*" element={<NotFound />} />
+          </Route>
+
+          {/* private */}
+          <Route path='/admin' element={<AdminLayout />}>
+            <Route index element={<AdminHome />} />
+            <Route path='blog' element={<Blog />} />
+            <Route path='franchise' element={<Franchise />} />
+            <Route path='realestate' element={<Realestate />} />
           </Route>
 
         </Routes>

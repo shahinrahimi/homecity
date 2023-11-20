@@ -1,18 +1,9 @@
 import React from "react"
-import { NAVLINKS } from "../../constants/navLinks"
-import { Brand } from "../header/elements"
-import { Input } from "../../components"
-
-import { AiOutlineInstagram as InstagramIcon, 
-        AiFillYoutube as YoutubeIcon, 
-        AiFillLinkedin as LinkdinIcon,
-        AiFillFacebook as FacebookIcon,  
-} from "react-icons/ai"
-import { RiTwitterXFill as TwitterXIcon } from "react-icons/ri"
 import { Link } from "react-router-dom"
+import { NAVLINKS } from "../../constants/navLinks"
+import { Input } from "../../components"
 import { SmoothScrollingContext } from "../../context/SmoothScrollingContext"
-
-import { Socials } from "../../components"
+import { Socials, Brand } from "../components"
 
 const Footer = () => {
 
@@ -27,8 +18,6 @@ const Footer = () => {
         <Brand />
 
         <div className="flex flex-col items-start md:flex-row justify-between md:items-center border-slate-500 mb-4 gap-8">
-
-        
 
           {/* Address and Contacts */}
           <div className="flex flex-col h-full gap-3 justify-between">

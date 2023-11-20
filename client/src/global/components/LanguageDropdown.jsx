@@ -3,8 +3,8 @@ import { useContext, Fragment } from "react"
 import { BiChevronDown } from "react-icons/bi"
 import { IoLanguage } from "react-icons/io5"
 
-import { LanguageContext } from "../../../context/LanguageContext"
-import { LANGUAGES } from "../../../constants/languages"
+import { LanguageContext } from "../../context/LanguageContext"
+import { LANGUAGES } from "../../constants/languages"
 
 const LanguageDropdown = () => {
 
