@@ -31,7 +31,7 @@ const login = async (req, res) => {
   // create refreshToken
   const refreshToken = tokenGenerator.createRefreshToken(user)
 
-  // Create secure cookie with refresh token
+  // Create secure cookie with refresh token 
   res.cookie('jwt', refreshToken, {
       httpOnly: true, // accessible only by web server
       secure: true, //https
@@ -39,7 +39,7 @@ const login = async (req, res) => {
       maxAge: 7 * 24 * 60 * 60 * 1000 //cookie expire in
   })
 
-  // send accessToken containing username
+  // send accessToken containing userInfo
   res.json( { accessToken })
 
 }

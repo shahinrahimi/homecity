@@ -18,7 +18,7 @@ const getAllUsers = async (req, res) => {
 // @access Private
 const createNewUser = async (req, res) => {
     const { username, password } = req.body
-
+    
     // confirm data
     console.log(username,password)
     if (!username || !password){
