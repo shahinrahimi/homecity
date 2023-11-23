@@ -13,7 +13,9 @@ import {
   Dashabord,
   Franchise,
   Realestate,
-  Blog,
+  EditBlogForm,
+  BlogList,
+  NewBlogForm,
   LoginPage,
   RegisterPage,
   RequiredAuth
@@ -48,30 +50,25 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Route>
 
-          
           <Route path="/admin" element={<AdminLayout />} >
             <Route index element={<LoginPage/>} />
             <Route path="register" element={<RegisterPage />} />
             {/* private */}
             <Route element={<RequiredAuth />}>
               <Route path="dash" element={<Dashabord />} />
-              <Route path='blog' element={<Blog />} />
-              <Route path='franchise' element={<Franchise />} />
-              <Route path='realestate' element={<Realestate />} />
+              {/* blog */}
+              <Route path="blog">
+                <Route index element={<BlogList />} />
+                <Route path="new" element={<NewBlogForm />} />
+                <Route path=":id" element={<EditBlogForm />} />
+              </Route>
+              {/* franchise */}
+              <Route path="franchise" element={<Franchise />} />
+              {/* realestate */}
+              <Route path="realestate" element={<Realestate />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Route>
-          {/* <Route element={<RequiredAuth />}>
-            <Route path='/admin' element={<AdminLayout />}>
-              <Route index element={<AdminHome />} />
-              <Route path="login" element={<LoginPage/>} />
-              <Route path="register" element={<RegisterPage />} />
-              <Route path='blog' element={<Blog />} />
-              <Route path='franchise' element={<Franchise />} />
-              <Route path='realestate' element={<Realestate />} />
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Route> */}
 
         </Routes>
       </Router>
