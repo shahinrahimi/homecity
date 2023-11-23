@@ -13,6 +13,10 @@
   min-height: 100vh;
 }
 
+#text { 
+  display: none;
+}
+
 img {
   display: block;
 }

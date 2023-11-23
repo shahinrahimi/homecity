@@ -1,4 +1,7 @@
-export {default as Home} from "./home/Home"
+export {default as Dashabord} from "./dashboard/Dashboard"
 export {default as Blog} from "./blog/Blog"
 export {default as Franchise} from "./franchise/Franchise"
 export {default as Realestate} from "./realestate/Realestate"
+export {default as LoginPage} from "./auth/LoginPage"
+export {default as RegisterPage} from "./auth/RegisterPage"
+export {default as RequiredAuth} from "./auth/RequiredAuth"

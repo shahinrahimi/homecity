@@ -1,7 +1,7 @@
 import React from "react"
 import { MenuContext } from "../../context/MenuContext"
 import { NAVLINKS } from "../../constants/navLinks"
-import useRootPath from "../../hooks/useRootPath"
+import useRootPath from "../../hooks/usePathLocation"
 import { Link } from "react-router-dom"
 import { Socials } from "../components"
 

@@ -86,7 +86,8 @@ export default {
       },
       boxShadow: {
         'sharp': 'rgba(0, 0, 0, 0.40) 0px 2px 8px',
-        'test' : 'rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;'
+        'test' : 'rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;',
+        'cutome-1': 'rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;'
       }
     },
     fontFamily: {
@@ -275,6 +276,17 @@ export default {
         "100%" :{
           transform: "translate(-120%, 0%)"
         }
+      },
+
+      inputEffect : {
+        "0%": {
+          opacity:0,
+          transform: "scale(120%, 200%)"
+        },
+        "100%" : {
+          opacity:1,
+          transform: "scale(100%)"
+        }
       }
     },
     
@@ -304,7 +316,10 @@ export default {
       'wave-2': 'moveForever 4s -3s linear infinite',
       'wave-3': 'moveForever 6s -4s linear infinite',
       // ticker
-      'ticker-show': 'ticker 20s linear infinite'
+      'ticker-show': 'ticker 20s linear infinite',
+
+      // input
+      'input-active': "inputEffect 0.5s ease forwards"
     },
 
   plugins: [

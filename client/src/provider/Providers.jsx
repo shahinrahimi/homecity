@@ -1,35 +1,49 @@
 import { homecityLogo } from "../assets/svg"
 // ceo third part provider
+// third party providers
+import { QueryClient, QueryClientProvider } from "react-query"
+import { ReactQueryDevtools } from "react-query/devtools"
 import { Helmet, HelmetProvider } from 'react-helmet-async'
 
-// providers
+// custome providers
 import { LanguageProvider } from '../context/LanguageContext'
 import { MenuProvider } from '../context/MenuContext'
 import { SearchProvider } from '../context/SearchContext'
 import { SmoothScrollingProvider } from "../context/SmoothScrollingContext"
 import { LivePriceProvider } from "../context/LivePriceContext"
+import { AuthProvider } from "../context/AuthContext"
+import { UserProvider } from "../context/UserContext"
+
+const queryClient = new QueryClient()
 
 const Providers = ({ children }) => {
   return (
     <>
-      <HelmetProvider>
-        <Helmet>
-          <link rel="icon" type="image/svg+xml" href={homecityLogo} />
-          {/* <script src="./src/lib/customScript.js" type='text/javascript' crossorigin="anonymous" async></script> */}
-          <title>Homecity | Investment | Real state </title>
-        </Helmet>
-        <LanguageProvider>
-          <MenuProvider>
-            <SearchProvider>
-              <SmoothScrollingProvider>
-                <LivePriceProvider>
-                  {children}
-                </LivePriceProvider>
-              </SmoothScrollingProvider>
-            </SearchProvider>
-          </MenuProvider>
-        </LanguageProvider>
-      </HelmetProvider >
+      <QueryClientProvider client={queryClient}>
+        <HelmetProvider>
+          <Helmet>
+            <link rel="icon" type="image/svg+xml" href={homecityLogo} />
+            {/* <script src="./src/lib/customScript.js" type='text/javascript' crossorigin="anonymous" async></script> */}
+            <title>Homecity | Investment | Real state </title>
+          </Helmet>
+          <AuthProvider>
+            <UserProvider>
+              <LanguageProvider>
+                <MenuProvider>
+                  <SearchProvider>
+                    <SmoothScrollingProvider>
+                      <LivePriceProvider>
+                        {children}
+                      </LivePriceProvider>
+                    </SmoothScrollingProvider>
+                  </SearchProvider>
+                </MenuProvider>
+              </LanguageProvider>
+            </UserProvider>
+          </AuthProvider>
+        </HelmetProvider >
+        <ReactQueryDevtools initialIsOpen/>
+      </QueryClientProvider>
     </>
   )
 }
