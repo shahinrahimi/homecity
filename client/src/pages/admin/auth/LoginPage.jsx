@@ -1,27 +1,19 @@
 import React from 'react'
 import { login } from "../../../api/authApi"
-import { getAllUser } from "../../../api/userApi"
 import { HashLoader } from 'react-spinners';
 import { useNavigate } from 'react-router-dom';
-
-import { UserContext } from '../../../context/UserContext';
-import useAuthStore from '../../../app/store';
-import { useQuery, useMutation } from 'react-query';
+import { useMutation } from 'react-query';
 import LoginForm from './LoginForm';
 import { usePersistLogin } from '../../../hooks/usePersistLogin';
-import { AuthContext } from '../../../context/AuthContext';
+import { useAuthStore } from '../../../app/store';
+
 const LoginPage = () => {
   const navigate = useNavigate()
-  const { setToken } = React.useContext(AuthContext)
-  const { persist, setPersist } = usePersistLogin()
+  const { setToken } = useAuthStore()
 
   const [username, setUsername] = React.useState("")
   const [password, setPassword] = React.useState("")
-  const [loginError, setLoginError] = React.useState(false)
-  
-  const [rememberMe, setRememberMe] = React.useState(false)
 
-  const loginMutation = useMutation(formData => login({...formData}))
   const {
     isIdle, 
     isLoading, 
@@ -30,7 +22,7 @@ const LoginPage = () => {
     error,
     mutate: loginMutate,
     data
-  } = loginMutation
+  } = useMutation(formData => login({...formData}))
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -47,10 +39,9 @@ const LoginPage = () => {
     if (isSuccess) {
       const accessToken = data?.data?.accessToken
       setToken(accessToken)
-      // get to privious page
-      navigate(-1)
+      navigate("/admin/dash")
     }
-  },[isSuccess])
+  },[isSuccess, setToken])
 
   React.useEffect(() => {
     if (isError) {
@@ -59,13 +50,11 @@ const LoginPage = () => {
   },[isError])
 
   let content = <LoginForm 
-                  username={username}
-                  setUsername={setUsername}
-                  password={password}
-                  setPassword={setPassword}
-                  rememberMe={persist}
-                  setRememberMe={setPersist}
-                  handleSubmit={handleSubmit}  />
+                    username={username}
+                    setUsername={setUsername}
+                    password={password}
+                    setPassword={setPassword}
+                    handleSubmit={handleSubmit}  />
   if (isLoading){
     content =  <HashLoader />
   }
@@ -73,7 +62,6 @@ const LoginPage = () => {
   if (isError) {
     content = <>Error ...{JSON.stringify(error.message)} </>
   }
-
 
   return (
     <main className='w-full min-h-screen grid place-content-center text-c-black-500'>

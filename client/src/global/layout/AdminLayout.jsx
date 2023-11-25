@@ -9,8 +9,8 @@ const AdminLayout = () => {
     <>
       <Header />
       <Menu />
-      <div className="bg-white w-screen min-h-screen">
-        <div className="container w-full mx-auto relative top-20">
+      <div className="bg-white w-screen min-h-screen pt-32 pb-20">
+        <div className="container w-full mx-auto">
           <Outlet />
         </div>
       </div>

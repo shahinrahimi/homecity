@@ -3,7 +3,7 @@ import { HashLoader } from "react-spinners";
 
 const Loading = () => {
   return (
-    <section className="grid place-content-center min-h-screen">
+    <section className="w-full h-full grid place-content-center">
       <HashLoader color="#456723" />
     </section>
   )

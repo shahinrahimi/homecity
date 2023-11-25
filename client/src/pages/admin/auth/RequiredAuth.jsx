@@ -1,19 +1,19 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import {  Outlet } from 'react-router-dom'
 import { useMutation } from 'react-query'
-import { refresh } from '../../../api/authApi'
-import { usePersistLogin } from "../../../hooks/usePersistLogin"
-import { HashLoader } from 'react-spinners'
+import { refresh, validate } from '../../../api/authApi'
+import { Loading } from "../../../components"
 import { useNavigate } from 'react-router-dom'
-import { AuthContext } from '../../../context/AuthContext'
+import { useAuthStore } from '../../../app/store'
 
 const RequiredAuth = () => {
-  const naviagete = useNavigate()
-  
-  const { persist } = usePersistLogin()
-  const { token, setToken } = React.useContext(AuthContext)
 
-  const mutation = useMutation(refresh)
+  const naviagete = useNavigate()
+  const effectRan = React.useRef(false)
+  const token = useAuthStore.getState().token
+  const { setToken } = useAuthStore()
+  const [trueSuccess, setTrueSuccess] = React.useState(false)
+
   const {
     isIdle,
     isLoading,
@@ -22,52 +22,76 @@ const RequiredAuth = () => {
     error,
     data,
     mutate: refreshMutation
-  } = mutation
+  } = useMutation('token2',refresh)
+
+  const {
+    isSuccess: isValidateSuccess,
+    isLoading: isValidateLoading,
+    isError: isValidateError,
+    error: validateError,
+    mutate: validateMutation
+  } = useMutation('token',validate)
 
   React.useEffect(() => {
-    if (!token && persist){
-      try {
-        refreshMutation()
-      } catch (e) {
-        console.log(e)
+    // make effect ran just one even in development mode (strict mode)
+    if (effectRan.current === true || process.env.NODE_ENV !== 'development') {
+
+      // first visit or nuvalid token
+      if (!token) {
+        naviagete("/admin")
+      } else {
+        // validate token
+        // scenario1: token is valid
+        // scenario2: token is not valid
+        validateMutation({ accessToken: token})
       }
     }
-
-    if (!token && !persist){
-      // redirect to login page
-      naviagete("/admin")
-    }
+   
+    return () => effectRan.current = true
   },[])
 
+  // scenario1
+  React.useEffect(() => {
+    if (isValidateSuccess){
+      setTrueSuccess(true)
+    }
+  }, [isValidateSuccess])
+
+  // scenario2
+  React.useEffect(() => {
+    if (isValidateError){
+      console.log(validateError)
+      refreshMutation()
+    }
+  }, [isValidateError])
+
+  // scenario2 case 1 => valid refresh token
   React.useEffect(() => {
     if (isSuccess) {
+      console.log(isSuccess)
       const accessToken = data?.data?.accessToken
       setToken(accessToken)
+      setTrueSuccess(true)
     }
   }, [isSuccess])
 
-
+  // scenario2 case 2 cookie expired
   React.useEffect(() => {
     if (isError){
-      console.log(error)
+      useAuthStore.setState(null)
       naviagete("/admin")
     }
   }, [isError])
 
-  React.useEffect(() => {
-    // console.log(data)
-  },[data])
-
   let content = ""
 
-  if (isLoading) {
-    content = <HashLoader />
+  if (isLoading || isValidateLoading) {
+    content = <Loading />
   }
 
-  if (isSuccess) {
+  if (trueSuccess){
     content = <Outlet />
   }
-
   return content
 }
 

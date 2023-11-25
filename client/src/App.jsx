@@ -13,9 +13,10 @@ import {
   Dashabord,
   Franchise,
   Realestate,
-  EditBlogForm,
   BlogList,
-  NewBlogForm,
+  BlogPreview,
+  EditBlog,
+  NewBlog,
   LoginPage,
   RegisterPage,
   RequiredAuth
@@ -59,8 +60,9 @@ function App() {
               {/* blog */}
               <Route path="blog">
                 <Route index element={<BlogList />} />
-                <Route path="new" element={<NewBlogForm />} />
-                <Route path=":id" element={<EditBlogForm />} />
+                <Route path="new" element={<NewBlog />} />
+                <Route path=":id" element={<BlogPreview />} />
+                <Route path="edit/:id" element={<EditBlog />} />
               </Route>
               {/* franchise */}
               <Route path="franchise" element={<Franchise />} />

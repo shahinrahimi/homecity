@@ -1,7 +1,8 @@
 export {default as Dashabord} from "./dashboard/Dashboard"
 export {default as BlogList} from "./blog/BlogList"
-export {default as EditBlogForm} from "./blog/EditBlogForm"
-export {default as NewBlogForm} from  "./blog/NewBlogForm"
+export {default as EditBlog} from "./blog/EditBlog"
+export {default as NewBlog} from  "./blog/NewBlog"
+export {default as BlogPreview} from "./blog/BlogPreview"
 
 export {default as Franchise} from "./franchise/Franchise"
 export {default as Realestate} from "./realestate/Realestate"

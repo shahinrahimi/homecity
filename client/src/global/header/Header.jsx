@@ -1,8 +1,8 @@
 import React from "react"
 import { MenuContext } from "../../context/MenuContext"
 import { SearchContext } from "../../context/SearchContext"
+import { useAuthStore } from "../../app/store"
 import { UserContext } from "../../context/UserContext"
-import { AuthContext } from "../../context/AuthContext"
 import { useNavigate } from "react-router-dom"
 
 import { LanguageDropdown } from "../components"
@@ -20,7 +20,7 @@ const Header = () => {
   const navigate = useNavigate()
   const { rootPath } = usePathLocation()
 
-  const { setToken } = React.useContext(AuthContext)
+  const { setToken } = useAuthStore()
   const { userInfo } = React.useContext(UserContext)
   const { isOpen, toggle } = React.useContext(MenuContext)
   // const { isOpen: isSearchOpen, toggle: toggleSearch } = useContext(SearchContext)

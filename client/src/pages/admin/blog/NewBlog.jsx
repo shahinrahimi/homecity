@@ -1,9 +1,13 @@
 import React from 'react'
 import BlogForm from './BlogForm'
+import { useNavigate } from 'react-router-dom'
 import { createNewBlog } from '../../../api/blogApi'
-import { useMutation } from 'react-query'
+import { useMutation, useQueryClient } from 'react-query'
+import { Loading } from '../../../components'
 
-const NewBlogForm = () => {
+const NewBlog = () => {
+
+    const naviagte = useNavigate()
 
     const [title, setTitle] = React.useState("test")
     const [summary, setSummery] = React.useState("test")
@@ -21,62 +25,49 @@ const NewBlogForm = () => {
 
     const form = React.useRef(null)
 
+    const queryClient = useQueryClient()
+
+    const {
+        mutate: createNewBlogMutation,
+        isLoading,
+        isSuccess,
+        isError,
+        error
+    } = useMutation(createNewBlog, {
+        onSuccess: () => {
+            // invalidates cache and refetch
+            queryClient.invalidateQueries("blogs")
+        }
+    })
+
     const handleSubmit = async (e) => {
-        
-        const data = new FormData()
-        data.append("image", files[0])
-        data.append("title", title)
-        data.append("summary", summary)
-        data.append("content", content)
-        data.append("title_fa", title_fa)
-        data.append("summary_fa", summary_fa)
-        data.append("content_fa", content_fa)
-        data.append("title_ar", title_ar)
-        data.append("summary_ar", summary_ar)
-        data.append("content_ar", content_ar)
-        data.append("title_tr", title_tr)
-        data.append("summary_tr", summary_tr)
-        data.append("content_tr", content_tr)
-
-        for (let obj of data){
-            console.log(obj)
-        }
-
         e.preventDefault()
-
-        const blogObj = {
-            title,
-            summary,
-            content,
-            title_fa,
-            summary_fa,
-            content_fa,
-            title_ar,
-            summary_ar,
-            content_ar,
-            title_tr,
-            summary_tr,
-            content_tr,
-            image: files[0]
-        }
-
-        // console.log(blogObj)
-
-
-        createNewBlog(data).then(res => {
-            console.log(res)
-        })
-
-        // fetch("http://localhost:5000/api/blogs", {
-        //     method: "POST",
-        //     body: JSON.stringify(blogObj)
-        // })
+        
+        const blogForm = new FormData()
+        blogForm.set("blog-image", files[0])
+        blogForm.set("title", title)
+        blogForm.set("summary", summary)
+        blogForm.set("content", content)
+        blogForm.set("title_fa", title_fa)
+        blogForm.set("summary_fa", summary_fa)
+        blogForm.set("content_fa", content_fa)
+        blogForm.set("title_ar", title_ar)
+        blogForm.set("summary_ar", summary_ar)
+        blogForm.set("content_ar", content_ar)
+        blogForm.set("title_tr", title_tr)
+        blogForm.set("summary_tr", summary_tr)
+        blogForm.set("content_tr", content_tr)
+        createNewBlogMutation({ blogForm })
     }
 
+    React.useEffect(() => {
+        if (isSuccess){
+            naviagte("/admin/blog")
+        }
+    }, [isSuccess])
 
-    return (
-        <section>
-            <BlogForm
+    let contentToShow = (
+        <BlogForm
                 form={form}
                 title={title}
                 setTitle={setTitle}
@@ -108,10 +99,26 @@ const NewBlogForm = () => {
 
                 setFiles={setFiles}
                 
+                buttonLabel={"create a blog"}
                 handleSubmit={handleSubmit}
             />
+    )
+
+    if (isLoading){
+        contentToShow = <Loading />
+    }
+
+    if (isError) {
+        contentToShow = <>has error {JSON.stringify(error)}</>
+    }
+
+    return (
+        <section>
+            <h1 className='text-4xl text-c-black-500/75 uppercase font-light text-center mb-4'
+            >New blog</h1>
+            {contentToShow}
         </section>
     )
 }
 
-export default NewBlogForm
+export default NewBlog

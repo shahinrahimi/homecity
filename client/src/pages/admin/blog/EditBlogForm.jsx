@@ -1,64 +1,114 @@
 import React from 'react'
 import BlogForm from './BlogForm'
+import { useMutation, useQueryClient } from 'react-query'
+import { updateBlog } from '../../../api/blogApi'
+import { Loading } from "../../../components"
+import { Navigate } from 'react-router-dom'
 
-const EditBlogForm = () => {
-  const form = React.useRef()
-  const [title, setTitle] = React.useState("test")
-  const [summary, setSummery] = React.useState("test")
-  const [content, setContent] = React.useState("<h1>test</h1>")
-  const [title_fa, setTitle_fa] = React.useState("test_fa")
-  const [summary_fa, setSummery_fa] = React.useState("test_fa")
-  const [content_fa, setContent_fa] = React.useState("<h1>test_fa</h1>")
-  const [title_ar, setTitle_ar] = React.useState("test_ar")
-  const [summary_ar, setSummery_ar] = React.useState("test_ar")
-  const [content_ar, setContent_ar] = React.useState("<h1>test_ar</h1>")
-  const [title_tr, setTitle_tr] = React.useState("test_tr")
-  const [summary_tr, setSummery_tr] = React.useState("test_tr")
-  const [content_tr, setContent_tr] = React.useState("<h1>test_tr</h1>")
+const EditBlogForm = ({ blog }) => {
+
+  const blogFa = blog.trans.filter(t => t.language === "fa")[0]
+  const blogAr = blog.trans.filter(t => t.language === "ar")[0]
+  const blogTr = blog.trans.filter(t => t.language === "tr")[0]
+
+  const form = React.useRef(null)
+  const [title, setTitle] = React.useState(blog.title)
+  const [summary, setSummery] = React.useState(blog.summary)
+  const [content, setContent] = React.useState(blog.content)
+  const [title_fa, setTitle_fa] = React.useState(blogFa.title)
+  const [summary_fa, setSummery_fa] = React.useState(blogFa.summary)
+  const [content_fa, setContent_fa] = React.useState(blogFa.content)
+  const [title_ar, setTitle_ar] = React.useState(blogAr.title)
+  const [summary_ar, setSummery_ar] = React.useState(blogAr.summary)
+  const [content_ar, setContent_ar] = React.useState(blogAr.content)
+  const [title_tr, setTitle_tr] = React.useState(blogTr.title)
+  const [summary_tr, setSummery_tr] = React.useState(blogTr.summary)
+  const [content_tr, setContent_tr] = React.useState(blogTr.content)
   const [files, setFiles] = React.useState("")
+
+  const queryClient = useQueryClient()
+  const {
+    isSuccess,
+    isLoading,
+    isError,
+    error,
+    mutate: updateBlogMutation
+  } = useMutation('blogs', updateBlog, {
+    onSuccess: () => {
+      // invalidates cache and refetch
+      queryClient.invalidateQueries("blogs")
+    }
+  })
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(file)
+    const blogForm = new FormData()
+    if (files?.[0]){
+      blogForm.set("blog-image", files[0])
+    }
+    blogForm.set("title", title)
+    blogForm.set("summary", summary)
+    blogForm.set("content", content)
+    blogForm.set("title_fa", title_fa)
+    blogForm.set("summary_fa", summary_fa)
+    blogForm.set("content_fa", content_fa)
+    blogForm.set("title_ar", title_ar)
+    blogForm.set("summary_ar", summary_ar)
+    blogForm.set("content_ar", content_ar)
+    blogForm.set("title_tr", title_tr)
+    blogForm.set("summary_tr", summary_tr)
+    blogForm.set("content_tr", content_tr)
+    updateBlogMutation({ id: blog.id, blogForm , token: "cosssher"})
+  }
+
+  if (isLoading){
+    return <Loading /> 
+  }
+
+  if (isSuccess){
+    return <Navigate to="/admin/blog" />
   }
 
   return (
-    <section>
+    <main>
+      <h1 className='text-4xl text-c-black-500/75 uppercase font-light text-center mb-4'
+      >Edit Blog</h1>
       <BlogForm
-        form={form}
-        title={title}
-        setTitle={setTitle}
-        summery={summary}
-        setSummery={setSummery}
-        content={content}
-        setContent={setContent}
+          form={form}
+          title={title}
+          setTitle={setTitle}
+          summery={summary}
+          setSummery={setSummery}
+          content={content}
+          setContent={setContent}
 
-        title_fa={title_fa}
-        setTitle_fa={setTitle_fa}
-        summery_fa={summary_fa}
-        setSummery_fa={setSummery_fa}
-        content_fa={content_fa}
-        setContent_fa={setContent_fa}
+          title_fa={title_fa}
+          setTitle_fa={setTitle_fa}
+          summery_fa={summary_fa}
+          setSummery_fa={setSummery_fa}
+          content_fa={content_fa}
+          setContent_fa={setContent_fa}
 
-        title_ar={title_ar}
-        setTitle_ar={setTitle_ar}
-        summery_ar={summary_ar}
-        setSummery_ar={setSummery_ar}
-        content_ar={content_ar}
-        setContent_ar={setContent_ar}
+          title_ar={title_ar}
+          setTitle_ar={setTitle_ar}
+          summery_ar={summary_ar}
+          setSummery_ar={setSummery_ar}
+          content_ar={content_ar}
+          setContent_ar={setContent_ar}
 
-        title_tr={title_tr}
-        setTitle_tr={setTitle_tr}
-        summery_tr={summary_tr}
-        setSummery_tr={setSummery_tr}
-        content_tr={content_tr}
-        setContent_tr={setContent_tr}
+          title_tr={title_tr}
+          setTitle_tr={setTitle_tr}
+          summery_tr={summary_tr}
+          setSummery_tr={setSummery_tr}
+          content_tr={content_tr}
+          setContent_tr={setContent_tr}
 
-        setFiles={setFiles}
-        
-        handleSubmit={handleSubmit}
+          setFiles={setFiles}
+          
+          buttonLabel={"save changes"}
+          handleSubmit={handleSubmit}
       />
-    </section>
+    </main>
   )
 }
 

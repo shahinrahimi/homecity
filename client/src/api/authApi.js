@@ -15,3 +15,12 @@ export const logout = async () => {
     return response
 }
 
+export const validate = async ({ accessToken }) => {
+    const response = await api.get(`/auth/validate`,{
+        headers: { 
+            Authorization: `Bearer ${accessToken}`
+        }
+    })
+    return response
+}
+
