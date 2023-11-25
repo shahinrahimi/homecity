@@ -94,9 +94,17 @@ const logout = async (req, res) => {
   res.json({ message: 'Cookie cleared'})
 }
 
+// @desc validate accessTokne
+// @route POST /auth/logout
+// @access Private
+const validate = async (req, res) => {
+  return res.status(200).json({message: "accessToken is valid"})
+}
+
 module.exports = {
   login,
   refresh,
-  logout
+  logout,
+  validate
 }
 

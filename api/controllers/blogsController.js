@@ -1,19 +1,18 @@
 const Blog = require("../model/Blog")
 const TranslationBlog = require("../model/BlogTranslation")
-const multer = require("multer")
-const uploadMiddleware = multer({ dest: "uploads/"})
 const fs = require('fs')
+const ObjectId = require('mongoose').Types.ObjectId
 
 // @desc Get all blogs
 // @route GET /blogs
 // @access public
 const getAllBlogs = async (req, res) => {
-    const blogs = await Blog.find().lean()
+    const blogs = await Blog.find().sort({ createdAt: 'desc' }).lean()
 
     const translations = await TranslationBlog.find().lean()
 
     const blogsWithTranslations = blogs.map(blog => {
-        const trans = translations.filter(t => t.postId.toString() === post._id.toString())
+        const trans = translations.filter(t => t.blogId.toString() === blog._id.toString())
         return {
             ...blog,
             trans
@@ -61,6 +60,8 @@ const createNewBlog = async (req, res) => {
         content_tr,
         content_ar,
     ]
+
+    console.log(requiredFields)
 
     const confirmData = requiredFields.every(item => typeof item === "string" )
 
@@ -112,6 +113,8 @@ const createNewBlog = async (req, res) => {
 // @route PATCH /blogs
 // @access Private
 const updateBlog = async (req, res) => {
+
+    const { id } = req.params
     const {
         title,
         summary,
@@ -128,9 +131,10 @@ const updateBlog = async (req, res) => {
     } = req.body
 
     const requiredFields = [
+        id,
         title,
         summary,
-        contetn,
+        content,
         title_fa,
         title_tr,
         title_ar,
@@ -142,6 +146,7 @@ const updateBlog = async (req, res) => {
         content_ar,
     ]
 
+    
     // check if every fields is exists and have type of string
     const confirmData = requiredFields.every(item => typeof item === "string" )
 
@@ -153,6 +158,8 @@ const updateBlog = async (req, res) => {
     if (!blog){
         return res.status(400).json({ message: "Blog not found"})
     }
+
+    
 
     const translationFa = await TranslationBlog.findOne({ blogId: id, language: "fa" }).exec()
     const translationTr = await TranslationBlog.findOne({ blogId: id, language: "tr" }).exec()
@@ -175,8 +182,16 @@ const updateBlog = async (req, res) => {
     translationAr.summary = summary_ar
     translationAr.content = content_ar
 
+
+    // if req.file is exist so the new file should replace with old one
+    if (req.file){
+        const { path } = req.file
+        fs.unlinkSync(blog.image)
+        blog.image = path
+    }
+
     const updateAll = await Promise.all([
-        post.save(),
+        blog.save(),
         translationFa.save(),
         translationTr.save(),
         translationAr.save()
@@ -191,9 +206,9 @@ const updateBlog = async (req, res) => {
 // @access Private
 
 const deleteBlog = async (req, res) => {
-    const { id } = req.body
+    const { id } = req.params
 
-    if (!id){
+    if (!id || !ObjectId.isValid(id)){
         return res.status(400).json({ message: "Blog ID required"})
     }
 
@@ -210,10 +225,11 @@ const deleteBlog = async (req, res) => {
     }
 
     const deleteAll = await Promise.all([
-        post.deleteOne(),
+        blog.deleteOne(),
         translationFa.deleteOne(),
         translationTr.deleteOne(),
-        translationAr.deleteOne()
+        translationAr.deleteOne(),
+        fs.unlinkSync(blog.image)
     ])
 
     const reply = `Post ${id} deleted`

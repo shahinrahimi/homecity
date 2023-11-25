@@ -49,7 +49,8 @@ console.log(`env\tnode_env:{${NODE_ENV}}\tport:{${PORT}}`)
 
 // routes
 app.use(express.static(path.join(__dirname, 'public')))
-app.use('/api', express.static(path.join(__dirname, 'public')))
+app.use("/uploads", express.static(path.join(__dirname, 'uploads')))
+app.use("/api", express.static(path.join(__dirname, 'public')))
 app.use("/api", require('./routes/root'))
 app.use("/api/auth", require("./routes/authRoutes"))
 app.use("/api/users", require("./routes/userRoutes"))

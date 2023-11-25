@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 const tokenGenerator = {}
 
 // will send by api endpoint as json object
-tokenGenerator.createAccessToken = (user, expiresIn='15min') => {
+tokenGenerator.createAccessToken = (user, expiresIn='1min') => {
   return jwt.sign(
     {
       "userInfo": {
@@ -17,7 +17,7 @@ tokenGenerator.createAccessToken = (user, expiresIn='15min') => {
 }
 
 // will send store in cookies
-tokenGenerator.createRefreshToken = (user, expiresIn='1d') => {
+tokenGenerator.createRefreshToken = (user, expiresIn='1h') => {
   return jwt.sign(
     // for securit
     { "username": user.username },
