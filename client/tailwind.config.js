@@ -271,10 +271,10 @@ export default {
 
       ticker: {
         "0%" :{
-          transform: "translate(120%, 0%)"
+          transform: "translate(105vw, 0%)"
         },
         "100%" :{
-          transform: "translate(-120%, 0%)"
+          transform: "translate(-2000px, 0%)"
         }
       },
 
@@ -316,7 +316,7 @@ export default {
       'wave-2': 'moveForever 4s -3s linear infinite',
       'wave-3': 'moveForever 6s -4s linear infinite',
       // ticker
-      'ticker-show': 'ticker 20s linear infinite',
+      'ticker-show': 'ticker 20s linear forwards',
 
       // input
       'input-active': "inputEffect 0.5s ease forwards"

@@ -62,7 +62,7 @@ const BlogForm = ({
                         type="text"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        className="px-4 py-3 border border-c-black-100/25 outline-none"
+                        className="px-4 py-3 border border-c-black-100/25 outline-none w-full"
                     />
                     
                 </div>
@@ -71,13 +71,16 @@ const BlogForm = ({
                         htmlFor="title"
                         className='uppercase text-sm'
                     >title in persian</label>
-                    <input 
-                        name="title"
-                        type="text"
-                        value={title_fa}
-                        onChange={(e) => setTitle_fa(e.target.value)}
-                        className="px-4 py-3 border border-c-black-100/25 outline-none"
-                    />
+                    <div className="rtl">
+                        <input 
+                            name="title"
+                            type="text"
+                            value={title_fa}
+                            onChange={(e) => setTitle_fa(e.target.value)}
+                            className="px-4 py-3 border border-c-black-100/25 outline-none w-full"
+                        />
+                    </div>
+                    
                     
                 </div>
                 <div className="flex flex-col gap-2">
@@ -85,13 +88,16 @@ const BlogForm = ({
                         htmlFor="title"
                         className='uppercase text-sm'
                     >title in arabic</label>
-                    <input 
-                        name="title"
-                        type="text"
-                        value={title_ar}
-                        onChange={(e) => setTitle_ar(e.target.value)}
-                        className="px-4 py-3 border border-c-black-100/25 outline-none"
-                    />
+                    <div className="rtl">
+                        <input 
+                            name="title"
+                            type="text"
+                            value={title_ar}
+                            onChange={(e) => setTitle_ar(e.target.value)}
+                            className="px-4 py-3 border border-c-black-100/25 outline-none w-full"
+                        />
+                    </div>
+                    
                     
                 </div>
                 <div className="flex flex-col gap-2">
@@ -104,7 +110,7 @@ const BlogForm = ({
                         type="text"
                         value={title_tr}
                         onChange={(e) => setTitle_tr(e.target.value)}
-                        className="px-4 py-3 border border-c-black-100/25 outline-none"
+                        className="px-4 py-3 border border-c-black-100/25 outline-none w-full"
                     />
                     
                 </div>
@@ -120,7 +126,7 @@ const BlogForm = ({
                         type="text"
                         value={summery}
                         onChange={(e) => setSummery(e.target.value)}
-                        className='px-4 py-3 border border-c-black-100/25 outline-none'
+                        className='px-4 py-3 border border-c-black-100/25 outline-none w-full'
                     />
                 </div>
 
@@ -131,13 +137,16 @@ const BlogForm = ({
                         htmlFor="summary"
                         className='uppercase text-sm'
                     >summary in persian</label>
-                    <textarea
-                        name='summary' 
-                        type="text"
-                        value={summery_fa}
-                        onChange={(e) => setSummery_fa(e.target.value)}
-                        className='px-4 py-3 border border-c-black-100/25 outline-none'
-                    />
+                    <div className="rtl">
+                        <textarea
+                            name='summary' 
+                            type="text"
+                            value={summery_fa}
+                            onChange={(e) => setSummery_fa(e.target.value)}
+                            className='px-4 py-3 border border-c-black-100/25 outline-none w-full'
+                        />
+                    </div>
+                    
                 </div>
 
                 <div className="flex flex-col gap-2">
@@ -145,13 +154,16 @@ const BlogForm = ({
                         htmlFor="summary"
                         className='uppercase text-sm'
                     >summary in arabic</label>
-                    <textarea
-                        name='summary' 
-                        type="text"
-                        value={summery_ar}
-                        onChange={(e) => setSummery_ar(e.target.value)}
-                        className='px-4 py-3 border border-c-black-100/25 outline-none'
-                    />
+                    <div className="rtl">
+                        <textarea
+                            name='summary' 
+                            type="text"
+                            value={summery_ar}
+                            onChange={(e) => setSummery_ar(e.target.value)}
+                            className='px-4 py-3 border border-c-black-100/25 outline-none w-full'
+                        />
+                    </div>
+                    
                 </div>
 
                 <div className="flex flex-col gap-2">
@@ -164,7 +176,7 @@ const BlogForm = ({
                         type="text"
                         value={summery_tr}
                         onChange={(e) => setSummery_tr(e.target.value)}
-                        className='px-4 py-3 border border-c-black-100/25 outline-none'
+                        className='px-4 py-3 border border-c-black-100/25 outline-none w-full'
                     />
                 </div>
 
@@ -176,11 +188,13 @@ const BlogForm = ({
                         htmlFor="content"
                         className='uppercase text-sm'
                     >content</label>
-
-                    <Editor 
-                        content={content}
-                        onChange={setContent}
-                    />
+                    <div className="ql-editor ltr">
+                        <Editor 
+                            content={content}
+                            setContent={setContent}
+                        />
+                    </div>
+                    
                 </div>
 
                 <div className="flex flex-col gap-2">
@@ -189,10 +203,13 @@ const BlogForm = ({
                         className='uppercase text-sm'
                     >content in persian</label>
 
-                    <Editor 
-                        content={content_fa}
-                        onChange={setContent_fa}
-                    />
+                    <div className="ql-editor rtl">
+                        <Editor 
+                            content={content_fa}
+                            setContent={setContent_fa}
+                        />
+                    </div>
+                    
                 </div>
 
                 <div className="flex flex-col gap-2">
@@ -201,10 +218,13 @@ const BlogForm = ({
                         className='uppercase text-sm'
                     >content in arabic</label>
 
-                    <Editor 
-                        content={content_ar}
-                        onChange={setContent_ar}
-                    />
+                    <div className="ql-editor rtl">
+                        <Editor 
+                            content={content_ar}
+                            setContent={setContent_ar}
+                        />
+                    </div>
+                    
                 </div>
 
                 <div className="flex flex-col gap-2">
@@ -213,10 +233,13 @@ const BlogForm = ({
                         className='uppercase text-sm'
                     >content in turkish</label>
 
-                    <Editor 
-                        content={content_tr}
-                        onChange={setContent_tr}
-                    />
+                    <div className="ql-editor ltr">
+                        <Editor 
+                            content={content_tr}
+                            setContent={setContent_tr}
+                        />
+                    </div>
+                    
                 </div>
 
                 <button

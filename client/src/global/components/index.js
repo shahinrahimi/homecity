@@ -1,5 +1,4 @@
 export {default as Banner} from "./Banner"
-export {default as LivePrice} from "./LivePrice"
 export {default as Brand} from "./Brand"
 export {default as HamburgerMenu} from "./HamburgerMenu"
 export {default as NavBar} from "./NavBar"

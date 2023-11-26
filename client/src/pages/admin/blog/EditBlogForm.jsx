@@ -42,6 +42,8 @@ const EditBlogForm = ({ blog }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    console.log(content)
+    console.log(content_fa)
     const blogForm = new FormData()
     if (files?.[0]){
       blogForm.set("blog-image", files[0])

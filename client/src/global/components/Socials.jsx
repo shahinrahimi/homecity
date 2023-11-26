@@ -1,38 +1,35 @@
 import React from 'react'
-import { AiOutlineInstagram as InstagramIcon, 
-    AiFillYoutube as YoutubeIcon, 
-    AiFillLinkedin as LinkdinIcon,
-    AiFillFacebook as FacebookIcon,  
-} from "react-icons/ai"
-import { RiTwitterXFill as TwitterXIcon } from "react-icons/ri"
+import { Icons } from '../../icons';
 
 const socials = [
     {
       name : "Instagran",
-      icon : InstagramIcon,
+      icon : Icons.InstagramIcon,
       link:""
     },
     {
       name : "Youtube",
-      icon : YoutubeIcon,
+      icon : Icons.YoutubeIcon,
       link: ""
     },
-  
     {
-      name : "Linkdin",
-      icon : LinkdinIcon,
+      name : "Facebook",
+      icon : Icons.FacebookIcon,
       link: ""
     },
-  
-    {
-      name : "facebook",
-      icon : FacebookIcon,
-      link: ""
-    },
-  
     {
       name : "X",
-      icon : TwitterXIcon,
+      icon : Icons.TwitterXIcon,
+      link: ""
+    },
+    {
+      name : "Telegram",
+      icon : Icons.TelegramIcon,
+      link: ""
+    },
+    {
+      name : "WhatsApp",
+      icon : Icons.WhatsAppIcon,
       link: ""
     }
 ]

@@ -45,7 +45,7 @@ const Header = () => {
   },[isSuccess])
 
   return (
-    <header className="fixed flex p-2 w-screen z-50 h-20 bg-c-black-700 text-c-white-500 shadow-lg shadow-c-black-600 animate-landing-slow">
+    <header id="header" className="fixed flex p-2 w-screen z-50 h-20 bg-c-black-700 text-c-white-500 shadow-lg shadow-c-black-600 animate-landing-slow">
       <div className="flex flex-row container mx-auto px-8 justify-between items-center ">
         {/* brand  */}
         <Brand />

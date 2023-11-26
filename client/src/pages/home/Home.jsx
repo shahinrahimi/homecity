@@ -12,7 +12,9 @@ import {
   Features, 
   Features2, 
   Features3, 
-  FAQs
+  FAQs,
+  Instagram,
+  Blogs
 } from "./elements";
 
 
@@ -43,6 +45,14 @@ const Home = () => {
 
       <Section>
         <Features3 />
+      </Section>
+
+      <Section isDark={true}>
+        <Instagram />
+      </Section>
+
+      <Section>
+        <Blogs />
       </Section>
 
       {/* info with nice animation */}

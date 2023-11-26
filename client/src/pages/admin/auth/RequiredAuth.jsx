@@ -48,7 +48,7 @@ const RequiredAuth = () => {
     }
    
     return () => effectRan.current = true
-  },[])
+  },[token, setToken])
 
   // scenario1
   React.useEffect(() => {
@@ -78,7 +78,7 @@ const RequiredAuth = () => {
   // scenario2 case 2 cookie expired
   React.useEffect(() => {
     if (isError){
-      useAuthStore.setState(null)
+      setToken(null)
       naviagete("/admin")
     }
   }, [isError])

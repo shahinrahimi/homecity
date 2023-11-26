@@ -27,3 +27,33 @@ body {
   min-height: 100vh;
 
 }
+
+.rtl * {
+  direction: rtl !important;
+  text-align: right !important;
+  font-family: "Vazir";
+}
+
+
+.ql-editor.rtl * {
+  direction: rtl !important;
+  text-align: right !important;
+  font-family: "Vazir";
+}
+
+.ql-editor.ltr * {
+  direction: ltr;
+  text-align: left;
+
+}
+
+.ql-editor.rtl li {
+  padding-right: 1em;
+  padding-left: 0;
+}
+
+/* .ql-editor.rtl li::after, */
+.ql-editor.rtl li::before {
+  margin-left: 0rem;
+}
+
