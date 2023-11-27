@@ -5,12 +5,12 @@ const socials = [
     {
       name : "Instagran",
       icon : Icons.InstagramIcon,
-      link:""
+      link:"https://www.instagram.com/Homey_invest/"
     },
     {
       name : "Youtube",
       icon : Icons.YoutubeIcon,
-      link: ""
+      link: "https://www.youtube.com/@emirkaya.istanbul"
     },
     {
       name : "Facebook",
@@ -20,17 +20,17 @@ const socials = [
     {
       name : "X",
       icon : Icons.TwitterXIcon,
-      link: ""
+      link: "https://twitter.com/Emirkaya_ist"
     },
     {
       name : "Telegram",
       icon : Icons.TelegramIcon,
-      link: ""
+      link: "https://t.me/emirkaya_official"
     },
     {
       name : "WhatsApp",
       icon : Icons.WhatsAppIcon,
-      link: ""
+      link: "https://api.whatsapp.com/send?phone=905411214030&text="
     }
 ]
 
@@ -40,7 +40,7 @@ const Socials = ({parentClassName, childClassName}) => {
         {socials.map((item, index) => {
         return (
             <li key={index}>
-                <a href={item.link} className='cursor-pointer'>
+                <a href={item.link} className='cursor-pointer' target="_blank" >
                     {<item.icon 
                         className={childClassName}
                     />}

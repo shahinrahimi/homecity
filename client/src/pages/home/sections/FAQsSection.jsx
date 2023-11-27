@@ -1,6 +1,7 @@
 import React from 'react'
 import { BsFillArrowLeftCircleFill as ArrowIcon } from "react-icons/bs"
-import { Button } from '../../../components'
+import { Button, Section } from '../../../components'
+
 const data = [
     {
         question: "How to apply for citizenship?",
@@ -25,6 +26,7 @@ const data = [
 ]
 
 const Faq = ({question, answer, isOpen, toggle}) => {
+    
     return (
         <div 
             className={`w-full flex flex-col group p-4 border-b-2 border-solid border-slate-600 border-opacity-30 cursor-pointer hover:bg-slate-50 ${isOpen ? "bg-c-white-100" : "bg-slate-200 transition-all duration-300"}`}
@@ -46,8 +48,7 @@ const Faq = ({question, answer, isOpen, toggle}) => {
 }
 
 
-
-const FAQs = () => {
+const FAQsSection = ({ id, isDark , background }) => {
 
     const [currntIndex, setCurrentIndex] = React.useState(null)
 
@@ -66,21 +67,23 @@ const FAQs = () => {
         )
     })
     return (
-        <div className="">
-            <h1 className='bg-cu text-4xl font-bold mb-1'>FAQs</h1>
-            <p className='text-xl mb-4'>Find answers to common questions about the citizenship process, real estate investment, and living in Turkey.</p>
-            <div className="flex flex-col [&>*:last-child]:border-none mb-8">
-                {Faqs}
-            </div>
+        <Section id={id} isDark={isDark} background={background} >
+            <div className="">
+                <h1 className='bg-cu text-4xl font-bold mb-1'>FAQs</h1>
+                <p className='text-xl mb-4'>Find answers to common questions about the citizenship process, real estate investment, and living in Turkey.</p>
+                <div className="flex flex-col [&>*:last-child]:border-none mb-8">
+                    {Faqs}
+                </div>
 
-            <div className="flex flex-col gap-2">
-                <h2 className='text-3xl font-semibold'>Still have questions?</h2>
-                <p>Contact out team for further assistance.</p>
-                <Button text={"Contact"} />
+                <div className="flex flex-col gap-2">
+                    <h2 className='text-3xl font-semibold'>Still have questions?</h2>
+                    <p>Contact out team for further assistance.</p>
+                    <Button text={"Contact"} />
+                </div>
+                
             </div>
-            
-        </div>
+        </Section>
     )
 }
 
-export default FAQs
+export default FAQsSection

@@ -1,6 +1,6 @@
 import React from 'react'
 import { legalAssistant, applicationProcessing, propertyTours } from '../../../assets/img'
-import { Button } from '../../../components'
+import { Button, Section } from '../../../components'
 const data = [
     {
         title: "Legal Assistance",
@@ -22,7 +22,7 @@ const data = [
     }
 ]
 
-const Features3 = () => {
+const FeaturesSection3 = ({ id, isDark , background }) => {
 
     const items = data.map((item, index) => {
         return (
@@ -48,19 +48,21 @@ const Features3 = () => {
         )
     })
     return (
-        <div className="flex flex-col justify-between items-center text-center gap-6">
-            <h3 className='uppercase mb-2'>service</h3>
-            <h1 className='text-4xl mb-2 font-bold'>Efficient Services for Citizenship and Real Estate</h1>
-            <p>We offer a range of services to make your journey to Turkish citizenship and real estate ownership seamless. Our team provides expert legal assistance, personalized property tours, and efficient application processing.</p>
+        <Section id={id} isDark={isDark} background={background} >
+            <div className="flex flex-col justify-between items-center text-center gap-6">
+                <h3 className='uppercase mb-2'>service</h3>
+                <h1 className='text-4xl mb-2 font-bold'>Efficient Services for Citizenship and Real Estate</h1>
+                <p>We offer a range of services to make your journey to Turkish citizenship and real estate ownership seamless. Our team provides expert legal assistance, personalized property tours, and efficient application processing.</p>
 
-            <ul className="flex flex-col lg:flex-row w-full justify-between gap-8 mt-8 self">
-                {items}
-            </ul>
+                <ul className="flex flex-col lg:flex-row w-full justify-between gap-8 mt-8 self">
+                    {items}
+                </ul>
 
-            <Button text={"Let's start"} alighClassName={"self-center"} />
+                <Button text={"Let's start"} alighClassName={"self-center"} />
 
-        </div>
+            </div>
+        </Section>
     )
 }
 
-export default Features3
+export default FeaturesSection3

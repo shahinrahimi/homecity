@@ -1,6 +1,6 @@
 import React from "react"
+import { useSwipeable } from "react-swipeable";
 import { background6, background4, background5 } from "../../../assets/img";
-
 const SlideContent1 = () => {
   return (
     <article
@@ -92,8 +92,19 @@ const Slide = ({ children, image, index, activeSlide}) => {
   )
 }
 
-
 const HeroCarousel = ({ id }) => {
+
+  const handlers = useSwipeable({
+    onSwiped: (e) => {
+      if (e.deltaX  < -100) {
+        nextSlide()
+      }
+
+      if (e.deltaX  > 100 ) {
+        prevSlide()
+      }
+    }
+  })
 
   const slides = [
     { name: "slide1", image: background6, content: SlideContent1 },
@@ -156,6 +167,8 @@ const HeroCarousel = ({ id }) => {
 
   return (
     <div 
+    // sweepable
+    {...handlers}
       className="relative w-screen h-[calc(100vh)] bg-black overflow-hidden border "
       id={id}
     >

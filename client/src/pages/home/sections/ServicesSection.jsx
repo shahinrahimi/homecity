@@ -6,7 +6,7 @@ import { MdRealEstateAgent, MdHealthAndSafety } from "react-icons/md"
 import { AiOutlineGlobal } from "react-icons/ai"
 import { GoLaw } from "react-icons/go"
 import { FaHome } from "react-icons/fa"
-import { Simplify } from "../../../components"
+import { Simplify, Section } from "../../../components"
 import {
   service_education,
   service_exchange,
@@ -116,19 +116,18 @@ const serveces = service_items.map((item, index) => {
   )
 })
 
-const Services = () => {
+const ServicesSection = ({ id, isDark , background }) => {
 
   return (
-    <>
+    <Section id={id} isDark={isDark} background={background} >
       <h1 className="text-4xl font-bold mb-4 text-center">Turkish Support Hub</h1>
       <p className="text-xl text-center">Experience Turkey with Ease: Your one-stop solution for education, exchange, immigration, insurance, law, real estate, and translation services.</p>
       <ul className="grid grid-col-1 grid-row-6  lg:grid-cols-2 lg:grid-rows-3 2xl:grid-cols-3 2xl:grid-rows-2 gap-10">
         {serveces}
       </ul>
-    </>
+    </Section>
     
   )
 }
 
-
-export default Services
+export default ServicesSection

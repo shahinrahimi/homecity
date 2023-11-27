@@ -7,14 +7,16 @@ import { TimeAgo } from '../../../components'
 import { IoMdTrash as DeleteIcon } from "react-icons/io";
 import { MdEditDocument as EditIcon } from "react-icons/md";
 
-const BlogListItem = ({
+const BlogListItem = ({ blog }) => {
+
+  const {
     id, 
     title, 
     summary, 
     createdAt, 
     updatedAt, 
     imageSrc
-}) => {
+  } = blog
 
   const queryClient = useQueryClient()
 

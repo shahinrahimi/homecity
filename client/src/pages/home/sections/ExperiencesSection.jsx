@@ -2,7 +2,7 @@
 import { FaPeopleGroup } from "react-icons/fa6"
 import { MdHomeWork } from "react-icons/md"
 import { SiHomeassistantcommunitystore } from "react-icons/si"
-import { Counter } from "../../../components"
+import { Counter, Section } from "../../../components"
 
 const experience_items = [
   { order: 1, count: 105, name: "Franchises", icon: SiHomeassistantcommunitystore },
@@ -11,7 +11,7 @@ const experience_items = [
 
 ]
 
-const Experiences = () => {
+const ExperiencesSection = ({ id, isDark , background }) => {
   const experienceElements = experience_items.map(item => {
     return (
       <li key={item.name} className="flex flex-col justify-between items-center scale-75 lg:scale-100">
@@ -27,10 +27,12 @@ const Experiences = () => {
   })
 
   return (
-    <ul className="w-full flex flex-row justify-around items-center">
-      {experienceElements}
-    </ul>
+    <Section id={id} isDark={isDark} background={background}>
+      <ul className="w-full flex flex-row justify-around items-center">
+        {experienceElements}
+      </ul>
+    </Section>
   )
 }
 
-export default Experiences
+export default ExperiencesSection

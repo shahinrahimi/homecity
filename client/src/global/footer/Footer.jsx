@@ -45,7 +45,7 @@ const Footer = () => {
           <div className="">
             <h1 className="font-bold mb-2">Links</h1>
             <ul
-              className="flex flex-row md:flex-col gap-2 "
+              className="flex flex-row md:flex-col gap-2 flex-wrap "
             >
               {NAVLINKS.map(item => {
                 return (

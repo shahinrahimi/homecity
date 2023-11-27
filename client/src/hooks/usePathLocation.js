@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom"
 
-const useRootPath = () => {
+const usePathLocation = () => {
   const location = useLocation()
   // current main
   let pathArray = location.pathname.split("/")
@@ -10,4 +10,4 @@ const useRootPath = () => {
   return { rootPath, leafPath }
 }
 
-export default useRootPath
+export default usePathLocation

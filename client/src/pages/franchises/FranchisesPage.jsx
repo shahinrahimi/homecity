@@ -2,7 +2,7 @@ import React from 'react';
 import { Section } from '../../components';
 import { underConstructionSvg } from "../../assets/svg";
 
-const Franchises = () => {
+const FranchisesPage = () => {
   
   return (
     <Section>
@@ -15,4 +15,4 @@ const Franchises = () => {
     </Section>
   )
 }
-export default Franchises
+export default FranchisesPage

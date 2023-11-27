@@ -1,23 +1,6 @@
-import React from 'react'
+import React from "react"
 
-import { 
-    project_1_image_0,
-    project_1_image_1,
-    project_1_image_2,
-    project_1_image_3,
-    project_1_image_4,
-} from '../../../assets/img'
-
-
-
-const ImageTheather = () => {
-    const images = [
-        project_1_image_0,
-        project_1_image_1,
-        project_1_image_2,
-        project_1_image_3,
-        project_1_image_4,
-    ]
+const SimpleTeather = ({ images }) => {
 
     const [currentIndex, setCurrentIndex] = React.useState(Math.floor(Math.random()*images.length)) 
 
@@ -40,4 +23,4 @@ const ImageTheather = () => {
     )
 }
 
-export default ImageTheather
+export default SimpleTeather

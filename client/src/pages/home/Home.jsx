@@ -1,21 +1,20 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Section } from "../../components";
 import { background1 } from "../../assets/img";
 import { SmoothScrollingContext } from "../../context/SmoothScrollingContext";
 import {
-  Services, 
-  Experiences, 
-  Information,
-  HeroCarousel, 
-  ProjectsCarousel, 
-  Features, 
-  Features2, 
-  Features3, 
-  FAQs,
-  Instagram,
-  Blogs
-} from "./elements";
+  ServicesSection, 
+  ExperiencesSection, 
+  InformationSection,
+  HeroCarousel,
+  RealestateCarouselSection, 
+  FeaturesSection, 
+  FeaturesSection2, 
+  FeaturesSection3, 
+  FAQsSection,
+  InstagramSection,
+  BlogsSection
+} from "./sections";
 
 
 const Home = () => {
@@ -27,47 +26,16 @@ const Home = () => {
     <main className="overflow-hidden">
       <HeroCarousel id={"home"} />
 
-      <Section>
-        <Features />
-      </Section>
-
-      <Section id={"#franchizes"} isDark={true}>
-        <Services />
-      </Section>
-
-      <Section>
-        <Features2 />
-      </Section>
-
-      <Section id={"exp"} background={background1} isDark={true} >
-        <Experiences />
-      </Section>
-
-      <Section>
-        <Features3 />
-      </Section>
-
-      <Section isDark={true}>
-        <Instagram />
-      </Section>
-
-      <Section>
-        <Blogs />
-      </Section>
-
-      {/* info with nice animation */}
-      {/* cuz horizonal scrolling */}
-      {/* <Section id={"info"} darkTheme={true}>
-        <Information />
-      </Section> */}
-
-      <Section isDark={true}>
-        <ProjectsCarousel />
-      </Section>
-
-      <Section>
-        <FAQs />
-      </Section>
+      <FeaturesSection />
+      <ServicesSection isDark={true} />
+      <FeaturesSection2 />
+      <ExperiencesSection background={background1} isDark={true} />
+      <FeaturesSection3 />
+      <InstagramSection isDark={true} />
+      <BlogsSection />
+      <InformationSection isDark={true} />
+      <RealestateCarouselSection />
+      <FAQsSection />
 
     </main>
   );

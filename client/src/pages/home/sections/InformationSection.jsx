@@ -2,8 +2,9 @@ import React, { useContext } from "react"
 import { useTranslation } from "react-i18next"
 import { LanguageContext } from "../../../context/LanguageContext"
 import { info_1, info_2, info_3 } from "../../../assets/img"
+import { Section } from "../../../components"
 
-const Information = () => {
+const InformationSection = ({ id, isDark , background }) => {
 
 
   const { t } = useTranslation()
@@ -87,20 +88,22 @@ const Information = () => {
   }
 
   return (
-    <ul>
-      <InfoItem image={info_1} dir={dir}>
-        <InfoContent data={'info_1'} dir={dir} />
-      </InfoItem>
+    <Section id={id} isDark={isDark} background={background}>
+      <ul>
+        <InfoItem image={info_1} dir={dir}>
+          <InfoContent data={'info_1'} dir={dir} />
+        </InfoItem>
 
-      <InfoItem image={info_2} dir={dir} reverse={true}>
-        <InfoContent data={'info_2'} dir={dir} />
-      </InfoItem>
+        <InfoItem image={info_2} dir={dir} reverse={true}>
+          <InfoContent data={'info_2'} dir={dir} />
+        </InfoItem>
 
-      <InfoItem image={info_3}>
-        <InfoContent data={'info_3'} dir={dir} />
-      </InfoItem>
-    </ul>
+        <InfoItem image={info_3}>
+          <InfoContent data={'info_3'} dir={dir} />
+        </InfoItem>
+      </ul>
+    </Section>
   )
 }
 
-export default Information
+export default InformationSection 

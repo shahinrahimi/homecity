@@ -1,5 +1,5 @@
 import React from "react"
-import { Card, Simplify } from "../../../components"
+import { Card, Simplify, Section } from "../../../components"
 import { project_1_image_0, project_2_image_0, project_3_image_0, project_4_image_0 } from "../../../assets/img"
 
 const data = [
@@ -64,7 +64,7 @@ const Slide = ({ children, index, maxIndex, activeIndex }) => {
 }
 
 
-const ProjectsCarousel = () => {
+const ProjectsCarouselSection = ({ id, isDark , background }) => {
 
   let numSlides = data.length
 
@@ -97,32 +97,35 @@ const ProjectsCarousel = () => {
   })
 
   return (
-    <div className="flex flex-col lg:flex-row justify-between gap-10 items-center">
-        {/* content */}
-        <div className="flex flex-col w-[calc(100%)] md:w-[calc(%50)]">
-            <Simplify text={"Discover"}/>
-            <h1 className='text-4xl font-bold mb-2'>Find Your Home in Turkey</h1>
-            <p
-                className='mb-8'
-            >Discover your perfect abode with our real estate services, simplifying property searches and transactions for a true sense of home in Turkey.</p>
-        </div>
-        {/* sildes */}
-        <div className="relative  w-[calc(100%)] text-slate-900 grid place-content-center">
-          {/* scence */}
-          <div className="w-[calc(300px)] h-[calc(600px)]">
-            {Slides}
+    <Section id={id} isDark={isDark} background={background}>
+      <div className="flex flex-col lg:flex-row justify-between gap-10 items-center">
+          {/* content */}
+          <div className="flex flex-col w-[calc(100%)] md:w-[calc(%50)]">
+              <Simplify text={"Discover"}/>
+              <h1 className='text-4xl font-bold mb-2'>Find Your Home in Turkey</h1>
+              <p
+                  className='mb-8'
+              >Discover your perfect abode with our real estate services, simplifying property searches and transactions for a true sense of home in Turkey.</p>
           </div>
-          {/* controls */}
-          <button onClick={prevSlide} className="absolute -bottom-10 w-10 -left-8 text-8xl text-slate-200 hover:text-slate-50 transition-colors opacity-50 hover:opacity-80">
-            &#706;
-          </button>
-          <button onClick={nextSlide} className="absolute -bottom-10 w-10 -right-7 text-8xl text-slate-200 hover:text-slate-50 transition-colors opacity-50 hover:opacity-80 grid place-content-center">
-            &#707;
-          </button>
-        </div>
-    </div>
+          {/* sildes */}
+          <div className="relative  w-[calc(100%)] text-slate-900 grid place-content-center">
+            {/* scence */}
+            <div className="w-[calc(300px)] h-[calc(600px)]">
+              {Slides}
+            </div>
+            {/* controls */}
+            <button onClick={prevSlide} className="absolute -bottom-10 w-10 -left-8 text-8xl text-slate-200 hover:text-slate-50 transition-colors opacity-50 hover:opacity-80">
+              &#706;
+            </button>
+            <button onClick={nextSlide} className="absolute -bottom-10 w-10 -right-7 text-8xl text-slate-200 hover:text-slate-50 transition-colors opacity-50 hover:opacity-80 grid place-content-center">
+              &#707;
+            </button>
+          </div>
+      </div>
+    </Section>
   )
 
 
 }
-export default ProjectsCarousel
+
+export default ProjectsCarouselSection
