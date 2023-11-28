@@ -5,6 +5,18 @@ const blogSchema = new mongoose.Schema({
     summary: String,
     content: String,
     image: String,
+    translations: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "TranslationBlog"
+        }
+    ],
+    tags: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Tag",
+        }
+    ]
 },{ timestamps: true })
 
 

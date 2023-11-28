@@ -1,5 +1,6 @@
 const Blog = require("../model/Blog")
 const TranslationBlog = require("../model/BlogTranslation")
+const Tag = require("../model/Tag")
 const fs = require('fs')
 const ObjectId = require('mongoose').Types.ObjectId
 
@@ -7,19 +8,19 @@ const ObjectId = require('mongoose').Types.ObjectId
 // @route GET /blogs
 // @access public
 const getAllBlogs = async (req, res) => {
-    const blogs = await Blog.find().sort({ createdAt: 'desc' }).lean()
+    const blogs = await Blog.find().sort({ createdAt: 'desc' }).populate("tags").populate("translations").lean()
 
-    const translations = await TranslationBlog.find().lean()
+    // const translations = await TranslationBlog.find().lean()
 
-    const blogsWithTranslations = blogs.map(blog => {
-        const trans = translations.filter(t => t.blogId.toString() === blog._id.toString())
-        return {
-            ...blog,
-            trans
-        }
-    })
+    // const blogsWithTranslations = blogs.map(blog => {
+    //     const trans = translations.filter(t => t?.blogId && t.blogId.toString() === blog._id.toString())
+    //     return {
+    //         ...blog,
+    //         trans
+    //     }
+    // })
 
-    return res.status(200).json(blogsWithTranslations)
+    return res.status(200).json(blogs)
 }
 
 // @desc Create new blog
@@ -39,14 +40,16 @@ const createNewBlog = async (req, res) => {
         content_fa,
         content_tr,
         content_ar,
+        tags_csv
     } = req.body
 
-    const {
-        path: imagePath
-    } = req.file
-
+    if (!req.file) {
+        return res.status(400).json({ message: "No file found for image" })
+    }
+    
+    const { path } = req.file
     const requiredFields = [
-        imagePath,
+        path,
         title,
         summary,
         content,
@@ -61,19 +64,29 @@ const createNewBlog = async (req, res) => {
         content_ar,
     ]
 
-    console.log(requiredFields)
-
     const confirmData = requiredFields.every(item => typeof item === "string" )
-
     if (!confirmData){
         return res.status(400).json({ message: "All fields required" })
+    }
+
+    let tagIds = []
+    let tags = []
+
+    if (tags_csv){
+        tagIds = tags_csv.split(",")
+        const validIds = tagIds.every(tagId => ObjectId.isValid(tagId))
+        if (!validIds){
+            return res.status(400).json({ message: "Not valid tagId or tagIds provided" })
+        }
+        tags = await Promise.all(tagIds.map(tagId => Tag.findById(tagId)))
     }
 
     const newBlog = await Blog.create({
         title,
         summary,
         content,
-        image: imagePath
+        image: path,
+        tags: tags.map(tag => tag._id)
     })
 
     if (!newBlog){
@@ -81,7 +94,6 @@ const createNewBlog = async (req, res) => {
     }
 
     const translationFa = await TranslationBlog.create({
-        blogId: newBlog.id,
         language: "fa",
         title: title_fa,
         summary: summary_fa,
@@ -89,7 +101,6 @@ const createNewBlog = async (req, res) => {
       })
     
       const translationTr = await TranslationBlog.create({
-        blogId: newBlog.id,
         language: "tr",
         title: title_tr,
         summary: summary_tr,
@@ -97,12 +108,19 @@ const createNewBlog = async (req, res) => {
       })
     
       const translationAr = await TranslationBlog.create({
-        blogId: newBlog.id,
         language: "ar",
         title: title_ar,
         summary: summary_ar,
         content: content_ar
       })
+
+      newBlog.translations = [
+        translationFa._id,
+        translationAr._id,
+        translationTr._id
+      ]
+
+      const result = await newBlog.save()
 
       res.status(201).json({ message: `New blog created`})
 
@@ -128,6 +146,7 @@ const updateBlog = async (req, res) => {
         content_fa,
         content_tr,
         content_ar,
+        tags_csv
     } = req.body
 
     const requiredFields = [
@@ -149,39 +168,47 @@ const updateBlog = async (req, res) => {
     
     // check if every fields is exists and have type of string
     const confirmData = requiredFields.every(item => typeof item === "string" )
-
     if (!confirmData){
         return res.status(400).json({ message: "All fields required" })
     }
 
-    const blog = await Blog.findById(id).exec()
+    let tagIds = []
+    let tags = []
+
+    if (tags_csv){
+        tagIds = tags_csv.split(",")
+        const validIds = tagIds.every(tagId => ObjectId.isValid(tagId))
+        if (!validIds){
+            return res.status(400).json({ message: "Not valid tagId or tagIds provided" })
+        }
+        tags = await Promise.all(tagIds.map(tagId => Tag.findById(tagId)))
+    }
+
+    const blog = await Blog.findById(id).populate("translations").exec()
     if (!blog){
         return res.status(400).json({ message: "Blog not found"})
     }
 
-    
-
-    const translationFa = await TranslationBlog.findOne({ blogId: id, language: "fa" }).exec()
-    const translationTr = await TranslationBlog.findOne({ blogId: id, language: "tr" }).exec()
-    const translationAr = await TranslationBlog.findOne({ blogId: id, language: "ar" }).exec()
-        if (!translationFa || !translationTr || !translationAr){
-        return res.status(400).json({ message: "Translation for post not found"})
-    }
-
-    // update fields
     blog.title = title
     blog.summary = summary
     blog.content = content
+    blog.tags = tags.map(tag => tag._id)
+
+    const translationFa = blog.translations.filter(translation => translation.language === "fa")[0]
+    const translationAr = blog.translations.filter(translation => translation.language === "ar")[0]
+    const translationTr = blog.translations.filter(translation => translation.language === "tr")[0]
+
     translationFa.title = title_fa
     translationFa.summary = summary_fa
     translationFa.content = content_fa
-    translationTr.title = title_tr
-    translationTr.summary = summary_tr
-    translationTr.content = content_tr
+
     translationAr.title = title_ar
     translationAr.summary = summary_ar
     translationAr.content = content_ar
 
+    translationTr.title = title_tr
+    translationTr.summary = summary_tr
+    translationTr.content = content_tr
 
     // if req.file is exist so the new file should replace with old one
     if (req.file){
@@ -212,17 +239,14 @@ const deleteBlog = async (req, res) => {
         return res.status(400).json({ message: "Blog ID required"})
     }
 
-    const blog = await Blog.findById(id).exec()
+    const blog = await Blog.findById(id).populate("translations").exec()
     if (!blog){
         return res.status(400).json({ message: "Blog  not found"})
     }
 
-    const translationFa = await TranslationBlog.findOne({ blogId: id, language: "fa"}).exec()
-    const translationTr = await TranslationBlog.findOne({ blogId: id, language: "tr"}).exec()
-    const translationAr = await TranslationBlog.findOne({ blogId: id, language: "ar"}).exec()
-    if (!translationFa || !translationTr || !translationAr){
-        return res.status(400).json({ message: "Translation for blog not found"})
-    }
+    const translationFa = blog.translations.filter(translation => translation.language === "fa")[0]
+    const translationAr = blog.translations.filter(translation => translation.language === "ar")[0]
+    const translationTr = blog.translations.filter(translation => translation.language === "tr")[0]
 
     const deleteAll = await Promise.all([
         blog.deleteOne(),
