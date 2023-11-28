@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { deleteBlog } from '../../../api/blogApi'
+import { deleteBlog } from '../../../api'
 import { Loading } from '../../../components'
 import { useMutation, useQueryClient } from 'react-query'
 import { TimeAgo } from '../../../components'

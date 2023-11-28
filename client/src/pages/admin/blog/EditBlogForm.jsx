@@ -1,15 +1,16 @@
 import React from 'react'
 import BlogForm from './BlogForm'
 import { useMutation, useQueryClient } from 'react-query'
-import { updateBlog } from '../../../api/blogApi'
+import { updateBlog } from '../../../api'
 import { Loading } from "../../../components"
 import { Navigate } from 'react-router-dom'
 
 const EditBlogForm = ({ blog }) => {
 
-  const blogFa = blog.trans.filter(t => t.language === "fa")[0]
-  const blogAr = blog.trans.filter(t => t.language === "ar")[0]
-  const blogTr = blog.trans.filter(t => t.language === "tr")[0]
+  const tagIds = blog.tags.map(tag => tag._id)
+  const blogFa = blog.translations.filter(t => t.language === "fa")[0]
+  const blogAr = blog.translations.filter(t => t.language === "ar")[0]
+  const blogTr = blog.translations.filter(t => t.language === "tr")[0]
 
   const form = React.useRef(null)
   const [title, setTitle] = React.useState(blog.title)
@@ -24,6 +25,7 @@ const EditBlogForm = ({ blog }) => {
   const [title_tr, setTitle_tr] = React.useState(blogTr.title)
   const [summary_tr, setSummery_tr] = React.useState(blogTr.summary)
   const [content_tr, setContent_tr] = React.useState(blogTr.content)
+  const [selectedTagIds, setSelectedTagIds] = React.useState(tagIds)
   const [files, setFiles] = React.useState("")
 
   const queryClient = useQueryClient()
@@ -60,6 +62,7 @@ const EditBlogForm = ({ blog }) => {
     blogForm.set("title_tr", title_tr)
     blogForm.set("summary_tr", summary_tr)
     blogForm.set("content_tr", content_tr)
+    blogForm.set("tags_csv", selectedTagIds.join())
     updateBlogMutation({ id: blog.id, blogForm , token: "cosssher"})
   }
 
@@ -104,6 +107,9 @@ const EditBlogForm = ({ blog }) => {
           setSummery_tr={setSummery_tr}
           content_tr={content_tr}
           setContent_tr={setContent_tr}
+
+          selectedTagIds={selectedTagIds}
+          setSelectedTagIds={setSelectedTagIds}
 
           setFiles={setFiles}
           

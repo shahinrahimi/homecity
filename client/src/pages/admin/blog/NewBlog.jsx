@@ -1,9 +1,9 @@
 import React from 'react'
 import BlogForm from './BlogForm'
 import { useNavigate } from 'react-router-dom'
-import { createNewBlog } from '../../../api/blogApi'
+import { createNewBlog } from '../../../api'
 import { useMutation, useQueryClient } from 'react-query'
-import { Loading } from '../../../components'
+import { Loading, TagInputSelect } from '../../../components'
 
 const NewBlog = () => {
 
@@ -21,6 +21,7 @@ const NewBlog = () => {
     const [title_tr, setTitle_tr] = React.useState("test_tr")
     const [summary_tr, setSummery_tr] = React.useState("test_tr")
     const [content_tr, setContent_tr] = React.useState("<h1>test_tr</h1>")
+    const [selectedTagIds, setSelectedTagIds] = React.useState([])
     const [files, setFiles] = React.useState("")
 
     const form = React.useRef(null)
@@ -57,6 +58,7 @@ const NewBlog = () => {
         blogForm.set("title_tr", title_tr)
         blogForm.set("summary_tr", summary_tr)
         blogForm.set("content_tr", content_tr)
+        blogForm.set("tags_csv", selectedTagIds.join())
         createNewBlogMutation({ blogForm })
     }
 
@@ -96,6 +98,9 @@ const NewBlog = () => {
                 setSummery_tr={setSummery_tr}
                 content_tr={content_tr}
                 setContent_tr={setContent_tr}
+
+                selectedTagIds={selectedTagIds}
+                setSelectedTagIds={setSelectedTagIds}
 
                 setFiles={setFiles}
                 

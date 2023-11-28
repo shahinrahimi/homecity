@@ -33,5 +33,23 @@ export const useBlogStore = create(
 )
 
 
+export const useTagStore = create(
+    persist(
+        (set) => ({
+            tags:[],
+            setTags: (tags) => set({ tags }),
+            getTagById: (id) => {
+                const tags = useTagStore.getState().tags;
+                return tags.find((tag) => tag.id === id);
+            }
+        }),
+        {
+            name: 'tag-storage',
+            storage: createJSONStorage(() => sessionStorage)
+        },
+    )
+)
+
+
 
 

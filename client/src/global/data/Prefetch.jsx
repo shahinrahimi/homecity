@@ -1,13 +1,16 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import { getAllBlogs } from "../../api/blogApi"
-import { useQuery } from 'react-query'
-import { useBlogStore } from '../../app/store'
-import { Loading } from '../../components'
+import { getAllBlogs, getAllTags } from '../../api'
 
+import { useQuery } from 'react-query'
+import { useBlogStore, useTagStore } from '../../app/store'
+import { Loading } from '../../components'
+import { useQueryClient } from 'react-query'
 const Prefetch = () => {
 
     const { setBlogs } = useBlogStore()
+    const { setTags } = useTagStore()
+    const QueryClinet = useQueryClient()
 
     const {
         isSuccess,
@@ -18,27 +21,41 @@ const Prefetch = () => {
     } = useQuery('blogs', getAllBlogs, {
         select: data => data.map(d => {
             return {...d, id: d._id, imageSrc: `http://localhost:5000/${d.image}`}
-        }),
+        })
     })
 
+    const {
+        isSuccess: isTagSuccess,
+        isLoading: isTagLoading,
+        isError: isTagError,
+        error: errorTag,
+        data: tagsData,
+    } = useQuery('tags', getAllTags, {
+        select: data => data.map(d => {
+            return {...d, id: d._id }
+        }),
+    })
+    
     React.useEffect(() => {
-        if (blogsData){
-            setBlogs(blogsData)
-        }
+        if (tagsData) setTags(tagsData)
+    }, [tagsData, setTags])
 
+    React.useEffect(() => {
+        console.log("useEffect data ran")
+        console.log(blogsData)
+        if (blogsData) setBlogs(blogsData)
     }, [blogsData, setBlogs])
 
+    React.useEffect(() => {
+        if (isError) console.error(`blogs`, error)
+        if (isTagError) console.error(`tags`, errorTag)
+    }, [error, errorTag])
+
     let content = ""
+    if (isLoading || isTagLoading) content = <Loading />
+    if (isSuccess && isTagSuccess) content = <Outlet />
 
-    if (isLoading){
-        content = <Loading />
-    }
-
-    if (isSuccess){
-        content = <Outlet />
-    }
-
-  return content
+    return content
 }
 
 export default Prefetch

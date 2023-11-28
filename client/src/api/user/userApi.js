@@ -1,6 +1,6 @@
-import { api } from "./api"
+import api from "../api"
 
-export const register = async ({ username, password }) => {
+export const createNewUser = async ({ username, password }) => {
     const response = await api.post("/users", {username, password})
     return response
 }

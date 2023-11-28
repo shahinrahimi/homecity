@@ -1,10 +1,9 @@
 import React from 'react'
-import { login } from "../../../api/authApi"
+import { login } from '../../../api';
 import { HashLoader } from 'react-spinners';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from 'react-query';
 import LoginForm from './LoginForm';
-import { usePersistLogin } from '../../../hooks/usePersistLogin';
 import { useAuthStore } from '../../../app/store';
 
 const LoginPage = () => {

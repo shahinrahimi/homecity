@@ -1,7 +1,7 @@
 import React from 'react'
-import {  Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import { useMutation } from 'react-query'
-import { refresh, validate } from '../../../api/authApi'
+import { refresh, validate } from '../../../api'
 import { Loading } from "../../../components"
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../../../app/store'

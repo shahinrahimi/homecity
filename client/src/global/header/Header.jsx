@@ -13,7 +13,7 @@ import { IoLogOutOutline } from "react-icons/io5";
 
 import { Brand, NavBar, SearchBox, HamburgerMenu } from "../components"
 import usePathLocation from "../../hooks/usePathLocation"
-import { logout } from "../../api/authApi"
+import { logout } from "../../api"
 import { useMutation } from "react-query"
 
 const Header = () => {

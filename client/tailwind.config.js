@@ -287,6 +287,16 @@ export default {
           opacity:1,
           transform: "scale(100%)"
         }
+      },
+
+      tagInputHidden : {
+        "0%": {
+          opacity: "0",
+        },
+        "100%": {
+          opacity: "0",
+          pointerEvents: "none" 
+        }
       }
     },
     
@@ -319,7 +329,10 @@ export default {
       'ticker-show': 'ticker 20s linear forwards',
 
       // input
-      'input-active': "inputEffect 0.5s ease forwards"
+      'input-active': "inputEffect 0.5s ease forwards",
+
+      // tag input
+      'tag-input': "tagInputHidden 0.5s ease forwards"
     },
 
   plugins: [

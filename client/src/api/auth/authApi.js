@@ -1,5 +1,6 @@
-import { api } from "./api"
+import api from "../api"
 
+// auth api
 export const login = async ({ username, password }) => {
     const response = await api.post("/auth", { username, password })
     return response

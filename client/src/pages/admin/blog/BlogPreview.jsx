@@ -1,5 +1,5 @@
 import React from 'react'
-import { deleteBlog } from '../../../api/blogApi'
+import { deleteBlog } from '../../../api'
 import { useMutation, useQueryClient } from 'react-query'
 import { useBlogStore } from '../../../app/store'
 import { useParams } from 'react-router-dom'

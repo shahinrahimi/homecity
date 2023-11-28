@@ -17,7 +17,7 @@ const Footer = () => {
         {/* footer main */}
         <Brand />
 
-        <div className="flex flex-col items-start md:flex-row justify-between md:items-center border-slate-500 mb-4 gap-8">
+        <div className="flex flex-col items-start md:flex-row justify-between md:items-center border-slate-500 mb-8 gap-8">
 
           {/* Address and Contacts */}
           <div className="flex flex-col h-full gap-3 justify-between">

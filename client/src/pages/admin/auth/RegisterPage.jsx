@@ -1,14 +1,14 @@
 import React from 'react'
 import RegisterForm from './RegisterForm';
 import { useMutation } from 'react-query';
-import { register } from '../../../api/userApi';
+import { createNewUser } from '../../../api';
 import { HashLoader } from 'react-spinners';
 const RegisterPage = () => {
 
   const [username, setUsername] = React.useState("")
   const [password, setPassword] = React.useState("")
   const [password2, setPassword2] = React.useState("")
-  const mutation = useMutation(formData => register({...formData}))
+  const mutation = useMutation(formData => createNewUser({...formData}))
   const {
     isIdle,
     isLoading,

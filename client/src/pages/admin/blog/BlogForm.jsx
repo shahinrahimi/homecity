@@ -1,5 +1,6 @@
 import React from 'react'
 import Editor from './Editor'
+import { TagInputSelect } from '../../../components'
 const BlogForm = ({
     form,
     title, 
@@ -27,6 +28,8 @@ const BlogForm = ({
     setContent_ar,
     content_tr,
     setContent_tr,
+    selectedTagIds,
+    setSelectedTagIds,
     buttonLabel,
     handleSubmit }) => {
 
@@ -36,6 +39,7 @@ const BlogForm = ({
             onSubmit={handleSubmit}
             ref={form}
             >
+                
                 {/* image */}
                 <div className="flex flex-col gap-1">
                     <label 
@@ -49,6 +53,19 @@ const BlogForm = ({
                         className="block w-full rounded-lg text-sm text-gray-900 border border-gray-300 cursor-pointer bg-gray-50 focus:outline-none file:border file:text-white file:bg-c-black-500 file:cursor-pointer file:hover:bg-c-black-300 file:transition-all file:rounded-lg" aria-describedby="file_input_help"accept="image/png, image/jpg, image/jpeg"
                     />
                     <p className="text-sm text-gray-500" id="file_input_help">PNG, JPEG, JPG</p>
+                </div>
+
+                {/* tags */}
+                <div className="flex flex-col gap-1">
+                    <label 
+                        htmlFor="image"
+                        className='uppercase text-sm'
+                    >tags</label>
+                    <TagInputSelect 
+                        className={"px-4 py-3 border border-c-black-100/25 outline-none w-full"}
+                        selectedTagIds={selectedTagIds}
+                        setSelectedTagIds={setSelectedTagIds}
+                    />
                 </div>
 
                 {/* titles */}
@@ -241,6 +258,8 @@ const BlogForm = ({
                     </div>
                     
                 </div>
+
+                
 
                 <button
                     className='bg-c-black-800 text-white grid place-content-center py-2 hover:bg-c-black-400 transition-colors cursor-pointer font-semibold capitalize'

@@ -23,7 +23,8 @@ import {
   NewBlog,
   LoginPage,
   RegisterPage,
-  RequiredAuth
+  RequiredAuth,
+  TagList
 } from "./pages/admin"
 
 // const Home = React.lazy(() => import ('./pages/home/Home'))
@@ -83,6 +84,13 @@ function App() {
             { /* private */}
               <Route element={<RequiredAuth />}>
                 <Route path="dash" element={<Dashabord />} />
+                {/* tag */}
+                <Route path="tag" element={<TagList />} >
+                  <Route index element={<TagList />} />
+                  <Route path='new' element={<>new tag</>} />
+                  <Route path=":id" element={<>tag page</>} />
+                  <Route path="edit/:id" element={<>EditTag</>} />
+                </Route>
                 {/* blog */}
                 <Route path="blog">
                   <Route index element={<BlogList />} />

@@ -23,7 +23,7 @@ const FeaturesSection2 = ({ id, isDark , background }) => {
             <div className="flex flex-col-reverse md:flex-row justify-between gap-10 items-center">
                 {/* image */}
                 <div className="w-[calc(100%)] md:w-[calc(%50)] rounded-xl overflow-hidden shadow-2xl shadow-c-red-400 relative">
-                    {/* <SimpleTeather images={images} /> */}
+                    <SimpleTeather images={images} />
                 </div>
                 {/* content */}
                 <div className="flex flex-col w-[calc(100%)] md:w-[calc(%50)]">
