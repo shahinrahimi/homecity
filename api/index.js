@@ -55,7 +55,6 @@ app.use("/api", require('./routes/root'))
 app.use("/api/auth", require("./routes/authRoutes"))
 app.use("/api/users", require("./routes/userRoutes"))
 app.use("/api/blogs", require("./routes/blogRoutes"))
-app.use("/api/posts", require("./routes/postRoutes"))
 app.use("/api/tags", require("./routes/tagRoutes"))
 app.use("/api/messages", require("./routes/messageRoute"))
 app.all('/api/*', (req,res) => {
