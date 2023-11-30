@@ -5,10 +5,10 @@ const verifyJWT = require('../middleware/verifyJWT')
 
 router.route("/")
     .get(tagController.getAllTags)
-    .post(tagController.createNewTag)
+    .post(verifyJWT,tagController.createNewTag)
 
-router.route(":id")
-    .patch(tagController.updateTag)
-    .delete(tagController.deleteTag)
+router.route("/:id")
+    .patch(verifyJWT, tagController.updateTag)
+    .delete(verifyJWT, tagController.deleteTag)
 
 module.exports = router

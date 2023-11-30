@@ -10,16 +10,6 @@ const ObjectId = require('mongoose').Types.ObjectId
 const getAllBlogs = async (req, res) => {
     const blogs = await Blog.find().sort({ createdAt: 'desc' }).populate("tags").populate("translations").lean()
 
-    // const translations = await TranslationBlog.find().lean()
-
-    // const blogsWithTranslations = blogs.map(blog => {
-    //     const trans = translations.filter(t => t?.blogId && t.blogId.toString() === blog._id.toString())
-    //     return {
-    //         ...blog,
-    //         trans
-    //     }
-    // })
-
     return res.status(200).json(blogs)
 }
 
@@ -168,7 +158,7 @@ const updateBlog = async (req, res) => {
     
     // check if every fields is exists and have type of string
     const confirmData = requiredFields.every(item => typeof item === "string" )
-    if (!confirmData){
+    if (!confirmData || !ObjectId.isValid(id)){
         return res.status(400).json({ message: "All fields required" })
     }
 
@@ -192,7 +182,9 @@ const updateBlog = async (req, res) => {
     blog.title = title
     blog.summary = summary
     blog.content = content
-    blog.tags = tags.map(tag => tag._id)
+    blog.tags = tags.map(tag => {
+        return tag._id
+    })
 
     const translationFa = blog.translations.filter(translation => translation.language === "fa")[0]
     const translationAr = blog.translations.filter(translation => translation.language === "ar")[0]

@@ -1,5 +1,6 @@
 const User = require('../model/User')
 const bcrypt = require('bcrypt')
+const ObjectId = require('mongoose').Types.ObjectId
 
 // @desc Get all users
 // @route GET /users
@@ -55,14 +56,15 @@ const createNewUser = async (req, res) => {
 // @route PATCH /users
 // @access Private
 const updateUser = async (req, res) => {
-    const { 
-        id, 
+    const { id } = req.params
+
+    const {
         username,
         password
     } = req.body
 
     // confirm data
-    if (!id || !username){
+    if (!id || !username || !ObjectId.isValid(id)){
         return res.status(400).json({ message: 'All fields except password are required'})
     }
 
@@ -97,8 +99,8 @@ const updateUser = async (req, res) => {
 // @route DELETE /users
 // @access Private
 const deleteUser = async (req, res) => {
-    const { id } = req.body
-    if (!id) {
+    const { id } = req.params
+    if (!id || !ObjectId.isValid(id)) {
         return res.status(400).json({ message: 'User ID Required'})
     }
 
