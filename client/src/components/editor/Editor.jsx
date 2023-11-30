@@ -21,7 +21,7 @@ const formats = [
     ]
 
 
-const Editor = ({ content, setContent}) => {
+const Editor = ({ content, setContent }) => {
 
   return (
     <ReactQuill

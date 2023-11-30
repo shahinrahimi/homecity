@@ -1,11 +1,15 @@
 import React from 'react'
-import BlogForm from './BlogForm'
+import { Navigate } from 'react-router-dom'
 import { useMutation, useQueryClient } from 'react-query'
+import { useAuthStore } from '../../../app/store'
+
+
+import BlogForm from './BlogForm'
 import { updateBlog } from '../../../api'
 import { Loading } from "../../../components"
-import { Navigate } from 'react-router-dom'
-
 const EditBlogForm = ({ blog }) => {
+
+  const token = useAuthStore.getState().token
 
   const tagIds = blog.tags.map(tag => tag._id)
   const blogFa = blog.translations.filter(t => t.language === "fa")[0]
@@ -63,7 +67,7 @@ const EditBlogForm = ({ blog }) => {
     blogForm.set("summary_tr", summary_tr)
     blogForm.set("content_tr", content_tr)
     blogForm.set("tags_csv", selectedTagIds.join())
-    updateBlogMutation({ id: blog.id, blogForm , token: "cosssher"})
+    updateBlogMutation({ id: blog.id, formData: blogForm , accessToken: token })
   }
 
   if (isLoading){

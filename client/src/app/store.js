@@ -14,6 +14,22 @@ export const useAuthStore = create(
     )
 )
 
+export const useTagStore = create(
+    persist(
+        (set) => ({
+            tags:[],
+            setTags: (tags) => set({ tags }),
+            getTagById: (id) => {
+                const tags = useTagStore.getState().tags;
+                return tags.find((tag) => tag.id === id);
+            }
+        }),
+        {
+            name: 'tag-storage',
+            storage: createJSONStorage(() => sessionStorage)
+        },
+    )
+)
 
 export const useBlogStore = create(
     persist(
@@ -33,22 +49,23 @@ export const useBlogStore = create(
 )
 
 
-export const useTagStore = create(
+export const useProjectStore = create(
     persist(
         (set) => ({
-            tags:[],
-            setTags: (tags) => set({ tags }),
-            getTagById: (id) => {
-                const tags = useTagStore.getState().tags;
-                return tags.find((tag) => tag.id === id);
+            projects:[],
+            setProjects: (projects) => set({ projects }),
+            getProjectById: (id) => {
+                const projects = useProjectStore.getState().projects;
+                return projects.find((project) => project.id === id);
             }
         }),
         {
-            name: 'tag-storage',
+            name: 'project-storage',
             storage: createJSONStorage(() => sessionStorage)
         },
     )
 )
+
 
 
 

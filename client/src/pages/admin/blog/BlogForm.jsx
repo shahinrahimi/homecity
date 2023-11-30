@@ -1,6 +1,6 @@
 import React from 'react'
-import Editor from './Editor'
-import { TagInputSelect } from '../../../components'
+import { TagInputSelect, Editor } from '../../../components'
+
 const BlogForm = ({
     form,
     title, 
@@ -31,7 +31,8 @@ const BlogForm = ({
     selectedTagIds,
     setSelectedTagIds,
     buttonLabel,
-    handleSubmit }) => {
+    handleSubmit 
+}) => {
 
     return (
         <form 

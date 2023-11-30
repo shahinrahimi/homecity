@@ -15,16 +15,24 @@ import {
 
 import {
   Dashabord,
-  Franchise,
-  Realestate,
+  LoginPage,
+  RegisterPage,
+  RequiredAuth,
+  TagList,
+
   BlogList,
   BlogPreview,
   EditBlog,
   NewBlog,
-  LoginPage,
-  RegisterPage,
-  RequiredAuth,
-  TagList
+
+  ProjectList,
+  ProjectPreview,
+  EditProject,
+  NewProject,
+
+  Franchise,
+  
+  
 } from "./pages/admin"
 
 // const Home = React.lazy(() => import ('./pages/home/Home'))
@@ -83,10 +91,10 @@ function App() {
               <Route path="register" element={<RegisterPage />} />
             { /* private */}
               <Route element={<RequiredAuth />}>
+                <Route path="tag" element={<TagList />} />
                 <Route path="dash" element={<Dashabord />} />
                 {/* tag */}
-                <Route path="tag" element={<TagList />} />
-                  {/* <Route index element={<TagList />} /> */}
+                
                 {/* blog */}
                 <Route path="blog">
                   <Route index element={<BlogList />} />
@@ -94,10 +102,18 @@ function App() {
                   <Route path=":id" element={<BlogPreview />} />
                   <Route path="edit/:id" element={<EditBlog />} />
                 </Route>
+
+                {/* project */}
+                <Route path="project">
+                  <Route index element={<ProjectList />} />
+                  <Route path="new" element={<NewProject />} />
+                  <Route path=":id" element={<ProjectPreview />} />
+                  <Route path="edit/:id" element={<EditProject />} />
+                </Route>
+
                 {/* franchise */}
                 <Route path="franchise" element={<Franchise />} />
                 {/* realestate */}
-                <Route path="realestate" element={<Realestate />} />
               </Route>
               
             </Route>

@@ -10,8 +10,8 @@ const Dashboard = () => {
         <ul className='flex flex-col gap-4'>
             <Link to="/admin/tag">Tags</Link>
             <Link to="/admin/blog" >Blogs</Link>
+            <Link to="/admin/project">Projects</Link>
             <Link to="/admin/franchise">Franchises</Link>
-            <Link to="/admin/realestate">Realstates</Link>
         </ul>
 
     </div>

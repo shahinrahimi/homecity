@@ -1,13 +1,16 @@
 import React from 'react'
-import BlogForm from './BlogForm'
 import { useNavigate } from 'react-router-dom'
+
 import { createNewBlog } from '../../../api'
 import { useMutation, useQueryClient } from 'react-query'
+import { useAuthStore } from '../../../app/store'
+import BlogForm from './BlogForm'
 import { Loading, TagInputSelect } from '../../../components'
 
 const NewBlog = () => {
 
     const naviagte = useNavigate()
+    const token = useAuthStore.getState().token
 
     const [title, setTitle] = React.useState("test")
     const [summary, setSummery] = React.useState("test")
@@ -59,7 +62,7 @@ const NewBlog = () => {
         blogForm.set("summary_tr", summary_tr)
         blogForm.set("content_tr", content_tr)
         blogForm.set("tags_csv", selectedTagIds.join())
-        createNewBlogMutation({ blogForm })
+        createNewBlogMutation({ formData: blogForm, accessToken: token })
     }
 
     React.useEffect(() => {

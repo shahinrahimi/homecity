@@ -5,8 +5,8 @@ export const getAllBlogs = async () => {
     return response.data
 }
 
-export const createNewBlog = async ({ blogForm, accessToken }) => {
-    const response = await api.post("/blogs", blogForm, {
+export const createNewBlog = async ({ formData, accessToken }) => {
+    const response = await api.post("/blogs", formData, {
         headers: { 
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${accessToken}`
@@ -16,8 +16,8 @@ export const createNewBlog = async ({ blogForm, accessToken }) => {
 }
 
 
-export const updateBlog = async ({ id, blogForm, accessToken }) => {
-    const response = await api.patch(`/blogs/${id}`, blogForm, {
+export const updateBlog = async ({ id, formData, accessToken }) => {
+    const response = await api.patch(`/blogs/${id}`, formData, {
         headers: { 
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${accessToken}`
