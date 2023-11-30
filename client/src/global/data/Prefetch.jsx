@@ -5,12 +5,11 @@ import { getAllBlogs, getAllTags } from '../../api'
 import { useQuery } from 'react-query'
 import { useBlogStore, useTagStore } from '../../app/store'
 import { Loading } from '../../components'
-import { useQueryClient } from 'react-query'
+
 const Prefetch = () => {
 
     const { setBlogs } = useBlogStore()
     const { setTags } = useTagStore()
-    const QueryClinet = useQueryClient()
 
     const {
         isSuccess,

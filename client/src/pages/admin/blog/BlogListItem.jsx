@@ -45,19 +45,19 @@ const BlogListItem = ({ blog }) => {
 
   return (
     <article
-      className='flex flex-col w-full  bg-white shadow-sharp p-10 rounded-lg justify-between'>
-        <div className="flex justify-between gap-10">
+      className='flex flex-col w-full  bg-white shadow-sharp p-5 md:p-10 rounded-lg justify-between'>
+        <div className="flex flex-col lg:flex-row justify-between gap-10">
             {/* image */}
-            <div className="w-[calc(50%)] rounded-lg overflow-hidden">
+            <div className="lg:w-[calc(50%)] rounded-lg overflow-hidden">
                 <img 
                     src={imageSrc} alt=""
                     className='h-full w-full object-cover'
                 />
             </div>
             {/* content */}
-            <div className="flex flex-col w-[calc(50%)]">
+            <div className="flex flex-col lg:w-[calc(50%)]">
                 <Link
-                className='text-3xl font-bold'
+                className='text-3xl font-bold mb-4'
                 to={`${id}`}
                 >{title}</Link>
                 <p>{summary}</p>
@@ -65,8 +65,8 @@ const BlogListItem = ({ blog }) => {
         </div>
 
 
-        <div className="flex justify-between items-center">
-          <small className='self-end'>updated at <TimeAgo timestamp={updatedAt}/></small>
+        <div className="flex justify-between items-center mt-3">
+          <small className='self-end text-gray-500 italic'>updated at <TimeAgo timestamp={updatedAt}/></small>
 
           <div className="flex gap-4">
             <button 

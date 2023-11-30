@@ -1,6 +1,6 @@
 import React from 'react'
 import { login } from '../../../api';
-import { HashLoader } from 'react-spinners';
+import { Loading } from "../../../components"
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from 'react-query';
 import LoginForm from './LoginForm';
@@ -55,15 +55,17 @@ const LoginPage = () => {
                     setPassword={setPassword}
                     handleSubmit={handleSubmit}  />
   if (isLoading){
-    content =  <HashLoader />
+    content =  <Loading />
   }
 
   if (isError) {
     content = <>Error ...{JSON.stringify(error.message)} </>
   }
 
+  // return content
+
   return (
-    <main className='w-full min-h-screen grid place-content-center text-c-black-500'>
+    <main className='w-full h-[calc(80vh)]  grid place-content-center '>
       {content}
     </main>
   )

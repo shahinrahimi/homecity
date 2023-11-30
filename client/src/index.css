@@ -9,6 +9,10 @@
   src: url("./assets/fonts/Vazirmatn-Regular.ttf");
 }
 
+.vazir {
+  font-family: "Vazir";
+}
+
 #root {
   min-height: 100vh;
 }

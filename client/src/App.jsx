@@ -85,12 +85,8 @@ function App() {
               <Route element={<RequiredAuth />}>
                 <Route path="dash" element={<Dashabord />} />
                 {/* tag */}
-                <Route path="tag" element={<TagList />} >
-                  <Route index element={<TagList />} />
-                  <Route path='new' element={<>new tag</>} />
-                  <Route path=":id" element={<>tag page</>} />
-                  <Route path="edit/:id" element={<>EditTag</>} />
-                </Route>
+                <Route path="tag" element={<TagList />} />
+                  {/* <Route index element={<TagList />} /> */}
                 {/* blog */}
                 <Route path="blog">
                   <Route index element={<BlogList />} />

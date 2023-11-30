@@ -6,6 +6,7 @@ export const getAllTags = async () => {
 }
 
 export const createNewTag = async ({ data, accessToken }) => {
+    console.log("create new tag ran", data)
     const response = await api.post("/tags", data, {
         headers: { 
             Authorization: `Bearer ${accessToken}`

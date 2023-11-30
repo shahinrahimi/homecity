@@ -12,11 +12,11 @@ const LoginForm = ({
 
     return (
         <form 
-        className='bg-white shadow-cutome-1 flex flex-col justify-between px-20 py-16 gap-4 rounded-md'
+        className='bg-white shadow-cutome-1 flex flex-col justify-between px-10 lg:px-20 py-8 lg:py-16 gap-4 rounded-md'
         onSubmit={handleSubmit}
         >
             <h1
-            className='text-4xl text-c-black-500/75 uppercase font-light text-center mb-4'
+            className='text-2xl lg:text-4xl text-c-black-500/75 uppercase font-light text-center mb-4'
             >admin login</h1>
             {/* username group */}
             <div className="flex flex-col gap-2">
@@ -28,7 +28,7 @@ const LoginForm = ({
                     <input
                     name='username'
                     type='text'
-                    className='peer focus:border-transparent active:border-transparent outline-none'
+                    className='peer w-full focus:border-transparent active:border-transparent outline-none'
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     />
@@ -39,9 +39,9 @@ const LoginForm = ({
                     <div className="absolute top-0 left-0 w-full h-full border border-c-black-100/25 rounded-md peer-focus:border-transparent pointer-events-none bg-transparent"></div>
                 </div>
                 
-                </div>
+            </div>
                 {/* password group */}
-                <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2">
                 <label 
                     htmlFor="password"
                     className='uppercase text-sm'
@@ -50,12 +50,12 @@ const LoginForm = ({
                     <input
                     name='password'
                     type={revealPasswod ? "text" : "password"}
-                    className='peer focus:border-transparent active:border-transparent outline-none'
+                    className='peer w-full focus:border-transparent active:border-transparent outline-none'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     />
                     <div 
-                    className="text-c-black-500/50 mr-1"
+                    className="text-c-black-500/50 mr-1 absolute right-5"
                     onClick={() => setReavelPassword(prev => !prev)}
                     >
                     {revealPasswod 
