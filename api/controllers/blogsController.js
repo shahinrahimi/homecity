@@ -1,5 +1,5 @@
 const Blog = require("../model/Blog")
-const TranslationBlog = require("../model/BlogTranslation")
+const Translation = require("../model/Transaltion")
 const Tag = require("../model/Tag")
 const fs = require('fs')
 const ObjectId = require('mongoose').Types.ObjectId
@@ -83,21 +83,22 @@ const createNewBlog = async (req, res) => {
         return res.status(400).json({ message: 'Invalid blog data received' })
     }
 
-    const translationFa = await TranslationBlog.create({
+    // create translation
+    const translationFa = await Translation.create({
         language: "fa",
         title: title_fa,
         summary: summary_fa,
         content: content_fa,
       })
     
-      const translationTr = await TranslationBlog.create({
+      const translationTr = await Translation.create({
         language: "tr",
         title: title_tr,
         summary: summary_tr,
         content: content_tr
       })
     
-      const translationAr = await TranslationBlog.create({
+      const translationAr = await Translation.create({
         language: "ar",
         title: title_ar,
         summary: summary_ar,

@@ -1,14 +1,15 @@
 const express = require('express')
 const router = express.Router()
 const blogsController = require('../controllers/blogsController')
+const verifyJWT = require("../middleware/verifyJWT")
 const upload = require('../middleware/upload')
 
 router.route("/")
         .get(blogsController.getAllBlogs)
-        .post(upload.single('blog-image'), blogsController.createNewBlog)
+        .post([verifyJWT, upload.single('blog-image')], blogsController.createNewBlog)
         
 router.route("/:id")
-        .patch(upload.single('blog-image'), blogsController.updateBlog)
-        .delete(blogsController.deleteBlog)
+        .patch([verifyJWT,upload.single('blog-image')], blogsController.updateBlog)
+        .delete(verifyJWT, blogsController.deleteBlog)
 
 module.exports = router

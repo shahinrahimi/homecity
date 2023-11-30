@@ -8,7 +8,7 @@ const blogSchema = new mongoose.Schema({
     translations: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "TranslationBlog"
+            ref: "Translation"
         }
     ],
     tags: [
