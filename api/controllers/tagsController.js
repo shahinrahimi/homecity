@@ -62,7 +62,7 @@ const updateTag = async (req, res) => {
 
     const confirmData = requiredFields.every(item => typeof item === "string" )
 
-    if (!confirmData){
+    if (!confirmData || !ObjectId.isValid(id)){
         return res.status(400).json({ message: "All fields required" })
     }
 
@@ -93,24 +93,18 @@ const deleteTag = async (req, res) => {
         return res.status(400).json({ message: "All fields required" })
     }
 
+    // find blogs that has tagId
     const tag = await Tag.findById(id).exec()
     const blogs = await Blog.find({ tags: {
         $in: [tag._id]
     }}).exec()
 
-    // delete all tag in blogs
+    // remove tagId from blog
     for (let i=0; i < blogs.length; i++){
         const blog = blogs[i]
         blog.tags = blog.tags.filter(t => t._id !== tag._id)
     }
 
-    
-    // blogs = blogs.map(blog => {
-    //     return {
-    //         ...blog,
-    //         tags: blog.tags.filter(t => t._id !== tag._id)
-    //     }
-    // })
     const saveResult = await Promise.all(blogs.map(b => b.save()))
 
     // delete tag

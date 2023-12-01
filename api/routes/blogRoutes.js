@@ -9,7 +9,7 @@ router.route("/")
         .post([verifyJWT, upload.single('blog-image')], blogsController.createNewBlog)
         
 router.route("/:id")
-        .patch([verifyJWT,upload.single('blog-image')], blogsController.updateBlog)
+        .patch([verifyJWT, upload.single('blog-image')], blogsController.updateBlog)
         .delete(verifyJWT, blogsController.deleteBlog)
 
 module.exports = router

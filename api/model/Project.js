@@ -18,27 +18,6 @@ const projectSchema = mongoose.Schema({
     isPreSale: Boolean,
     isInstallment: Boolean,
 
-    isHaveOpenPool: Boolean,
-    isHaveConveredPool: Boolean,
-    isHaveCentralAntenna: Boolean,
-    isHaveEmergencyPower: Boolean,
-    isHaveChildrenPlayground: Boolean,
-    isHaveBasketballCourt: Boolean,
-    isHaveVolleyballCourt: Boolean,
-    isHaveGym: Boolean,
-    isHaveAirCondioningSystem: Boolean,
-    isHaveShop: Boolean,
-    isHaveShopingCenter: Boolean,
-    isHaveGreenSpace: Boolean,
-    isHaveLobby:Boolean,
-    isHaveSalon:Boolean,
-    isHaveParking: Boolean,
-    isHaveLaundary: Boolean,
-    isHaveCafe: Boolean,
-    isHaveRestaurant: Boolean,
-    isHave24hSecurity: Boolean,
-    isHaveCCTV: Boolean,
-
     images: [String],
     video: String,
 
@@ -48,11 +27,18 @@ const projectSchema = mongoose.Schema({
             ref: "Translation"
         }
     ],
-
+    
     tags: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Tag",
+        }
+    ],
+
+    facilities: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Facility",
         }
     ],
 
