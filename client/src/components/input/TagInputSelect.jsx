@@ -78,10 +78,10 @@ const TagInputSelect = ({ selectedTagIds, setSelectedTagIds, className }) => {
                 type="text" 
                 className='outline-none relative w-full'
               />
-              <ul className={`absolute flex flex-col gap-1 p-2 rounded-sm shadow-sharp bg-green-500/25 translate-y-4 ${focused ? "block" : "animate-tag-input"}`}>
+              <ul className={`absolute flex flex-col gap-1 p-2 rounded-sm shadow-sharp bg-green-500/25 translate-y-4 ${focused ? "block" : "animate-hidden-dropdown"}`}>
                 {inactiveTags}
                 <Link
-                    to={"/admin/tag/new"}
+                    to={"/admin/tag"}
                   className='cursor-pointer  hover:bg-green-700/80 transition-all bg-green-600/80 px-2 py-1 text-white text-sm font-semibold capitalize rounded-md text-center mt-2'
                 >
                   Add new tag

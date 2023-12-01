@@ -1,17 +1,17 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-
 import { createNewBlog } from '../../../api'
 import { useMutation, useQueryClient } from 'react-query'
 import { useAuthStore } from '../../../app/store'
 import BlogForm from './BlogForm'
-import { Loading, TagInputSelect } from '../../../components'
+import { Loading } from '../../../components'
 
 const NewBlog = () => {
 
     const naviagte = useNavigate()
     const token = useAuthStore.getState().token
 
+    const form = React.useRef(null)
     const [title, setTitle] = React.useState("test")
     const [summary, setSummery] = React.useState("test")
     const [content, setContent] = React.useState("<h1>test</h1>")
@@ -26,8 +26,6 @@ const NewBlog = () => {
     const [content_tr, setContent_tr] = React.useState("<h1>test_tr</h1>")
     const [selectedTagIds, setSelectedTagIds] = React.useState([])
     const [files, setFiles] = React.useState("")
-
-    const form = React.useRef(null)
 
     const queryClient = useQueryClient()
 

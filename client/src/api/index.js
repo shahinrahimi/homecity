@@ -12,12 +12,6 @@ export {
     validate 
 } from "./auth/authApi"
 
-export { 
-    logout, 
-    refresh, 
-    validate 
-} from "./auth/authApi"
-
 
 // tag api
 export { 
@@ -26,6 +20,13 @@ export {
     updateTag,
     deleteTag
  } from "./tag/tagApi"
+
+ export {
+    getAllFacilities,
+    createNewFacility,
+    updateFacility,
+    deleteFacility
+ } from "./facility/facilityApi"
 
 
 // blog api

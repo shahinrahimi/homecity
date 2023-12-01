@@ -1,5 +1,6 @@
 import React from 'react'
-import { TagInputSelect, Editor } from '../../../components'
+import { FacilityInputSelect,TagInputSelect, Editor } from '../../../components'
+
 
 const ProjectForm = ({
     form,
@@ -31,62 +32,275 @@ const ProjectForm = ({
     selectedTagIds,
     setSelectedTagIds,
 
+    selectedFacilityIds,
+    setSelectedFaciltyIds,
+
     startingPrice,
     setStartingPrice,
     totalArea,
     setTotalArea,
     totalNumberUnits,
     setTotalNumberUnits,
+
     isPreSale,
     setIsPreSale,
     isInstallment,
     setIsInstallment,
-    isHaveOpenPool,
-    setIsHaveOpenPool,
-    isHaveConveredPool,
-    setIsHaveConveredPool,
-    isHaveCentralAntenna,
-    setIsHaveCentralAntenna,
-    isHaveEmergencyPower,
-    setIsHaveEmergencyPower,
-    isHaveChildrenPlayground,
-    setIsHaveChildrenPlayground,
-    isHaveBasketballCourt,
-    setIsHaveBasketballCourt,
-    isHaveVolleyballCourt,
-    setIsHaveVolleyballCourt,
-    isHaveGym,
-    setIsHaveGym,
-    isHaveAirConditioningSystem,
-    setIsHaveAirConditioningSystem,
-    isHaveShop,
-    setIsHaveShop,
-    isHaveShoppingCenter,
-    setIsHaveShoppingCenter,
-    isHaveGreenSpace,
-    setIsHaveGreenSpace,
-    isHaveLobby,
-    setIsHaveLobby,
-    isHaveSalon,
-    setIsHaveSalon,
-    isHaveParking,
-    setIsHaveParking,
-    isHaveLaundry,
-    setIsHaveLaundry,
-    isHaveCafe,
-    setIsHaveCafe,
-    isHaveRestaurant,
-    setIsHaveRestaurant,
-    isHave24hSecurity,
-    setIsHave24hSecurity,
-    isHaveCCTV,
-    setIsHaveCCTV,
 
     buttonLabel,
     handleSubmit 
 }) => {
+
+  
   return (
-    <div>ProjectForm</div>
+    <>
+      <form 
+            className='bg-white shadow-cutome-1 flex flex-col justify-between px-20 py-16 gap-8 rounded-md'
+            onSubmit={handleSubmit}
+            ref={form}
+            >
+                
+                {/* image */}
+                <div className="flex flex-col gap-1">
+                    <label 
+                        htmlFor="image"
+                        className='uppercase text-sm'
+                    >image</label>
+                    <input 
+                        type="file" 
+                        name="image"
+                        onChange={(e) => setFiles(e.target.files)}
+                        className="block w-full rounded-lg text-sm text-gray-900 border border-gray-300 cursor-pointer bg-gray-50 focus:outline-none file:border file:text-white file:bg-c-black-500 file:cursor-pointer file:hover:bg-c-black-300 file:transition-all file:rounded-lg" aria-describedby="file_input_help"accept="image/png, image/jpg, image/jpeg"
+                    />
+                    <p className="text-sm text-gray-500" id="file_input_help">PNG, JPEG, JPG</p>
+                </div>
+
+                {/* tags */}
+                <div className="flex flex-col gap-1">
+                    <label 
+                        htmlFor="image"
+                        className='uppercase text-sm'
+                    >tags</label>
+                    <TagInputSelect 
+                        className={"px-4 py-3 border border-c-black-100/25 outline-none w-full"}
+                        selectedTagIds={selectedTagIds}
+                        setSelectedTagIds={setSelectedTagIds}
+                    />
+                </div>
+
+                {/* facilities */}
+                <div className="flex flex-col gap-1">
+                    <label 
+                        htmlFor="image"
+                        className='uppercase text-sm'
+                    >facilities</label>
+                    <FacilityInputSelect 
+                        className={"px-4 py-3 border border-c-black-100/25 outline-none w-full"}
+                        selectedFacilityIds={selectedFacilityIds}
+                        setSelectedFacilityIds={setSelectedFaciltyIds}
+                    />
+                </div>
+
+                {/* titles */}
+                <div className="flex flex-col gap-2">
+                    <label 
+                        htmlFor="title"
+                        className='uppercase text-sm'
+                    >title</label>
+                    <input 
+                        name="title"
+                        type="text"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        className="px-4 py-3 border border-c-black-100/25 outline-none w-full"
+                    />
+                    
+                </div>
+                <div className="flex flex-col gap-2">
+                    <label 
+                        htmlFor="title"
+                        className='uppercase text-sm'
+                    >title in persian</label>
+                    <div className="rtl">
+                        <input 
+                            name="title"
+                            type="text"
+                            value={title_fa}
+                            onChange={(e) => setTitle_fa(e.target.value)}
+                            className="px-4 py-3 border border-c-black-100/25 outline-none w-full"
+                        />
+                    </div>
+                    
+                    
+                </div>
+                <div className="flex flex-col gap-2">
+                    <label 
+                        htmlFor="title"
+                        className='uppercase text-sm'
+                    >title in arabic</label>
+                    <div className="rtl">
+                        <input 
+                            name="title"
+                            type="text"
+                            value={title_ar}
+                            onChange={(e) => setTitle_ar(e.target.value)}
+                            className="px-4 py-3 border border-c-black-100/25 outline-none w-full"
+                        />
+                    </div>
+                    
+                    
+                </div>
+                <div className="flex flex-col gap-2">
+                    <label 
+                        htmlFor="title"
+                        className='uppercase text-sm'
+                    >title in turkish</label>
+                    <input 
+                        name="title"
+                        type="text"
+                        value={title_tr}
+                        onChange={(e) => setTitle_tr(e.target.value)}
+                        className="px-4 py-3 border border-c-black-100/25 outline-none w-full"
+                    />
+                    
+                </div>
+
+                {/* summaries */}
+                <div className="flex flex-col gap-2">
+                    <label 
+                        htmlFor="summary"
+                        className='uppercase text-sm'
+                    >summary</label>
+                    <textarea
+                        name='summary' 
+                        type="text"
+                        value={summery}
+                        onChange={(e) => setSummery(e.target.value)}
+                        className='px-4 py-3 border border-c-black-100/25 outline-none w-full'
+                    />
+                </div>
+
+                
+
+                <div className="flex flex-col gap-2">
+                    <label 
+                        htmlFor="summary"
+                        className='uppercase text-sm'
+                    >summary in persian</label>
+                    <div className="rtl">
+                        <textarea
+                            name='summary' 
+                            type="text"
+                            value={summery_fa}
+                            onChange={(e) => setSummery_fa(e.target.value)}
+                            className='px-4 py-3 border border-c-black-100/25 outline-none w-full'
+                        />
+                    </div>
+                    
+                </div>
+
+                <div className="flex flex-col gap-2">
+                    <label 
+                        htmlFor="summary"
+                        className='uppercase text-sm'
+                    >summary in arabic</label>
+                    <div className="rtl">
+                        <textarea
+                            name='summary' 
+                            type="text"
+                            value={summery_ar}
+                            onChange={(e) => setSummery_ar(e.target.value)}
+                            className='px-4 py-3 border border-c-black-100/25 outline-none w-full'
+                        />
+                    </div>
+                    
+                </div>
+
+                <div className="flex flex-col gap-2">
+                    <label 
+                        htmlFor="summary"
+                        className='uppercase text-sm'
+                    >summary in turkish</label>
+                    <textarea
+                        name='summary' 
+                        type="text"
+                        value={summery_tr}
+                        onChange={(e) => setSummery_tr(e.target.value)}
+                        className='px-4 py-3 border border-c-black-100/25 outline-none w-full'
+                    />
+                </div>
+
+                
+                
+                {/* contents */}
+                <div className="flex flex-col gap-2">
+                    <label 
+                        htmlFor="content"
+                        className='uppercase text-sm'
+                    >content</label>
+                    <div className="ql-editor ltr">
+                        <Editor 
+                            content={content}
+                            setContent={setContent}
+                        />
+                    </div>
+                    
+                </div>
+
+                <div className="flex flex-col gap-2">
+                    <label 
+                        htmlFor="content"
+                        className='uppercase text-sm'
+                    >content in persian</label>
+
+                    <div className="ql-editor rtl">
+                        <Editor 
+                            content={content_fa}
+                            setContent={setContent_fa}
+                        />
+                    </div>
+                    
+                </div>
+
+                <div className="flex flex-col gap-2">
+                    <label 
+                        htmlFor="content"
+                        className='uppercase text-sm'
+                    >content in arabic</label>
+
+                    <div className="ql-editor rtl">
+                        <Editor 
+                            content={content_ar}
+                            setContent={setContent_ar}
+                        />
+                    </div>
+                    
+                </div>
+
+                <div className="flex flex-col gap-2">
+                    <label 
+                        htmlFor="content"
+                        className='uppercase text-sm'
+                    >content in turkish</label>
+
+                    <div className="ql-editor ltr">
+                        <Editor 
+                            content={content_tr}
+                            setContent={setContent_tr}
+                        />
+                    </div>
+                    
+                </div>
+
+                
+
+                <button
+                    className='bg-c-black-800 text-white grid place-content-center py-2 hover:bg-c-black-400 transition-colors cursor-pointer font-semibold capitalize'
+                    type='submit'
+                >{buttonLabel}</button>
+        </form>
+      
+    </>
   )
 }
 

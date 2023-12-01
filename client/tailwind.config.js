@@ -289,7 +289,7 @@ export default {
         }
       },
 
-      tagInputHidden : {
+      dropDownHidden : {
         "0%": {
           opacity: "0",
         },
@@ -332,7 +332,7 @@ export default {
       'input-active': "inputEffect 0.5s ease forwards",
 
       // tag input
-      'tag-input': "tagInputHidden 0.5s ease forwards"
+      'hidden-dropdown': "dropDownHidden 0.5s ease forwards"
     },
 
   plugins: [

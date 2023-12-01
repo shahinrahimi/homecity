@@ -19,6 +19,7 @@ import {
   RegisterPage,
   RequiredAuth,
   TagList,
+  FacilitiesList,
 
   BlogList,
   BlogPreview,
@@ -91,9 +92,11 @@ function App() {
               <Route path="register" element={<RegisterPage />} />
             { /* private */}
               <Route element={<RequiredAuth />}>
-                <Route path="tag" element={<TagList />} />
+                
                 <Route path="dash" element={<Dashabord />} />
                 {/* tag */}
+                <Route path="tag" element={<TagList />} />
+                <Route path="facility" element={<FacilitiesList />} />
                 
                 {/* blog */}
                 <Route path="blog">

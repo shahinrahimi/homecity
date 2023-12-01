@@ -31,6 +31,23 @@ export const useTagStore = create(
     )
 )
 
+export const useFacilityStore = create(
+    persist(
+        (set) => ({
+            facilities:[],
+            setFacilities: (facilities) => set({ facilities }),
+            getFacilityById: (id) => {
+                const facilities = useFacilityStore.getState().facilities;
+                return facilities.find((facility) => facility.id === id);
+            }
+        }),
+        {
+            name: 'facility-storage',
+            storage: createJSONStorage(() => sessionStorage)
+        },
+    )
+)
+
 export const useBlogStore = create(
     persist(
         (set) => ({

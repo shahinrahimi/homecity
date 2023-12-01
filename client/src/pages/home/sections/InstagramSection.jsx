@@ -44,9 +44,9 @@ const InstagramSection = ({ id, isDark , background }) => {
   return (
     <Section id={id} isDark={isDark} background={background} >
       <div className='grid grid-cols-2 grid-rows-5'>
-          {instagram_items.map(item => {
+          {instagram_items.map((item,index) => {
             return (
-              <InstagramEmbed url={item.url} size={500} captioned={false} />
+              <InstagramEmbed key={index} url={item.url} size={500} captioned={false} />
             )
           })}
       </div>
