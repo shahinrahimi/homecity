@@ -7,8 +7,9 @@ const projectSchema = mongoose.Schema({
 
     startingPrice: Number,
     totalArea: Number,
-    type: String,
-    totalNumberUnits: Number,
+    totalUnits: Number,
+
+    
     startYear:String,
     endYear:String,
     city: String,

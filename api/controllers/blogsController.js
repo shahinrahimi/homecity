@@ -3,6 +3,7 @@ const Translation = require("../model/Transaltion")
 const Tag = require("../model/Tag")
 const fs = require('fs')
 const ObjectId = require('mongoose').Types.ObjectId
+const arrayFilesRemover = require("../lib/arrayFilesRemover")
 
 // @desc Get all blogs
 // @route GET /blogs
@@ -206,7 +207,7 @@ const updateBlog = async (req, res) => {
     // if req.file is exist so the new file should replace with old one
     if (req.file){
         const { path } = req.file
-        fs.unlinkSync(blog.image)
+        await arrayFilesRemover([blog.image])
         blog.image = path
     }
 
@@ -241,13 +242,23 @@ const deleteBlog = async (req, res) => {
     const translationAr = blog.translations.filter(translation => translation.language === "ar")[0]
     const translationTr = blog.translations.filter(translation => translation.language === "tr")[0]
 
-    const deleteAll = await Promise.all([
-        blog.deleteOne(),
-        translationFa.deleteOne(),
-        translationTr.deleteOne(),
-        translationAr.deleteOne(),
-        fs.unlinkSync(blog.image)
-    ])
+    if (translationFa){
+        await translationFa.deleteOne()
+    }
+
+    if (translationAr){
+        await translationAr.deleteOne()
+    }
+
+    if (translationTr){
+        await translationTr.deleteOne()
+    }
+
+    if (blog.image) {
+        const deleteimage = await arrayFilesRemover([blog.image])
+    }
+
+    const result = await blog.deleteOne()
 
     const reply = `Post ${id} deleted`
 
