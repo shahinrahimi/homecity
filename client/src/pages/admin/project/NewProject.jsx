@@ -7,7 +7,7 @@ import ProjectForm from './ProjectForm'
 import { Loading } from '../../../components'
 
 const NewProject = () => {
-  const naviagte = useNavigate()
+    const naviagte = useNavigate()
     const token = useAuthStore.getState().token
 
     const form = React.useRef(null)
@@ -23,9 +23,23 @@ const NewProject = () => {
     const [title_tr, setTitle_tr] = React.useState("test_tr")
     const [summary_tr, setSummery_tr] = React.useState("test_tr")
     const [content_tr, setContent_tr] = React.useState("<h1>test_tr</h1>")
+    
+    const [country, setCountry] = React.useState("")
+    const [city, setCity] = React.useState("")
+    const [district, setDistrict] = React.useState("")
+
+    const [startingPrice, setStartingPrice] = React.useState(0);
+    const [totalArea, setTotalArea] = React.useState(0);
+    const [totalUnits, setTotalUnits] = React.useState(0);
+  
+    // State for boolean props with default value false
+    const [isPreSale, setIsPreSale] = React.useState(false);
+    const [isInstallment, setIsInstallment] = React.useState(false);
+
     const [selectedTagIds, setSelectedTagIds] = React.useState([])
     const [selectedFacilityIds, setSelectedFacilityIds] = React.useState([])
-    const [files, setFiles] = React.useState("")
+    const [images, setImages] = React.useState([])
+    const [video, setVideo] = React.useState("")
 
     const queryClient = useQueryClient()
 
@@ -44,31 +58,74 @@ const NewProject = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        
-        const projectData = new FormData()
-        projectData.set("blog-image", files[0])
-        projectData.set("title", title)
-        projectData.set("summary", summary)
-        projectData.set("content", content)
-        projectData.set("title_fa", title_fa)
-        projectData.set("summary_fa", summary_fa)
-        projectData.set("content_fa", content_fa)
-        projectData.set("title_ar", title_ar)
-        projectData.set("summary_ar", summary_ar)
-        projectData.set("content_ar", content_ar)
-        projectData.set("title_tr", title_tr)
-        projectData.set("summary_tr", summary_tr)
-        projectData.set("content_tr", content_tr)
-        projectData.set("tags_csv", selectedTagIds.join())
-        projectData.set("facilites_csv", selectedFacilityIds.join())
-        createNewProjectMutation({ formData: projectData, accessToken: token })
+
+        const requiredFileds = [
+            title,
+            summary,
+            content,
+            title_fa,
+            summary_fa,
+            content_fa,
+            title_tr,
+            summary_tr,
+            content_tr,
+            title_ar,
+            summary_ar,
+            content_ar,
+            startingPrice,
+            totalArea,
+            totalUnits
+        ]
+
+        // confirm data
+        if (requiredFileds.every(feild => feild)){
+            const projectForm = new FormData()
+            projectForm.set("title", title)
+            projectForm.set("summary", summary)
+            projectForm.set("content", content)
+            projectForm.set("title_fa", title_fa)
+            projectForm.set("summary_fa", summary_fa)
+            projectForm.set("content_fa", content_fa)
+            projectForm.set("title_ar", title_ar)
+            projectForm.set("summary_ar", summary_ar)
+            projectForm.set("content_ar", content_ar)
+            projectForm.set("title_tr", title_tr)
+            projectForm.set("summary_tr", summary_tr)
+            projectForm.set("content_tr", content_tr)
+
+            projectForm.set("starting_price", startingPrice)
+            projectForm.set("total_area", totalArea)
+            projectForm.set("total_units", totalUnits)
+
+            projectForm.set("isPreSale", isPreSale)
+            projectForm.set("isInstallment", isInstallment)
+
+            projectForm.set("tags_csv", selectedTagIds.join())
+            projectForm.set("facilites_csv", selectedFacilityIds.join())
+
+            for (let i = 0; i < images.length; i++){
+                projectForm.append("project_images", images.item(i))
+            }
+
+            if (video !== "" && video.item(0)){
+                projectForm.set("project_video", video.item(0))
+            }
+            
+            createNewProjectMutation({ formData: projectForm, accessToken: token })
+        }
     }
 
     React.useEffect(() => {
       if (isSuccess){
-          naviagte("/admin/project")
+        //   naviagte("/admin/project")
       }
     }, [isSuccess])
+
+    React.useEffect(() => {
+        if (error){
+          console.log(error?.request?.response)
+        }
+    }, [error])
 
     let contentToShow = (
         <ProjectForm
@@ -101,13 +158,32 @@ const NewProject = () => {
             content_tr={content_tr}
             setContent_tr={setContent_tr}
 
+            country={country}
+            setCountry={setCountry}
+            city={city}
+            setCity={setCity}
+            district={district}
+            setDistrict={setDistrict}
+
+            startingPrice={startingPrice}
+            setStartingPrice={setStartingPrice}
+            totalArea={totalArea}
+            setTotalArea={setTotalArea}
+            totalUnits={totalUnits}
+            setTotalUnits={setTotalUnits}
+            isPreSale={isPreSale}
+            setIsPreSale={setIsPreSale}
+            isInstallment={isInstallment}
+            setIsInstallment={setIsInstallment}
+
             selectedTagIds={selectedTagIds}
             setSelectedTagIds={setSelectedTagIds}
 
             selectedFacilityIds={selectedFacilityIds}
             setSelectedFaciltyIds={setSelectedFacilityIds}
 
-            setFiles={setFiles}
+            setImages={setImages}
+            setVideo={setVideo}
             
             buttonLabel={"create a project"}
             handleSubmit={handleSubmit}
@@ -116,10 +192,6 @@ const NewProject = () => {
 
     if (isLoading){
         contentToShow = <Loading />
-    }
-
-    if (isError) {
-        contentToShow = <>has error {JSON.stringify(error)}</>
     }
 
     return (

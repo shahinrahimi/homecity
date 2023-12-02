@@ -1,8 +1,11 @@
 import React from 'react'
 
+
 const Franchise = () => {
   return (
-    <div>Franchise</div>
+    <main>
+      Franchise
+    </main>
   )
 }
 

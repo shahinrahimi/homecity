@@ -8,12 +8,11 @@ const EditBlog = () => {
     const { id } = useParams()
     const blog = useBlogStore((state) => state.getBlogById(id))
     
-    if (blog) {
-        return <EditBlogForm blog={blog} />
+    if (!blog) {
+        return <div>Not Found</div>
     }
-    return (
-        <div>Not Found</div>
-    )
+    
+    return <EditBlogForm blog={blog} />
 }
 
 export default EditBlog

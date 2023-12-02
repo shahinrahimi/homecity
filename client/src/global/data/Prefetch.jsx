@@ -57,7 +57,7 @@ const Prefetch = () => {
         data: projectsData,
     } = useQuery('projects', getAllProjects, {
         select: data => data.map(d => {
-            return {...d, id: d._id }
+            return {...d, id: d._id, imagesSrc: d.images.map(image => `http://localhost:5000/${image}`), videoSrc:`http://localhost:5000/${d.video}` }
         }),
     })
     

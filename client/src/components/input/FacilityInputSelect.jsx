@@ -3,7 +3,6 @@ import { useFacilityStore } from '../../app/store';
 import { RxCross2 as CrossIcon } from "react-icons/rx";
 import { FaPlus as PlusIcon } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
-import { facilityIconDict } from "../../icons/FacilitiesIcons"
 
 const FacilityInputSelect = ({ selectedFacilityIds, setSelectedFacilityIds, className }) => {
 
@@ -61,9 +60,7 @@ const FacilityInputSelect = ({ selectedFacilityIds, setSelectedFacilityIds, clas
           </p>
         </li>
       )
-    }) 
-
-
+    })
 
   return (
         <section className={className}>

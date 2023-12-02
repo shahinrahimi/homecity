@@ -36,7 +36,7 @@ const BlogForm = ({
 
     return (
         <form 
-            className='bg-white shadow-cutome-1 flex flex-col justify-between px-20 py-16 gap-8 rounded-md'
+            className='bg-white shadow-cutome-1 flex flex-col justify-between px-10 lg:px-20 py-16 gap-8 rounded-md'
             onSubmit={handleSubmit}
             ref={form}
             >

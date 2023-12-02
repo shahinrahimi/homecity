@@ -1,13 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { deleteBlog } from '../../../api'
-import { Loading } from '../../../components'
+import { Loading, TimeAgo } from '../../../components'
 import { useMutation, useQueryClient } from 'react-query'
-import { TimeAgo } from '../../../components'
 import { IoMdTrash as DeleteIcon } from "react-icons/io";
 import { MdEditDocument as EditIcon } from "react-icons/md";
+import { useAuthStore } from '../../../app/store'
 
 const BlogListItem = ({ blog }) => {
+
+  const token = useAuthStore.getState().token
 
   const {
     id, 
@@ -26,7 +28,7 @@ const BlogListItem = ({ blog }) => {
     isError,
     error,
     data,
-    mutate: blogDeleteMutation
+    mutate: deleteBlogMutation
   } = useMutation('blogs', deleteBlog, {
     onSuccess: () => {
       // invalidates cache and refetch
@@ -36,7 +38,7 @@ const BlogListItem = ({ blog }) => {
 
   const handleDelete = (e) => {
     e.preventDefault()
-    blogDeleteMutation({ id })
+    deleteBlogMutation({ id, accessToken: token })
   }
 
   if (isLoading) {

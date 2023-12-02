@@ -2,11 +2,11 @@ import React from 'react'
 import { Navigate } from 'react-router-dom'
 import { useMutation, useQueryClient } from 'react-query'
 import { useAuthStore } from '../../../app/store'
-
-
 import BlogForm from './BlogForm'
 import { updateBlog } from '../../../api'
 import { Loading } from "../../../components"
+
+
 const EditBlogForm = ({ blog }) => {
 
   const token = useAuthStore.getState().token

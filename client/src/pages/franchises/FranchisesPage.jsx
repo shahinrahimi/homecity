@@ -1,7 +1,6 @@
 import React from 'react';
-import { Section } from '../../components';
+import { Section, AddressInputSelect } from '../../components';
 import { underConstructionSvg } from "../../assets/svg";
-
 const FranchisesPage = () => {
   
   return (

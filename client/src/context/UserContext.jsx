@@ -14,6 +14,8 @@ export const UserProvider = ({ children }) => {
         if (token) {
             const { userInfo } = jwtDecode(token)
             setUserInfo(userInfo)
+        } else {
+            setUserInfo(null)
         }
     },[token, setToken])
 

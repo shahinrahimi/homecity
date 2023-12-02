@@ -8,7 +8,6 @@ const modules = {
         ['bold', 'italic', 'underline','strike', 'blockquote'],
         // [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
         [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-        ['link', 'image'],
         ['clean']
     ],
     }
@@ -17,7 +16,6 @@ const formats = [
     'header',
     'bold', 'italic', 'underline', 'strike', 'blockquote', 'align',
     'list', 'bullet', 'indent',
-    'link', 'image'
     ]
 
 
