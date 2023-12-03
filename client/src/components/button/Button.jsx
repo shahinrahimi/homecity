@@ -1,9 +1,10 @@
-const Button = ({ text, action, disable=false, href, colorClassName, alighClassName }) => {
+const Button = ({ text, action, disable=false, href, colorClassName, alighClassName, id }) => {
 
   return (
     <button
       onClick={action}
       disabled={disable}
+      id={id}
       className={`px-4 py-2  border-c-black-500 border-4 transition-colors duration-200 font-bold hover:text-white ${colorClassName ? colorClassName : " hover:bg-c-red-500/80"} ${alighClassName ? alighClassName : "self-start"}`}
     >
       {href 

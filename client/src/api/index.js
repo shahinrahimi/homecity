@@ -12,6 +12,12 @@ export {
     validate 
 } from "./auth/authApi"
 
+// message api
+export {
+    getAllMessages,
+    createNewMessage,
+    deleteMessage
+} from "./message/messageApi"
 
 // tag api
 export { 

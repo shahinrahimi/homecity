@@ -4,6 +4,7 @@ import { homecityLogo } from "../assets/svg"
 import { QueryClient, QueryClientProvider } from "react-query"
 import { ReactQueryDevtools } from "react-query/devtools"
 import { Helmet, HelmetProvider } from 'react-helmet-async'
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
 // custome providers
 import { LanguageProvider } from '../context/LanguageContext'
@@ -26,21 +27,25 @@ const Providers = ({ children }) => {
             {/* <script src="./src/lib/customScript.js" type='text/javascript' crossorigin="anonymous" async></script> */}
             <title>Homecity | Investment | Real state </title>
           </Helmet>
-          <AuthProvider>
-            <UserProvider>
-              <LanguageProvider>
-                <MenuProvider>
-                  <SearchProvider>
-                    <SmoothScrollingProvider>
-                      <LivePriceProvider>
-                        {children}
-                      </LivePriceProvider>
-                    </SmoothScrollingProvider>
-                  </SearchProvider>
-                </MenuProvider>
-              </LanguageProvider>
-            </UserProvider>
-          </AuthProvider>
+          <GoogleReCaptchaProvider 
+            reCaptchaKey="6LcefbMoAAAAAM3qI0xMf4r_Ue24MEhZ-Kmyq2BX"
+          >
+            <AuthProvider>
+              <UserProvider>
+                <LanguageProvider>
+                  <MenuProvider>
+                    <SearchProvider>
+                      <SmoothScrollingProvider>
+                        <LivePriceProvider>
+                          {children}
+                        </LivePriceProvider>
+                      </SmoothScrollingProvider>
+                    </SearchProvider>
+                  </MenuProvider>
+                </LanguageProvider>
+              </UserProvider>
+            </AuthProvider>
+          </GoogleReCaptchaProvider>
         </HelmetProvider >
         <ReactQueryDevtools initialIsOpen/>
       </QueryClientProvider>

@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { Input, Button, TextArea } from ".."
-import ReCAPTCHA from "react-google-recaptcha";
+import { GoogleReCaptcha } from "react-google-recaptcha-v3"
+import { createNewMessage } from "../../api"
 
 const ContactUsForm = () => {
   const [firstName, setFirstName] = useState("")
@@ -9,17 +10,25 @@ const ContactUsForm = () => {
   const [subject, setSubject] = useState("")
   const [message, setMessage] = useState("")
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const messageObg = {
-      firstName,
+      username: firstName,
       lastName,
-      email,
+      contact: email,
       subject,
-      message
+      content: message
     }
 
     console.log(messageObg)
+
+    const res = await createNewMessage({ data : messageObg})
+
+    console.log(res)
+  }
+
+  function onChange(value) {
+    console.log("Captcha value:", value);
   }
 
   return (
@@ -28,6 +37,7 @@ const ContactUsForm = () => {
       className="bg-slate-50 p-8 rounded-lg shadow-lg w-full">
       <div className="flex flex-row gap-4">
         <Input
+          id="firstname"
           label={'first name'}
           value={firstName}
           setValue={setFirstName}
@@ -42,6 +52,7 @@ const ContactUsForm = () => {
       </div>
 
       <Input
+        id="email"
         label={'your email'}
         value={email}
         setValue={setEmail}
@@ -55,19 +66,20 @@ const ContactUsForm = () => {
       />
 
       <TextArea
+        id="content"
         label={'your message'}
         value={message}
         setValue={setMessage}
         placeholder={"query/suggestion"}
       />
 
+      <GoogleReCaptcha 
+        onVerify={e => console.log(e)}
+      />
+
       <div className="flex flex-row-reverse">
         {/* will add after deployment */}
-        {/* <ReCAPTCHA
-            // size="invisible"
-            sitekey="6LcefbMoAAAAAM3qI0xMf4r_Ue24MEhZ-Kmyq2BX"
-          /> */}
-        <Button type="submit" text={"submit"} />
+        <Button type="submit" text={"submit"} id="clickme" />
       </div>
     </form>
   )
