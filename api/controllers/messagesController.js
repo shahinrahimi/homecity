@@ -14,6 +14,11 @@ const getAllMessages = async (req, res) => {
 // @route POST /messages
 // @access Public
 const createNewMessage = async (req, res) => {
+
+  if (!req.recaptcha.error) {
+    res.status(400).send('reCAPTCHA verification failed');
+  } 
+
   const {
     username,
     contact,
@@ -25,6 +30,8 @@ const createNewMessage = async (req, res) => {
     contact,
     content
   ]
+
+  console.log(requiredFields)
 
   // confirm data
   const confirmData = requiredFields.every(field => typeof field === 'string')
