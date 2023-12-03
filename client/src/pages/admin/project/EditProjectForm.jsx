@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useMutation, useQueryClient } from 'react-query'
 import { useAuthStore } from '../../../app/store'
 import ProjectForm from './ProjectForm'
@@ -9,6 +9,7 @@ import { Loading } from "../../../components"
 const EditProjectForm = ({ project }) => {
 
   const token = useAuthStore.getState().token
+  const navigate = useNavigate()
 
   const tagIds = project.tags.map(tag => tag._id)
   const facilityIds = project.facilities.map(facility => facility._id)
@@ -25,7 +26,7 @@ const EditProjectForm = ({ project }) => {
   const [content_fa, setContent_fa] = React.useState(projectFa.content)
   const [title_ar, setTitle_ar] = React.useState(projectAr.title)
   const [summary_ar, setSummery_ar] = React.useState(projectAr.summary)
-  const [content_ar, setContent_ar] = React.useState(projectAr.summary)
+  const [content_ar, setContent_ar] = React.useState(projectAr.content)
   const [title_tr, setTitle_tr] = React.useState(projectTr.title)
   const [summary_tr, setSummery_tr] = React.useState(projectTr.summary)
   const [content_tr, setContent_tr] = React.useState(projectTr.content)
@@ -37,6 +38,10 @@ const EditProjectForm = ({ project }) => {
   const [startingPrice, setStartingPrice] = React.useState(project.startingPrice);
   const [totalArea, setTotalArea] = React.useState(project.totalArea);
   const [totalUnits, setTotalUnits] = React.useState(project.totalUnits);
+  const [startYear, setStartYear] = React.useState(project.startYear)
+  const [endYear, setEndYear] = React.useState(project.endYear)
+  const [maxRoomCount, setMaxRoomCount] = React.useState(project.maxRoomCount);
+  const [maxBathCount, setMaxBathCount] = React.useState(project.maxBathCount);
 
   // State for boolean props with default value false
   const [isPreSale, setIsPreSale] = React.useState(project.isPreSale);
@@ -54,10 +59,10 @@ const EditProjectForm = ({ project }) => {
     isError,
     error,
     mutate: updateProjectMutation
-  } = useMutation('blogs', updateProject, {
+  } = useMutation('projects', updateProject, {
     onSuccess: () => {
       // invalidates cache and refetch
-      queryClient.invalidateQueries("blogs")
+      queryClient.invalidateQueries("projects")
     }
   })
 
@@ -76,9 +81,9 @@ const EditProjectForm = ({ project }) => {
       title_ar,
       summary_ar,
       content_ar,
-      startingPrice,
-      totalArea,
-      totalUnits,
+      country,
+      city,
+      district
     ]
 
     // confirm data
@@ -96,23 +101,34 @@ const EditProjectForm = ({ project }) => {
       projectForm.set("title_tr", title_tr)
       projectForm.set("summary_tr", summary_tr)
       projectForm.set("content_tr", content_tr)
+      projectForm.set("country", country)
+      projectForm.set("city", city)
+      projectForm.set("district", district)
+
 
       projectForm.set("starting_price", startingPrice)
       projectForm.set("total_area", totalArea)
       projectForm.set("total_units", totalUnits)
+      projectForm.set("start_year", startYear)
+      projectForm.set("end_year", endYear)
+      projectForm.set("starting_price", startingPrice)
+      projectForm.set("total_area", totalArea)
+      projectForm.set("total_units", totalUnits)
+      projectForm.set("max_room_count", maxRoomCount)
+      projectForm.set("max_bath_count", maxBathCount)
 
-      projectForm.set("isPreSale", isPreSale)
-      projectForm.set("isInstallment", isInstallment)
+      projectForm.set("is_presale", isPreSale)
+      projectForm.set("is_installment", isInstallment)
 
       projectForm.set("tags_csv", selectedTagIds.join())
-      projectForm.set("facilites_csv", selectedFacilityIds.join())
+      projectForm.set("facilities_csv", selectedFacilityIds.join())
 
       for (let i = 0; i < images.length; i++){
           projectForm.append("project_images", images.item(i))
       }
 
-      if (video.item(0)){
-          projectForm.set("project_video", video.item(0))
+      for (let i = 0; i < video.length; i++){
+          projectForm.append("project_video", video.item(i))
       }
 
       updateProjectMutation({ id: project.id, formData: projectForm, accessToken: token})
@@ -123,7 +139,7 @@ const EditProjectForm = ({ project }) => {
 
   React.useEffect(() => {
     if (isSuccess){
-      //   naviagte("/admin/project")
+      navigate("/admin/project")
     }
   }, [isSuccess])
 
@@ -177,6 +193,14 @@ const EditProjectForm = ({ project }) => {
         setTotalArea={setTotalArea}
         totalUnits={totalUnits}
         setTotalUnits={setTotalUnits}
+        startYear={startYear}
+        setStartYear={setStartYear}
+        endYear={endYear}
+        setEndYear={setEndYear}
+        maxRoomCount={maxRoomCount}
+        setMaxRoomCount={setMaxRoomCount}
+        maxBathCount={maxBathCount}
+        setMaxBathCount={setMaxBathCount}
 
         isPreSale={isPreSale}
         setIsPreSale={setIsPreSale}

@@ -7,30 +7,35 @@ import ProjectForm from './ProjectForm'
 import { Loading } from '../../../components'
 
 const NewProject = () => {
-    const naviagte = useNavigate()
+    const navigate = useNavigate()
     const token = useAuthStore.getState().token
 
     const form = React.useRef(null)
-    const [title, setTitle] = React.useState("test")
-    const [summary, setSummery] = React.useState("test")
-    const [content, setContent] = React.useState("<h1>test</h1>")
-    const [title_fa, setTitle_fa] = React.useState("test_fa")
-    const [summary_fa, setSummery_fa] = React.useState("test_fa")
-    const [content_fa, setContent_fa] = React.useState("<h1>test_fa</h1>")
-    const [title_ar, setTitle_ar] = React.useState("test_ar")
-    const [summary_ar, setSummery_ar] = React.useState("test_ar")
-    const [content_ar, setContent_ar] = React.useState("<h1>test_ar</h1>")
-    const [title_tr, setTitle_tr] = React.useState("test_tr")
-    const [summary_tr, setSummery_tr] = React.useState("test_tr")
-    const [content_tr, setContent_tr] = React.useState("<h1>test_tr</h1>")
+    const [title, setTitle] = React.useState("test_project")
+    const [summary, setSummery] = React.useState("test_project")
+    const [content, setContent] = React.useState("<h1>test_project</h1>")
+    const [title_fa, setTitle_fa] = React.useState("test_project_fa")
+    const [summary_fa, setSummery_fa] = React.useState("test_project_fa")
+    const [content_fa, setContent_fa] = React.useState("<h1>test_project_fa</h1>")
+    const [title_ar, setTitle_ar] = React.useState("test_project_ar")
+    const [summary_ar, setSummery_ar] = React.useState("test_project_ar")
+    const [content_ar, setContent_ar] = React.useState("<h1>test_project_ar</h1>")
+    const [title_tr, setTitle_tr] = React.useState("test_project_tr")
+    const [summary_tr, setSummery_tr] = React.useState("test_project_tr")
+    const [content_tr, setContent_tr] = React.useState("<h1>test_project_tr</h1>")
     
     const [country, setCountry] = React.useState("")
     const [city, setCity] = React.useState("")
     const [district, setDistrict] = React.useState("")
 
+    
     const [startingPrice, setStartingPrice] = React.useState(0);
     const [totalArea, setTotalArea] = React.useState(0);
     const [totalUnits, setTotalUnits] = React.useState(0);
+    const [startYear, setStartYear] = React.useState(2020)
+    const [endYear, setEndYear] = React.useState(2021)
+    const [maxRoomCount, setMaxRoomCount] = React.useState(1);
+    const [maxBathCount, setMaxBathCount] = React.useState(1);
   
     // State for boolean props with default value false
     const [isPreSale, setIsPreSale] = React.useState(false);
@@ -52,7 +57,7 @@ const NewProject = () => {
     } = useMutation(createNewProject, {
         onSuccess: () => {
             // invalidates cache and refetch
-            queryClient.invalidateQueries("facilities")
+            queryClient.invalidateQueries("projects")
         }
     })
 
@@ -72,13 +77,15 @@ const NewProject = () => {
             title_ar,
             summary_ar,
             content_ar,
-            startingPrice,
-            totalArea,
-            totalUnits
+            country,
+            city,
+            district
         ]
 
+        const confirmdata = requiredFileds.every(feild => feild)
+
         // confirm data
-        if (requiredFileds.every(feild => feild)){
+        if (confirmdata){
             const projectForm = new FormData()
             projectForm.set("title", title)
             projectForm.set("summary", summary)
@@ -92,23 +99,30 @@ const NewProject = () => {
             projectForm.set("title_tr", title_tr)
             projectForm.set("summary_tr", summary_tr)
             projectForm.set("content_tr", content_tr)
+            projectForm.set("country", country)
+            projectForm.set("city", city)
+            projectForm.set("district", district)
 
+            projectForm.set("start_year", startYear)
+            projectForm.set("end_year", endYear)
             projectForm.set("starting_price", startingPrice)
             projectForm.set("total_area", totalArea)
             projectForm.set("total_units", totalUnits)
+            projectForm.set("max_room_count", maxRoomCount)
+            projectForm.set("max_bath_count", maxBathCount)
 
-            projectForm.set("isPreSale", isPreSale)
-            projectForm.set("isInstallment", isInstallment)
+            projectForm.set("is_presale", isPreSale)
+            projectForm.set("is_installment", isInstallment)
 
             projectForm.set("tags_csv", selectedTagIds.join())
-            projectForm.set("facilites_csv", selectedFacilityIds.join())
+            projectForm.set("facilities_csv", selectedFacilityIds.join())
 
             for (let i = 0; i < images.length; i++){
                 projectForm.append("project_images", images.item(i))
             }
 
-            if (video !== "" && video.item(0)){
-                projectForm.set("project_video", video.item(0))
+            for (let i = 0; i < video.length; i++){
+                projectForm.append("project_video", video.item(i))
             }
             
             createNewProjectMutation({ formData: projectForm, accessToken: token })
@@ -117,7 +131,7 @@ const NewProject = () => {
 
     React.useEffect(() => {
       if (isSuccess){
-        //   naviagte("/admin/project")
+        navigate("/admin/project")
       }
     }, [isSuccess])
 
@@ -171,6 +185,15 @@ const NewProject = () => {
             setTotalArea={setTotalArea}
             totalUnits={totalUnits}
             setTotalUnits={setTotalUnits}
+            startYear={startYear}
+            setStartYear={setStartYear}
+            endYear={endYear}
+            setEndYear={setEndYear}
+            maxRoomCount={maxRoomCount}
+            setMaxRoomCount={setMaxRoomCount}
+            maxBathCount={maxBathCount}
+            setMaxBathCount={setMaxBathCount}
+
             isPreSale={isPreSale}
             setIsPreSale={setIsPreSale}
             isInstallment={isInstallment}

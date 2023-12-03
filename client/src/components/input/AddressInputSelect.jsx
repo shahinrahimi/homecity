@@ -29,7 +29,7 @@ const AddressInputSelect = ({
 
     return (
         <section className='w-full flex flex-col md:flex-row  justify-start md:justify-between items-start md:items-center gap-2'>
-            <div className="flex flex-row w-full justify-between items-center md:flex-col md:basis-1/3 md:shrink-0 gap-1">
+            <div className="flex flex-row w-full justify-between items-center md:flex-col md:basis-[calc(33%-3px)] md:shrink-0 gap-1">
                 <label 
                     htmlFor="country"
                     className='uppercase text-sm'
@@ -50,7 +50,7 @@ const AddressInputSelect = ({
 
             </div>
             
-            <div className="flex flex-row w-full justify-between items-center md:flex-col md:basis-1/3 md:shrink-0 gap-1">
+            <div className="flex flex-row w-full justify-between items-center md:flex-col md:basis-[calc(33%-3px)] md:shrink-0 gap-1">
                 <label 
                     htmlFor="city"
                     className='uppercase text-sm'
@@ -72,7 +72,7 @@ const AddressInputSelect = ({
 
             </div>
 
-            <div className="flex flex-row w-full justify-between items-center md:flex-col md:basis-1/3 md:shrink-0 gap-1">
+            <div className="flex flex-row w-full justify-between items-center md:flex-col md:basis-[calc(33%-3px)] md:shrink-0 gap-1">
                 <label 
                     htmlFor="district"
                     className='uppercase text-sm'

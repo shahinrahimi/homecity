@@ -48,6 +48,14 @@ const ProjectForm = ({
     setTotalArea,
     totalUnits,
     setTotalUnits,
+    startYear,
+    setStartYear,
+    endYear,
+    setEndYear,
+    maxRoomCount,
+    setMaxRoomCount,
+    maxBathCount,
+    setMaxBathCount,
 
     isPreSale,
     setIsPreSale,
@@ -62,6 +70,7 @@ const ProjectForm = ({
     buttonLabel,
     handleSubmit 
 }) => {
+
   return (
     <>
       <form 
@@ -105,8 +114,10 @@ const ProjectForm = ({
                     <p className="text-sm text-gray-500">MP4</p>
                 </div>
 
-                {/* details */}
+                {/* details 1 */}
+
                 <div className="flex flex-col md:flex-row justify-between items-center gap-2">
+
                     {/* price */}
                     <div className="flex flex-row w-full md:flex-col justify-between items-center gap-2">
                         <label 
@@ -116,12 +127,86 @@ const ProjectForm = ({
                         <input 
                             name='price'
                             type='number'
+                            min="0"
                             value={startingPrice}
                             onChange={(e) => setStartingPrice(e.target.value)}
-                            className="px-4 py-3 basis-1/3 shrink-0 border border-c-black-100/25 outline-none w-full"
+                            className="px-4 py-3 basis-1/2 shrink-0 border border-c-black-100/25 outline-none w-full"
                         />
                     </div>
-                    {/* price */}
+
+                    {/* start year */}
+                    <div className="flex flex-row w-full md:flex-col justify-between items-center gap-2">
+                        <label 
+                            htmlFor="startyear"
+                            className='uppercase text-sm'
+                        >starting year</label>
+                        <input 
+                            name='startyear'
+                            type='number'
+                            min="2000"
+                            value={startYear}
+                            onChange={(e) => setStartYear(e.target.value)}
+                            className="px-4 py-3 basis-1/4 shrink-0 border border-c-black-100/25 outline-none w-full"
+                        />
+                    </div>
+
+                    {/* end year */}
+                    <div className="flex flex-row w-full md:flex-col justify-between items-center gap-2">
+                        <label 
+                            htmlFor="endyear"
+                            className='uppercase text-sm'
+                        >end year</label>
+                        <input 
+                            name='endyear'
+                            type='number'
+                            min="2000"
+                            value={endYear}
+                            onChange={(e) => setEndYear(e.target.value)}
+                            className="px-4 py-3 basis-1/4 shrink-0 border border-c-black-100/25 outline-none w-full"
+                        />
+                    </div>
+
+                    
+                </div>
+
+                {/* details 2 */}
+                <div className="flex flex-col md:flex-row justify-between items-end gap-2">
+                    
+
+                    {/* max room */}
+                    <div className="flex flex-row w-full md:flex-col justify-between items-center gap-2">
+                        <label 
+                            htmlFor="maxroom"
+                            className='uppercase text-sm'
+                        >max room count</label>
+                        <input 
+                            name='maxroom'
+                            type='number'
+                            min="1"
+                            value={maxRoomCount}
+                            onChange={(e) => setMaxRoomCount(e.target.value)}
+                            className="px-4 py-3 basis-1/6 shrink-0 border border-c-black-100/25 outline-none w-full"
+                        />
+                    </div>
+
+                    {/* max bath */}
+                    <div className="flex flex-row w-full md:flex-col justify-between items-center gap-2">
+                        <label 
+                            htmlFor="maxbath"
+                            className='uppercase text-sm'
+                        >max bath count</label>
+                        <input 
+                            name='maxbath'
+                            type='number'
+                            min="0"
+                            value={maxBathCount}
+                            onChange={(e) => setMaxBathCount(e.target.value)}
+                            className="px-4 py-3 basis-1/6 shrink-0 border border-c-black-100/25 outline-none w-full"
+                        />
+                    </div>
+
+                    
+                    {/* units */}
                     <div className="flex flex-row w-full md:flex-col justify-between items-center gap-2">
                         <label 
                             htmlFor="units"
@@ -130,6 +215,7 @@ const ProjectForm = ({
                         <input 
                             name='units'
                             type='number'
+                            min="0"
                             value={totalUnits}
                             onChange={(e) => setTotalUnits(e.target.value)}
                             className="px-4 py-3 basis-1/3 shrink-0 border border-c-black-100/25 outline-none w-full"
@@ -144,6 +230,7 @@ const ProjectForm = ({
                         <input 
                             name='area'
                             type='number'
+                            min="0"
                             value={totalArea}
                             onChange={(e) => setTotalArea(e.target.value)}
                             className="px-4 py-3 basis-1/3 shrink-0 border border-c-black-100/25 outline-none w-full"
@@ -153,7 +240,6 @@ const ProjectForm = ({
                 </div>
 
                 {/* Address group */}
-
                 <AddressInputSelect 
                     country={country}
                     setCountry={setCountry}
@@ -174,12 +260,11 @@ const ProjectForm = ({
                         <input 
                             name='presale'
                             type='checkbox'
-                            value={isPreSale}
+                            checked={isPreSale}
                             onChange={() => setIsPreSale(prev => !prev)}
                             className="px-4 py-3 border border-c-black-100/25 outline-none w-full"
                         />
                     </div>
-                    {/* price */}
                     {/* installment */}
                     <div className="flex flex-row gap-2">
                         <label 
@@ -189,8 +274,8 @@ const ProjectForm = ({
                         <input 
                             name='installment'
                             type='checkbox'
-                            value={isInstallment}
-                            onChange={() => setIsInstallment(prev => !prev)}
+                            checked={isInstallment}
+                            onChange={(e) => setIsInstallment(prev => !prev)}
                             className="px-4 py-3 border border-c-black-100/25 outline-none w-full"
                         />
                     </div>
@@ -240,12 +325,12 @@ const ProjectForm = ({
                 </div>
                 <div className="flex flex-col gap-2">
                     <label 
-                        htmlFor="title"
+                        htmlFor="titlefa"
                         className='uppercase text-sm'
                     >title in persian</label>
                     <div className="rtl">
                         <input 
-                            name="title"
+                            name="titlefa"
                             type="text"
                             value={title_fa}
                             onChange={(e) => setTitle_fa(e.target.value)}
@@ -257,12 +342,12 @@ const ProjectForm = ({
                 </div>
                 <div className="flex flex-col gap-2">
                     <label 
-                        htmlFor="title"
+                        htmlFor="titlear"
                         className='uppercase text-sm'
                     >title in arabic</label>
                     <div className="rtl">
                         <input 
-                            name="title"
+                            name="titlear"
                             type="text"
                             value={title_ar}
                             onChange={(e) => setTitle_ar(e.target.value)}
@@ -274,11 +359,11 @@ const ProjectForm = ({
                 </div>
                 <div className="flex flex-col gap-2">
                     <label 
-                        htmlFor="title"
+                        htmlFor="titletr"
                         className='uppercase text-sm'
                     >title in turkish</label>
                     <input 
-                        name="title"
+                        name="titletr"
                         type="text"
                         value={title_tr}
                         onChange={(e) => setTitle_tr(e.target.value)}
@@ -306,12 +391,12 @@ const ProjectForm = ({
 
                 <div className="flex flex-col gap-2">
                     <label 
-                        htmlFor="summary"
+                        htmlFor="summaryfa"
                         className='uppercase text-sm'
                     >summary in persian</label>
                     <div className="rtl">
                         <textarea
-                            name='summary' 
+                            name='summaryfa' 
                             type="text"
                             value={summery_fa}
                             onChange={(e) => setSummery_fa(e.target.value)}
@@ -323,12 +408,12 @@ const ProjectForm = ({
 
                 <div className="flex flex-col gap-2">
                     <label 
-                        htmlFor="summary"
+                        htmlFor="summaryar"
                         className='uppercase text-sm'
                     >summary in arabic</label>
                     <div className="rtl">
                         <textarea
-                            name='summary' 
+                            name='summaryar' 
                             type="text"
                             value={summery_ar}
                             onChange={(e) => setSummery_ar(e.target.value)}
@@ -340,11 +425,11 @@ const ProjectForm = ({
 
                 <div className="flex flex-col gap-2">
                     <label 
-                        htmlFor="summary"
+                        htmlFor="summarytr"
                         className='uppercase text-sm'
                     >summary in turkish</label>
                     <textarea
-                        name='summary' 
+                        name='summarytr' 
                         type="text"
                         value={summery_tr}
                         onChange={(e) => setSummery_tr(e.target.value)}
@@ -371,7 +456,7 @@ const ProjectForm = ({
 
                 <div className="flex flex-col gap-2">
                     <label 
-                        htmlFor="content"
+                        htmlFor="contentfa"
                         className='uppercase text-sm'
                     >content in persian</label>
 
@@ -386,7 +471,7 @@ const ProjectForm = ({
 
                 <div className="flex flex-col gap-2">
                     <label 
-                        htmlFor="content"
+                        htmlFor="contentar"
                         className='uppercase text-sm'
                     >content in arabic</label>
 
@@ -401,7 +486,7 @@ const ProjectForm = ({
 
                 <div className="flex flex-col gap-2">
                     <label 
-                        htmlFor="content"
+                        htmlFor="contenttr"
                         className='uppercase text-sm'
                     >content in turkish</label>
 

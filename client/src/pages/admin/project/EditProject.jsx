@@ -12,8 +12,6 @@ const EditProject = () => {
   if (!project){
     return <div>Not Found</div>
   }
-
-  console.log(project)
   
   return <EditProjectForm project={project} />
 }
