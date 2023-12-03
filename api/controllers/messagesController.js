@@ -1,4 +1,5 @@
 const Message = require("../model/Message")
+const ObjectId = require('mongoose').Types.ObjectId
 
 // @desc get all messages
 // @route GET /messages
@@ -49,10 +50,10 @@ const createNewMessage = async (req, res) => {
 // @route DELETE /messages
 // @access Private
 const deleteMessage = async (req, res) => {
-  const { id } = req.body
+  const { id } = req.params
 
   // confirm data
-  if (!id){
+  if (!id || !ObjectId.isValid(id)){
     return res.status(400).json({ message: "All fields required" })
   }
 

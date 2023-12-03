@@ -4,23 +4,23 @@ const projectSchema = mongoose.Schema({
     title:String,
     summary: String,
     content: String,
+    country: String,
+    city: String,
+    district: String,
 
     startingPrice: Number,
     totalArea: Number,
     totalUnits: Number,
-
-    
-    startYear:String,
-    endYear:String,
-    city: String,
-    neighborhood: String,
-    mapUrl: String,
+    maxRoomCount:Number,
+    maxBathCount:Number,
+    startYear:Number,
+    endYear:Number,
 
     isPreSale: Boolean,
     isInstallment: Boolean,
 
     images: [String],
-    video: String,
+    video: [String],
 
     translations: [
         {
