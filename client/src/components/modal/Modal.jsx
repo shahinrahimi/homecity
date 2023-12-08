@@ -2,8 +2,6 @@ import { useState } from "react"
 const Modal = ({ isOpen, closeMe, children }) => {
   const [isClosing, setIsClosing] = useState(false)
 
-  let content = <></>
-
   const handleClose = () => {
     setIsClosing(true)
     setTimeout(() => {
@@ -25,11 +23,12 @@ const Modal = ({ isOpen, closeMe, children }) => {
   }
 
 
+  let content = <></>
 
   if (isOpen) {
 
     content = (
-      <main className="grid place-content-center absolute left-0 top-0 h-screen w-screen z-10"
+      <main className="fixed top-0 left-0 grid place-content-center h-screen w-screen z-30"
         onClick={handleClick}
       >
         <button

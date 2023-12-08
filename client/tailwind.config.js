@@ -87,7 +87,8 @@ export default {
       boxShadow: {
         'sharp': 'rgba(0, 0, 0, 0.40) 0px 2px 8px',
         'test' : 'rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;',
-        'cutome-1': 'rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;'
+        'cutome-1': 'rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;',
+
       }
     },
     fontFamily: {

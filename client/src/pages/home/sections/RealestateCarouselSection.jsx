@@ -1,46 +1,7 @@
 import React from "react"
 import { Card, Simplify, Section } from "../../../components"
-import { project_1_image_0, project_2_image_0, project_3_image_0, project_4_image_0 } from "../../../assets/img"
+import { useProjectStore } from "../../../app/store"
 
-const data = [
-  {
-    name: "slide1",
-    price: "600",
-    image: project_1_image_0,
-    address: "Anatolian side, Beykoz",
-    bedroomCount: "1-3",
-    bathroomCount: "1-2"
-
-  },
-  {
-    name: "slide2",
-    price: "600",
-    image: project_2_image_0,
-    address: "Anatolian side, Beykoz",
-    bedroomCount: "1-3",
-    bathroomCount: "1-2"
-
-  },
-  {
-    name: "slide2",
-    price: "600",
-    image: project_3_image_0,
-    address: "Anatolian side, Beykoz",
-    bedroomCount: "1-3",
-    bathroomCount: "1-2"
-
-  },
-
-  {
-    name: "slide2",
-    price: "600",
-    image: project_4_image_0,
-    address: "Anatolian side, Beykoz",
-    bedroomCount: "1-3",
-    bathroomCount: "1-2"
-
-  },
-]
 
 const Slide = ({ children, index, maxIndex, activeIndex }) => {
   let prevIndex, nextIndex
@@ -66,7 +27,9 @@ const Slide = ({ children, index, maxIndex, activeIndex }) => {
 
 const ProjectsCarouselSection = ({ id, isDark , background }) => {
 
-  let numSlides = data.length
+  const projects = useProjectStore.getState().projects
+  
+  let numSlides = projects.length
 
   React.useEffect(() => {
     const intervalId = setInterval(() => {
@@ -82,15 +45,15 @@ const ProjectsCarouselSection = ({ id, isDark , background }) => {
 
   const prevSlide = () => setActiveSlide((activeSlide - 1 + numSlides) % numSlides)
 
-  const Slides = data.map((d, index) => {
+  const Slides = projects.map((project, index) => {
     return (
       <Slide index={index} activeIndex={activeSlide} maxIndex={numSlides} key={index} >
         <Card 
-          image={d.image}
-          address={d.address}
-          price={d.price}
-          bathroomCount={d.bathroomCount}
-          bedroomCount={d.bedroomCount}
+          image={project.imagesSrc[0]}
+          address={project.city}
+          price={project.startingPrice}
+          bathroomCount={project.maxBathCount}
+          bedroomCount={project.maxRoomCount}
         />
       </Slide>
     )

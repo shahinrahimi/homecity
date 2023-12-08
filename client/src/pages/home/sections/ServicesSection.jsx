@@ -1,3 +1,4 @@
+import React from "react"
 import { IoIosSchool } from "react-icons/io"
 import { GiPassport } from "react-icons/gi"
 import { BiSolidBank } from "react-icons/bi"
@@ -52,7 +53,7 @@ const service_items = [
     icon: GoLaw,
     image: service_law,
     content: "Our legal services provide expert advice and support, ensuring your rights and interests are protected throughout your stay in Turkey.",
-    color: "c-white-500",
+    color: "c-black-500",
   },
   {
     title: "translation service",
@@ -116,17 +117,105 @@ const serveces = service_items.map((item, index) => {
   )
 })
 
+const services2 = service_items.map((item, index) => {
+  return (
+    <li className="flex items-center gap-2 bg-white shadow-sharp p-4 cursor-pointer" key={index} >
+      <div className={`grid place-content-center text-${item.color} bg-${item.color}/25 border border-gray-400/25 rounded-lg text-2xl w-10 h-10`}>
+        {<item.icon />}
+      </div>
+      <div className="flex flex-col">
+        <h1 className="font-semibold capitalize">{item.title}</h1>
+        <p>Lorem, ipsum dolor.</p>
+      </div>
+    </li>
+  )
+})
+
+const ServiceCard = ({index, item, activeIndex, setActiveIndex}) => {
+  return (
+    <li 
+    onClick={() => setActiveIndex(index)}
+    className={`flex flex-col lg:flex-row text-center items-center gap-2  shadow-sharp ${index === activeIndex ? "scale-105 bg-white" : "scale-100 bg-slate-200"} p-4 cursor-pointer transition-all duration-500 rounded-md`} key={index} 
+    >
+      <div className={`grid place-content-center text-${item.color} bg-${item.color}/25 border border-gray-400/25 rounded-lg text-2xl w-10 h-10`}>
+        {<item.icon />}
+      </div>
+      <div className="flex flex-col">
+        <h1 className="font-semibold capitalize">{item.title}</h1>
+        {/* <p>Lorem, ipsum dolor.</p> */}
+      </div>
+    </li>
+  )
+}
+
+const ServiceContent = ({index, item, activeIndex}) => {
+  return (
+    <li className={`${index === activeIndex ? "block" : "hidden"} animate-menu-slideIn flex flex-col items-center gap-4`}>
+      <div className="rounded-md overflow-hidden w-[calc(80%)] bg-red-500">
+        <img 
+          src={item.image} alt=""
+          className="w-full object-cover" 
+        />
+      </div>
+      <div className="flex flex-col items-center mt-4 gap-2">
+        <h2 className="capitalize text-2xl font-bold">{item.title}</h2>
+        <p className="text-center">{item.content}</p>
+      </div>
+      
+    </li>
+  )
+}
+
+const ServiceContents = () => {
+  const [activeIndex, setActiveIndex] = React.useState(0)
+
+  return (
+    <div className="flex flex-col lg:flex-row justify-between gap-2">
+      {/* service cards */}
+      <ul className="grid grid-cols-3 grid-rows-2 lg:grid-cols-1 lg:grid-rows-6 lg:w-1/3 lg:shrink-0 gap-4">
+        {service_items.map((item, index) => {
+          return (
+            <ServiceCard
+              item={item}
+              key={index}
+              index={index}
+              activeIndex={activeIndex}
+              setActiveIndex={setActiveIndex}
+            />
+          )
+        })}
+      </ul>
+      {/* service content and image */}
+      <ul className="flex flex-col justify-center gap-4 items-center p-8">
+        {service_items.map((item, index) => {
+          return (
+            <ServiceContent 
+              item={item}
+              key={index}
+              index={index}
+              activeIndex={activeIndex}
+            />
+          )
+        })}
+      </ul>
+    </div>
+  )
+}
+
 const ServicesSection = ({ id, isDark , background }) => {
 
   return (
-    <Section id={id} isDark={isDark} background={background} >
-      <h1 className="text-4xl font-bold mb-4 text-center">Turkish Support Hub</h1>
-      <p className="text-xl text-center">Experience Turkey with Ease: Your one-stop solution for education, exchange, immigration, insurance, law, real estate, and translation services.</p>
-      <ul className="grid grid-col-1 grid-row-6  lg:grid-cols-2 lg:grid-rows-3 2xl:grid-cols-3 2xl:grid-rows-2 gap-10">
-        {serveces}
-      </ul>
+    <Section id={id} isDark={false} background={background} >
+      <div className="mb-6">
+        <h1 className="text-4xl font-bold mb-4 text-center">Turkish Support Hub</h1>
+
+        <p className="text-xl text-center">Experience Turkey with Ease: Your one-stop solution for education, exchange, immigration, insurance, law, real estate, and translation services.</p>
+
+      </div>
+      
+
+      {<ServiceContents />}
     </Section>
-    
   )
 }
 

@@ -10,6 +10,8 @@ const ContactUsForm = () => {
   const [subject, setSubject] = useState("")
   const [message, setMessage] = useState("")
 
+  const [token, setToken] = React.useState(null)
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     const messageObg = {
@@ -17,7 +19,8 @@ const ContactUsForm = () => {
       lastName,
       contact: email,
       subject,
-      content: message
+      content: message,
+      token: token,
     }
 
     console.log(messageObg)
@@ -27,9 +30,7 @@ const ContactUsForm = () => {
     console.log(res)
   }
 
-  function onChange(value) {
-    console.log("Captcha value:", value);
-  }
+  console.log(token)
 
   return (
     <form
@@ -74,7 +75,7 @@ const ContactUsForm = () => {
       />
 
       <GoogleReCaptcha 
-        onVerify={e => console.log(e)}
+        onVerify={setToken}
       />
 
       <div className="flex flex-row-reverse">

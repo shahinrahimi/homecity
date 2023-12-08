@@ -24,8 +24,7 @@ const RequiredAuth = () => {
   } = useMutation('token',refresh)
 
   React.useEffect(() => {
-    
-
+  
     let intervalId
     // 4min interval
     const refreshInterval = () => {

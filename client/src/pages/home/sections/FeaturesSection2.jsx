@@ -1,23 +1,14 @@
 import React from 'react'
 import { SimpleTeather } from '../../../components'
 import { Button, Section } from '../../../components'
-import { 
-    project_1_image_0,
-    project_1_image_1,
-    project_1_image_2,
-    project_1_image_3,
-    project_1_image_4,
-} from '../../../assets/img'
+import { useProjectStore } from '../../../app/store'
 
-const images = [
-    project_1_image_0,
-    project_1_image_1,
-    project_1_image_2,
-    project_1_image_3,
-    project_1_image_4,
-]
 
 const FeaturesSection2 = ({ id, isDark , background }) => {
+
+    const projects = useProjectStore.getState().projects
+
+    const images = projects[0].imagesSrc
     return (
         <Section id={id} isDark={isDark} background={background}>
             <div className="flex flex-col-reverse md:flex-row justify-between gap-10 items-center">
