@@ -24,13 +24,13 @@ const Home = () => {
 
   return (
     <main className="overflow-hidden">
-      <HeroCarousel id={"home"} />
+      {/* <HeroCarousel id={"home"} />
       <FeaturesSection />
       <ServicesSection isDark={true} />
       <FeaturesSection2 />
       <ExperiencesSection background={background1} isDark={true} />
       <FeaturesSection3 />
-      <InstagramSection isDark={true} />
+      <InstagramSection isDark={true} /> */}
       <BlogsCarouselSection />
       <InformationSection isDark={true} />
       <ProjectsCarouselSection />

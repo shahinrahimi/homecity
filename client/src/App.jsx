@@ -4,8 +4,8 @@ import {
   Home,
   FranchisesPage,
   FranchisePage,
-  RealestatesPage,
-  RealestatePage,
+  ProjectsListPage,
+  ProjectPage,
   BlogsPage,
   BlogPage,
   NotFound, 
@@ -65,9 +65,9 @@ function App() {
               <Route index element={<Home />} />
 
               {/* realestates */}
-              <Route path="realestates">
-                <Route index element={<RealestatesPage />} />
-                <Route path=":id" element={<RealestatePage />} />
+              <Route path="projects">
+                <Route index element={<ProjectsListPage />} />
+                <Route path=":id" element={<ProjectPage />} />
               </Route>
 
               {/* franchises */}

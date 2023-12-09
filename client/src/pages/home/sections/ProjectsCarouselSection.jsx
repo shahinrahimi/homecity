@@ -1,5 +1,5 @@
 import React from "react"
-import { Card, Simplify, Section } from "../../../components"
+import {  Simplify, Section, ProjectCard } from "../../../components"
 import { useProjectStore } from "../../../app/store"
 
 
@@ -48,13 +48,7 @@ const ProjectsCarouselSection = ({ id, isDark , background }) => {
   const Slides = projects.map((project, index) => {
     return (
       <Slide index={index} activeIndex={activeSlide} maxIndex={numSlides} key={index} >
-        <Card 
-          image={project.imagesSrc[0]}
-          address={project.city}
-          price={project.startingPrice}
-          bathroomCount={project.maxBathCount}
-          bedroomCount={project.maxRoomCount}
-        />
+        <ProjectCard project={project} />
       </Slide>
     )
   })
