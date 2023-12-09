@@ -2,7 +2,7 @@ const Banner = () => {
   return (
     <>
         <svg
-            className='w-full h-[calc(20vw)] max-h-[calc(200px)] bg-c-white-500'
+            className='w-full h-[calc(20vw)] max-h-[calc(200px)] bg-white'
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
             viewBox="0 24 150 28"

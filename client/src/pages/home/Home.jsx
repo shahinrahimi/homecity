@@ -7,13 +7,13 @@ import {
   ExperiencesSection, 
   InformationSection,
   HeroCarousel,
-  RealestateCarouselSection, 
+  ProjectsCarouselSection, 
   FeaturesSection, 
   FeaturesSection2, 
   FeaturesSection3, 
   FAQsSection,
   InstagramSection,
-  BlogsSection
+  BlogsCarouselSection
 } from "./sections";
 
 
@@ -31,9 +31,9 @@ const Home = () => {
       <ExperiencesSection background={background1} isDark={true} />
       <FeaturesSection3 />
       <InstagramSection isDark={true} />
-      <BlogsSection />
+      <BlogsCarouselSection />
       <InformationSection isDark={true} />
-      <RealestateCarouselSection />
+      <ProjectsCarouselSection />
       <FAQsSection />
     </main>
   );

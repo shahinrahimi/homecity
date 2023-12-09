@@ -22,3 +22,32 @@
   background-color: var(--secondary);
   border: 3px solid var(--primary);
 }
+/* blogs carousel */
+
+.blogcarousel.t-x-0 { transform: translateX(0%); }
+.blogcarousel.t-x-1 { transform: translateX(-100%); }
+.blogcarousel.t-x-2 { transform: translateX(-200%); }
+.blogcarousel.t-x-3 { transform: translateX(-300%); }
+.blogcarousel.t-x-4 { transform: translateX(-400%); }
+.blogcarousel.t-x-5 { transform: translateX(-500%); }
+.blogcarousel.t-x-6 { transform: translateX(-600%); }
+.blogcarousel.t-x-7 { transform: translateX(-700%); }
+.blogcarousel.t-x-8 { transform: translateX(-800%); }
+.blogcarousel.t-x-9 { transform: translateX(-900%); }
+.blogcarousel.t-x-10 { transform: translateX(-1000%); }
+.blogcarousel.t-x-11 { transform: translateX(-1100%); }
+.blogcarousel.t-x-12 { transform: translateX(-1200%); }
+.blogcarousel.t-x-13 { transform: translateX(-1300%); }
+.blogcarousel.t-x-14 { transform: translateX(-1400%); }
+.blogcarousel.t-x-15 { transform: translateX(-1500%); }
+.blogcarousel.t-x-16 { transform: translateX(-1600%); }
+.blogcarousel.t-x-17 { transform: translateX(-1700%); }
+.blogcarousel.t-x-18 { transform: translateX(-1800%); }
+.blogcarousel.t-x-19 { transform: translateX(-1900%); }
+.blogcarousel.t-x-20 { transform: translateX(-2000%); }
+.blogcarousel.t-x-21 { transform: translateX(-2100%); }
+.blogcarousel.t-x-22 { transform: translateX(-2200%); }
+.blogcarousel.t-x-23 { transform: translateX(-2300%); }
+.blogcarousel.t-x-24 { transform: translateX(-2400%); }
+.blogcarousel.t-x-25 { transform: translateX(-2500%); }
+.blogcarousel.t-x-26 { transform: translateX(-2600%); }

@@ -1,17 +1,14 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import { getAllBlogs, getAllTags, getAllFacilities, getAllProjects } from '../../api'
+import { getAllBlogs, getAllProjects } from '../../api'
 
 import { useQuery } from 'react-query'
-import { useBlogStore, useTagStore, useFacilityStore, useProjectStore } from '../../app/store'
+import { useBlogStore, useProjectStore } from '../../app/store'
 import { Loading } from '../../components'
 
-const Prefetch = () => {
+const PrefetchBlogs = () => {
 
     const { setBlogs } = useBlogStore()
-    const { setTags } = useTagStore()
-    const { setFacilities } = useFacilityStore()
-    const { setProjects } = useProjectStore()
 
     const {
         isSuccess,
@@ -25,29 +22,15 @@ const Prefetch = () => {
         })
     })
 
-    const {
-        isSuccess: isTagSuccess,
-        isLoading: isTagLoading,
-        isError: isTagError,
-        error: errorTag,
-        data: tagsData,
-    } = useQuery('tags', getAllTags, {
-        select: data => data.map(d => {
-            return {...d, id: d._id }
-        }),
-    })
+    React.useEffect(() => {
+        if (blogsData) setBlogs(blogsData)
+    }, [blogsData, setBlogs])
 
-    const {
-        isSuccess: isFacilitySuccess,
-        isLoading: isFacilityLoading,
-        isError: isFacilityError,
-        error: errorFacility,
-        data: facilitiesData,
-    } = useQuery('facilities', getAllFacilities, {
-        select: data => data.map(d => {
-            return {...d, id: d._id, iconSrc: `http://localhost:5000/${d.icon}` }
-        }),
-    })
+    return <Loading />
+}
+
+const PrefetchProjects = () => {
+    const { setProjects } = useProjectStore()
 
     const {
         isSuccess: isProjectSuccess,
@@ -60,35 +43,32 @@ const Prefetch = () => {
             return {...d, id: d._id, imagesSrc: d.images.map(image => `http://localhost:5000/${image}`), videoSrc:`http://localhost:5000/${d.video}` }
         }),
     })
-    
-    React.useEffect(() => {
-        if (tagsData) setTags(tagsData)
-    }, [tagsData, setTags])
-
-    React.useEffect(() => {
-        if (facilitiesData) setFacilities(facilitiesData)
-    }, [setFacilities, facilitiesData])
-
-    React.useEffect(() => {
-        if (blogsData) setBlogs(blogsData)
-    }, [blogsData, setBlogs])
 
     React.useEffect(() => {
         if (projectsData) setProjects(projectsData)
     }, [projectsData, setProjects])
 
-    React.useEffect(() => {
-        if (isError) console.error(`blogs`, error)
-        if (isTagError) console.error(`tags`, errorTag)
-        if (isProjectError) console.error("projects", error)
-        if (isFacilityError) console.error("facilies", errorFacility)
-    }, [error, errorTag, errorFacility, errorProject])
+    return <Loading />
 
-    let content = ""
-    if (isLoading || isTagLoading || isFacilityLoading || isProjectLoading) content = <Loading />
-    if (isSuccess && isTagSuccess || isFacilitySuccess || isProjectSuccess) content = <Outlet />
+}
 
-    return content
+const Prefetch = () => {
+    // setBlogs and setProject does not requred here
+    // they esist cuz after query this component rerender andso the outlet will return
+    const { setBlogs } = useBlogStore()
+    const blogs = useBlogStore.getState().blogs
+    const { setProjects } = useProjectStore()
+    const projects = useProjectStore.getState().projects 
+
+    if (!blogs) {
+        return <PrefetchBlogs />
+    }
+
+    if (!projects){
+        return <PrefetchProjects />
+    }
+
+    return <Outlet />
 }
 
 export default Prefetch

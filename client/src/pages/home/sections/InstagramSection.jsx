@@ -104,7 +104,6 @@ const InstagramView = ({item}) => {
       </div>
       <Modal isOpen={isOpen} closeMe={closeMe}>
           <InstagramEmbed url={item.url} />
-          {/* <div className="">Hi</div> */}
       </Modal>
     </li>
 
