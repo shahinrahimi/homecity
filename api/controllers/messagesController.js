@@ -15,9 +15,11 @@ const getAllMessages = async (req, res) => {
 // @access Public
 const createNewMessage = async (req, res) => {
 
-  if (!req.recaptcha.error) {
-    res.status(400).send('reCAPTCHA verification failed');
-  } 
+  console.log(req.recaptcha)
+
+  if (!req.recaptcha.status){
+    return res.status(400).send('reCAPTCHA verification failed');
+  }
 
   const {
     username,
