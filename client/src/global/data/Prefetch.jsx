@@ -89,6 +89,12 @@ const PrefetchProjects = () => {
             return {
                 ...d, 
                 id: d._id,
+                facilities: d.facilities.map(facility => {
+                    return {
+                        ...facility,
+                        iconSrc: `http://localhost:5000/${facility.icon}`
+                    }
+                }),
                 coverSrc: d.cover.map(cover => `http://localhost:5000/${cover}`),
                 imagesSrc: d.images.map(image => `http://localhost:5000/${image}`), 
                 videoSrc:d.video.map(video => `http://localhost:5000/${video}`),
