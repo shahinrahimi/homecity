@@ -49,8 +49,9 @@ const EditProjectForm = ({ project }) => {
 
   const [selectedTagIds, setSelectedTagIds] = React.useState(tagIds)
   const [selectedFacilityIds, setSelectedFacilityIds] = React.useState(facilityIds)
+  const [cover, setCover] = React.useState([])
   const [images, setImages] = React.useState([])
-  const [video, setVideo] = React.useState("")
+  const [video, setVideo] = React.useState([])
 
   const queryClient = useQueryClient()
   const {
@@ -122,6 +123,10 @@ const EditProjectForm = ({ project }) => {
 
       projectForm.set("tags_csv", selectedTagIds.join())
       projectForm.set("facilities_csv", selectedFacilityIds.join())
+
+      for (let i = 0; i < cover.length; i++){
+        projectForm.append("project_cover", cover.item(i))
+    }
 
       for (let i = 0; i < images.length; i++){
           projectForm.append("project_images", images.item(i))
@@ -213,6 +218,7 @@ const EditProjectForm = ({ project }) => {
         selectedFacilityIds={selectedFacilityIds}
         setSelectedFaciltyIds={setSelectedFacilityIds}
 
+        setCover={setCover}
         setImages={setImages}
         setVideo={setVideo}
         

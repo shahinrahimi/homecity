@@ -17,6 +17,7 @@ const ProjectListItem = ({ project }) => {
     summary,
     createdAt,
     updatedAt,
+    coverSrc,
     imagesSrc,
     videoSrc,
   } = project

@@ -59,6 +59,7 @@ function App() {
         <Routes>
           
           {/* prefetch */}
+          {/* fetch projects and blogs */}
           <Route element={<Prefetch />}>
             {/* public */}
             <Route path="/" element={<MainLayout />}>
@@ -117,6 +118,7 @@ function App() {
                 {/* franchise */}
                 <Route path="franchise" element={<Franchise />} />
                 {/* realestate */}
+
               </Route>
               
             </Route>

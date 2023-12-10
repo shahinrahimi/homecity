@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { IoBedOutline as BedroomIcon } from "react-icons/io5"
 import { LuBath as BathroomIcon } from "react-icons/lu"
-import { MdCallEnd as CallIcon } from "react-icons/md";
 
 function nFormatter(num, digits) {
     const lookup = [
@@ -29,7 +28,9 @@ const ProjectCard = ({ project }) => {
         startingPrice,
         maxRoomCount,
         maxBathCount,
+        coverSrc,
         imagesSrc,
+        videoSrc,
         country,
         city,
         district
@@ -37,13 +38,13 @@ const ProjectCard = ({ project }) => {
 
     return (
         <Link
-        to={`/projects/:${id}`}
+        to={`/projects/${id}`}
         className="w-[calc(320px)] h-[calc(600px)] bg-white shadow-sharp flex flex-col justify-start items-center rounded-t-xl rounded-b-md  overflow-hidden">
             {/* image */}
             <div className="w-full overflow-hidden basis-2/5 shrink-0">
                 <img
                 className="object-cover h-full w-full"
-                src={imagesSrc[0]}
+                src={coverSrc[0]}
                 />
             </div>
 

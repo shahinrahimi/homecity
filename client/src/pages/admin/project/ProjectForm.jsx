@@ -62,6 +62,8 @@ const ProjectForm = ({
     isInstallment,
     setIsInstallment,
 
+    cover,
+    setCover,
     images,
     setImages,
     video,
@@ -78,6 +80,22 @@ const ProjectForm = ({
             onSubmit={handleSubmit}
             ref={form}
             >
+                {/* cover */}
+                <div className="flex flex-col gap-1">
+                    <label 
+                        htmlFor="cover"
+                        className='uppercase text-sm'
+                    >cover</label>
+                    <input 
+                        type="file" 
+                        name="cover"
+                        onChange={(e) => setCover(e.target.files)}
+                        className="block w-full rounded-lg text-sm text-gray-900 border border-gray-300 cursor-pointer bg-gray-50 focus:outline-none file:border file:text-white file:bg-c-black-500 file:cursor-pointer file:hover:bg-c-black-300 file:transition-all file:rounded-lg"
+                        aria-describedby="file_input_help"
+                        accept="image/png, image/jpg, image/jpeg"
+                    />
+                    <p className="text-sm text-gray-500">PNG, JPEG, JPG</p>
+                </div>
                 
                 {/* images */}
                 <div className="flex flex-col gap-1">
