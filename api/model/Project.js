@@ -19,6 +19,7 @@ const projectSchema = mongoose.Schema({
     isPreSale: Boolean,
     isInstallment: Boolean,
 
+    cover:[String],
     images: [String],
     video: [String],
 

@@ -163,9 +163,14 @@ const createNewProject = async (req, res) => {
     }
 
     const {
+        project_cover,
         project_images,
         project_video
     } = req.files
+
+    if (project_cover){
+        newProject.cover = project_cover.map(image => image.path)
+    }
 
     if (project_images){
         newProject.images = project_images.map(image => image.path)
@@ -379,9 +384,16 @@ const updatePost = async (req, res) => {
 
 
     const {
+        project_cover,
         project_images,
         project_video
     } = req.files
+
+    // delete cover
+    if (project_cover){
+        const deletedOldFiles = await arrayFilesRemover(project.cover)
+        project.cover = project_cover.map(image => image.path)
+    }
 
     // delete all old images
     if (project_images){
@@ -424,26 +436,14 @@ const deleteProject = async (req, res) => {
     const translationAr = project.translations.filter(translation => translation.language === "ar")[0]
     const translationTr = project.translations.filter(translation => translation.language === "tr")[0]
 
-    if (translationFa){
-        await translationFa.deleteOne()
-    }
+    if (translationFa) await translationFa.deleteOne()
+    if (translationAr) await translationAr.deleteOne()
+    if (translationTr) await translationTr.deleteOne()
 
-    if (translationAr){
-        await translationAr.deleteOne()
-    }
-
-    if (translationTr){
-        await translationTr.deleteOne()
-    }
-
-    if (project.images && project.images.length > 0 ){
-        const deleteImages = await arrayFilesRemover(project.images)
-    }
-
-    if (project.video && project.video.length > 0) {
-        const deleteVideo = await arrayFilesRemover(project.video)
-    }
-
+    if (project.cover) await arrayFilesRemover(project.cover)
+    if (project.images) await arrayFilesRemover(project.images)
+    if (project.video) await arrayFilesRemover(project.video)
+    
     const result = await project.deleteOne()
 
     const reply = `Project with ${id} deleted`

@@ -8,6 +8,7 @@ router.route("/")
         .get(projectsController.getAllProjects)
         .post([verifyJWT, 
                 upload.fields([
+                        { name: "project_cover", maxCount: 1 },
                         { name: "project_images", maxCount: 10 },
                         { name: "project_video", maxCount:1 }
                 ])], projectsController.createNewProject)
@@ -15,6 +16,7 @@ router.route("/")
 router.route("/:id")
         .patch([verifyJWT, 
                 upload.fields([
+                        { name: "project_cover", maxCount: 1 },
                         { name: "project_images", maxCount: 10 },
                         { name: "project_video", maxCount:1 }
                 ])], projectsController.updatePost)
