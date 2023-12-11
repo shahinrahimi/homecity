@@ -55,19 +55,15 @@ const createNewFranchise = async (req, res) => {
         return res.status(400).json({ message: "All strings fields required" })
     }
 
-    try{
-        requiredFields = [
-            average_cost,
-            branch_count,
-            start_year
-        ].map(item => parseInt(item))
-    }catch (e){
-        return res.status(400).json({ message: "Error convrting fields to number"})
-    }
+    requiredFields = [
+        average_cost,
+        branch_count,
+        start_year
+    ].map(item => parseInt(item))
 
-    confirmData = requiredFields.every(item => typeof item === "number" )
+    confirmData = requiredFields.every(field => typeof field === "number" && !isNaN(field))
     if (!confirmData){
-        return res.status(400).json({ message: "All number fields required" })
+        return res.status(400).json({ message: "Can't convert field to number"})
     }
 
     let tagIds = []
@@ -200,19 +196,15 @@ const updatePost = async (req, res) => {
         return res.status(400).json({ message: "All fields required" })
     }
 
-    try{
-        requiredFields = [
-            start_year,
-            average_cost,
-            branch_count,
-        ].map(item => parseInt(item))
-    }catch (e){
-        return res.status(400).json({ message: "Error convrting fields to number"})
-    }
+    requiredFields = [
+        start_year,
+        average_cost,
+        branch_count,
+    ].map(item => parseInt(item))
 
-    confirmData = requiredFields.every(item => typeof item === "number" )
+    confirmData = requiredFields.every(field => typeof field === "number" && !isNaN(field))
     if (!confirmData){
-        return res.status(400).json({ message: "All fields required" })
+        return res.status(400).json({ message: "Can't convert field to number"})
     }
 
     let tagIds = []

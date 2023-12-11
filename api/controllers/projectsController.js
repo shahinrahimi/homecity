@@ -75,25 +75,20 @@ const createNewProject = async (req, res) => {
         return res.status(400).json({ message: "All strings fields required" })
     }
 
-    try{
-        requiredFields = [
-            starting_price,
-            total_area,
-            total_units,
-            max_room_count,
-            max_bath_count,
-            start_year,
-            end_year,
-        ].map(item => parseInt(item))
-    }catch (e){
-        return res.status(400).json({ message: "Error convrting fields to number"})
-    }
+    requiredFields = [
+        starting_price,
+        total_area,
+        total_units,
+        max_room_count,
+        max_bath_count,
+        start_year,
+        end_year,
+    ].map(item => parseInt(item))
 
-    confirmData = requiredFields.every(item => typeof item === "number" )
+    confirmData = requiredFields.every(field => typeof field === "number" && !isNaN(field))
     if (!confirmData){
-        return res.status(400).json({ message: "All number fields required" })
+        return res.status(400).json({ message: "Can't convert field to number"})
     }
-
 
     try{
         requiredFields = [
@@ -288,23 +283,19 @@ const updatePost = async (req, res) => {
         return res.status(400).json({ message: "All fields required" })
     }
 
-    try{
-        requiredFields = [
-            starting_price,
-            total_area,
-            total_units,
-            max_room_count,
-            max_bath_count,
-            start_year,
-            end_year,
-        ].map(item => parseInt(item))
-    }catch (e){
-        return res.status(400).json({ message: "Error convrting fields to number"})
-    }
+    requiredFields = [
+        starting_price,
+        total_area,
+        total_units,
+        max_room_count,
+        max_bath_count,
+        start_year,
+        end_year,
+    ].map(item => parseInt(item))
 
-    confirmData = requiredFields.every(item => typeof item === "number" )
+    confirmData = requiredFields.every(field => typeof field === "number" && !isNaN(field))
     if (!confirmData){
-        return res.status(400).json({ message: "All fields required" })
+        return res.status(400).json({ message: "Can't convert field to number"})
     }
 
 
