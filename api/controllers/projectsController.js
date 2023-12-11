@@ -2,7 +2,6 @@ const Project = require("../model/Project")
 const Translation = require("../model/Transaltion")
 const Tag = require("../model/Tag")
 const Facility = require("../model/Facility")
-const fs = require('fs')
 const ObjectId = require('mongoose').Types.ObjectId
 const arrayFilesRemover = require("../lib/arrayFilesRemover")
 
@@ -14,7 +13,6 @@ const getAllProjects = async (req, res) => {
     
     return res.status(200).json(projects)
 }
-
 
 // @desc Create new project
 // @route POST /projects
@@ -429,7 +427,7 @@ const deleteProject = async (req, res) => {
 
     const project = await Project.findById(id).populate("translations").exec()
     if (!project){
-        return res.status(400).json({ message: "Blog  not found"})
+        return res.status(400).json({ message: "Project  not found"})
     }
 
     const translationFa = project.translations.filter(translation => translation.language === "fa")[0]
