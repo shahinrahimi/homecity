@@ -8,6 +8,10 @@ const franchiseSchema = new mongoose.Schema({
     branchCount: Number,
     averageCost: Number,
 
+    brand:[String],
+    cover:[String],
+    images: [String],
+
     translations: [
         {
             type: mongoose.Schema.Types.ObjectId,
@@ -21,7 +25,7 @@ const franchiseSchema = new mongoose.Schema({
             ref: "Tag",
         }
     ],
-})
+},{ timestamps: true })
 
 
 // mongoose middleware for creating unique code

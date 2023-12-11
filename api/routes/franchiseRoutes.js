@@ -8,6 +8,7 @@ router.route("/")
         .get(franchisesController.getAllFranchises)
         .post([verifyJWT, 
                 upload.fields([
+                        { name: "franchise_brand", maxCount: 1},
                         { name: "franchise_cover", maxCount: 1 },
                         { name: "franchise_images", maxCount: 4 }
                 ])], franchisesController.createNewFranchise)
@@ -15,6 +16,7 @@ router.route("/")
 router.route("/:id")
         .patch([verifyJWT, 
                 upload.fields([
+                        { name: "franchise_brand", maxCount: 1},
                         { name: "franchise_cover", maxCount: 1 },
                         { name: "franchise_images", maxCount: 4 }
                 ])], franchisesController.updatePost)

@@ -97,9 +97,14 @@ const createNewFranchise = async (req, res) => {
     }
 
     const {
+        franchise_brand,
         franchise_cover,
-        franchise_images
+        franchise_images,
     } = req.files
+
+    if (franchise_brand){
+        newFranchise.brand = franchise_brand.map(image => image.path)
+    }
 
     if (franchise_cover){
         newFranchise.cover = franchise_cover.map(image => image.path)
@@ -247,9 +252,15 @@ const updatePost = async (req, res) => {
 
 
     const {
+        franchise_brand,
         franchise_cover,
         franchise_images
     } = req.files
+
+    if (franchise_brand){
+        const deletedOldFiles = await arrayFilesRemover(franchise.brand)
+        franchise.brand = franchise_brand.map(image => image.path)
+    }
 
     // delete cover
     if (franchise_cover){
@@ -296,6 +307,7 @@ const deleteFranchise = async (req, res) => {
     if (translationAr) await translationAr.deleteOne()
     if (translationTr) await translationTr.deleteOne()
 
+    if (franchise.brand) await arrayFilesRemover(franchise.brand)
     if (franchise.cover) await arrayFilesRemover(franchise.cover)
     if (franchise.images) await arrayFilesRemover(franchise.images)
     
