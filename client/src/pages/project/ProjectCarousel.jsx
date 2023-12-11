@@ -11,8 +11,6 @@ const ProjectCarousel = ({ project }) => {
     const [activeIndex, setActiveIndex] = React.useState(0)
     const [isDisplayMap, setIsDisplayMap] = React.useState(false)
 
-    
-
     const {
         coverSrc,
         imagesSrc,

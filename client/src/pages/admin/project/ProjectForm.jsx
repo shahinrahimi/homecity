@@ -393,11 +393,11 @@ const ProjectForm = ({
                 {/* summaries */}
                 <div className="flex flex-col gap-2">
                     <label 
-                        htmlFor="summary"
+                        htmlFor="summery"
                         className='uppercase text-sm'
-                    >summary</label>
+                    >summery</label>
                     <textarea
-                        name='summary' 
+                        name='summery' 
                         type="text"
                         value={summery}
                         onChange={(e) => setSummery(e.target.value)}
@@ -409,12 +409,12 @@ const ProjectForm = ({
 
                 <div className="flex flex-col gap-2">
                     <label 
-                        htmlFor="summaryfa"
+                        htmlFor="summeryfa"
                         className='uppercase text-sm'
-                    >summary in persian</label>
+                    >summery in persian</label>
                     <div className="rtl">
                         <textarea
-                            name='summaryfa' 
+                            name='summeryfa' 
                             type="text"
                             value={summery_fa}
                             onChange={(e) => setSummery_fa(e.target.value)}
@@ -426,12 +426,12 @@ const ProjectForm = ({
 
                 <div className="flex flex-col gap-2">
                     <label 
-                        htmlFor="summaryar"
+                        htmlFor="summeryar"
                         className='uppercase text-sm'
-                    >summary in arabic</label>
+                    >summery in arabic</label>
                     <div className="rtl">
                         <textarea
-                            name='summaryar' 
+                            name='summeryar' 
                             type="text"
                             value={summery_ar}
                             onChange={(e) => setSummery_ar(e.target.value)}
@@ -443,11 +443,11 @@ const ProjectForm = ({
 
                 <div className="flex flex-col gap-2">
                     <label 
-                        htmlFor="summarytr"
+                        htmlFor="summerytr"
                         className='uppercase text-sm'
-                    >summary in turkish</label>
+                    >summery in turkish</label>
                     <textarea
-                        name='summarytr' 
+                        name='summerytr' 
                         type="text"
                         value={summery_tr}
                         onChange={(e) => setSummery_tr(e.target.value)}

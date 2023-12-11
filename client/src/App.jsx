@@ -31,8 +31,10 @@ import {
   EditProject,
   NewProject,
 
-  Franchise,
-  
+  FranchiseList,
+  FranchisePreview,
+  EditFranchise,
+  NewFranchise,
   
 } from "./pages/admin"
 
@@ -116,8 +118,12 @@ function App() {
                 </Route>
 
                 {/* franchise */}
-                <Route path="franchise" element={<Franchise />} />
-                {/* realestate */}
+                <Route path="franchise">
+                  <Route index element={<FranchiseList />} />
+                  <Route path="new" element={<NewFranchise />} />
+                  <Route path=":id" element={<FranchisePreview />} />
+                  <Route path="edit/:id" element={<EditFranchise />} />
+                </Route>
 
               </Route>
               

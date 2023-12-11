@@ -52,4 +52,12 @@ export {
     deleteProject
  } from "./project/projectApi"
 
+ // franchise api
+export { 
+    getAllFranchises, 
+    createNewFranchise,
+    updateFranchise,
+    deleteFranchise
+ } from "./franchise/franchiseApi"
+
 

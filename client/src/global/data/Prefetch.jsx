@@ -1,8 +1,8 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { useQuery } from 'react-query'
-import { getAllBlogs, getAllProjects, getAllTags, getAllFacilities } from '../../api'
-import { useBlogStore, useProjectStore, useTagStore, useFacilityStore } from '../../app/store'
+import { getAllBlogs, getAllProjects, getAllFranchises, getAllTags, getAllFacilities } from '../../api'
+import { useBlogStore, useProjectStore, useFranchiseStore, useTagStore, useFacilityStore } from '../../app/store'
 import { Loading } from '../../components'
 
 const PrefetchTags = () => {
@@ -79,10 +79,10 @@ const PrefetchProjects = () => {
     const { setProjects } = useProjectStore()
 
     const {
-        isSuccess: isProjectSuccess,
-        isLoading: isProjectLoading,
-        isError: isProjectError,
-        error: errorProject,
+        isSuccess,
+        isLoading,
+        isError,
+        error,
         data: projectsData,
     } = useQuery('projects', getAllProjects, {
         select: data => data.map(d => {
@@ -110,6 +110,35 @@ const PrefetchProjects = () => {
 
 }
 
+const PrefetchFranchises = () => {
+    const { setFranchises } = useFranchiseStore()
+
+    const {
+        isSuccess,
+        isLoading,
+        isError,
+        error,
+        data: franchisesData,
+    } = useQuery('franchises', getAllFranchises, {
+        select: data => data.map(d => {
+            return {
+                ...d, 
+                id: d._id,
+                brandSrc: d.brand.map(brand => `http://localhost:5000/${brand}`),
+                coverSrc: d.cover.map(cover => `http://localhost:5000/${cover}`),
+                imagesSrc: d.images.map(image => `http://localhost:5000/${image}`), 
+            }
+        }),
+    })
+
+    React.useEffect(() => {
+        if (franchisesData) setFranchises(franchisesData)
+    }, [franchisesData, setFranchises])
+
+    return <Loading />
+
+}
+
 const Prefetch = () => {
     // setBlogs and setProject does not requred here
     // they esist cuz after query this component rerender andso the outlet will return
@@ -117,6 +146,8 @@ const Prefetch = () => {
     const blogs = useBlogStore.getState().blogs
     const { setProjects } = useProjectStore()
     const projects = useProjectStore.getState().projects
+    const { setFranchises } = useFranchiseStore()
+    const franchises = useFranchiseStore.getState().franchises
     const { setTags } = useTagStore()
     const tags = useTagStore.getState().tags
     const { setFacilities } = useFacilityStore()
@@ -128,6 +159,10 @@ const Prefetch = () => {
 
     if (!projects){
         return <PrefetchProjects />
+    }
+
+    if (!franchises){
+        return <PrefetchFranchises />
     }
 
     if (!tags){

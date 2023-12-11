@@ -59,6 +59,17 @@ export const useProjectStore = create(
     }),
 )
 
+export const useFranchiseStore = create(
+    (set) => ({
+        franchises:null,
+        setFranchises: (franchises) => set({ franchises }),
+        getFranchiseById: (id) => {
+            const franchises = useFranchiseStore.getState().franchises;
+            return franchises.find((franchise) => franchise.id === id);
+        }
+    }),
+)
+
 
 
 

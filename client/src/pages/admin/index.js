@@ -15,7 +15,9 @@ export {default as EditProject} from "./project/EditProject"
 export {default as NewProject} from  "./project/NewProject"
 export {default as ProjectPreview} from "./project/ProjectPreview"
 
+export {default as FranchiseList} from "./franchise/FranchiseList"
+export {default as EditFranchise} from "./franchise/EditFranchise"
+export {default as NewFranchise} from  "./franchise/NewFranchise"
+export {default as FranchisePreview} from "./franchise/FranchisePreview"
 
-export {default as 
-    Franchise} from "./franchise/Franchise"
 
