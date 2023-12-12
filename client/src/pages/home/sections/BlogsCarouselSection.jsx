@@ -60,7 +60,6 @@ const BlogsCarousel = ({ blogs }) => {
         numberOfCircles,
         activeSlideIndex
     }
-    console.log(dataObj)
 
     const nextSlide = () => {
         let newActiveSlideIndex = activeSlideIndex+1

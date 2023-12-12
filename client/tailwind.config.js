@@ -278,6 +278,23 @@ export default {
           transform: "translate(-2000px, 0%)"
         }
       },
+      brandTicker1: {
+        "0%" :{
+          transform: "translateX(100%)"
+        },
+        "100%" :{
+          transform: "translateX(-100%)"
+        }
+      },
+
+      brandTicker2: {
+        "0%" :{
+          transform: "translateX(0%)"
+        },
+        "100%" :{
+          transform: "translateX(-200%)"
+        }
+      },
 
       inputEffect : {
         "0%": {
@@ -328,6 +345,8 @@ export default {
       'wave-3': 'moveForever 6s -4s linear infinite',
       // ticker
       'ticker-show': 'ticker 20s linear forwards',
+      'brand-ticker-1': 'brandTicker1 40s -40s linear infinite',
+      'brand-ticker-2': 'brandTicker2 40s -20s linear infinite',
 
       // input
       'input-active': "inputEffect 0.5s ease forwards",

@@ -51,3 +51,24 @@
 .blogcarousel.t-x-24 { transform: translateX(-2400%); }
 .blogcarousel.t-x-25 { transform: translateX(-2500%); }
 .blogcarousel.t-x-26 { transform: translateX(-2600%); }
+
+
+.mask-1 {
+  height: 100%;
+  width: 30%;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  mask-image: linear-gradient(to right,#000, transparent);
+}
+
+.mask-2 {
+  height: 100%;
+  width: 30%;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  mask-image: linear-gradient(to left,#000, transparent);
+}
