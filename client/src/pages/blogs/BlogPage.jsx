@@ -14,30 +14,31 @@ const BlogPage = () => {
         return <NotFound />
     }
 
-    const blogFa = blog.trans.filter(t => t.language === "fa")[0]
-    const blogAr = blog.trans.filter(t => t.language === "ar")[0]
-    const blogTr = blog.trans.filter(t => t.language === "tr")[0]
+    const blogFa = blog.translations.filter(t => t.language === "fa")[0]
+    const blogAr = blog.translations.filter(t => t.language === "ar")[0]
+    const blogTr = blog.translations.filter(t => t.language === "tr")[0]
 
-    let blogToShow = {}
-    blogToShow.imageSrc = blog.imageSrc
-    if (lang === "fa") {
-        blogToShow.title = blogFa.title
-        blogToShow.summary = blogFa.summary
-        blogToShow.content = blogFa.content
-    } else if (lang === "tr") {
-        blogToShow.title = blogTr.title
-        blogToShow.summary = blogTr.summary
-        blogToShow.content = blogTr.content
+    let title, content,summary
+    if (lang === "fa"){
+        title = blogFa.title
+        summary = blogFa.summary
+        content = blogFa.content
     } else if (lang === "ar") {
-        blogToShow.title = blogAr.title
-        blogToShow.summary = blogAr.summary
-        blogToShow.content = blogAr.content
+        title = blogAr.title
+        summary = blogAr.summary
+        content = blogAr.content
+    } else if (lang === "tr") {
+        title = blogTr.title
+        summary = blogTr.summary
+        content = blogTr.content
     } else {
-        blogToShow = blog
+        title = blog.title,
+        summary = blog.summary
+        content = blog.content
     }
   return (
-    <main className='flex flex-col w-full items-center gap-6'>
-        <h1>{blogToShow.title}</h1>
+    <main dir={dir} className={`flex flex-col p-8 container mx-auto w-full items-center gap-6 ${lang === "fa" || lang === "ar" ? "vazir" : ""}`}>
+        <h1>{title}</h1>
         <div className="flex flex-col gap-1">
             <small className='self-end'>created: <TimeAgo timestamp={blog.createdAt}/></small>
             <small className='self-end'>updated: <TimeAgo timestamp={blog.updatedAt}/></small>
@@ -46,15 +47,15 @@ const BlogPage = () => {
         {/* image */}
         <div className="w-full rounded-lg overflow-hidden">
             <img 
-                src={blogToShow.imageSrc} alt=""
+                src={blog.imageSrc} alt=""
                 className='h-full w-full object-cover'
             />
         </div>
-        <summary dir={dir}>
-            {blogToShow.summary}
-        </summary>
-        <article dir={dir} dangerouslySetInnerHTML={{__html: blogToShow.content}}>
-        </article>
+        <p>
+            {summary}
+        </p>
+        <section className={`ql-editor ${lang === "fa" || lang === "ar" ? "rtl" : "ltr"}`}  dangerouslySetInnerHTML={{__html: content}}>
+        </section >
     </main>
   )
 }

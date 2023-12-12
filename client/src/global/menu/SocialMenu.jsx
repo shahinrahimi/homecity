@@ -163,7 +163,7 @@ const SocialMenu = () => {
         >
             <button
                 onClick={() => scrollToSection("index")} 
-                className={`${menuOpen ? "hidden" : "block"} bg-white bottom-1/3 right-5 rounded-full shadow-sharp h-[calc(50px)] w-[calc(50px)] cursor-pointer grid place-content-center`}>
+                className={`${menuOpen ? "hidden" : "block"} bg-gray-200/25  bottom-1/3 right-5 rounded-full shadow-sharp h-[calc(50px)] w-[calc(50px)] cursor-pointer grid place-content-center`}>
                 <ArrowIcon className='text-3xl' />
             </button>
         </aside>
