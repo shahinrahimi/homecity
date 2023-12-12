@@ -1,179 +1,137 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import { useQuery } from 'react-query'
-import { getAllBlogs, getAllProjects, getAllFranchises, getAllTags, getAllFacilities } from '../../api'
 import { useBlogStore, useProjectStore, useFranchiseStore, useTagStore, useFacilityStore } from '../../app/store'
 import { Loading } from '../../components'
 
-const PrefetchTags = () => {
+import { useGetAllTags } from '../../hooks/useTagQuery'
+import { useGetAllProjects } from '../../hooks/useProjectQuery'
+import { useGetAllBlogs } from '../../hooks/useBlogQuery'
+import { useGetAllFranchises } from '../../hooks/useFranchiseQuery'
+import { useGetAllFacilities } from '../../hooks/useFacilityQuery'
 
-    const { setTags } = useTagStore()
-
-    const {
-        isSuccess,
-        isLoading,
-        isError,
-        error,
-        data: tagsData,
-    } = useQuery('tags', getAllTags, {
-        select: data => data.map(d => {
-            return {...d, id: d._id}
-        })
-    })
-
-    React.useEffect(() => {
-        if (tagsData) setTags(tagsData)
-    }, [tagsData, setTags])
-
-    return <Loading />
-}
-
-const PrefetchFacilities = () => {
-
-    const { setFacilities } = useFacilityStore()
-
-    const {
-        isSuccess,
-        isLoading,
-        isError,
-        error,
-        data: facilitiesData,
-    } = useQuery('facilities', getAllFacilities, {
-        select: data => data.map(d => {
-            return {...d, id: d._id, iconSrc: `http://localhost:5000/${d.icon}`}
-        })
-    })
-
-    React.useEffect(() => {
-        if (facilitiesData) setFacilities(facilitiesData)
-    }, [facilitiesData, setFacilities])
-
-
-    return <Loading />
-}
-
-const PrefetchBlogs = () => {
-
-    const { setBlogs } = useBlogStore()
-
-    const {
-        isSuccess,
-        isLoading,
-        isError,
-        error,
-        data: blogsData,
-    } = useQuery('blogs', getAllBlogs, {
-        select: data => data.map(d => {
-            return {...d, id: d._id, imageSrc: `http://localhost:5000/${d.image}`}
-        })
-    })
-
-    React.useEffect(() => {
-        if (blogsData) setBlogs(blogsData)
-    }, [blogsData, setBlogs])
-
-    return <Loading />
-}
-
-const PrefetchProjects = () => {
-    const { setProjects } = useProjectStore()
-
-    const {
-        isSuccess,
-        isLoading,
-        isError,
-        error,
-        data: projectsData,
-    } = useQuery('projects', getAllProjects, {
-        select: data => data.map(d => {
-            return {
-                ...d, 
-                id: d._id,
-                facilities: d.facilities.map(facility => {
-                    return {
-                        ...facility,
-                        iconSrc: `http://localhost:5000/${facility.icon}`
-                    }
-                }),
-                coverSrc: d.cover.map(cover => `http://localhost:5000/${cover}`),
-                imagesSrc: d.images.map(image => `http://localhost:5000/${image}`), 
-                videoSrc:d.video.map(video => `http://localhost:5000/${video}`),
-            }
-        }),
-    })
-
-    React.useEffect(() => {
-        if (projectsData) setProjects(projectsData)
-    }, [projectsData, setProjects])
-
-    return <Loading />
-
-}
-
-const PrefetchFranchises = () => {
-    const { setFranchises } = useFranchiseStore()
-
-    const {
-        isSuccess,
-        isLoading,
-        isError,
-        error,
-        data: franchisesData,
-    } = useQuery('franchises', getAllFranchises, {
-        select: data => data.map(d => {
-            return {
-                ...d, 
-                id: d._id,
-                brandSrc: d.brand.map(brand => `http://localhost:5000/${brand}`),
-                coverSrc: d.cover.map(cover => `http://localhost:5000/${cover}`),
-                imagesSrc: d.images.map(image => `http://localhost:5000/${image}`), 
-            }
-        }),
-    })
-
-    React.useEffect(() => {
-        if (franchisesData) setFranchises(franchisesData)
-    }, [franchisesData, setFranchises])
-
-    return <Loading />
-
-}
 
 const Prefetch = () => {
     // setBlogs and setProject does not requred here
     // they esist cuz after query this component rerender andso the outlet will return
-    const { setBlogs } = useBlogStore()
-    const blogs = useBlogStore.getState().blogs
-    const { setProjects } = useProjectStore()
-    const projects = useProjectStore.getState().projects
-    const { setFranchises } = useFranchiseStore()
-    const franchises = useFranchiseStore.getState().franchises
-    const { setTags } = useTagStore()
-    const tags = useTagStore.getState().tags
-    const { setFacilities } = useFacilityStore()
-    const facilities = useFacilityStore.getState().facilities 
+    const { blogs, setBlogs } = useBlogStore()
+    const { projects, setProjects } = useProjectStore()
+    const { franchises, setFranchises } = useFranchiseStore()
+    const { tags, setTags } = useTagStore()
+    const { facilities, setFacilities } = useFacilityStore()
 
-    if (!blogs) {
-        return <PrefetchBlogs />
+    const {
+        isSuccess: isTagSuccess,
+        isLoading: isTagLoading,
+        isError: isTagError,
+        error: tagError,
+        data: tagData
+    } = useGetAllTags()
+
+    const {
+        isSuccess: isBlogSuccess,
+        isLoading: isBlogLoading,
+        isError: isBlogError,
+        error: blogError,
+        data: blogData
+    } = useGetAllBlogs()
+
+    const {
+        isSuccess: isProjectSuccess,
+        isLoading: isProjectLoading,
+        isError: isProjectError,
+        error: projectError,
+        data: projectData
+    } = useGetAllProjects()
+
+    const {
+        isSuccess: isFranchiseSuccess,
+        isLoading: isFranchiseLoading,
+        isError: isFranchiseError,
+        error: franchiseError,
+        data: franchiseData
+    } = useGetAllFranchises()
+
+    const {
+        isSuccess: isFacilitySuccess,
+        isLoading: isFacilityLoading,
+        isError: isFacilityError,
+        error: facilityError,
+        data: facilityData
+    } = useGetAllFacilities()
+
+    React.useEffect(() => {
+        if (tagData){
+            setTags(tagData)
+        }
+    },[tagData, setTags])
+
+    React.useEffect(() => {
+        if (projectData){
+            setProjects(projectData)
+        }
+    },[projectData, setProjects])
+
+    React.useEffect(() => {
+        if (blogData){
+            setBlogs(blogData)
+        }
+    },[blogData, setBlogs])
+
+    React.useEffect(() => {
+        if (franchiseData){
+            setFranchises(franchiseData)
+        }
+    },[franchiseData, setFranchises])
+
+    React.useEffect(() => {
+        if (facilityData){
+            setFacilities(facilityData)
+        }
+    },[facilityData, setFacilities])
+
+    React.useEffect(() => {
+        if (isTagError && tagError){
+            console.log("fetch tag error", tagError)
+        }
+    }, [isTagError])
+
+    React.useEffect(() => {
+        if (isProjectError && projectError){
+            console.log("fetch project error", projectError)
+        }
+    }, [isProjectError])
+
+    React.useEffect(() => {
+        if (isBlogError && blogError){
+            console.log("fetch blog error", blogError)
+        }
+    }, [isBlogError])
+
+    React.useEffect(() => {
+        if (isFranchiseError && franchiseError){
+            console.log("fetch franchise error", franchiseError)
+        }
+    }, [isFranchiseError])
+
+    React.useEffect(() => {
+        if (isFacilityError && facilityError){
+            console.log("fetch facility error", facilityError)
+        }
+    }, [isFacilityError])
+
+    if (isTagLoading || isProjectLoading || isBlogLoading || isFranchiseLoading || isFacilityLoading) return <Loading />
+    if (
+        isTagSuccess && tags &&
+        isProjectSuccess && projects &&
+        isBlogSuccess && blogs &&
+        isFranchiseSuccess && franchises &&
+        isFacilitySuccess && facilities
+        ) {
+        return <Outlet />
     }
 
-    if (!projects){
-        return <PrefetchProjects />
-    }
+    return <></>
 
-    if (!franchises){
-        return <PrefetchFranchises />
-    }
-
-    if (!tags){
-        return <PrefetchTags />
-    }
-
-    if (!facilities){
-        return <PrefetchFacilities />
-    }
-
-    return <Outlet />
 }
 
 export default Prefetch
