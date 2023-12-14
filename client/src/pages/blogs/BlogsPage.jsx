@@ -2,10 +2,9 @@ import React from 'react'
 import { Section } from '../../components'
 import { useBlogStore } from '../../app/store'
 import BlogListItem from './BlogListItem'
+
 const BlogsPage = () => {
     const { blogs } = useBlogStore()
-
-    console.log(blogs)
 
   return (
     <Section>

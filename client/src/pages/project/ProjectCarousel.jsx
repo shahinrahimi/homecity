@@ -40,7 +40,7 @@ const ProjectCarousel = ({ project }) => {
     }
 
   return (
-    <section className=' min-h-[calc(50vh)]'>
+    <section className='min-h-[calc(50vh)]'>
         {/* sence */}
         <div className="bg-sky-500 h-[calc(40vh)] relative rounded-3xl overflow-hidden">
             {/* map */}

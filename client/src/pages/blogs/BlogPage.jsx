@@ -7,7 +7,8 @@ import { LanguageContext } from '../../context/LanguageContext'
 
 const BlogPage = () => {
     const { id } = useParams()
-    const blog = useBlogStore((state) => state.getBlogById(id))
+    const { getBlogById } = useBlogStore()
+    const blog = getBlogById(id)
     const { lang, dir } = React.useContext(LanguageContext)
 
     if (!blog) {

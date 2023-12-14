@@ -22,11 +22,9 @@ const ProjectListPage = () => {
                 <ProjectCard project={project} />
               </li>
             )
-            
           })}
         </ul>
       </Section>
-
     </main>
   )
 }
