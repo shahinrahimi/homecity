@@ -1,6 +1,5 @@
 import React from "react"
 import { Section } from "../../components"
-import { underConstructionSvg } from "../../assets/svg";
 import { ContactUsForm } from "../../components";
 const ContactUs = () => {
   return (

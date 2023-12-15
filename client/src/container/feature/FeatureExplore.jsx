@@ -1,11 +1,8 @@
 import React from 'react'
-import { SimpleTeather } from '../../../components'
-import { Button, Section } from '../../../components'
-import { useProjectStore } from '../../../app/store'
+import { Button, Section, SimpleTeather } from '../../components'
+import { useProjectStore } from '../../app/store'
 
-
-const FeaturesSection2 = ({ id, isDark , background }) => {
-
+const FeatureExplore = ({ id, isDark , background }) => {
     const projects = useProjectStore.getState().projects
 
     const images = projects[0].imagesSrc
@@ -33,6 +30,4 @@ const FeaturesSection2 = ({ id, isDark , background }) => {
       )
 }
 
-export default FeaturesSection2
-
-
+export default FeatureExplore

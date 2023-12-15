@@ -3,6 +3,33 @@
   "label": "Select another language!",
   "about": "About",
   "home": "Home",
+  "faqs_title": "FAQs",
+  "faqs_p_1":"Find answers to common questions about the citizenship process, real estate investment, and living in Turkey.",
+  "faqs_p_2":"Still have questions?",
+  "faqs_p_3":"Contact out team for further assistance.",
+
+  "faqs": [
+    {
+      "question": "How to apply for citizenship?",
+      "answer": "o apply for citizenship in Turkey, you need to meet certain criteria and submit the required documents. Our team of experts can guide you through the process and assist you with the application."
+    },
+    {
+      "question": "Can foreigners buy property?",
+      "answer": "Yes, foreigners are allowed to buy property in Turkey. There are certain regulations and procedures to follow, but our experienced agents can help you navigate the real estate investment process."
+    },
+    {
+      "question": "What are the benefits?",
+      "answer": "Obtaining Turkish citizenship offers numerous benefits, including access to a high-quality healthcare system, affordable education, and a favorable business environment. Our team can provide you with detailed information on the advantages of becoming a Turkish citizen."
+    },
+    {
+      "question": "How long does it take?",
+      "answer": "The duration of the citizenship process can vary depending on individual circumstances. Our experts will assess your situation and provide you with an estimated timeline for the completion of the process."
+    },
+    {
+      "question": "What is the cost?",
+      "answer": "The cost of obtaining Turkish citizenship can vary depending on factors such as the type of investment and the number of family members included in the application. Our team will provide you with a transparent breakdown of the costs involved."
+    }
+  ],
   "info_1": {
     "title": "Learn about our services for obtaining a passport with property purchase.",
     "contents": [

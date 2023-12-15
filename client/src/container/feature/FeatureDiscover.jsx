@@ -1,9 +1,9 @@
 import React from 'react'
-import { benefitSvg, investmentSvg } from '../../../assets/svg'
-import { passportImage } from '../../../assets/img'
-import { Button, Simplify, Section } from '../../../components'
+import { benefitSvg, investmentSvg } from '../../assets/svg'
+import { passportImage } from '../../assets/img'
+import { Button, Simplify, Section } from '../../components'
 
-const FeaturesSection = ({ id, isDark , background }) => {
+const FeatureDiscover = ({ id, background, isDark }) => {
   return (
     <Section id={id} isDark={isDark} background={background}>
         <div className="flex flex-col md:flex-row justify-between gap-10 items-center">
@@ -49,4 +49,4 @@ const FeaturesSection = ({ id, isDark , background }) => {
   )
 }
 
-export default FeaturesSection
+export default FeatureDiscover

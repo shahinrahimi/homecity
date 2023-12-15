@@ -2,20 +2,21 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { background1 } from "../../assets/img";
 import { SmoothScrollingContext } from "../../context/SmoothScrollingContext";
-import {
-  ServicesSection, 
-  ExperiencesSection, 
-  InformationSection,
+import { 
   HeroCarousel,
-  ProjectsCarouselSection, 
-  FeaturesSection, 
-  FeaturesSection2, 
-  FeaturesSection3, 
-  FAQsSection,
-  InstagramSection,
-  BlogsCarouselSection,
-  FranchiseSection
-} from "./sections";
+  BlogCarousel,
+  ProjectCarousel,
+
+  FeatureDiscover,
+  FeatureExperience,
+  FeatureExplore,
+  FeatureService,
+  FeatureServiceHub,
+
+  Instagram,
+  FAQ,
+  FranchiseTicker
+} from "../../container"
 
 import PreLoader from "../../components/loading/PreLoader";
 
@@ -26,20 +27,18 @@ const Home = () => {
 
   return (
     <main className="overflow-hidden">
-      <PreLoader/>
-      
       <HeroCarousel id={"home"} />
-      <FeaturesSection />
-      <ServicesSection isDark={true} />
-      <FeaturesSection2 />
-      <ExperiencesSection background={background1} isDark={true} />
-      <FeaturesSection3 />
-      <InstagramSection isDark={true} />
-      <BlogsCarouselSection />
-      <InformationSection isDark={true} />
-      <ProjectsCarouselSection />
-      <FAQsSection />
-      <FranchiseSection />
+      <FeatureDiscover id={"discover"} />
+      <FeatureExperience id={"experience"} background={background1} isDark={true} />
+      <FeatureServiceHub id={"servicehub"}  />
+      <FeatureExplore id={"explore"}  isDark={true}/>
+      <ProjectCarousel />
+      <FeatureService id={"service"} isDark={true} />
+      
+      <BlogCarousel />
+      <FranchiseTicker />
+      <Instagram isDark={true} />
+      <FAQ  />
     </main>
   );
 };

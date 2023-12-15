@@ -18,8 +18,10 @@ import {
   LoginPage,
   RegisterPage,
   RequiredAuth,
+
   TagList,
   FacilitiesList,
+  MessageList,
 
   BlogList,
   BlogPreview,
@@ -35,6 +37,7 @@ import {
   FranchisePreview,
   EditFranchise,
   NewFranchise,
+
   
 } from "./pages/admin"
 
@@ -69,7 +72,7 @@ function App() {
             <Route path="/" element={<MainLayout />}>
               <Route index element={<Home />} />
 
-              {/* realestates */}
+              {/* projects */}
               <Route path="projects">
                 <Route index element={<ProjectsListPage />} />
                 <Route path=":id" element={<ProjectPage />} />
@@ -87,7 +90,14 @@ function App() {
                 <Route path=":id" element={<BlogPage />} />
               </Route>
               {/* etc */}
+
+              {/* liveprice */}
+              <Route path="liveprice" element={<></>} />
+
+              {/* contact */}
               <Route path="contactus" element={<ContactUs />} />
+
+              {/* about */}
               <Route path="about" element={<About />} />
               <Route path="*" element={<NotFound />} />
             </Route>
@@ -99,10 +109,13 @@ function App() {
               <Route element={<RequiredAuth />}>
                 
                 <Route path="dash" element={<Dashabord />} />
-                {/* tag */}
+                {/* tags */}
                 <Route path="tag" element={<TagList />} />
+                {/* facilities */}
                 <Route path="facility" element={<FacilitiesList />} />
-                
+                {/* messages */}
+                <Route path="message" element={<MessageList />} />
+
                 {/* blog */}
                 <Route path="blog">
                   <Route index element={<BlogList />} />

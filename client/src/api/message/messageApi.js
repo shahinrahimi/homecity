@@ -11,7 +11,6 @@ export const createNewMessage = async ({ data }) => {
     return response
 }
 
-
 export const deleteMessage = async ({ id, accessToken }) => {
     const response = await api.delete(`/messages/${id}`, {
         headers: { Authorization: `Bearer ${accessToken}` }

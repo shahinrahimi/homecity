@@ -5,6 +5,8 @@ export {default as RequiredAuth} from "./auth/RequiredAuth"
 
 export {default as TagList} from "./tag/TagList"
 export {default as FacilitiesList} from "./facility/FacilitiesList"
+export {default as MessageList} from "./message/MessageList"
+
 export {default as BlogList} from "./blog/BlogList"
 export {default as EditBlog} from "./blog/EditBlog"
 export {default as NewBlog} from  "./blog/NewBlog"

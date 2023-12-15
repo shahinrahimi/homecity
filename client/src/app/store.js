@@ -70,6 +70,17 @@ export const useFranchiseStore = create(
     }),
 )
 
+export const useMessageStore = create(
+    (set) => ({
+        messages:null,
+        setMessages: (messages) => set({ messages }),
+        getMessageById: (id) => {
+            const messages = useMessageStore.getState().messages;
+            return messages.find((message) => message.id === id);
+        }
+    }),
+)
+
 
 
 

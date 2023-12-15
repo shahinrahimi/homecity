@@ -1,6 +1,10 @@
 import React from 'react'
-import { legalAssistant, applicationProcessing, propertyTours } from '../../../assets/img'
-import { Button, Section } from '../../../components'
+import { 
+    legalAssistant, 
+    applicationProcessing, 
+    propertyTours } from '../../assets/img'
+import { Button, Section } from '../../components'
+
 const data = [
     {
         title: "Legal Assistance",
@@ -22,8 +26,8 @@ const data = [
     }
 ]
 
-const FeaturesSection3 = ({ id, isDark , background }) => {
 
+const FeatureService = ({ id, isDark , background }) => {
     const items = data.map((item, index) => {
         return (
             <li
@@ -65,4 +69,4 @@ const FeaturesSection3 = ({ id, isDark , background }) => {
     )
 }
 
-export default FeaturesSection3
+export default FeatureService

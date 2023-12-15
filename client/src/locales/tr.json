@@ -3,6 +3,32 @@
   "label": "Başka bir dil seçin!",
   "about": "Hakkında",
   "home": "Ana Sayfa",
+  "faqs_title": "SSS",
+  "faqs_p_1": "Vatandaşlık süreci, gayrimenkul yatırımı ve Türkiye'de yaşam hakkında yaygın soruların cevaplarını bulun.",
+  "faqs_p_2": "Hala sorularınız mı var?",
+  "faqs_p_3": "Daha fazla yardım için ekibimize başvurun.",
+  "faqs": [
+    {
+      "question": "Vatandaşlık başvurusu nasıl yapılır?",
+      "answer": "Türkiye'de vatandaşlık başvurusu yapmak için belirli kriterleri karşılamalı ve gerekli belgeleri sunmalısınız. Uzman ekibimiz süreci size rehberlik edebilir ve başvurunuzda size yardımcı olabilir."
+    },
+    {
+      "question": "Yabancılar mülk satın alabilir mi?",
+      "answer": "Evet, yabancılar Türkiye'de mülk satın alabilirler. Belirli düzenlemeler ve prosedürler bulunsa da, deneyimli acentelerimiz gayrimenkul yatırım sürecinde size yardımcı olabilirler."
+    },
+    {
+      "question": "Avantajları nelerdir?",
+      "answer": "Türk vatandaşlığını elde etmek, yüksek kaliteli bir sağlık sistemine, uygun fiyatlı eğitime ve olumlu bir iş ortamına erişim gibi birçok avantaj sunar. Ekibimiz, Türk vatandaşı olmanın avantajları hakkında size detaylı bilgi sağlayabilir."
+    },
+    {
+      "question": "Ne kadar sürer?",
+      "answer": "Vatandaşlık sürecinin süresi bireysel durumlara bağlı olarak değişebilir. Uzmanlarımız durumunuzu değerlendirecek ve sürecin tamamlanması için tahmini bir zaman çizelgesi sağlayacaktır."
+    },
+    {
+      "question": "Maliyeti nedir?",
+      "answer": "Türk vatandaşlığını elde etmenin maliyeti, yatırım türü ve başvuruda yer alan aile üye sayısı gibi faktörlere bağlı olarak değişebilir. Ekibimiz size maliyetlerin şeffaf bir ayrıntısını sağlayacaktır."
+    }
+  ],
   "info_1": {
     "title": "Pasaport elde etmek için mülk satın alma hizmetlerimiz hakkında bilgi edinin.",
     "contents": [

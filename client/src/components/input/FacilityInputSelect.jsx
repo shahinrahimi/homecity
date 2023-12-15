@@ -17,6 +17,7 @@ const FacilityInputSelect = ({ selectedFacilityIds, setSelectedFacilityIds, clas
     const addFacilityToActiveList = (id) => {
         const newArray = [...selectedFacilityIds, id]
         setSelectedFacilityIds(newArray)
+        setInputValue("")
     }
   
     const removeFacilityFromActiveList = (id) => {
@@ -74,7 +75,7 @@ const FacilityInputSelect = ({ selectedFacilityIds, setSelectedFacilityIds, clas
                 onBlur={onBlur}
                 onChange={(e) => setInputValue(e.target.value)}
                 type="text" 
-                className='outline-none  w-full'
+                className='outline-none  w-full text-white/0'
               />
               <ul className={`absolute flex flex-col gap-1 p-2 rounded-sm shadow-sharp bg-green-500/25 translate-y-4 ${focused ? "block" : "animate-hidden-dropdown"}`}>
                 {inactiveFacilities}

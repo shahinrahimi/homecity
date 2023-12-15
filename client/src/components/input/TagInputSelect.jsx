@@ -15,33 +15,34 @@ const TagInputSelect = ({ selectedTagIds, setSelectedTagIds, className }) => {
     const searchInput = React.useRef(null)
 
     const addTagToActiveList = (id) => {
-        const newArray = [...selectedTagIds, id]
-        setSelectedTagIds(newArray)
-      }
+      const newArray = [...selectedTagIds, id]
+      setSelectedTagIds(newArray)
+      setInputValue("")
+    }
   
-      const removeTagFromActiveList = (id) => {
-        const newArray = selectedTagIds.filter(item => item !== id)
-        setSelectedTagIds(newArray)
-      }
+    const removeTagFromActiveList = (id) => {
+      const newArray = selectedTagIds.filter(item => item !== id)
+      setSelectedTagIds(newArray)
+    }
 
-      const activeTags = tags.map((t, index) => {
-        const isActive = selectedTagIds.includes(t.id)
-        return (
-          <li 
-            key={index}
-            className={`flex items-center gap-1 cursor-pointer hover:bg-blue-600/80 transition-all bg-blue-500/80 px-2 py-1 text-white text-sm font-semibold capitalize  ${isActive  ? "block" : "hidden" }`}
-            onClick={() => removeTagFromActiveList(t.id)}
-            >
-            <p>
-              {t.en}
-            </p>
-            <p>
-              <CrossIcon />
-            </p>
-            
-          </li>
-        )
-      })
+    const activeTags = tags.map((t, index) => {
+      const isActive = selectedTagIds.includes(t.id)
+      return (
+        <li 
+          key={index}
+          className={`flex items-center gap-1 cursor-pointer hover:bg-blue-600/80 transition-all bg-blue-500/80 px-2 py-1 text-white text-sm font-semibold capitalize  ${isActive  ? "block" : "hidden" }`}
+          onClick={() => removeTagFromActiveList(t.id)}
+          >
+          <p>
+            {t.en}
+          </p>
+          <p>
+            <CrossIcon />
+          </p>
+          
+        </li>
+      )
+    })
 
       const inactiveTags = tags.map((t, index) => {
         const isActive = selectedTagIds.includes(t.id)
@@ -76,7 +77,7 @@ const TagInputSelect = ({ selectedTagIds, setSelectedTagIds, className }) => {
                 onBlur={onBlur}
                 onChange={(e) => setInputValue(e.target.value)}
                 type="text" 
-                className='outline-none relative w-full'
+                className='outline-none relative w-full text-white/0'
               />
               <ul className={`absolute flex flex-col gap-1 p-2 rounded-sm shadow-sharp bg-green-500/25 translate-y-4 ${focused ? "block" : "animate-hidden-dropdown"}`}>
                 {inactiveTags}

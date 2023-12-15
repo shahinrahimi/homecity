@@ -1,10 +1,10 @@
 import React from 'react'
-import useScreenSize from '../../../hooks/useScreenSize'
-import { useBlogStore } from '../../../app/store'
+import useScreenSize from '../../hooks/useScreenSize'
+import { useBlogStore } from '../../app/store'
 import { useSwipeable } from "react-swipeable";
-import { Section, BlogCard } from '../../../components'
+import { Section, BlogCard } from '../../components'
 
-const BlogsCarousel = ({ blogs }) => {
+const Carousel = ({ blogs }) => {
 
     const { width, height } = useScreenSize()
     // number of blogs show per slide
@@ -55,12 +55,6 @@ const BlogsCarousel = ({ blogs }) => {
 
     const translationClass = `t-x-${activeSlideIndex}`
 
-    const dataObj = {
-        numBlogsPerSlide,
-        numberOfCircles,
-        activeSlideIndex
-    }
-
     const nextSlide = () => {
         let newActiveSlideIndex = activeSlideIndex+1
         if (!(newActiveSlideIndex >= numberOfCircles)){
@@ -106,16 +100,15 @@ const BlogsCarousel = ({ blogs }) => {
     )
 }
 
-const BlogsCarouselSection = ({ id, isDark , background }) => {
-
+const BlogCarousel = ({ id, isDark, background }) => {
     const blogs = useBlogStore.getState().blogs.slice(0,20)
 
     return (
         <Section id={id} isDark={isDark} background={background}>
             <h1 className='text-3xl text-center capitalize mb-6'>latest articles</h1>
-            <BlogsCarousel blogs={blogs} />
+            <Carousel blogs={blogs} />
         </Section>
     )
 }
 
-export default BlogsCarouselSection
+export default BlogCarousel
