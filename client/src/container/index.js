@@ -1,6 +1,8 @@
 export {default as HeroCarousel} from "./hero/HeroCarousel"
 export {default as BlogCarousel} from "./blog/BlogCarousel"
+export {default as BlogCard} from "./blog/BlogCard"
 export {default as ProjectCarousel} from "./project/ProjectCarousel"
+export {default as ProjectCard} from "./project/ProjectCard"
 export {default as Instagram} from "./instagram/Instagram"
 export {default as FAQ} from "./faq/FAQ"
 export {default as FranchiseTicker} from "./franchise/FranchiseTicker"

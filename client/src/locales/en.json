@@ -1,8 +1,74 @@
 {
   "title": "Multi-language app",
   "label": "Select another language!",
+
+  "continue_reading" : "continue reading",
+  "latest_articles": "latest articles",
+
+  "hero_slide_1_p1": "WELCOME TO",
+  "hero_slide_1_p2": "Homecity",
+  "hero_slide_1_p3": "Homecitygroup Offers A Choice Of Several Programs For Investing In Residency And Citizenship In Turkey",
+  "hero_slide_2_p1": "Discover",
+  "hero_slide_2_p2": "Your Path To Turkish Citizenship",
+  "hero_slide_2_p3": "Unlock The Benefits Of Turkish Citizenship Asn Explore Prime Reale Estate Opportunities In Turkey",
+  "hero_slide_3_p1": "Invest",
+  "hero_slide_3_p2": "In Your Future",
+  "hero_slide_3_p3": "Get Started Today. Contact Our Advisers For Free, Confidential Advice On Your Options.",
+
+  "franchise": "franchise",
+  "franchises": "franchises",
+  "project": "project",
+  "projects": "projects",
+  "contact": "contact",
   "about": "About",
   "home": "Home",
+  "discover": "discover",
+  "benefits": "benefits",
+  "investment": "investment",
+  "client": "client",
+  "clients": "clients",
+  "prices":"prices",
+
+
+  "feature_discover_h1": "Acquire Turkish Citizienship Throuth Investment",
+  "feature_discover_p1": "Unlock the benefits of Turkish citizenship by investing in real estate. Enjoy visa-free travel, access to a thriving economy, and a high quality of life.",
+  "feature_discover_benefits": "Visa-free travel, access to a thriving economy, and a high quality of life.",
+  "feature_discover_investment": "Invest in Turkish real estate and secure your path to Turkish citizenship.",
+
+  "feature_servicehub_h": "Turkish Support Hub",
+  "feature_servicehub_p": "Experience Turkey with Ease: Your one-stop solution for education, exchange, immigration, insurance, law, real estate, and translation services.",
+  "feature_immigration_service_h": "Immigration Service",
+  "feature_immigration_service_p":"Navigate immigration effortlessly with our comprehensive services, offering expert guidance on visas, permits, and residency for a stress-free transition.",
+  "feature_exchange_service_h": "exchange Service",
+  "feature_exchange_service_p": "Elevate your financial journey in Turkey with our services, facilitating the creation of bank accounts and currency exchange for a smooth transition.",
+  "feature_education_service_h": "education Service",
+  "feature_education_service_p": "Our education services connect you with top-tier institutions in Turkey, providing tailored programs for a seamless academic journey.",
+  "feature_translation_service_h": "translation Service",
+  "feature_translation_service_p": "Break down language barriers with our translation services, offering accurate document translations and interpretations for seamless communication in Turkey.",
+  "feature_law_service_h": "law service",
+  "feature_law_service_p": "Our legal services provide expert advice and support, ensuring your rights and interests are protected throughout your stay in Turkey.",
+  "feature_insurance_service_h": "insurance Service",
+  "feature_insurance_service_p": "Safeguard your well-being with our tailored insurance services, covering health, travel, and property to ensure worry-free exploration of Turkey.",
+
+  "explore": "explore",
+  "feature_explore_h": "Discover Exclusive Real Estate Opportunities in Turkey",
+  "feature_explore_p": "Unlock the benefits of Turkish citizenship by investing in real estate. Enjoy visa-free travel, access to a thriving economy, and a high quality of life.",
+
+  "service":"service",
+  "services": "services",
+  "feature_service_h": "Efficient Services for Citizenship and Real Estate",
+  "feature_service_p": "We offer a range of services to make your journey to Turkish citizenship and real estate ownership seamless. Our team provides expert legal assistance, personalized property tours, and efficient application processing.",
+  "feature_service_h1": "Legal Assistance",
+  "feature_service_p1": "Our experienced legal team is here to guide you through the process and ensure all legal requirements are met.",
+  "feature_service_h2": "Property Tours",
+  "feature_service_p2":"Discover the perfect property with our personalized tours, tailored to your preferences and needs.",
+  "feature_service_h3": "Application Processing",
+  "feature_service_p3": "We handle the entire application process, ensuring accuracy and efficiency for a smooth experience.",
+
+
+
+
+
   "faqs_title": "FAQs",
   "faqs_p_1":"Find answers to common questions about the citizenship process, real estate investment, and living in Turkey.",
   "faqs_p_2":"Still have questions?",

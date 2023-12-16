@@ -4,23 +4,23 @@ import {
     applicationProcessing, 
     propertyTours } from '../../assets/img'
 import { Button, Section } from '../../components'
-
+import { useTranslation } from 'react-i18next'
 const data = [
     {
-        title: "Legal Assistance",
-        content: "Our experienced legal team is here to guide you through the process and ensure all legal requirements are met.",
+        title: "feature_service_h1",
+        content: "feature_service_p1",
         image: legalAssistant
 
     },
     {
-        title: "Property Tours",
-        content: "Discover the perfect property with our personalized tours, tailored to your preferences and needs.",
+        title: "feature_service_h2",
+        content: "feature_service_p2",
         image: propertyTours
         
     },
     {
-        title: "Application Processing",
-        content: "We handle the entire application process, ensuring accuracy and efficiency for a smooth experience.",
+        title: "feature_service_h3",
+        content: "feature_service_p3",
         image: applicationProcessing
         
     }
@@ -28,6 +28,7 @@ const data = [
 
 
 const FeatureService = ({ id, isDark , background }) => {
+    const { t } = useTranslation()
     const items = data.map((item, index) => {
         return (
             <li
@@ -44,8 +45,8 @@ const FeatureService = ({ id, isDark , background }) => {
                 </div>
                 {/* content */}
                 <div className="w-full flex-col">
-                    <h2 className='text-xl font-bold text-center'>{item.title}</h2>
-                    <p className='text-center'>{item.content}</p>
+                    <h2 className='text-xl font-bold text-center'>{t(item.title)}</h2>
+                    <p className='text-center'>{t(item.content)}</p>
                 </div>
                 
             </li>
@@ -54,9 +55,9 @@ const FeatureService = ({ id, isDark , background }) => {
     return (
         <Section id={id} isDark={isDark} background={background} >
             <div className="flex flex-col justify-between items-center text-center gap-6">
-                <h3 className='uppercase mb-2'>service</h3>
-                <h1 className='text-4xl mb-2 font-bold'>Efficient Services for Citizenship and Real Estate</h1>
-                <p>We offer a range of services to make your journey to Turkish citizenship and real estate ownership seamless. Our team provides expert legal assistance, personalized property tours, and efficient application processing.</p>
+                <h3 className='uppercase mb-2'>{t("service")}</h3>
+                <h1 className='text-4xl mb-2 font-bold'>{t("feature_service_h")}</h1>
+                <p>{t("feature_service_p")}</p>
 
                 <ul className="flex flex-col lg:flex-row w-full justify-between gap-8 mt-8 self">
                     {items}

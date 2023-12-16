@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { IoBedOutline as BedroomIcon } from "react-icons/io5"
 import { LuBath as BathroomIcon } from "react-icons/lu"
-
+import { LanguageContext } from '../../context/LanguageContext';
 function nFormatter(num, digits) {
     const lookup = [
       { value: 1, symbol: "" },
@@ -21,10 +21,9 @@ function nFormatter(num, digits) {
   }
 
 const ProjectCard = ({ project }) => {
+    const { dir, lang } = React.useContext(LanguageContext)
     const {
         id,
-        title,
-        summary,
         startingPrice,
         maxRoomCount,
         maxBathCount,
@@ -35,6 +34,25 @@ const ProjectCard = ({ project }) => {
         city,
         district
     } = project
+
+    const projectFa = project.translations.filter(t => t.language === "fa")[0]
+    const projectAr = project.translations.filter(t => t.language === "ar")[0]
+    const projectTr = project.translations.filter(t => t.language === "tr")[0]
+
+    let title, summary
+    if (lang === "fa"){
+        title = projectFa.title,
+        summary = projectFa.summary
+    }else if (lang === "ar"){
+        title = projectAr.title,
+        summary = projectAr.summary
+    }else if (lang === "tr"){
+        title = projectTr.title,
+        summary = projectTr.summary
+    }else {
+        title = project.title,
+        summary = project.summary
+    }
 
     return (
         <Link

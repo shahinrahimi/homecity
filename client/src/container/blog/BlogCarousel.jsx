@@ -2,8 +2,9 @@ import React from 'react'
 import useScreenSize from '../../hooks/useScreenSize'
 import { useBlogStore } from '../../app/store'
 import { useSwipeable } from "react-swipeable";
-import { Section, BlogCard } from '../../components'
-
+import { Section } from '../../components'
+import BlogCard from './BlogCard';
+import { useTranslation } from 'react-i18next';
 const Carousel = ({ blogs }) => {
 
     const { width, height } = useScreenSize()
@@ -71,7 +72,7 @@ const Carousel = ({ blogs }) => {
 
 
     return (
-        <>
+        <div dir={'ltr'}>
             <ul {...handlers} className={`relative flex justify-between py-4 px-2 gap-4 transition-all duration-700 blogcarousel ${translationClass} `}>
                 {blogs.map((blog, index) => {
                     return (
@@ -95,17 +96,17 @@ const Carousel = ({ blogs }) => {
                     })}
                 </ul>
             </div>
-        </>
+        </div>
         
     )
 }
 
 const BlogCarousel = ({ id, isDark, background }) => {
     const blogs = useBlogStore.getState().blogs.slice(0,20)
-
+    const { t } = useTranslation()
     return (
         <Section id={id} isDark={isDark} background={background}>
-            <h1 className='text-3xl text-center capitalize mb-6'>latest articles</h1>
+            <h1 className='text-3xl text-center capitalize mb-6'>{t("latest_articles")}</h1>
             <Carousel blogs={blogs} />
         </Section>
     )

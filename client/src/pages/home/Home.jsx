@@ -6,13 +6,11 @@ import {
   HeroCarousel,
   BlogCarousel,
   ProjectCarousel,
-
   FeatureDiscover,
   FeatureExperience,
   FeatureExplore,
   FeatureService,
   FeatureServiceHub,
-
   Instagram,
   FAQ,
   FranchiseTicker
@@ -24,7 +22,7 @@ const Home = () => {
   const { t } = useTranslation()
 
   const { scrollToSection } = React.useContext(SmoothScrollingContext)
-
+  
   return (
     <main className="overflow-hidden">
       <HeroCarousel id={"home"} />
@@ -34,7 +32,6 @@ const Home = () => {
       <FeatureExplore id={"explore"}  isDark={true}/>
       <ProjectCarousel />
       <FeatureService id={"service"} isDark={true} />
-      
       <BlogCarousel />
       <FranchiseTicker />
       <Instagram isDark={true} />

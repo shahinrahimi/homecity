@@ -1,6 +1,6 @@
 export const LANGUAGES = [
-  { label: "Farsi", code: "fa" },
+  { label: "فارسی", code: "fa" },
   { label: "English", code: "en" },
-  { label: "Turkish", code: "tr" },
-  { label: "Arabic", code: "ar" }
+  { label: "Türkçe", code: "tr" },
+  { label: "العربية", code: "ar" }
 ]

@@ -1,14 +1,12 @@
+import React from "react"
 import { Menu, Transition } from "@headlessui/react"
-import { useContext, Fragment } from "react"
 import { BiChevronDown } from "react-icons/bi"
-import { IoLanguage } from "react-icons/io5"
-
 import { LanguageContext } from "../../context/LanguageContext"
 import { LANGUAGES } from "../../constants/languages"
 
 const LanguageDropdown = () => {
 
-  const { lang, setLang } = useContext(LanguageContext)
+  const { lang, setLang } = React.useContext(LanguageContext)
 
   const Items = LANGUAGES.map(language => {
     return (
@@ -32,12 +30,6 @@ const LanguageDropdown = () => {
 
         <div>
           <Menu.Button className="capitalize inline-flex w-full justify-center rounded-md bg-black bg-opacity-20 px-2 py-1 text-sm  font-bold text-slate-400 hover:text-slate-50  hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 transition-colors ">
-            {/* <div>
-              <IoLanguage
-                className="h-5 w-5 text-violet-200 hover:text-violet-100"
-                aria-hidden="true"
-              />
-            </div> */}
 
             <div className="grid place-content-center h-5 w-5 font-bold text-xs">
               {LANGUAGES.filter(l => l.code === lang)[0].code}
@@ -52,7 +44,7 @@ const LanguageDropdown = () => {
           </Menu.Button>
         </div>
         <Transition
-          as={Fragment}
+          as={React.Fragment}
           enter="transition ease-out duration-100"
           enterFrom="transform opacity-0 scale-95"
           enterTo="transform opacity-100 scale-100"

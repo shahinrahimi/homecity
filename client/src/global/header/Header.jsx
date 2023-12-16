@@ -57,8 +57,6 @@ const Header = () => {
         }
 
         {/* client controls */}
-
-
         {rootPath === "admin"
             ? (
               <div className="flex flex-row justify-end items-center gap-2 m-1 text-xl text-white">

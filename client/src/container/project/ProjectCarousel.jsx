@@ -1,7 +1,8 @@
 import React from "react"
-import { Simplify, Section, ProjectCard } from "../../components"
+import { Simplify, Section } from "../../components"
 import { useProjectStore } from "../../app/store"
-
+import ProjectCard from "./ProjectCard"
+import { useTranslation } from "react-i18next"
 const Slide = ({ children, index, maxIndex, activeIndex }) => {
     let prevIndex, nextIndex
   

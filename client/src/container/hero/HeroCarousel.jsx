@@ -1,16 +1,18 @@
 import React from 'react'
 import { useSwipeable } from "react-swipeable";
 import { background6, background4, background5 } from "../../assets/img";
-
+import { useTranslation } from 'react-i18next';
+import { LanguageContext } from '../../context/LanguageContext';
 const SlideContent1 = () => {
+  const { t } = useTranslation()
     return (
       <article
         className="flex flex-col justify-center items-center w-full h-full"
       >
         <div className="drop-shadow-2xl mb-6">
-          <h3 className="uppercase text-sm lg:text-lg mb-2">welcome to</h3>
-          <h1 className="capitalize text-6xl lg:text-8xl mb-3 font-semibold">Homecity</h1>
-          <h2 className="capitalize text-2xl lg:text-5xl">homecitygroup offers a choice of several programs for investing in residency and citizenship in turkey</h2>
+          <h3 className="uppercase text-sm lg:text-lg mb-2">{t("hero_slide_1_p1")}</h3>
+          <h1 className="capitalize text-6xl lg:text-8xl mb-3 font-semibold">{t("hero_slide_1_p2")}</h1>
+          <h2 className="capitalize text-2xl lg:text-5xl">{t("hero_slide_1_p3")}</h2>
         </div>
   
         <a
@@ -25,15 +27,16 @@ const SlideContent1 = () => {
   }
   
   const SlideContent2 = () => {
+    const { t } = useTranslation()
     return (
       <article
         className="flex flex-col justify-center items-center w-full h-ful"
       >
         <div className="drop-shadow-2xl mb-6">
   
-          <h1 className="capitalize text-5xl lg:text-8xl font-bold mb-2 self-start">discover</h1>
-          <h1 className="capitalize text-5xl lg:text-8xl mb-6">Your path to Turkish <span className="font-bold">Citizenship</span></h1>
-          <h2 className="capitalize text-2xl lg:text-5xl">unlock the benefits of Turkish citizenship adn explore prime reale estate opportunities in Turkey</h2>
+          <h1 className="capitalize text-sm lg:text-lg font-bold mb-2 self-start">{t("hero_slide_2_p1")}</h1>
+          <h1 className="capitalize text-4xl font-semibold lg:text-5xl mb-6">{t("hero_slide_2_p2")}</h1>
+          <h2 className="capitalize text-2xl font-light lg:text-5xl">{t("hero_slide_2_p3")}</h2>
         </div>
   
         <a
@@ -49,12 +52,13 @@ const SlideContent1 = () => {
   }
   
   const SlideContent3 = () => {
+    const { t } = useTranslation()
     return (
       <article className="flex flex-col justify-center items-center w-full h-full">
         <div className="drop-shadow-2xl mb-6">
-          <h1 className="capitalize text-5xl lg:text-8xl font-bold mb-2">invest</h1>
-          <h1 className="capitalize text-5xl lg:text-8xl mb-6">in your <span className="font-bold">future</span></h1>
-          <h2 className="capitalize text-2xl lg:text-5xl">get started today. contact our advisers for free, confidential advice on your options.</h2>
+          <h1 className="capitalize text-sm lg:text-lg font-bold mb-2">{t("hero_slide_3_p1")}</h1>
+          <h1 className="capitalize text-5xl lg:text-8xl mb-6">{t("hero_slide_3_p2")}</h1>
+          <h2 className="capitalize text-2xl lg:text-5xl">{t("hero_slide_3_p3")}</h2>
         </div>
   
         <a
@@ -94,6 +98,8 @@ const SlideContent1 = () => {
   }
   
   const HeroCarousel = ({ id }) => {
+
+    const { lang, dir } = React.useContext(LanguageContext)
   
     const handlers = useSwipeable({
       onSwiped: (e) => {
@@ -169,8 +175,9 @@ const SlideContent1 = () => {
     return (
       <div 
       // sweepable
+      dir={dir}
       {...handlers}
-        className="relative w-screen h-[calc(100vh)] bg-black overflow-hidden border "
+        className={`relative w-screen h-[calc(100vh)] bg-black overflow-hidden border ${lang === "fa" || lang === "ar" ? "vazir": ""}`}
         id={id}
       >
         {/* slides */}

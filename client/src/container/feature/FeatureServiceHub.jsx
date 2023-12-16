@@ -1,10 +1,10 @@
 import React from 'react'
-import { IoIosSchool } from "react-icons/io"
-import { GiPassport } from "react-icons/gi"
-import { BsCurrencyExchange } from "react-icons/bs"
-import { MdHealthAndSafety } from "react-icons/md"
-import { AiOutlineGlobal } from "react-icons/ai"
-import { GoLaw } from "react-icons/go"
+import { IoIosSchool as EducationIcon } from "react-icons/io"
+import { GiPassport as ImmigrationIcon } from "react-icons/gi"
+import { BsCurrencyExchange as ExchangeIcon } from "react-icons/bs"
+import { MdHealthAndSafety as InsuranceIcon } from "react-icons/md"
+import { AiOutlineGlobal as TranslationIcon } from "react-icons/ai"
+import { GoLaw as LawIcon } from "react-icons/go"
 import { Simplify, Section } from "../../components"
 import {
   service_education,
@@ -15,53 +15,55 @@ import {
   service_translation
 } from "../../assets/img"
 
+import { useTranslation } from 'react-i18next'
+
 const service_items = [
   {
-    title: "education service",
-    icon: IoIosSchool,
+    title: "feature_education_service_h",
+    icon: EducationIcon,
     image: service_education,
-    content: "Our education services connect you with top-tier institutions in Turkey, providing tailored programs for a seamless academic journey.",
+    content: "feature_education_service_p",
     color: "c-blue-500",
   },
   {
-    title: "exchange service",
-    icon: BsCurrencyExchange,
+    title: "feature_exchange_service_h",
+    icon: ExchangeIcon,
     image: service_exchange,
-    content: "Elevate your financial journey in Turkey with our services, facilitating the creation of bank accounts and currency exchange for a smooth transition.",
+    content: "feature_exchange_service_p",
     color: "c-yellow-500",
   },
   {
-    title: "immigration service",
-    icon: GiPassport,
+    title: "feature_immigration_service_h",
+    icon: ImmigrationIcon,
     image: service_immigration,
-    content: "Navigate immigration effortlessly with our comprehensive services, offering expert guidance on visas, permits, and residency for a stress-free transition.",
+    content: "feature_immigration_service_p",
     color: "c-red-400",
   },
 
   {
-    title: "insurance service",
-    icon: MdHealthAndSafety,
+    title: "feature_insurance_service_h",
+    icon: InsuranceIcon,
     image: service_insurance,
-    content: "Safeguard your well-being with our tailored insurance services, covering health, travel, and property to ensure worry-free exploration of Turkey.",
+    content: "feature_insurance_service_p",
     color: "c-green-500",
   },
   {
-    title: "law service",
-    icon: GoLaw,
+    title: "feature_law_service_h",
+    icon: LawIcon,
     image: service_law,
-    content: "Our legal services provide expert advice and support, ensuring your rights and interests are protected throughout your stay in Turkey.",
+    content: "feature_law_service_p",
     color: "c-black-500",
   },
   {
-    title: "translation service",
-    icon: AiOutlineGlobal,
+    title: "feature_insurance_service_h",
+    icon: TranslationIcon,
     image: service_translation,
-    content: "Break down language barriers with our translation services, offering accurate document translations and interpretations for seamless communication in Turkey.",
-    color: "fuchsia-500",
+    content: "feature_insurance_service_p",
   },
 ]
 
 const ServiceCard = ({index, item, activeIndex, setActiveIndex}) => {
+  const { t } = useTranslation() 
   return (
     <li 
     onClick={() => setActiveIndex(index)}
@@ -71,7 +73,7 @@ const ServiceCard = ({index, item, activeIndex, setActiveIndex}) => {
         {<item.icon />}
       </div>
       <div className="flex flex-col">
-        <h1 className="font-semibold capitalize">{item.title}</h1>
+        <h1 className="font-semibold capitalize">{t(item.title)}</h1>
         {/* <p>Lorem, ipsum dolor.</p> */}
       </div>
     </li>
@@ -79,6 +81,8 @@ const ServiceCard = ({index, item, activeIndex, setActiveIndex}) => {
 }
 
 const ServiceContent = ({index, item, activeIndex}) => {
+  const { t } = useTranslation() 
+
   return (
     <li className={`${index === activeIndex ? "block" : "hidden"} animate-menu-slideIn flex flex-col items-center gap-4`}>
       <div className="rounded-md overflow-hidden w-[calc(80%)] bg-red-500">
@@ -88,8 +92,8 @@ const ServiceContent = ({index, item, activeIndex}) => {
         />
       </div>
       <div className="flex flex-col items-center mt-4 gap-2">
-        <h2 className="capitalize text-2xl font-bold">{item.title}</h2>
-        <p className="text-center">{item.content}</p>
+        <h2 className="capitalize text-2xl font-bold">{t(item.title)}</h2>
+        <p className="text-center">{t(item.content)}</p>
       </div>
       
     </li>
@@ -135,15 +139,13 @@ const ServiceContents = () => {
 
 const FeatureServiceHub = ({ id, isDark , background }) => {
 
-  const [activeIndex, setActiveIndex] = React.useState(0)
+  const { t } = useTranslation() 
 
   return (
     <Section id={id} isDark={isDark} background={background} >
       <div className="mb-6">
-        <h1 className="text-4xl font-bold mb-4 text-center">Turkish Support Hub</h1>
-
-        <p className="text-xl text-center">Experience Turkey with Ease: Your one-stop solution for education, exchange, immigration, insurance, law, real estate, and translation services.</p>
-
+        <h1 className="text-4xl font-bold mb-4 text-center">{t("feature_servicehub_h")}</h1>
+        <p className="text-xl text-center">{t("feature_servicehub_p")}</p>
       </div>
       {<ServiceContents />}
     </Section>

@@ -6,15 +6,20 @@ import Footer from "../footer/Footer"
 import { Banner } from "../components";
 import BotomMenu from "../menu/BotomMenu";
 import SocialMenu from "../menu/SocialMenu";
+import { LanguageContext } from "../../context/LanguageContext";
 const MainLayout = () => {
 
+  const { dir, lang } = React.useContext(LanguageContext)
+
   return (
-    <div className="scroll-smooth">
+    <div className={`scroll-smooth ${lang === "fa" || lang === "ar" ? "vazir" : ""}`} >
       {/* for scrolling to top */}
       <div id="index"></div>
       <Header />
       <Menu />
-      <Outlet />
+      <div dir={dir}>
+        <Outlet  />
+      </div>
       <Banner />
       <Footer />
       <BotomMenu />

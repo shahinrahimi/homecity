@@ -4,10 +4,12 @@ import { NAVLINKS } from "../../constants/navLinks"
 import useRootPath from "../../hooks/usePathLocation"
 import { Link } from "react-router-dom"
 import { Socials } from "../components"
+import { useTranslation } from "react-i18next"
 
 const Menu = () => {
   const { isOpen, toggle } = React.useContext(MenuContext)
   const { rootPath } = useRootPath()
+  const { t } = useTranslation()
 
   const navItems = NAVLINKS.map(item => {
     return (
@@ -24,7 +26,7 @@ const Menu = () => {
           <div className="bg-transparent relative group overflow-hidden">
             <div>
               <span className="opacity-0">{'c'}</span>
-              {item.name}
+              {t(item.name)}
               <span className="opacity-0">{'c'}</span>
             </div>
             <div className="w-full h-full group-hover:after:w-full group-hover:before:w-full after:absolute before:absolute after:h-[calc(50%)] before:h-[calc(50%)] after:top-0 before:bottom-0 after:left-0 before:left-0 after:bg-c-red-500 before:bg-c-red-500 after:translate-x-[calc(100%-0.25rem)] before:translate-x-[calc(-100%+0.25rem)] group-hover:after:translate-x-[calc(-100%+0.25rem)] after:duration-500 before:duration-500 group-hover:before:translate-x-[calc(100%-0.25rem)] after:transition-transform group-hover:after:animate-menu-item-blink  before:transition-transform group-hover:before:animate-menu-item-blink  after:-z-10 before:-z-10"></div>

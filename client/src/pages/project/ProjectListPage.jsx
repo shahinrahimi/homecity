@@ -1,7 +1,9 @@
 import React from 'react'
-import { Section, ProjectCard } from '../../components'
+import { Section } from '../../components'
 import { useProjectStore } from '../../app/store'
 import { background1 as bg } from '../../assets/img'
+import { ProjectCard } from '../../container'
+
 const ProjectListPage = () => {
 
   const projects = useProjectStore.getState().projects
