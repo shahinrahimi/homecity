@@ -23,7 +23,7 @@ const livePrices = require("./lib/livePrices")
 
 io.on('connection', (socket) => {
   console.log('A user connected');
-  socket.emit('live prices signal', JSON.stringify(livePrices));
+  socket.emit('live prices signal', JSON.stringify(livePrices.prices));
   
   socket.on('disconnect', () => {
     console.log('User disconnected');
