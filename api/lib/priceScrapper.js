@@ -222,7 +222,6 @@ scrappingTools.infiniteRun = async (intervalMin = 5) => {
     await scrappingTools.scrapeIRR()
     await scrappingTools.scrapMajors()
     await scrappingTools.scrapCryptos()
-    console.log(livePrices.prices)
   } catch (e) {
     console.log(e)
     console.log("we have error in scraping prices")
