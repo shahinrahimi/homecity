@@ -1,3 +1,9 @@
+const DOMAINS = {
+  IR: "IR",
+  FOREX: "FOREX",
+  CRYPTO: "CRYPTO"
+}
+
 const IRLABLES = {
   USD: "USD",
   EUR: "EUR",
@@ -9,14 +15,7 @@ const IRLABLES = {
   TRX: "TRX",
 }
 
-const GLOBALLABLES = {
-  EURUSD: "EURUSD",
-  USDJPY: "USDJPY",
-  GBPUSD: "GBPUSD",
-  AUDUSD: "AUDUSD",
-  USDCAD: "USDCAD",
-  USDCHF: "USDCHF",
-  NZDUSD: "NZDUSD",
+const CRYPTOLABLES = {
   BTC: "BTC",
   ETH: "ETH",
   BNB: "BNB",
@@ -27,7 +26,19 @@ const GLOBALLABLES = {
   DOT: "DOT",
 }
 
-module.exports = { 
+const FOREXLABLES = {
+  EURUSD: "EURUSD",
+  USDJPY: "USDJPY",
+  GBPUSD: "GBPUSD",
+  AUDUSD: "AUDUSD",
+  USDCAD: "USDCAD",
+  USDCHF: "USDCHF",
+  NZDUSD: "NZDUSD"
+}
+
+module.exports = {
+  DOMAINS: DOMAINS,
   IR: IRLABLES, 
-  GLOBAL: GLOBALLABLES 
+  FOREX: FOREXLABLES,
+  CRYPRO: CRYPTOLABLES
 }

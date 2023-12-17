@@ -148,15 +148,15 @@ scrappingTools.scrapMinors = async () => {
   const { status, data } = await axios.get('https://www.tradingview.com/markets/currencies/rates-minor/')
   if (status === 200){
     const root = HTMLParser.parse(data)
-    const elements = root.querySelectorAll('tbody > tr > td')
+    const elements = root.querySelectorAll('tbody > tr')
     elements.forEach(element => {
       const columns = element.querySelectorAll("td")
       const label = columns[0].querySelector("a").text.trim()
-      const value = columns[2].text.trim()
-      const change = columns[3].text.trim()
-        if (Object.keys(LABLES.GLOBAL).includes(label)){
-          livePrices.setGLOBALLivePrice(
-            LABLES.GLOBAL[label],
+      const value = columns[1].text.trim()
+      const change = columns[2].text.trim()
+        if (Object.keys(LABLES.FOREX).includes(label)){
+          livePrices.setForexLivePrice(
+            LABLES.FOREX[label],
             value,
             change
           )
@@ -178,9 +178,9 @@ scrappingTools.scrapMajors = async () => {
       const label = columns[0].querySelector("a").text.trim()
       const value = columns[1].text.trim()
       const change = columns[2].text.trim()
-        if (Object.keys(LABLES.GLOBAL).includes(label)){
-          livePrices.setGLOBALLivePrice(
-            LABLES.GLOBAL[label],
+        if (Object.keys(LABLES.FOREX).includes(label)){
+          livePrices.setForexLivePrice(
+            LABLES.FOREX[label],
             value,
             change
           )
@@ -202,9 +202,9 @@ scrappingTools.scrapCryptos = async () => {
         const label = columns[0].querySelector("a").text.trim()
         const value = columns[2].text.replace("USD", "").trim()
         const change = columns[3].text.trim()
-        if (Object.keys(LABLES.GLOBAL).includes(label)){
-          livePrices.setGLOBALLivePrice(
-            LABLES.GLOBAL[label],
+        if (Object.keys(LABLES.CRYPRO).includes(label)){
+          livePrices.setCryptoLivePrice(
+            LABLES.CRYPRO[label],
             value,
             change
           )
@@ -222,6 +222,7 @@ scrappingTools.infiniteRun = async (intervalMin = 5) => {
     await scrappingTools.scrapeIRR()
     await scrappingTools.scrapMajors()
     await scrappingTools.scrapCryptos()
+    console.log(livePrices.prices)
   } catch (e) {
     console.log(e)
     console.log("we have error in scraping prices")
