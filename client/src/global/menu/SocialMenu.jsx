@@ -5,7 +5,6 @@ import {
     TelegramColorFull,
     InstagramColorFull,
     TikTalkColorFull,
-    YoutubeColorFull,
     FacebookColorFull
 } from '../../icons/Icons'
 import { BiDotsHorizontalRounded as ThreeDotIcon } from "react-icons/bi";
@@ -14,7 +13,8 @@ import { RxCross2 as CloseIcon } from "react-icons/rx";
 import { FaDollarSign as DollarIcon } from "react-icons/fa";
 import { LivePriceContext } from '../../context/LivePriceContext';
 import { SmoothScrollingContext } from '../../context/SmoothScrollingContext';
-
+import { LanguageContext } from '../../context/LanguageContext';
+import { useTranslation } from 'react-i18next';
 const items = [
     {
         name: "X",
@@ -53,7 +53,8 @@ const SocialMenu = () => {
     const [menuOpen, setMenuOpen] = React.useState(false)
     const { scrollToSection } = React.useContext(SmoothScrollingContext)
     const { livePrices, show, toggleShow } = React.useContext(LivePriceContext)
-
+    const { lang , dir } = React.useContext(LanguageContext)
+    const { t } = useTranslation()
     React.useEffect(() => {
         let timeOutId
         if (show === true){
@@ -70,22 +71,35 @@ const SocialMenu = () => {
       },[show])
     
     let content = <></>
-    if (livePrices?.FOREX){
-        const { FOREX } = livePrices
-
-        content = Object.keys(FOREX).map((p, index) => {
+    let prices
+    if (lang === "fa"){
+        prices = livePrices.filter(p => p.domain === "IR")
+        content = prices.map((p, index) => {
             return (
                 <li 
                     key={index}
                     className='whitespace-nowrap flex flex-grow justify-around'
                 >
-                    <div >{p} {FOREX[p]}</div>
+                    <div >{t(p.name)} {(p.value).toLocaleString("fa-IR")}</div>
                     <div className='mx-2'>|</div>
                 </li>
             )
         })
-
+    } else {
+        prices = livePrices.filter(p => p.domain === "FOREX" || p.domain === "CRYPTO")
+        content = prices.map((p, index) => {
+            return (
+                <li 
+                    key={index}
+                    className='whitespace-nowrap flex flex-grow justify-around'
+                >
+                    <div >{p.name} {(p.value).toFixed(4)}</div>
+                    <div className='mx-2'>|</div>
+                </li>
+            )
+        })
     }
+
 
   return (
     <section id='controlers'>

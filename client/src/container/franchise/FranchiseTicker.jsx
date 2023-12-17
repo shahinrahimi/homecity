@@ -16,7 +16,7 @@ const FranchiseTicker = () => {
   const brands = franchises.map(f => f.brandSrc)
 
   return (
-    <div dir="ltr" className="flex w-full h-full overflow-hidden py-10 md:py-20 lg:py-40 relative">
+    <div dir="ltr" className="flex w-full h-full overflow-hidden py-8 md:py-10 lg:py-20 relative">
 
         <div className="flex flex-nowrap animate-brand-ticker-1 justify-around items-center gap-8 md:gap-12 lg:gap-20">
             {brands.map((item, index) => {

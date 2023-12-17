@@ -8,6 +8,7 @@ import {
   ProjectPage,
   BlogsPage,
   BlogPage,
+  PricePage,
   NotFound, 
   ContactUs, 
   About
@@ -92,7 +93,7 @@ function App() {
               {/* etc */}
 
               {/* liveprice */}
-              <Route path="liveprice" element={<></>} />
+              <Route path="prices" element={<PricePage />} />
 
               {/* contact */}
               <Route path="contactus" element={<ContactUs />} />

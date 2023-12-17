@@ -5,7 +5,7 @@ export const LivePriceContext = React.createContext()
 
 export const LivePriceProvider = ({ children }) => {
 
-    const [livePrices, setLivePrices] = React.useState({})
+    const [livePrices, setLivePrices] = React.useState([])
     const [show, setShow] = React.useState(false)
 
     const toggleShow = () => setShow(prev => !prev)
@@ -57,7 +57,7 @@ export const LivePriceProvider = ({ children }) => {
     }, [show])
 
     return (
-        <LivePriceContext.Provider value={{ livePrices, show, toggleShow }}>
+        <LivePriceContext.Provider value={{ livePrices, show, toggleShow, socket, connect, disconnect }}>
             {children}
         </LivePriceContext.Provider>
     )

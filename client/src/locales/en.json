@@ -129,5 +129,14 @@
       "Enjoy free education services and university scholarship programs.",
       "Gain the right to vote."
     ]
-  }
+  },
+  
+  "USD": "USD",
+  "EUR": "EUR",
+  "GBP": "GBP",
+  "TRY": "TRY",
+  "BTC": "BTC",
+  "ETH": "ETH",
+  "BNB": "BNB",
+  "TRX": "TRX"
 }
