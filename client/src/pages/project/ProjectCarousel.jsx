@@ -98,20 +98,23 @@ const ProjectCarousel = ({ project }) => {
         </div>
         
         {/* carousel */}
-        <div className="bg-sky-500 h-[calc(10vh)] relative">
-            <ul className="flex items-center gap-2 h-full bg-green-400">
-                {images.map((image, index) => {
-                    return (
-                        <li
-                            key={index}
-                            className='shrink-0 basis-24 rounded-lg overflow-hidden'
-                            onClick={(e) => setActiveIndex(index)}
-                        >
-                            <img src={image} alt="" />
-                        </li>
-                    )
-                })}
-            </ul>
+        <div dir="ltr" className="bg-sky-500 h-[calc(10vh)]">
+            <div className="relative left-0 top-0 w-full h-full">
+                <ul className={`flex w-max items-center gap-2 h-full border-2 absolute top-0 ${activeIndex > parseFloat(images.length/2) ? "right-0" : "left-0"} transition-all duration-500`}>
+                    {images.map((image, index) => {
+                        return (
+                            <li
+                                key={index}
+                                className='w-24 rounded-lg overflow-hidden'
+                                onClick={(e) => setActiveIndex(index)}
+                            >
+                                <img src={image} alt="" />
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div>
+            
         </div>
 
         

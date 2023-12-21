@@ -25,7 +25,7 @@ const Faq = ({ question, answer, isOpen, toggle }) => {
     )
 }
 
-const FAQ = ({ id, isDark , background }) => {
+const FAQ = ({ id, isDark , background, haveQuestion=true }) => {
 
     const [currntIndex, setCurrentIndex] = React.useState(null)
 
@@ -57,12 +57,15 @@ const FAQ = ({ id, isDark , background }) => {
                     {faqs}
                 </div>
 
-                <div className="flex flex-col gap-2">
-                    <h2 className='text-3xl font-semibold mb-2'>{t("faqs_p_2")}</h2>
-                    <p>{t("faqs_p_3")}</p>
-                    <Button text={"Contact"} />
-                </div>
-                
+                {haveQuestion && (
+                        <div className="flex flex-col gap-2">
+                            <h2 className='text-3xl font-semibold mb-2'>{t("faqs_p_2")}</h2>
+                            <p>{t("faqs_p_3")}</p>
+                            <Button text={"Contact"} />
+                        </div>
+                    )
+                    
+                }
             </div>
         </Section>
     )

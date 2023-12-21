@@ -45,7 +45,7 @@ const ProjectPage = () => {
     videoSrc
   } = project
   return (
-    <main className='min-h-screen flex flex-col p-40'>
+    <main className='min-h-screen flex flex-col py-40 container mx-auto'>
       {/* title */}
       <div className="flex justify-between">
         <h1>{title} | {code}</h1>

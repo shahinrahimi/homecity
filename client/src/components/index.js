@@ -16,3 +16,6 @@ export {default as TagInputSelect} from "./input/TagInputSelect"
 export {default as FacilityInputSelect} from "./input/FacilityInputSelect"
 export {default as AddressInputSelect} from "./input/AddressInputSelect"
 export {default as Editor} from "./editor/Editor"
+
+export {default as TextInput } from "./input/TextInput"
+export {default as TextAreaInput} from "./input/TextAreaInput"
