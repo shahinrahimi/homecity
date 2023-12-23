@@ -14,7 +14,7 @@ export const useGetAllBlogs = () => {
             return {
                 ...d, 
                 id: d._id, 
-                imageSrc: `http://localhost:5000/${d.image}`}
+                imageSrc: `${process.env.NODE_ENV === "development" ? "http://localhost:5000/" + d.image : d.image}`}
         }),
         refetchOnWindowFocus: false,
         staleTime: Infinity
