@@ -124,6 +124,10 @@
     ]
   },
 
+  "facilities": "olanaklar",
+  "details": "detaylar",
+  "description": "açıklama",
+
   "contact_p": "Herhangi bir soru veya yardıma ihtiyacınız olması durumunda bizimle iletişime geçmekten çekinmeyin. Türkiye'deki emlak ve ikamet hedeflerinize ulaşmanıza yardımcı olmak için hazır bekleyen uzman ekibimiz var. Belirli mülkler, yasal süreçler veya ikamet seçenekleri hakkında sorularınız varsa, size doğru ve zamanında bilgi sağlama taahhüdünde bulunuyoruz.",
 
   "your_name": "adınız",

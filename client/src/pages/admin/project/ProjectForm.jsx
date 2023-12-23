@@ -346,7 +346,7 @@ const ProjectForm = ({
                         htmlFor="titlefa"
                         className='uppercase text-sm'
                     >title in persian</label>
-                    <div className="rtl">
+                    <div dir="rtl" className="rtl vazir">
                         <input 
                             name="titlefa"
                             type="text"
@@ -363,7 +363,7 @@ const ProjectForm = ({
                         htmlFor="titlear"
                         className='uppercase text-sm'
                     >title in arabic</label>
-                    <div className="rtl">
+                    <div dir="rtl" className="rtl vazir">
                         <input 
                             name="titlear"
                             type="text"
@@ -412,7 +412,7 @@ const ProjectForm = ({
                         htmlFor="summeryfa"
                         className='uppercase text-sm'
                     >summery in persian</label>
-                    <div className="rtl">
+                    <div dir="rtl" className="rtl vazir">
                         <textarea
                             name='summeryfa' 
                             type="text"
@@ -429,7 +429,7 @@ const ProjectForm = ({
                         htmlFor="summeryar"
                         className='uppercase text-sm'
                     >summery in arabic</label>
-                    <div className="rtl">
+                    <div dir="rtl" className="rtl vazir">
                         <textarea
                             name='summeryar' 
                             type="text"

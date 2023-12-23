@@ -131,6 +131,11 @@
     ]
   },
 
+  
+  "facilities": "facilities",
+  "details": "details",
+  "description":"description",
+
   "contact_p": "Feel free to reach out to us with any inquiries or assistance you may require. Our team of dedicated professionals is ready to help you achieve your real estate and residency goals in Turkey. Whether you have questions about specific properties, legal processes, or residency options, we are committed to providing you with accurate and timely information.",
 
   "your_name": "your name",

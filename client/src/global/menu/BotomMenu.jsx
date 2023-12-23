@@ -21,7 +21,7 @@ const items = [
     },
     {
         name:"projects",
-        link:"realestates",
+        link:"projects",
         icon:Icons.RealStatesIcon
     },
     {

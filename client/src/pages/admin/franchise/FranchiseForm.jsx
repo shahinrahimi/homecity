@@ -206,7 +206,7 @@ const FranchiseForm = ({
                         htmlFor="titlefa"
                         className='uppercase text-sm'
                     >title in persian</label>
-                    <div className="rtl">
+                    <div dir="rtl" className="rtl vazir">
                         <input 
                             name="titlefa"
                             type="text"
@@ -221,7 +221,7 @@ const FranchiseForm = ({
                         htmlFor="titlear"
                         className='uppercase text-sm'
                     >title in arabic</label>
-                    <div className="rtl">
+                    <div dir="rtl" className="rtl vazir">
                         <input 
                             name="titlear"
                             type="text"
@@ -268,7 +268,7 @@ const FranchiseForm = ({
                         htmlFor="contentfa"
                         className='uppercase text-sm'
                     >content in persian</label>
-                    <div className="rtl">
+                    <div dir="rtl" className="rtl vazir">
                         <textarea
                             name='contentfa' 
                             type="text"
@@ -285,7 +285,7 @@ const FranchiseForm = ({
                         htmlFor="contentar"
                         className='uppercase text-sm'
                     >content in arabic</label>
-                    <div className="rtl">
+                    <div dir="rtl" className="rtl vazir">
                         <textarea
                             name='contentar' 
                             type="text"
@@ -294,7 +294,6 @@ const FranchiseForm = ({
                             className='px-4 py-3 border border-c-black-100/25 outline-none w-full'
                         />
                     </div>
-                    
                 </div>
 
                 <div className="flex flex-col gap-2">

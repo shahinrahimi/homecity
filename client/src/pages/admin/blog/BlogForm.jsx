@@ -89,7 +89,7 @@ const BlogForm = ({
                         htmlFor="title"
                         className='uppercase text-sm'
                     >title in persian</label>
-                    <div className="rtl">
+                    <div dir='rtl' className="rtl vazir">
                         <input 
                             name="title"
                             type="text"
@@ -99,14 +99,13 @@ const BlogForm = ({
                         />
                     </div>
                     
-                    
                 </div>
                 <div className="flex flex-col gap-2">
                     <label 
                         htmlFor="title"
                         className='uppercase text-sm'
                     >title in arabic</label>
-                    <div className="rtl">
+                    <div dir='rtl' className="rtl vazir">
                         <input 
                             name="title"
                             type="text"
@@ -155,7 +154,7 @@ const BlogForm = ({
                         htmlFor="summary"
                         className='uppercase text-sm'
                     >summary in persian</label>
-                    <div className="rtl">
+                    <div dir='rtl' className="rtl vazir">
                         <textarea
                             name='summary' 
                             type="text"
@@ -172,7 +171,7 @@ const BlogForm = ({
                         htmlFor="summary"
                         className='uppercase text-sm'
                     >summary in arabic</label>
-                    <div className="rtl">
+                    <div dir='rtl' className="rtl vazir">
                         <textarea
                             name='summary' 
                             type="text"

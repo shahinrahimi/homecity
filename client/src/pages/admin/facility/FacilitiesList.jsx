@@ -10,15 +10,9 @@ const FacilityList = () => {
 
   const queryClinet = useQueryClient()
 
-  const token = useAuthStore.getState().token
+  const { token } = useAuthStore()
   
-  // make sure component rerender that updated state
-  // just for admin pannel
-  const { setFacilities } = useFacilityStore()
-  let facilities = useFacilityStore.getState().facilities
-  React.useEffect(() => {
-    facilities = useFacilityStore.getState().facilities
-  },[setFacilities])
+  const { setFacilities, facilities } = useFacilityStore()
 
   const [facilityEn, setFacilityEn] = React.useState("")
   const [facilityFa, setFacilityFa] = React.useState("")
@@ -235,7 +229,7 @@ const FacilityList = () => {
                   htmlFor="persian"
                   className='uppercase'
               >persian</label>
-              <div className="relative px-3 py-2">
+              <div className="relative px-3 py-2 vazir">
                   <input
                   dir='rtl'
                   name='persian'
@@ -280,7 +274,7 @@ const FacilityList = () => {
                   htmlFor="arabic"
                   className='uppercase'
               >arabic</label>
-              <div className="relative px-3 py-2">
+              <div className="relative px-3 py-2 vazir">
                   <input
                   dir='rtl'
                   name='arabic'

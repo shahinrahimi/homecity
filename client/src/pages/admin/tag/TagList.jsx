@@ -10,16 +10,9 @@ import { IoMdTrash as DeleteIcon } from "react-icons/io";
 const TagList = () => {
 
   const queryClinet = useQueryClient()
-
-  const token = useAuthStore.getState().token
   
-  // make sure component rerender that updated state
-  // just for admin pannel
-  const { setTags } = useTagStore()
-  let tags = useTagStore.getState().tags
-  React.useEffect(() => {
-    tags = useTagStore.getState().tags
-  },[setTags])
+  const { token } = useAuthStore()
+  const { setTags, tags } = useTagStore()
 
   const [tagEn, setTagEn] = React.useState("")
   const [tagFa, setTagFa] = React.useState("")
@@ -77,10 +70,10 @@ const TagList = () => {
 
   const clearForm = () => {
     setCurrentId(null)
-    setFacilityFa("")
-    setFacilityEn("")
-    setFacilityTr("")
-    setFacilityAr("")
+    setTagFa("")
+    setTagEn("")
+    setTagAr("")
+    setTagTr("")
   }
 
   const handleEdit = (id) => {
@@ -232,7 +225,7 @@ const TagList = () => {
                   htmlFor="persian"
                   className='uppercase'
               >persian</label>
-              <div className="relative px-3 py-2">
+              <div className="relative px-3 py-2 vazir">
                   <input
                   dir='rtl'
                   name='persian'
@@ -277,7 +270,7 @@ const TagList = () => {
                   htmlFor="arabic"
                   className='uppercase'
               >arabic</label>
-              <div className="relative px-3 py-2">
+              <div className="relative px-3 py-2 vazir">
                   <input
                   dir='rtl'
                   name='arabic'

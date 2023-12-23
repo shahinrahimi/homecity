@@ -4,7 +4,7 @@ import { SearchContext } from "../../context/SearchContext"
 import { useAuthStore } from "../../app/store"
 import { UserContext } from "../../context/UserContext"
 import { useNavigate } from "react-router-dom"
-
+import { Link } from "react-router-dom"
 import { LanguageDropdown } from "../components"
 import { BiSearch } from "react-icons/bi"
 
@@ -42,7 +42,7 @@ const Header = () => {
       setToken(null)
       navigate("/")
     }
-  },[isSuccess])
+  },[isSuccess, navigate, setToken])
 
   return (
     <header id="header" className="fixed flex p-2 w-screen z-50 h-20 bg-c-black-700 text-c-white-500 shadow-lg shadow-c-black-600 animate-landing-slow">
@@ -63,7 +63,7 @@ const Header = () => {
                 {userInfo 
                   ? 
                     <>
-                      <div>{userInfo?.username}</div>
+                      <Link to={"/admin/dash"}>{userInfo?.username}</Link>
                       <IoLogOutOutline
                         className="text-2xl text-white/70 cursor-pointer hover:text-white transition-all" 
                         onClick={() => logoutMutation()}/>

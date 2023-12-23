@@ -42,11 +42,10 @@ const ProjectCarousel = ({ project }) => {
   return (
     <section className='min-h-[calc(50vh)]'>
         {/* sence */}
-        <div className="bg-sky-500 h-[calc(40vh)] relative rounded-3xl overflow-hidden">
+        <div className=" h-[calc(40vh)] relative rounded-3xl overflow-hidden">
             {/* map */}
             <iframe
                 className={`w-full h-full ${isDisplayMap ? "block" : "hidden"}`}
-                frameborder="0" 
                 src={mapUrl}
             ></iframe>
 
@@ -98,15 +97,15 @@ const ProjectCarousel = ({ project }) => {
         </div>
         
         {/* carousel */}
-        <div dir="ltr" className="bg-sky-500 h-[calc(10vh)]">
+        <div dir="ltr" className="h-[calc(10vh)] overflow-hidden">
             <div className="relative left-0 top-0 w-full h-full">
-                <ul className={`flex w-max items-center gap-2 h-full border-2 absolute top-0 ${activeIndex > parseFloat(images.length/2) ? "right-0" : "left-0"} transition-all duration-500`}>
+                <ul className={`flex w-max items-center gap-2 h-full absolute top-0 ${activeIndex > parseFloat(images.length/2) ? "right-0" : "left-0"} transition-all duration-500`}>
                     {images.map((image, index) => {
                         return (
                             <li
                                 key={index}
                                 className='w-24 rounded-lg overflow-hidden'
-                                onClick={(e) => setActiveIndex(index)}
+                                onClick={() => setActiveIndex(index)}
                             >
                                 <img src={image} alt="" />
                             </li>
