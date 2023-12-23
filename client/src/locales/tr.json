@@ -2,6 +2,15 @@
   "title": "Çokdilli Uygulama",
   "label": "Başka bir dil seçin!",
 
+  "explore_opportunities": "fırsatları keşfet",
+  "check_our_programs": "programlarımızı kontrol et",
+  "get_free_advice": "ücretsiz tavsiye al",
+  "learn_more": "daha fazla bilgi edin",
+  "explore_projects": "projeleri keşfet",
+  "more_details": "daha fazla detay",
+  "lets_start": "hadi başlayalım",
+  "subscribe": "abone ol",
+
   "continue_reading": "okumaya devam etmek",
   "latest_articles": "En Son Makaleler",
   
@@ -62,6 +71,8 @@
   "feature_service_h3": "Başvuru İşlemleri",
   "feature_service_p3": "Tüm başvuru sürecini ele alıyoruz, düzgün bir deneyim için doğruluk ve verimliliği sağlıyoruz.",
 
+  "home_project_carusel_h": "Türkiye'de Evini Bul",
+  "home_project_carusel_p": "Gayrimenkul hizmetlerimizle mükemmel evidenizi bulun, Türkiye'de ev aramalarınızı ve işlemlerinizi basitleştirin, gerçek bir ev hissi yakalayın.",
 
   "faqs_title": "SSS",
   "faqs_p_1": "Vatandaşlık süreci, gayrimenkul yatırımı ve Türkiye'de yaşam hakkında yaygın soruların cevaplarını bulun.",
@@ -123,6 +134,14 @@
       "Oy kullanma hakkını elde edersiniz."
     ]
   },
+
+  "projects_page_h": "Gayrimenkul sektörüne 400.000 dolar yatırım yaparak Türk vatandaşı olabilirsiniz.",
+  "projects_page_p": "Profesyonel ve dinamik gayrimenkul yatırım danışmanları ekibimiz, size en uygun seçenekler konusunda yardımcı olmaya hazır.",
+
+  "franchises_page_h": "Girişimcilik Hayallerinizi Açığa Çıkarın: Türkiye'de Bir Franchise'e Yatırım Yapın!",
+  "franchises_page_p": "Türkiye'de karlı bir franchisingi keşfedin! Kurulmuş markalardan yenilikçi konseptlere kadar, kendi patronunuz olun ve büyüyen bir pazarda yerinizi alın. Dünyanın en hızlı büyüyen ekonomilerinden birine akıllıca yatırım yapın. Franchise başarı hikayeniz burada başlıyor!",
+
+
 
   "facilities": "olanaklar",
   "details": "detaylar",

@@ -2,6 +2,15 @@
   "title": "Multi-language app",
   "label": "Select another language!",
 
+  "explore_opportunities": "explore opportunities",
+  "check_our_programs": "check our programs",
+  "get_free_advice": "get free advice",
+  "learn_more": "learn more",
+  "explore_projects": "explore projects",
+  "more_details": "more details",
+  "lets_start": "let's start",
+  "subscribe": "subscribe",
+
   "continue_reading" : "continue reading",
   "latest_articles": "latest articles",
 
@@ -64,6 +73,9 @@
   "feature_service_p2":"Discover the perfect property with our personalized tours, tailored to your preferences and needs.",
   "feature_service_h3": "Application Processing",
   "feature_service_p3": "We handle the entire application process, ensuring accuracy and efficiency for a smooth experience.",
+
+  "home_project_carusel_h": "Find Your Home in Turkey",
+  "home_project_carusel_p": "Discover your perfect abode with our real estate services, simplifying property searches and transactions for a true sense of home in Turkey.",
 
 
 
@@ -130,6 +142,12 @@
       "Gain the right to vote."
     ]
   },
+
+  "projects_page_h": "By investing $400,000 in the real estate sector, you can become a Turkish citizen.",
+  "projects_page_p": "Our professional and dynamic team of real estate investment consultants is ready to assist you with the most suitable options available.",
+
+  "franchises_page_h": "Unlock Your Entrepreneurial Dreams: Invest in a Franchise in Turkey!",
+  "franchises_page_p": "Explore lucrative franchising in Turkey! From established brands to innovative concepts, be your own boss and join a thriving market. Invest wisely in one of the world's fastest-growing economies. Your franchise success story begins here!",
 
   
   "facilities": "facilities",

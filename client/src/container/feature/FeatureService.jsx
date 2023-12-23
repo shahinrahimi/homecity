@@ -32,6 +32,7 @@ const FeatureService = ({ id, isDark , background }) => {
     const items = data.map((item, index) => {
         return (
             <li
+                data-aos={'fade-left'}
                 key={index}
                 className='flex-col w-full lg:w-1/3 lg:flex-col gap-3'
 
@@ -63,7 +64,12 @@ const FeatureService = ({ id, isDark , background }) => {
                     {items}
                 </ul>
 
-                <Button text={"Let's start"} alighClassName={"self-center"} />
+                <a
+                    className="capitalize bg-transparent px-4 py-2 lg:px-8 lg:py-4 lg:text-lg hover:bg-red-600/75 self-center lg:self-center border-4 transition-colors duration-200 font-bold border-white hover:text-white mt-10"
+                    href="#projects"
+                    >
+                    {t("lets_start")}
+                </a>
 
             </div>
         </Section>

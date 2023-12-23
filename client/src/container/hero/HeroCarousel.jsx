@@ -16,10 +16,10 @@ const SlideContent1 = () => {
         </div>
   
         <a
-          className="bg-transparent px-4 py-2 lg:px-8 lg:py-4 lg:text-lg hover:bg-blue-600/75 self-start lg:self-center mt-10 border-4 transition-colors duration-200 font-bold"
+          className="capitalize bg-transparent px-4 py-2 lg:px-8 lg:py-4 lg:text-lg hover:bg-blue-600/75 self-start lg:self-center mt-10 border-4 transition-colors duration-200 font-bold"
           href="#projects"
         >
-          Check Our Programs
+          {t("check_our_programs")}
         </a>
   
       </article>
@@ -40,10 +40,10 @@ const SlideContent1 = () => {
         </div>
   
         <a
-          className="bg-transparent px-4 py-2 lg:px-8 lg:py-4 lg:text-lg hover:bg-red-600/75 self-start lg:self-center mt-10 border-4 transition-colors duration-200 font-bold"
+          className="capitalize bg-transparent px-4 py-2 lg:px-8 lg:py-4 lg:text-lg hover:bg-red-600/75 self-start lg:self-center mt-10 border-4 transition-colors duration-200 font-bold"
           href="#projects"
         >
-          explore opportunities
+          {t("explore_opportunities")}
         </a>
   
       </article>
@@ -62,10 +62,10 @@ const SlideContent1 = () => {
         </div>
   
         <a
-          className="bg-transparent px-4 py-2 lg:px-8 lg:py-4 lg:text-lg hover:bg-lime-700/75 self-start lg:self-center mt-10 border-4 transition-colors duration-200 font-bold"
+          className="capitalize bg-transparent px-4 py-2 lg:px-8 lg:py-4 lg:text-lg hover:bg-lime-700/75 self-start lg:self-center mt-10 border-4 transition-colors duration-200 font-bold"
           href="#contactus"
         >
-          Get Free Advise
+          {t("get_free_advice")}
         </a>
   
       </article>

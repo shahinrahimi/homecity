@@ -25,8 +25,8 @@ const Slide = ({ children, index, maxIndex, activeIndex }) => {
 }
 
 const ProjectCarousel = ({ id, isDark, background }) => {
-    const projects = useProjectStore.getState().projects
-  
+    const { projects } = useProjectStore()
+    const { t } = useTranslation()  
     let numSlides = projects.length
   
     React.useEffect(() => {
@@ -54,11 +54,11 @@ const ProjectCarousel = ({ id, isDark, background }) => {
         <div className="flex flex-col lg:flex-row justify-between gap-10 items-center">
             {/* content */}
             <div className="flex flex-col w-[calc(100%)] md:w-[calc(%50)]">
-                <Simplify text={"Discover"}/>
-                <h1 className='text-4xl font-bold mb-2'>Find Your Home in Turkey</h1>
+                <Simplify text={t("discover")}/>
+                <h1 className='text-4xl font-bold mb-2'>{t("home_project_carusel_h")}</h1>
                 <p
                     className='mb-8'
-                >Discover your perfect abode with our real estate services, simplifying property searches and transactions for a true sense of home in Turkey.</p>
+                >{t("home_project_carusel_p")}</p>
             </div>
             {/* sildes */}
             <div className="relative  w-[calc(100%)] text-slate-900 grid place-content-center">

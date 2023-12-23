@@ -33,9 +33,13 @@ const FeatureDiscover = ({ id, background, isDark }) => {
 
                 </div>
 
-                <Button 
-                    text={"Learn More"}
-                    />
+                <a
+                    className="capitalize bg-transparent px-4 py-2 lg:px-8 lg:py-4 lg:text-lg hover:bg-red-600/75 self-start lg:self-center mt-10 border-4 transition-colors duration-200 font-bold border-c-black-300 hover:text-white"
+                    href="#projects"
+                    >
+                    {t("learn_more")}
+                </a>
+
 
             </div>
             {/* image */}

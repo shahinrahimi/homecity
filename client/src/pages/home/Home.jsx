@@ -16,8 +16,6 @@ import {
   FranchiseTicker
 } from "../../container"
 
-import PreLoader from "../../components/loading/PreLoader";
-
 const Home = () => {
   const { t } = useTranslation()
 

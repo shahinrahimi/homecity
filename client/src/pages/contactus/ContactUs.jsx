@@ -18,7 +18,7 @@ const ContactUs = () => {
           {/* contact details */}
           <p className="mb-4 text-xl p-2">{t("contact_p")}</p>
 
-          <img className="lg:w-1/4" src={contact_us_svg} />
+          <img className="w-1/2 lg:w-1/4" src={contact_us_svg} />
         </div>
         <ContactForm />
         

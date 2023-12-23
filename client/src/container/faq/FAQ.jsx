@@ -61,8 +61,13 @@ const FAQ = ({ id, isDark , background, haveQuestion=true }) => {
                         <div className="flex flex-col gap-2">
                             <h2 className='text-3xl font-semibold mb-2'>{t("faqs_p_2")}</h2>
                             <p>{t("faqs_p_3")}</p>
-                            <Button text={"Contact"} />
-                        </div>
+                            <a
+                                className="capitalize bg-transparent px-4 py-2 lg:px-8 lg:py-4 lg:text-lg hover:bg-red-600/75 self-start lg:self-center border-4 transition-colors duration-200 font-bold border-c-black-300 hover:text-white rounded-full"
+                                href="#projects"
+                                >
+                                {t("contact")}
+                            </a>
+                            </div>
                     )
                     
                 }

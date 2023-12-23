@@ -13,7 +13,7 @@ const ProjectPage = () => {
   const { getProjectById } = useProjectStore()
   const project = getProjectById(id)
   const { t } = useTranslation()
-  const { lang } = React.useContext(LanguageContext)
+  const { lang, dir } = React.useContext(LanguageContext)
 
   if (!project){
     return <NotFound />
@@ -65,7 +65,6 @@ const ProjectPage = () => {
       content = project.content
   }
 
-  console.log(tags)
   return (
     <main className='min-h-screen flex flex-col py-40 container mx-auto gap-4'>
       {/* title */}
@@ -75,11 +74,11 @@ const ProjectPage = () => {
       </div>
 
       {/* tags */}
-      <ul className="flex">
+      <ul className="flex gap-4">
         {tags.map((tag, index) => {
           return (
-            <li key={index} className='bg-gray-600 text-white'>
-              {tag.fa}
+            <li key={index} className='bg-gray-600 text-white py-1 px-2'>
+              {tag[lang]}
             </li>
           )
         })}

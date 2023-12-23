@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { IoBedOutline as BedroomIcon } from "react-icons/io5"
 import { LuBath as BathroomIcon } from "react-icons/lu"
 import { LanguageContext } from '../../context/LanguageContext';
+import { useTranslation } from 'react-i18next';
 function nFormatter(num, digits) {
     const lookup = [
       { value: 1, symbol: "" },
@@ -22,6 +23,7 @@ function nFormatter(num, digits) {
 
 const ProjectCard = ({ project }) => {
     const { dir, lang } = React.useContext(LanguageContext)
+    const { t } = useTranslation()
     const {
         id,
         startingPrice,
@@ -57,7 +59,7 @@ const ProjectCard = ({ project }) => {
     return (
         <Link
         to={`/projects/${id}`}
-        className="w-[calc(320px)] h-[calc(600px)] bg-white shadow-sharp flex flex-col justify-start items-center rounded-t-xl rounded-b-md  overflow-hidden">
+        className="w-[calc(320px)] h-[calc(600px)] bg-white shadow-sharp flex flex-col justify-start items-center rounded-t-xl rounded-b-md  overflow-hidden pb-16">
             {/* image */}
             <div className="w-full overflow-hidden basis-2/5 shrink-0">
                 <img
@@ -106,11 +108,13 @@ const ProjectCard = ({ project }) => {
             </div>
 
             <div className="bg-white py-4 w-full grid place-content-center">
-                <button
-                className="bg-gray-400/90 px-6 py-2 text-white font-bold rounded-lg shadow-lg whitespace-nowrap hover:bg-red-500 transition-colors"
-                >
-                More Details
-                </button>
+
+                <Link
+                    to={`/projects/${id}`}
+                    className="capitalize bg-transparent px-4 py-2 lg:px-8 lg:py-4 lg:text-lg hover:bg-red-600/75 self-start lg:self-center border-4 transition-colors duration-200 font-bold border-c-black-300 hover:text-white rounded-full"
+                    >
+                    {t("more_details")}
+                </Link>
             </div>
         </Link>
     )
