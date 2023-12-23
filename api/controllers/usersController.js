@@ -112,7 +112,7 @@ const deleteUser = async (req, res) => {
 
     const result = await user.deleteOne()
 
-    const reply = `Username ${result.username} with ID ${result._id} deleted`
+    const reply = `Username ${user.username} with ID ${user._id} deleted`
 
     res.json(reply)
 }
