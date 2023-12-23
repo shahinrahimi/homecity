@@ -14,9 +14,9 @@ export const useGetAllFranchises = () => {
             return {
                 ...d, 
                 id: d._id,
-                brandSrc: d.brand.map(brand => `http://localhost:5000/${brand}`),
-                coverSrc: d.cover.map(cover => `http://localhost:5000/${cover}`),
-                imagesSrc: d.images.map(image => `http://localhost:5000/${image}`),
+                brandSrc: d.brand.map(brand => `${process.env.NODE_ENV === "development" ? "http://localhost:5000/" + brand : brand}`),
+                coverSrc: d.cover.map(cover => `${process.env.NODE_ENV === "development" ? "http://localhost:5000/" + cover : cover}`),
+                imagesSrc: d.images.map(image => `${process.env.NODE_ENV === "development" ? "http://localhost:5000/" + image : image}`),
             }
         }),
         refetchOnWindowFocus: false,

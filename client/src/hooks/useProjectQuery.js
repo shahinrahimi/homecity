@@ -20,9 +20,9 @@ export const useGetAllProjects = () => {
                         iconSrc: `http://localhost:5000/${facility.icon}`
                     }
                 }),
-                coverSrc: d.cover.map(cover => `http://localhost:5000/${cover}`),
-                imagesSrc: d.images.map(image => `http://localhost:5000/${image}`), 
-                videoSrc:d.video.map(video => `http://localhost:5000/${video}`),
+                coverSrc: d.cover.map(cover => `${process.env.NODE_ENV === "development" ? "http://localhost:5000/" + cover : cover}`),
+                imagesSrc: d.images.map(image => `${process.env.NODE_ENV === "development" ? "http://localhost:5000/" + image : image}`), 
+                videoSrc:d.video.map(video => `${process.env.NODE_ENV === "development" ? "http://localhost:5000/" + video : video}`),
             }
         }),
         refetchOnWindowFocus: false,

@@ -14,7 +14,7 @@ export const useGetAllFacilities = () => {
             return {
                 ...d, 
                 id: d._id,
-                iconSrc: `http://localhost:5000/${d.icon}`
+                iconSrc: `${process.env.NODE_ENV === "development" ? "http://localhost:5000/" + d.icon : d.icon}`
             }
         }),
         refetchOnWindowFocus: false,
