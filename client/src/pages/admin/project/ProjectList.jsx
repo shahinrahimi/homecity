@@ -5,14 +5,7 @@ import ProjectListItem from './ProjectListItem'
 
 const ProjectList = () => {
 
-  let projects = useProjectStore.getState().projects
-
-  // make sure component rerender that updated state
-  // just for admin pannel
-  const { setProjects } = useProjectStore()
-  React.useEffect(() => {
-    projects = useProjectStore.getState().projects
-  },[setProjects])
+  const { projects } = useProjectStore()
 
   let content
 

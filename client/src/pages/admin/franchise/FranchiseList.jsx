@@ -5,7 +5,7 @@ import FranchiseListItem from './FranchiseListItem'
 
 const FranchiseList = () => {
 
-  let franchises = useFranchiseStore.getState().franchises
+  const { franchises } = useFranchiseStore()
 
   let content
   if (franchises && franchises.length === 0) {

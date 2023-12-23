@@ -5,14 +5,7 @@ import BlogListItem from './BlogListItem'
 
 const BloagList = () => {
 
-  let blogs = useBlogStore.getState().blogs
-
-  // make sure component rerender that updated state
-  // just for admin pannel
-  const { setBlogs } = useBlogStore()
-  React.useEffect(() => {
-    blogs = useBlogStore.getState().blogs
-  },[setBlogs])
+  const { blogs } = useBlogStore()
 
   let content 
 
