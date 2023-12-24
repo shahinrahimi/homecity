@@ -8,6 +8,6 @@ export const TwitterColorFull = <SocialIcon target="_blank" url="https://x.com/"
 export const FacebookColorFull = <SocialIcon target="_blank" url="https://facebook.com/" />
 export const YoutubeColorFull = <SocialIcon target="_blank"  url="https://youtube.com/" href="https://www.youtube.com/@emirkaya.istanbul"/>
 export const TikTalkColorFull = <SocialIcon target="_blank" url="https://tiktok.com/" href="https://www.tiktok.com/@Emirkaya.ist" />
-export const InstagramColorFull = <SocialIcon target="_blank" url="https://instagram.com/" href="https://www.instagram.com/Homey_invest/" />
+export const InstagramColorFull = <SocialIcon target="_blank" url="https://instagram.com/" href="https://www.instagram.com/emirkaya.official/" />
 
 
