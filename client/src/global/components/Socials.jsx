@@ -1,16 +1,16 @@
 import React from 'react'
 import { Icons } from '../../icons';
-
+import { socialLinks } from "../../constants/socialLinks"
 const socials = [
     {
       name : "Instagran",
       icon : Icons.InstagramIcon,
-      link:"https://www.instagram.com/Homey_invest/"
+      link:socialLinks.Instagram
     },
     {
       name : "Youtube",
       icon : Icons.YoutubeIcon,
-      link: "https://www.youtube.com/@emirkaya.istanbul"
+      link: socialLinks.Youtube
     },
     {
       name : "Facebook",
@@ -20,17 +20,17 @@ const socials = [
     {
       name : "X",
       icon : Icons.TwitterXIcon,
-      link: "https://twitter.com/Emirkaya_ist"
+      link: socialLinks.Twitter
     },
     {
       name : "Telegram",
-      icon : Icons.TelegramIcon,
-      link: "https://t.me/emirkaya_official"
+      icon : Icons.TelegramIcon,  
+      link: socialLinks.Telegram
     },
     {
       name : "WhatsApp",
       icon : Icons.WhatsAppIcon,
-      link: "https://api.whatsapp.com/send?phone=905411214030&text="
+      link: socialLinks.WhatsApp
     }
 ]
 
@@ -40,7 +40,7 @@ const Socials = ({parentClassName, childClassName}) => {
         {socials.map((item, index) => {
         return (
             <li key={index}>
-                <a href={item.link} className='cursor-pointer' target="_blank" >
+                <a href={item.link} className='cursor-pointer' target="_blank" rel="noopener noreferrer" >
                     {<item.icon 
                         className={childClassName}
                     />}

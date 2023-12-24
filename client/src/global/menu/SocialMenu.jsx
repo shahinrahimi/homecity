@@ -15,38 +15,6 @@ import { LivePriceContext } from '../../context/LivePriceContext';
 import { SmoothScrollingContext } from '../../context/SmoothScrollingContext';
 import { LanguageContext } from '../../context/LanguageContext';
 import { useTranslation } from 'react-i18next';
-const items = [
-    {
-        name: "X",
-        icon: TwitterColorFull,
-        link:""
-    },
-    {
-        name: "Facebook",
-        icon: FacebookColorFull,
-        link:""
-    },
-    {
-        name: "WhatsApp",
-        icon: WhatsAppIconColorFull,
-        link:""
-    },
-    {
-        name: "Intagram",
-        icon: InstagramColorFull,
-        link:""
-    },
-    {
-        name: "Telegram",
-        icon: TelegramColorFull,
-        link:""
-    },
-    {
-        name: "TikTalk",
-        icon: TikTalkColorFull,
-        link:""
-    },
-]
 
 const SocialMenu = () => {
 
@@ -55,6 +23,7 @@ const SocialMenu = () => {
     const { livePrices, show, toggleShow } = React.useContext(LivePriceContext)
     const { lang , dir } = React.useContext(LanguageContext)
     const { t } = useTranslation()
+    
     React.useEffect(() => {
         let timeOutId
         if (show === true){
@@ -68,7 +37,7 @@ const SocialMenu = () => {
             clearTimeout(timeOutId)
           }
         }
-      },[show])
+      },[show, toggleShow])
     
     let content = <></>
     let prices
@@ -114,22 +83,22 @@ const SocialMenu = () => {
             >
                 <li
                     className={`absolute ${menuOpen ? "-translate-y-[calc(60px)]" : "translate-y-0"} transition-all duration-500`}
-                >{items[0].icon}</li>
+                >{TwitterColorFull}</li>
                 <li
                     className={`absolute ${menuOpen ? "-translate-y-[calc(120px)]" : "translate-y-0"} transition-all duration-500`}
-                >{items[1].icon}</li>
+                >{FacebookColorFull}</li>
                 <li
                     className={`absolute ${menuOpen ? "-translate-y-[calc(180px)]" : "translate-y-0"} transition-all duration-500`}
-                >{items[2].icon}</li>
+                >{WhatsAppIconColorFull}</li>
                 <li
                     className={`absolute ${menuOpen ? "-translate-y-[calc(240px)]" : "translate-y-0"} transition-all duration-500`}
-                >{items[3].icon}</li>
+                >{InstagramColorFull}</li>
                 <li
                     className={`absolute ${menuOpen ? "-translate-y-[calc(300px)]" : "translate-y-0"} transition-all duration-500`}
-                >{items[4].icon}</li>
+                >{TelegramColorFull}</li>
                 <li
                     className={`absolute ${menuOpen ? "-translate-y-[calc(360px)]" : "translate-y-0"} transition-all duration-500`}
-                >{items[5].icon}</li>
+                >{TikTalkColorFull}</li>
 
             </ul>
         </aside>
