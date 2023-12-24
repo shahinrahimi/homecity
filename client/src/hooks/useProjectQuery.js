@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
 import { getAllProjects } from '../api'
-
+import { extractImageUrl } from '../utils/utils'
 export const useGetAllProjects = () => {
 
     const {
@@ -17,12 +17,12 @@ export const useGetAllProjects = () => {
                 facilities: d.facilities.map(facility => {
                     return {
                         ...facility,
-                        iconSrc: `http://localhost:5000/${facility.icon}`
+                        iconSrc: extractImageUrl(facility.icon)
                     }
                 }),
-                coverSrc: d.cover.map(cover => `${process.env.NODE_ENV === "development" ? "http://localhost:5000/" + cover : cover}`),
-                imagesSrc: d.images.map(image => `${process.env.NODE_ENV === "development" ? "http://localhost:5000/" + image : image}`), 
-                videoSrc:d.video.map(video => `${process.env.NODE_ENV === "development" ? "http://localhost:5000/" + video : video}`),
+                coverSrc: d.cover.map(cover => extractImageUrl(cover)),
+                imagesSrc: d.images.map(image => extractImageUrl(image)), 
+                videoSrc:d.video.map(video => extractImageUrl(video)),
             }
         }),
         refetchOnWindowFocus: false,

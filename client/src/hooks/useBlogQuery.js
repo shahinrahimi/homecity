@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
 import { getAllBlogs } from '../api'
-
+import { extractImageUrl } from '../utils/utils'
 export const useGetAllBlogs = () => {
 
     const {
@@ -14,7 +14,8 @@ export const useGetAllBlogs = () => {
             return {
                 ...d, 
                 id: d._id, 
-                imageSrc: `${process.env.NODE_ENV === "development" ? "http://localhost:5000/" + d.image : d.image}`}
+                imageSrc: extractImageUrl(d.image)
+            }
         }),
         refetchOnWindowFocus: false,
         staleTime: Infinity

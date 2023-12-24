@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
 import { getAllFacilities } from '../api'
-
+import { extractImageUrl } from '../utils/utils'
 export const useGetAllFacilities = () => {
 
     const {
@@ -14,7 +14,7 @@ export const useGetAllFacilities = () => {
             return {
                 ...d, 
                 id: d._id,
-                iconSrc: `${process.env.NODE_ENV === "development" ? "http://localhost:5000/" + d.icon : d.icon}`
+                iconSrc: extractImageUrl(d.icon)
             }
         }),
         refetchOnWindowFocus: false,

@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
 import { getAllFranchises } from '../api'
-
+import { extractImageUrl } from '../utils/utils'
 export const useGetAllFranchises = () => {
 
     const {
@@ -14,9 +14,9 @@ export const useGetAllFranchises = () => {
             return {
                 ...d, 
                 id: d._id,
-                brandSrc: d.brand.map(brand => `${process.env.NODE_ENV === "development" ? "http://localhost:5000/" + brand : brand}`),
-                coverSrc: d.cover.map(cover => `${process.env.NODE_ENV === "development" ? "http://localhost:5000/" + cover : cover}`),
-                imagesSrc: d.images.map(image => `${process.env.NODE_ENV === "development" ? "http://localhost:5000/" + image : image}`),
+                brandSrc: d.brand.map(brand => extractImageUrl(brand)),
+                coverSrc: d.cover.map(cover => extractImageUrl(cover)),
+                imagesSrc: d.images.map(image => extractImageUrl(image)),
             }
         }),
         refetchOnWindowFocus: false,
