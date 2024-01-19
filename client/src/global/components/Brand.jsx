@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom"
+import { BrandPngLight } from "../../assets/img"
 const Brand = () => {
   return (
     <Link
       to="/"
-      className="text-3xl uppercase mr-2 cursor-pointer font-brand"
+      className="text-3xl uppercase mr-2 cursor-pointer font-brand flex justify-center lg:justify-start  items-center"
     >
-      home<span className="uppercase text-c-red-500 ">city</span>
+      <div className="w-[calc(125px)]">
+        <img src={BrandPngLight} alt="" />
+      </div>
+      
     </Link>
   )
 }

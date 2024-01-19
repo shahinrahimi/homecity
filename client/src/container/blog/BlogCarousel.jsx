@@ -52,7 +52,7 @@ const Carousel = ({ blogs }) => {
     React.useEffect(() => {
         let numberOfCircles = Math.ceil(blogs.length/numBlogsPerSlide)
         setNumberOfCircles(numberOfCircles)
-    },[numBlogsPerSlide])
+    },[numBlogsPerSlide, blogs.length])
 
     const translationClass = `t-x-${activeSlideIndex}`
 
@@ -77,7 +77,7 @@ const Carousel = ({ blogs }) => {
                 {blogs.map((blog, index) => {
                     return (
                         <li key={index} className='w-full sm:w-[calc(50%-8px)] md:w-[calc(50%-8px)] xl:w-[calc(33%-8px)] shrink-0 p-4' >
-                            <BlogCard blog={blog} />
+                            <BlogCard blog={blog} key={index} />
                         </li>
                     )
                 })}

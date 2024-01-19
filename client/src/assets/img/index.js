@@ -37,3 +37,13 @@ export {default as instagram_image_09} from "./instagram_image_09.png"
 export {default as instagram_image_10} from "./instagram_image_10.png"
 export {default as instagram_image_11} from "./instagram_image_11.png"
 export {default as instagram_image_12} from "./instagram_image_12.png"
+
+// brand
+export {default as BrandPngLight} from "./brand-light.png"
+export {default as BrandPngDark} from "./brand-dark.png"
+
+// flags
+export {default as ArFlagImage} from "./ar-flag.png"
+export {default as FaFlagImage} from "./fa-flag.png"
+export {default as EnFLagImage} from "./en-flag.png"
+export {default as TrFlagImage} from "./tr-flag.png"

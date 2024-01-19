@@ -96,7 +96,7 @@ const InstagramView = ({item}) => {
         className='cursor-pointer group'
         onClick={openModal}
       >
-        <div className="w-full h-[calc(300px)] bg-red-500 rounded-md overflow-hidden group-hover:scale-105 transition-transform">
+        <div className="w-full h-[calc(100%)] bg-red-500 rounded-md overflow-hidden group-hover:scale-105 transition-transform">
           <img 
             src={item.image} alt=""
             className='w-full h-full object-cover object-center'
@@ -122,7 +122,7 @@ const Instagram = ({ id, isDark , background }) => {
           </div>
     
           <ul 
-            className=" grid grid-cols-1 grid-rows-6  sm:grid-cols-2 sm:grid-rows-6 md:grid-cols-3 md:grid-rows-4 lg:grid-cols-4 lg:grid-rows-3 gap-8"
+            className="grid grid-rows-3 grid-cols-4 gap-1"
             >
               {instagram_items.map(item => {
                 return (

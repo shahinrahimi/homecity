@@ -1,97 +1,72 @@
 import React from "react"
 import { MenuContext } from "../../context/MenuContext"
-import { SearchContext } from "../../context/SearchContext"
-import { useAuthStore } from "../../app/store"
-import { UserContext } from "../../context/UserContext"
-import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
-import { LanguageDropdown } from "../components"
 import { BiSearch } from "react-icons/bi"
-
 import { NAVLINKS } from "../../constants/navLinks"
 import { IoLogOutOutline } from "react-icons/io5";
-
-import { Brand, NavBar, SearchBox, HamburgerMenu } from "../components"
+import { Brand, NavBar, SearchBox, HamburgerMenu, LanguageDropdown } from "../components"
 import usePathLocation from "../../hooks/usePathLocation"
-import { logout } from "../../api"
-import { useMutation } from "react-query"
+import useScreenSize from "../../hooks/useScreenSize"
+import AdminController from "../components/AdminController"
 
 const Header = () => {
-  const navigate = useNavigate()
   const { rootPath } = usePathLocation()
-
-  const { setToken } = useAuthStore()
-  const { userInfo } = React.useContext(UserContext)
   const { isOpen, toggle } = React.useContext(MenuContext)
-  // const { isOpen: isSearchOpen, toggle: toggleSearch } = useContext(SearchContext)
+  const {width, height} = useScreenSize()
   
-  const mutation = useMutation(logout)
+  let content
+  if (rootPath === "admin") {
+    content = (
+      <div className="flex flex-row container mx-auto px-8 justify-between items-center ">
+        <Brand />
+        <AdminController />
+      </div>
+    )
+  } else if (width >= 1024) {
+    content = (
+      <div className="flex flex-row container mx-auto px-8 justify-between items-center ">
+        <div className="basis-1/3 justify-start">
+          <Brand />
+        </div>
+        <div className="basis-1/3">
+          <NavBar isOpen={isOpen} navItems={NAVLINKS} />
+        </div>
+        <div className="basis-1/3 flex flex-row justify-end items-center">
+          <button className="cursor-pointer text-c-white-700 hover:text-c-white-200 transition-colors p-2">
+            <BiSearch className="" />
+          </button>
 
-  const {
-    isIdle,
-    isLoading,
-    isSuccess,
-    isError,
-    error,
-    data,
-    mutate: logoutMutation
-  } = mutation
+          {/* language */}
+          <LanguageDropdown />
 
-  React.useEffect(() => {
-    if (isSuccess){
-      setToken(null)
-      navigate("/")
-    }
-  },[isSuccess, navigate, setToken])
+          {/* hamburger Menu */}
+          <HamburgerMenu isOpen={isOpen} toggle={toggle} />
+        </div>
+      </div>
+    )
+  } else {
+    content = (
+      <div className="flex flex-row container mx-auto px-8 justify-between items-center ">
+        <div className="basis-1/3 justify-start">
+          <LanguageDropdown />
+        </div>
+        <div className="basis-1/3">
+          <Brand />
+        </div>
+        <div className="basis-1/3 flex flex-row justify-end items-center">
+          <button className="cursor-pointer text-c-white-700 hover:text-c-white-200 transition-colors p-2">
+            <BiSearch className="" />
+          </button>
+          {/* hamburger Menu */}
+          <HamburgerMenu isOpen={isOpen} toggle={toggle} />
+        </div>
+      </div>
+    )
+  }
 
   return (
-    <header id="header" className="fixed flex p-2 w-screen z-50 h-20 bg-c-black-700 text-c-white-500 shadow-lg shadow-c-black-600 animate-landing-slow">
-      <div className="flex flex-row container mx-auto px-8 justify-between items-center ">
-        {/* brand  */}
-        <Brand />
-
-        {/* navbar */}
-        {rootPath === "admin" 
-          ? ""
-          : <NavBar isOpen={isOpen} navItems={NAVLINKS} />
-        }
-
-        {/* client controls */}
-        {rootPath === "admin"
-            ? (
-              <div className="flex flex-row justify-end items-center gap-2 m-1 text-xl text-white">
-                {userInfo 
-                  ? 
-                    <>
-                      <Link to={"/admin/dash"}>{userInfo?.username}</Link>
-                      <IoLogOutOutline
-                        className="text-2xl text-white/70 cursor-pointer hover:text-white transition-all" 
-                        onClick={() => logoutMutation()}/>
-                    </>
-                  : ""}
-              </div>
-            )
-            : (
-              <div className="flex flex-row justify-end items-center gap-2 m-1">
-          
-                <button className="cursor-pointer text-c-white-700 hover:text-c-white-200 transition-colors p-2">
-                  <BiSearch className="" />
-                </button>
-
-                {/* language */}
-                <LanguageDropdown />
-
-                {/* hamburger Menu */}
-                <HamburgerMenu isOpen={isOpen} toggle={toggle} />
-
-              </div>
-            )
-        }
-
-        
-        
-      </div>
-
+    <header id="header" className="fixed flex p-2 w-screen z-50 h-30 bg-c-black-700 text-c-white-500 shadow-lg shadow-c-black-600 animate-landing-slow">
+      {content}
     </header>
   )
 }

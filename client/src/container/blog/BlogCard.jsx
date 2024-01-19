@@ -49,9 +49,9 @@ const BlogCard = ({ blog }) => {
                 />
                 
                 
-                {tags && tags.length > 0 && tags.map(tag => {
+                {tags && tags.length > 0 && tags.map((tag, index) => {
                     return (
-                        <>{tag.title}</>
+                        <div key={index}>{tag.title}</div>
                     )
                 })}
             </div>
