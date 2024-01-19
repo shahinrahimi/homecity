@@ -3,6 +3,11 @@ import { Section } from "../../components";
 import { underConstructionSvg } from "../../assets/svg";
 
 const About = () => {
+
+  React.useEffect(() => {
+    // eslint-disable-next-line no-undef
+    window.scrollTo(0, 0)
+  }, [])
   
   return (
     <Section>

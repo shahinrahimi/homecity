@@ -9,6 +9,10 @@ const FranchisesPage = () => {
  
   const { franchises } = useFranchiseStore()
   const { t } = useTranslation()
+  React.useEffect(() => {
+    // eslint-disable-next-line no-undef
+    window.scrollTo(0, 0)
+  }, [])
   
   return (
     <main className='py-20'>

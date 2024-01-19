@@ -20,6 +20,11 @@ const Home = () => {
   const { t } = useTranslation()
 
   const { scrollToSection } = React.useContext(SmoothScrollingContext)
+
+  React.useEffect(() => {
+    // eslint-disable-next-line no-undef
+    window.scrollTo(0, 0)
+  }, [])
   
   return (
     <main className="overflow-hidden">

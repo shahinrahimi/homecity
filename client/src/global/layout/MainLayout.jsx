@@ -7,24 +7,32 @@ import { Banner } from "../components";
 import BotomMenu from "../menu/BotomMenu";
 import SocialMenu from "../menu/SocialMenu";
 import { LanguageContext } from "../../context/LanguageContext";
+import { motion } from "framer-motion"
 const MainLayout = () => {
 
   const { dir, lang } = React.useContext(LanguageContext)
 
   return (
-    <div className={`scroll-smooth ${lang === "fa" || lang === "ar" ? "vazir" : ""}`} >
-      {/* for scrolling to top */}
-      <div id="index"></div>
-      <Header />
-      <Menu />
-      <div dir={dir}>
-        <Outlet  />
+    <motion.dev 
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 2 }}>
+    
+    
+      <div className={`scroll-smooth ${lang === "fa" || lang === "ar" ? "vazir" : ""}`} >
+        {/* for scrolling to top */}
+        <div id="index"></div>
+        <Header />
+        <Menu />
+        <div dir={dir}>
+          <Outlet  />
+        </div>
+        <Banner />
+        <Footer />
+        <BotomMenu />
+        <SocialMenu />
       </div>
-      <Banner />
-      <Footer />
-      <BotomMenu />
-      <SocialMenu />
-    </div>
+    </motion.dev>
 
   )
 }

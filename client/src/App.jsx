@@ -55,6 +55,8 @@ import './App.css'
 
 function App() {
 
+  const [loading, setLoading] = React.useState(true);
+
   React.useEffect(() => {
     AOS.init({ duration: 1500 })
   }, [])
@@ -63,6 +65,7 @@ function App() {
     // callback function to call when event triggers
     const onPageLoad = () => {
       console.log('page loaded');
+      setLoading(false);
       // do something else
     };
 
@@ -85,7 +88,7 @@ function App() {
     <Providers>
       <Router>
         <Routes>
-          
+
           {/* prefetch */}
           {/* fetch projects and blogs */}
           <Route element={<Prefetch />}>
@@ -167,7 +170,7 @@ function App() {
           </Route>
 
           <Route path="*" element={<NotFound />} />
-
+          
         </Routes>
       </Router>
     </Providers>

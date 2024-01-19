@@ -13,7 +13,7 @@ const LanguageDropdown = () => {
         {({ active }) => (
           <button
             className={`${active ? 'bg-c-red-500 text-white' : 'text-gray-900'
-              } group flex w-full justify-between items-center rounded-md px-2 py-2 text-sm`}
+              } group flex w-full justify-between items-center rounded-md px-2 py-2 text-base ${language.code === "fa" || language.code === "ar" ? "vazir" : ""}`}
             onClick={() => setLang(language.code)}
           >
             {language.label}
@@ -34,7 +34,7 @@ const LanguageDropdown = () => {
         <div>
           <Menu.Button className="capitalize inline-flex w-full justify-center rounded-md bg-black bg-opacity-20 px-2 py-1 text-sm  font-bold text-slate-400 hover:text-slate-50  hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 transition-colors ">
 
-            <div className="grid place-content-center h-5 w-5 font-bold text-xs">
+            <div className="grid place-content-center h-6 w-7 font-bold text-base">
               {LANGUAGES.filter(l => l.code === lang)[0].code}
             </div>
 
@@ -55,7 +55,7 @@ const LanguageDropdown = () => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute left-0 mt-2 w-36 origin-top-left divide-y divide-gray-100 rounded-md bg-c-white-500 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items className="absolute lg:right-0 mt-2 w-36 divide-y divide-gray-100 rounded-md bg-c-white-500 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1 ">
               {Items}
             </div>

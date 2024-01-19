@@ -11,6 +11,10 @@ const FranchisePage = () => {
   const { getFranchiseById } = useFranchiseStore()
   const franchise = getFranchiseById(id)
   const { lang, dir } = React.useContext(LanguageContext)
+  React.useEffect(() => {
+    // eslint-disable-next-line no-undef
+    window.scrollTo(0, 0)
+  }, [])
 
   if (!franchise){
     return <NotFound />

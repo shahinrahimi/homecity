@@ -8,6 +8,10 @@ import { contact_us_svg } from "../../assets/svg"
 const ContactUs = () => {
 
   const { t } = useTranslation()
+  React.useEffect(() => {
+    // eslint-disable-next-line no-undef
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <main className="min-h-screen py-20">

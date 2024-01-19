@@ -46,7 +46,7 @@ const Header = () => {
     )
   } else {
     content = (
-      <div className="flex flex-row container mx-auto px-8 justify-between items-center ">
+      <div className="flex flex-row container mx-auto px-8 justify-between items-center text-2xl ">
         <div className="basis-1/3 justify-start">
           <LanguageDropdown />
         </div>

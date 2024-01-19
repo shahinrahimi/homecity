@@ -24,7 +24,7 @@ const NavBar = ({ navItems, isOpen }) => {
 
   if (!isOpen) {
     return (
-      <nav dir={dir} className={`hidden lg:block ${lang === "fa" || lang === "ar" ? "vazir" : ""}`}>
+      <nav dir={dir} className={`hidden lg:block text-2xl ${lang === "fa" || lang === "ar" ? "vazir" : ""}`}>
         <ul className="flex flex-row gap-3 justify-end">{navListElement}</ul>
       </nav>
     )
