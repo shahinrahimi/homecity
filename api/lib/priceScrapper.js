@@ -116,6 +116,27 @@ scrappingTools.scrapeIRR = async () => {
       change
     )
 
+    // LTC
+    index = 2
+    label = LABLES.IR.LTC
+    value = trs[index].querySelectorAll('td')[0].text.replaceAll(",", "").trim()
+    change = trs[index].querySelectorAll('td')[2].text.trim()
+    livePrices.setIRLivePrice(
+      label,
+      value,
+      change
+    )
+    // BCH
+    index = 3
+    label = LABLES.IR.BCH
+    value = trs[index].querySelectorAll('td')[0].text.replaceAll(",", "").trim()
+    change = trs[index].querySelectorAll('td')[2].text.trim()
+    livePrices.setIRLivePrice(
+      label,
+      value,
+      change
+    )
+
     // TRX = 5
     index = 5
     label = LABLES.IR.TRX
@@ -130,6 +151,94 @@ scrappingTools.scrapeIRR = async () => {
     // BNB = 6
     index = 6
     label = LABLES.IR.BNB
+    value = trs[index].querySelectorAll('td')[0].text.replaceAll(",", "").trim()
+    change = trs[index].querySelectorAll('td')[2].text.trim()
+    livePrices.setIRLivePrice(
+      label,
+      value,
+      change
+    )
+
+    // XLM = 7
+    index = 7
+    label = LABLES.IR.XLM
+    value = trs[index].querySelectorAll('td')[0].text.replaceAll(",", "").trim()
+    change = trs[index].querySelectorAll('td')[2].text.trim()
+    livePrices.setIRLivePrice(
+      label,
+      value,
+      change
+    )
+
+    // XRP = 8
+    index = 8
+    label = LABLES.IR.XRP
+    value = trs[index].querySelectorAll('td')[0].text.replaceAll(",", "").trim()
+    change = trs[index].querySelectorAll('td')[2].text.trim()
+    livePrices.setIRLivePrice(
+      label,
+      value,
+      change
+    )
+
+    // DOGE = 9
+    index = 9
+    label = LABLES.IR.DOGE
+    value = trs[index].querySelectorAll('td')[0].text.replaceAll(",", "").trim()
+    change = trs[index].querySelectorAll('td')[2].text.trim()
+    livePrices.setIRLivePrice(
+      label,
+      value,
+      change
+    )
+
+    // DASH = 10
+    index = 10
+    label = LABLES.IR.DASH
+    value = trs[index].querySelectorAll('td')[0].text.replaceAll(",", "").trim()
+    change = trs[index].querySelectorAll('td')[2].text.trim()
+    livePrices.setIRLivePrice(
+      label,
+      value,
+      change
+    )
+
+    // ADA = 11
+    index = 11
+    label = LABLES.IR.ADA
+    value = trs[index].querySelectorAll('td')[0].text.replaceAll(",", "").trim()
+    change = trs[index].querySelectorAll('td')[2].text.trim()
+    livePrices.setIRLivePrice(
+      label,
+      value,
+      change
+    )
+
+    // DOT = 12
+    index = 12
+    label = LABLES.IR.DOT
+    value = trs[index].querySelectorAll('td')[0].text.replaceAll(",", "").trim()
+    change = trs[index].querySelectorAll('td')[2].text.trim()
+    livePrices.setIRLivePrice(
+      label,
+      value,
+      change
+    )
+
+    // SOL = 13
+    index = 13
+    label = LABLES.IR.SOL
+    value = trs[index].querySelectorAll('td')[0].text.replaceAll(",", "").trim()
+    change = trs[index].querySelectorAll('td')[2].text.trim()
+    livePrices.setIRLivePrice(
+      label,
+      value,
+      change
+    )
+
+    // AVAX = 14
+    index = 14
+    label = LABLES.IR.AVAX
     value = trs[index].querySelectorAll('td')[0].text.replaceAll(",", "").trim()
     change = trs[index].querySelectorAll('td')[2].text.trim()
     livePrices.setIRLivePrice(

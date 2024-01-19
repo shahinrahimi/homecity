@@ -9,10 +9,23 @@ const IRLABLES = {
   EUR: "EUR",
   GBP: "GBP",
   TRY: "TRY",
+
   BTC: "BTC",
   ETH: "ETH",
+  LTC: "LTC",
+  BCH: "BCH",
+  XLM: "XLM",
+
   BNB: "BNB",
   TRX: "TRX",
+  XRP: "XRP",
+  DOGE: "DOGE",
+  DASH: "DASH",
+  ADA: "ADA",
+  DOT: "DOT",
+  SOL: "SOL",
+  AVAX: "AVAX",
+  
 }
 
 const CRYPTOLABLES = {
