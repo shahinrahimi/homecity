@@ -13,8 +13,8 @@ const MainLayout = () => {
   const { dir, lang } = React.useContext(LanguageContext)
 
   return (
-    <motion.dev 
-      initial={{ opacity: 0, scale: 0.5 }}
+    <motion.div
+      initial={{ opacity: 0, scale: 1 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 2 }}>
     
@@ -32,7 +32,7 @@ const MainLayout = () => {
         <BotomMenu />
         <SocialMenu />
       </div>
-    </motion.dev>
+    </motion.div>
 
   )
 }

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { useBlogStore, useProjectStore, useFranchiseStore, useTagStore, useFacilityStore } from '../../app/store'
-import { Loading } from '../../components'
 
 import { useGetAllTags } from '../../hooks/useTagQuery'
 import { useGetAllProjects } from '../../hooks/useProjectQuery'
@@ -59,6 +58,39 @@ const Prefetch = () => {
         data: facilityData
     } = useGetAllFacilities()
 
+    const [loading, setLoading] = React.useState(true);
+
+    React.useEffect(() => {
+        // callback function to call when event triggers
+        console.log("prefetch useEffect")
+        const onPageLoad = () => {
+          console.log('page loaded');
+          
+          setTimeout(() => {
+            // eslint-disable-next-line no-undef
+            const preloaderEl = document.querySelector("#preloader")
+            preloaderEl.classList.remove("on")
+            preloaderEl.style.display = "none"
+            setLoading(false);
+          }, [2000])
+          
+          // do something else
+        };
+    
+        // Check if the page has already loaded
+        // eslint-disable-next-line no-undef
+        if (document.readyState === 'complete') {
+          onPageLoad();
+        } else {
+          // eslint-disable-next-line no-undef
+          window.addEventListener('load', onPageLoad, false);
+          // Remove the event listener when component unmounts
+          // eslint-disable-next-line no-undef
+          return () => window.removeEventListener('load', onPageLoad);
+        }
+      }, [])
+    
+
     React.useEffect(() => {
         if (tagData){
             setTags(tagData)
@@ -93,39 +125,38 @@ const Prefetch = () => {
         if (isTagError && tagError){
             console.log("fetch tag error", tagError)
         }
-    }, [isTagError])
+    }, [isTagError, tagError])
 
     React.useEffect(() => {
         if (isProjectError && projectError){
             console.log("fetch project error", projectError)
         }
-    }, [isProjectError])
+    }, [isProjectError, projectError])
 
     React.useEffect(() => {
         if (isBlogError && blogError){
             console.log("fetch blog error", blogError)
         }
-    }, [isBlogError])
+    }, [blogError, isBlogError])
 
     React.useEffect(() => {
         if (isFranchiseError && franchiseError){
             console.log("fetch franchise error", franchiseError)
         }
-    }, [isFranchiseError])
+    }, [franchiseError, isFranchiseError])
 
     React.useEffect(() => {
         if (isFacilityError && facilityError){
             console.log("fetch facility error", facilityError)
         }
-    }, [isFacilityError])
+    }, [facilityError, isFacilityError])
 
-    if (isTagLoading || isProjectLoading || isBlogLoading || isFranchiseLoading || isFacilityLoading) return <Loading />
     if (
         isTagSuccess && tags &&
         isProjectSuccess && projects &&
         isBlogSuccess && blogs &&
         isFranchiseSuccess && franchises &&
-        isFacilitySuccess && facilities
+        isFacilitySuccess && facilities && !loading
         ) {
         return <Outlet />
     }

@@ -55,34 +55,9 @@ import './App.css'
 
 function App() {
 
-  const [loading, setLoading] = React.useState(true);
-
   React.useEffect(() => {
     AOS.init({ duration: 1500 })
   }, [])
-
-  React.useEffect(() => {
-    // callback function to call when event triggers
-    const onPageLoad = () => {
-      console.log('page loaded');
-      setLoading(false);
-      // do something else
-    };
-
-    // Check if the page has already loaded
-    // eslint-disable-next-line no-undef
-    if (document.readyState === 'complete') {
-      onPageLoad();
-    } else {
-      // eslint-disable-next-line no-undef
-      window.addEventListener('load', onPageLoad, false);
-      // Remove the event listener when component unmounts
-      // eslint-disable-next-line no-undef
-      return () => window.removeEventListener('load', onPageLoad);
-    }
-  }, [])
-
-  
 
   return (
     <Providers>

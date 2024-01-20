@@ -18,22 +18,19 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const messageObg = {
-      username: firstName,
-      lastName,
-      contact: email,
+      username: clientName,
+      lastName : "",
+      contact: clientEmail,
       subject,
-      content: message,
+      content: messageContent,
       token: token,
     }
 
     console.log(messageObg)
-
     const res = await createNewMessage({ data : messageObg})
-
-    console.log(res)
   }
 
-  console.log(token)
+
   return (
     <form 
         className='p-8 shadow-sharp rounded-lg'
@@ -95,6 +92,7 @@ const ContactForm = () => {
 
         <GoogleReCaptcha 
             onVerify={setToken}
+            
         />
 
 

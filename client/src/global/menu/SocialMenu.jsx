@@ -76,7 +76,7 @@ const SocialMenu = () => {
         <aside className={`z-10 fixed top-0 left-0 bg-c-white-000/80 w-screen h-screen ${menuOpen ? "block" : "hidden"}`}></aside>
         {/* social */}
         <aside
-            className='fixed bottom-20 right-5 z-10 h-16 w-16 grid place-content-center'
+            className='fixed bottom-20 left-5 z-10 h-16 w-16 grid place-content-center'
         >
             <ul
                 className='relative bg-lime-400 -translate-x-[calc(25px)] -translate-y-[calc(25px)]' 
@@ -105,7 +105,7 @@ const SocialMenu = () => {
 
         {/* menu controllre */}
         <aside
-            className='fixed bottom-20  right-5 z-10 h-16 w-16 grid place-content-center'
+            className='fixed bottom-20  left-5 z-10 h-16 w-16 grid place-content-center'
         >
             <button
             onClick={() => setMenuOpen(prev => !prev)} 
@@ -116,7 +116,7 @@ const SocialMenu = () => {
         </aside>
 
         {/* live price button */}
-        <aside
+        {/* <aside
             className='fixed bottom-20  left-5 z-10 h-16 w-16 grid place-content-center'
         >
             <button
@@ -126,10 +126,10 @@ const SocialMenu = () => {
                 <DollarIcon />
             </button>
 
-        </aside>
+        </aside> */}
 
         {/* live price show */}
-        <aside
+        {/* <aside
             className={`z-20 bg-c-black-700/50 fixed top-20 w-full h-10 text-white text-2xl font-bold flex ${show ? "translate-y-0" : "-translate-y-[calc(300%)]"} transition-all duration-500`}
         >
             <ul
@@ -137,11 +137,22 @@ const SocialMenu = () => {
             >
                 {content}
             </ul>
+        </aside> */}
+
+        {/* scroll top */}
+        <aside
+            className='fixed bottom-20  right-5 z-10 h-16 w-16 grid place-content-center'
+        >
+            <button
+                onClick={() => scrollToSection("index")} 
+                className={`${menuOpen ? "hidden" : "block"} bg-gray-200/75  bottom-1/3 right-5 rounded-full shadow-sharp h-[calc(60px)] w-[calc(60px)] cursor-pointer grid place-content-center`}>
+                <ArrowIcon className='text-3xl' />
+            </button>
         </aside>
 
         
         {/* scroll top */}
-        <aside
+        {/* <aside
             className='fixed bottom-1/3  right-5 z-10 h-16 w-16 grid place-content-center'
         >
             <button
@@ -149,7 +160,7 @@ const SocialMenu = () => {
                 className={`${menuOpen ? "hidden" : "block"} bg-gray-200/25  bottom-1/3 right-5 rounded-full shadow-sharp h-[calc(50px)] w-[calc(50px)] cursor-pointer grid place-content-center`}>
                 <ArrowIcon className='text-3xl' />
             </button>
-        </aside>
+        </aside> */}
     </section>
     
   )
