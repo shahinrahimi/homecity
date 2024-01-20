@@ -4,7 +4,6 @@ import { NAVLINKS } from "../../constants/navLinks"
 import { Input } from "../../components"
 import { SmoothScrollingContext } from "../../context/SmoothScrollingContext"
 import { Socials, Brand } from "../components"
-
 const Footer = () => {
 
   const year = new Date().getFullYear()
@@ -12,12 +11,12 @@ const Footer = () => {
 
 
   return (
-    <footer className="relative px-10 pt-10 pb-5 lg:px-20 lg:pt-20  w-screen bg-c-black-800 text-c-white-500 justify-center items-center">
+    <footer className="relative px-10 pt-10 lg:px-20 lg:pt-20  w-screen bg-c-black-800 text-c-white-500 justify-center items-center pb-20">
       <div className="container mx-auto">
         {/* footer main */}
         <Brand />
 
-        <div className="flex flex-col items-start md:flex-row justify-between md:items-center border-slate-500 mb-8 gap-8">
+        <div className="flex flex-col items-start md:flex-row justify-between md:items-center border-slate-500 mb-8 mt-16 gap-8">
 
           {/* Address and Contacts */}
           <div className="flex flex-col h-full gap-3 justify-between">

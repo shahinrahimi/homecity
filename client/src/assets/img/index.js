@@ -47,3 +47,8 @@ export {default as ArFlagImage} from "./ar-flag.png"
 export {default as FaFlagImage} from "./fa-flag.png"
 export {default as EnFLagImage} from "./en-flag.png"
 export {default as TrFlagImage} from "./tr-flag.png"
+
+// skyland
+export {default as BgSkyland1} from "./bg-skyland.jpeg"
+export {default as BgSkyland2} from "./bg-skyland2.jpg"
+export {default as BgSkyland3} from "./bg-skyland3.jpg"
