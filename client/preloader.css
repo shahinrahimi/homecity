@@ -29,10 +29,21 @@ body:has(#preloader.on) {
     color var(--trans-dur);
 }
 
+#preloader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .brand-warpper {
-  display: grid;
-  place-content: center;
-  /* border: 1px solid red; */
+  background-image: url("./src/assets/img/brand-dark.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 200px;
+  height: 200px;
+  /* background-color: #fff; */
 }
 .pl {
   /* border: 1px solid red; */
@@ -66,13 +77,19 @@ body:has(#preloader.on) {
   animation-name: line5;
 }
 
-/* Dark theme
+
+
+/* Dark theme */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: hsl(var(--hue),90%,10%);
-    --fg: hsl(var(--hue),90%,90%);
+    --bg: #333;
+    /* --fg: hsl(var(--hue),90%,90%); */
   }
-} */
+
+  .brand-warpper {
+    background-image: url("./src/assets/img/brand-light.png");;
+  }
+}
 
 /* Animations */
 @keyframes line1 {
